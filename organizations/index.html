@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Организации — GlobalSafe Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+body{background:#030712}
+.og{max-width:1000px;margin:0 auto;padding:40px 20px}
+.og h1{font-size:2rem;font-weight:900;margin-bottom:8px}
+.og>p{color:rgba(255,255,255,.4);margin-bottom:32px}
+.cat-section{margin-bottom:40px}
+.cat-title{font-size:1.1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#fff}
+.cat-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent)}
+.org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.org-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:12px;padding:18px;transition:.25s}
+.org-card:hover{border-color:rgba(99,102,241,.2);transform:translateY(-2px)}
+.org-name{font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px}
+.org-full{font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:8px;line-height:1.4}
+.org-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.org-site{font-size:.72rem;color:#818cf8}
+.org-phone{font-size:.72rem;color:rgba(255,255,255,.4)}
+.org-warn{font-size:.68rem;color:#fbbf24;background:rgba(245,158,11,.08);padding:3px 8px;border-radius:4px;display:inline-block;margin-top:6px}
+.org-funcs{margin-top:8px}
+.org-func{font-size:.72rem;color:rgba(255,255,255,.3);padding:2px 0}
+.org-btn{display:inline-block;margin-top:10px;padding:6px 14px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:6px;font-size:.72rem;font-weight:600;color:#a5b4fc;text-decoration:none;transition:.2s}
+.org-btn:hover{background:rgba(99,102,241,.2);color:#fff;text-decoration:none}
+.search-org{margin-bottom:24px}
+.search-org input{width:100%;padding:14px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;font-size:.92rem;font-family:inherit;color:#fff}
+.search-org input::placeholder{color:rgba(255,255,255,.15)}
+.search-org input:focus{border-color:rgba(99,102,241,.3);outline:none}
+@media(max-width:768px){.org-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="../" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>
+    <div class="nav-menu"><a href="../articles/">Аналитика</a><a href="../success/">Кейсы</a><a href="../organizations/" class="active">Организации</a><a href="../contacts/" class="nav-cta">Оставить заявку</a></div>
+  </nav>
+  <div class="og">
+    <h1>Реестр организаций</h1>
+    <p>Регуляторы, правоохранительные органы, банки и международные организации. Подайте обращение через нашу платформу.</p>
+    <div class="search-org"><input type="text" id="orgSearch" placeholder="Поиск организации..."></div>
+    <div id="orgList"></div>
+  </div>
+  <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
+  <script>
+  var orgs=[];var cats=[];
+  fetch('../data/organizations.json').then(function(r){return r.json()}).then(function(d){
+    cats=d.categories||[];orgs=d.organizations||[];renderOrgs(orgs);
+  });
+  function renderOrgs(list){
+    var grouped={};
+    list.forEach(function(o){if(!grouped[o.cat])grouped[o.cat]=[];grouped[o.cat].push(o)});
+    var html='';
+    cats.forEach(function(c){
+      var items=grouped[c.id];
+      if(!items||!items.length)return;
+      html+='<div class="cat-section"><div class="cat-title">'+c.icon+' '+c.name+'</div><div class="org-grid">';
+      items.forEach(function(o){
+        html+='<div class="org-card"><div class="org-name">'+o.name+'</div><div class="org-full">'+o.full+'</div><div class="org-meta">';
+        if(o.site)html+='<a href="https://'+o.site+'" target="_blank" class="org-site">'+o.site+'</a>';
+        if(o.phone)html+='<span class="org-phone">📞 '+o.phone+'</span>';
+        html+='</div>';
+        if(o.warning&&o.note)html+='<div class="org-warn">⚠ '+o.note+'</div>';
+        if(o.functions){html+='<div class="org-funcs">';o.functions.forEach(function(f){html+='<div class="org-func">• '+f+'</div>'});html+='</div>'}
+        html+='<a href="../contacts/" class="org-btn">Подать обращение →</a></div>';
+      });
+      html+='</div></div>';
+    });
+    document.getElementById('orgList').innerHTML=html||'<p style="color:rgba(255,255,255,.3)">Не найдено</p>';
+  }
+  document.getElementById('orgSearch').addEventListener('input',function(){
+    var q=this.value.toLowerCase();
+    renderOrgs(orgs.filter(function(o){return o.name.toLowerCase().includes(q)||o.full.toLowerCase().includes(q)||(o.site&&o.site.toLowerCase().includes(q))}));
+  });
+  </script>
+</body>
+</html>

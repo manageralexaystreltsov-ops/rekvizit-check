@@ -1,147 +1,56 @@
 {
-  "organizations": [
-    {
-      "id": "arrfr",
-      "name": "АРРФР",
-      "fullName": "Агентство Республики Казахстан по регулированию и развитию финансового рынка",
-      "icon": "🏛️",
-      "phone": "1434",
-      "website": "gov.kz/memleket/entities/ardfm",
-      "description": "Государственный регулятор финансового рынка. Лицензирование, надзор, защита прав потребителей.",
-      "services": ["Проверка лицензий", "Жалобы на брокеров", "Возврат средств", "Консультации"],
-      "color": "#1d4ed8"
-    },
-    {
-      "id": "nbk",
-      "name": "НБ РК",
-      "fullName": "Национальный Банк Республики Казахстан",
-      "icon": "🏦",
-      "phone": "1431",
-      "website": "nationalbank.kz",
-      "description": "Центральный банк. Денежно-кредитная политика, надзор за банками.",
-      "services": ["Оспаривание транзакций", "Жалобы на банки", "Возврат средств"],
-      "color": "#0369a1"
-    },
-    {
-      "id": "police",
-      "name": "Полиция",
-      "fullName": "Министерство внутренних дел Республики Казахстан",
-      "icon": "👮",
-      "phone": "102",
-      "website": "gov.kz/mvd",
-      "description": "Правоохранительные органы. Приём заявлений о мошенничестве.",
-      "services": ["Подача заявлений", "Расследование мошенничества", "Киберпреступность"],
-      "color": "#991b1b"
-    },
-    {
-      "id": "prokuratura",
-      "name": "Прокуратура",
-      "fullName": "Генеральная прокуратура Республики Казахстан",
-      "icon": "⚖️",
-      "phone": "115",
-      "website": "prokuratura.gov.kz",
-      "description": "Надзор за исполнением законов. Защита прав граждан.",
-      "services": ["Надзор за расследованием", "Обжалование бездействия", "Защита прав"],
-      "color": "#6b21a8"
-    },
-    {
-      "id": "mas",
-      "name": "MAS",
-      "fullName": "Monetary Authority of Singapore",
-      "icon": "🇸🇬",
-      "phone": null,
-      "website": "mas.gov.sg",
-      "description": "Центральный банк и регулятор Сингапура. Международное сотрудничество.",
-      "services": ["Международные запросы", "Блокировка активов", "Сотрудничество"],
-      "color": "#047857"
-    },
-    {
-      "id": "fca",
-      "name": "FCA",
-      "fullName": "Financial Conduct Authority",
-      "icon": "🇬🇧",
-      "phone": null,
-      "website": "fca.org.uk",
-      "description": "Финансовый регулятор Великобритании. Надзор за финансовыми рынками.",
-      "services": ["Международные запросы", "Жалобы на брокеров", "Расследования"],
-      "color": "#1e40af"
-    },
-    {
-      "id": "sec",
-      "name": "SEC",
-      "fullName": "Securities and Exchange Commission",
-      "icon": "🇺🇸",
-      "phone": null,
-      "website": "sec.gov",
-      "description": "Регулятор ценных бумаг США. Защита инвесторов.",
-      "services": ["Международные запросы", "Расследования", "Блокировка активов"],
-      "color": "#b91c1c"
-    }
+  "categories": [
+    {"id":"kz_regulators","name":"Регуляторы Казахстана","icon":"🇰🇿"},
+    {"id":"kz_law","name":"Правоохранительные органы РК","icon":"👮"},
+    {"id":"kz_banks","name":"Банки Казахстана","icon":"🏦"},
+    {"id":"international_reg","name":"Международные регуляторы","icon":"🌍"},
+    {"id":"international_org","name":"Международные организации","icon":"🏛️"},
+    {"id":"cis","name":"СНГ и ЕАЭС","icon":"🔗"},
+    {"id":"crypto","name":"Крипто-инструменты","icon":"₿"},
+    {"id":"offshore","name":"Офшорные юрисдикции","icon":"🏝️"}
   ],
-  "documents": [
-    {
-      "id": "zayavlenie_police",
-      "name": "Заявление в полицию",
-      "category": "police",
-      "icon": "👮",
-      "description": "Заявление о мошенничестве для подачи в полицию",
-      "fields": ["ФИО", "ИИН", "Адрес", "Телефон", "Описание происшествия", "Сумма ущерба", "Дата происшествия", "Данные мошенника"]
-    },
-    {
-      "id": "zhaloba_arrfr",
-      "name": "Жалоба в АРРФР",
-      "category": "arrfr",
-      "icon": "🏛️",
-      "description": "Жалоба на нелегальную деятельность финансовой организации",
-      "fields": ["ФИО", "ИИН", "Контакты", "Название организации", "ИИН/БИН организации", "Описание нарушений", "Сумма убытка", "Приложенные документы"]
-    },
-    {
-      "id": "pretenzia_bank",
-      "name": "Претензия в банк",
-      "category": "nbk",
-      "icon": "🏦",
-      "description": "Претензия о возврате средств по незаконным транзакциям",
-      "fields": ["ФИО", "Номер счёта/карты", "Банк", "Дата транзакции", "Сумма", "Основание для возврата", "Приложенные документы"]
-    },
-    {
-      "id": "iskovoe",
-      "name": "Исковое заявление",
-      "category": "court",
-      "icon": "⚖️",
-      "description": "Исковое заявление в суд о взыскании денежных средств",
-      "fields": ["ФИО истца", "Адрес истца", "ФИО ответчика", "Адрес ответчика", "Предмет иска", "Сумма иска", "Обстоятельства", "Доказательства"]
-    },
-    {
-      "id": "dogovor",
-      "name": "Договор об оказании юридических услуг",
-      "category": "contract",
-      "icon": "📝",
-      "description": "Договор на юридическое сопровождение",
-      "fields": ["ФИО клиента", "Паспортные данные", "Контакты", "Предмет договора", "Стоимость услуг", "Сроки"]
-    },
-    {
-      "id": "doverennost",
-      "name": "Доверенность",
-      "category": "contract",
-      "icon": "📋",
-      "description": "Доверенность на представление интересов",
-      "fields": ["Доверитель", "Представитель", "Полномочия", "Срок действия"]
-    },
-    {
-      "id": "zayavlenie_nbk",
-      "name": "Обращение в НБ РК",
-      "category": "nbk",
-      "icon": "🏦",
-      "description": "Обращение в Национальный Банк о нарушении банком законодательства",
-      "fields": ["ФИО", "Контакты", "Название банка", "Описание нарушения", "Сумма", "Приложенные документы"]
-    },
-    {
-      "id": "zayavlenie_prokuratura",
-      "name": "Обращение в прокуратуру",
-      "category": "prokuratura",
-      "icon": "⚖️",
-      "description": "Обращение в прокуратуру о нарушении прав",
-      "fields": ["ФИО", "Адрес", "Контакты", "Суть обращения", "Приложенные документы"]
-    }
+  "organizations": [
+    {"id":"arrfr","cat":"kz_regulators","name":"АРРФР","full":"Агентство РК по регулированию и развитию финансового рынка","site":"ardfm.gov.kz","phone":"1434","functions":["Лицензирование банков, брокеров, страховых","Чёрный список организаций","Жалобы на финансовые организации","Проверка лицензий"],"warning":false},
+    {"id":"nbk","cat":"kz_regulators","name":"НБ РК","full":"Национальный банк Республики Казахстан","site":"nationalbank.kz","phone":"8 800 080 45 36","functions":["Надзор за банками 2-го уровня","Монетарная политика","Курс тенге"],"warning":false},
+    {"id":"kgd","cat":"kz_regulators","name":"КГД МФ РК","full":"Комитет государственных доходов","site":"kgd.gov.kz","phone":"1414","functions":["Налоги, таможня","Проверка БИН"],"warning":false},
+    {"id":"afm","cat":"kz_regulators","name":"АФМ РК","full":"Агентство по финансовому мониторингу","site":"afm.gov.kz","phone":null,"functions":["AML/CFT в Казахстане","Противодействие отмыванию денег"],"warning":false},
+    {"id":"police","cat":"kz_law","name":"МВД РК / Полиция","full":"Министерство внутренних дел","site":"mvd.gov.kz","phone":"102","functions":["Уголовные дела","Заявления о мошенничестве","Киберпреступность"],"warning":false},
+    {"id":"prosecutor","cat":"kz_law","name":"Генпрокуратура","full":"Генеральная прокуратура РК","site":"prosecutor.kz","phone":null,"functions":["Надзор","Жалобы на бездействие полиции"],"warning":false},
+    {"id":"antikorr","cat":"kz_law","name":"Антикоррупционная служба","full":"Агентство РК по противодействию коррупции","site":"gov4.kz","phone":"1424","functions":["Коррупция"],"warning":false},
+    {"id":"sud","cat":"kz_law","name":"Суды РК","full":"Судебная система","site":"sud.kz","phone":null,"functions":["Проверка дел онлайн","Судебные акты"],"warning":false},
+    {"id":"halyk","cat":"kz_banks","name":"Halyk Bank","full":"АО «Народный банк Казахстана»","site":"halykbank.kz","phone":"595","functions":["Чарджбэк","Оспаривание транзакций"],"warning":false},
+    {"id":"kaspi","cat":"kz_banks","name":"Kaspi Bank","full":"АО «Kaspi Bank»","site":"kaspi.kz","phone":"5050","functions":["Чарджбэк","Оспаривание транзакций"],"warning":false},
+    {"id":"forte","cat":"kz_banks","name":"Forte Bank","full":"АО «ForteBank»","site":"fortebank.kz","phone":"*6800","functions":["Чарджбэк","Оспаривание транзакций"],"warning":false},
+    {"id":"bcc","cat":"kz_banks","name":"Банк ЦентрКредит","full":"АО «Банк ЦентрКредит»","site":"ccbank.kz","phone":"727 244 10 44","functions":["Чарджбэк","Оспаривание транзакций"],"warning":false},
+    {"id":"eurasian","cat":"kz_banks","name":"Евразийский банк","full":"АО «Евразийский банк»","site":"eubank.kz","phone":"505","functions":["Чарджбэк","Оспаривание транзакций"],"warning":false},
+    {"id":"sec","cat":"international_reg","name":"SEC","full":"Комиссия по ценным бумагам и биржам (США)","site":"sec.gov","phone":null,"functions":["Рынок ценных бумаг США"],"warning":false,"note":"Мошенники часто подделывают"},
+    {"id":"cftc","cat":"international_reg","name":"CFTC","full":"Комиссия по торговле товарными фьючерсами (США)","site":"cftc.gov","phone":null,"functions":["Деривативы, фьючерсы"],"warning":false},
+    {"id":"finra","cat":"international_reg","name":"FINRA","full":"Регуляторный орган финансовой индустрии (США)","site":"finra.org","phone":null,"functions":["Брокеры-дилеры"],"warning":false},
+    {"id":"fca","cat":"international_reg","name":"FCA","full":"Управление финансового поведения (Великобритания)","site":"fca.org.uk","phone":null,"functions":["Финансовый надзор Великобритании"],"warning":true,"note":"Самый подделываемый регулятор в мире"},
+    {"id":"mas","cat":"international_reg","name":"MAS","full":"Денежно-валютное управление Сингапура","site":"mas.gov.sg","phone":null,"functions":["Центральный банк Сингапура"],"warning":false},
+    {"id":"esma","cat":"international_reg","name":"ESMA","full":"Европейское агентство по ценным бумагам","site":"esma.europa.eu","phone":null,"functions":["Рынки ценных бумаг ЕС"],"warning":false},
+    {"id":"bafin","cat":"international_reg","name":"BaFin","full":"Федеральное управление финансового надзора Германии","site":"bafin.de","phone":null,"functions":["Финансовый надзор Германии"],"warning":false},
+    {"id":"amf","cat":"international_reg","name":"AMF","full":"Управление финансовых рынков Франции","site":"amf-france.org","phone":null,"functions":["Финансовый надзор Франции"],"warning":false},
+    {"id":"finma","cat":"international_reg","name":"FINMA","full":"Швейцарская служба надзора за финансовыми рынками","site":"finma.ch","phone":null,"functions":["Финансовый надзор Швейцарии"],"warning":false},
+    {"id":"cysec","cat":"international_reg","name":"CySEC","full":"Комиссия по ценным бумагам Кипра","site":"cysec.gov.cy","phone":null,"functions":["Финансовый надзор Кипра"],"warning":true,"note":"Офшор — мошенники регистрируются"},
+    {"id":"imf","cat":"international_org","name":"МВФ","full":"Международный валютный фонд","site":"imf.org","phone":null,"functions":["Финансовая поддержка стран"],"warning":true,"note":"Не работает с физлицами напрямую"},
+    {"id":"worldbank","cat":"international_org","name":"Всемирный банк","full":"World Bank","site":"worldbank.org","phone":null,"functions":["Финансирование проектов"],"warning":true,"note":"Не работает с физлицами напрямую"},
+    {"id":"ebrd","cat":"international_org","name":"ЕБРР","full":"Европейский банк реконструкции и развития","site":"ebrd.com","phone":null,"functions":["Инвестиции в развитые экономики"],"warning":false},
+    {"id":"interpol","cat":"international_org","name":"Интерпол","full":"Международная организация уголовной полиции","site":"interpol.int","phone":null,"functions":["Координация полиций 195 стран"],"warning":true,"note":"Не пишет в мессенджеры"},
+    {"id":"fatf","cat":"international_org","name":"FATF","full":"Группа разработки финансовых мер","site":"fatf-gafi.org","phone":null,"functions":["Стандарты AML/CFT для правительств"],"warning":true,"note":"Не работает с физлицами"},
+    {"id":"cbr","cat":"cis","name":"ЦБ РФ","full":"Банк России","site":"cbr.ru","phone":null,"functions":["Финансовый надзор России"],"warning":false},
+    {"id":"nbrb","cat":"cis","name":"Нацбанк РБ","full":"Национальный банк Беларуси","site":"nbrb.by","phone":null,"functions":["Финансовый надзор Беларуси"],"warning":false},
+    {"id":"nbkr","cat":"cis","name":"Нацбанк КР","full":"Национальный банк Кыргызстана","site":"nbkr.kg","phone":null,"functions":["Финансовый надзор Кыргызстана"],"warning":false},
+    {"id":"cbu","cat":"cis","name":"ЦБ РУз","full":"Центральный банк Узбекистана","site":"cbu.uz","phone":null,"functions":["Финансовый надзор Узбекистана"],"warning":false},
+    {"id":"eabr","cat":"cis","name":"ЕАБР","full":"Евразийский банк развития","site":"eabr.org","phone":null,"functions":["Инвестиции в ЕАЭС"],"warning":false},
+    {"id":"revoke","cat":"crypto","name":"Revoke.cash","full":"Отзыв token approvals","site":"revoke.cash","phone":null,"functions":["Отзыв разрешений на токены"],"warning":false},
+    {"id":"etherscan","cat":"crypto","name":"Etherscan","full":"Обозреватель блокчейна Ethereum","site":"etherscan.io","phone":null,"functions":["История транзакций Ethereum"],"warning":false},
+    {"id":"bscscan","cat":"crypto","name":"BSCScan","full":"Обозреватель блокчейна BSC","site":"bscscan.com","phone":null,"functions":["История транзакций BSC"],"warning":false},
+    {"id":"tronscan","cat":"crypto","name":"TRON Scan","full":"Обозреватель блокчейна TRON","site":"tronscan.org","phone":null,"functions":["История транзакций TRON/USDT"],"warning":false},
+    {"id":"whois","cat":"crypto","name":"WHOIS","full":"Проверка домена","site":"whois.domaintools.com","phone":null,"functions":["Возраст сайта, владелец"],"warning":false},
+    {"id":"belize","cat":"offshore","name":"Белиз (IFSC)","full":"Международная комиссия по финансовым услугам Белиза","site":"ifsc.gov.bz","phone":null,"functions":["Лёгкая регистрация, слабый надзор"],"warning":true,"note":"Высокий риск мошенничества"},
+    {"id":"svg","cat":"offshore","name":"Сент-Винсент (FSA SVG)","full":"Служба финансовых услуг","site":"svgfsa.com","phone":null,"functions":["НЕ регулирует форекс/крипто"],"warning":true,"note":"Мошенники используют"},
+    {"id":"seychelles","cat":"offshore","name":"Сейшелы (FSA)","full":"Управление финансовых услуг","site":"fsaseychelles.sc","phone":null,"functions":["Используется мошенниками"],"warning":true},
+    {"id":"cayman","cat":"offshore","name":"Каймановы острова (CIMA)","full":"Управление денежного обращения","site":"cima.ky","phone":null,"functions":["Реальный, но мошенники подделывают"],"warning":true}
   ]
 }
