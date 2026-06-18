@@ -19,98 +19,37 @@
       </nav>
     </div>
   </header>
-
   <section class="hero">
     <h1>Свяжитесь с нами</h1>
-    <p>Бесплатная консультация 15 минут. Работаем по всей Республике Казахстан.</p>
+    <p>Оставьте заявку — мы свяжемся с вами в течение 24 часов</p>
   </section>
-
-  <div class="page">
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">📞</div>
-        <div class="contact-label">Телефон</div>
-        <div class="contact-value">+7 (775) 419-49-17</div>
-        <div style="margin-top:10px"><a href="tel:+77754194917" style="color:#60a5fa;font-size:.85rem">Позвонить →</a></div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">💬</div>
-        <div class="contact-label">Telegram</div>
-        <div class="contact-value">@smakarov_law</div>
-        <div style="margin-top:10px"><a href="https://t.me/smakarov_law" target="_blank" style="color:#60a5fa;font-size:.85rem">Написать →</a></div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">📱</div>
-        <div class="contact-label">WhatsApp</div>
-        <div class="contact-value">+7 (775) 419-49-17</div>
-        <div style="margin-top:10px"><a href="https://wa.me/77754194917" target="_blank" style="color:#60a5fa;font-size:.85rem">Написать →</a></div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">✉️</div>
-        <div class="contact-label">Email</div>
-        <div class="contact-value">finmanager063@gmail.com</div>
-        <div style="margin-top:10px"><a href="mailto:finmanager063@gmail.com" style="color:#60a5fa;font-size:.85rem">Написать →</a></div>
+  <div class="page" style="max-width:550px">
+    <div class="contact-card" style="text-align:left">
+      <h2 style="margin-bottom:20px">📋 Заявка на возврат средств</h2>
+      <form id="tgForm">
+        <div class="form-group"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван Иванович" required></div>
+        <div class="form-group"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div>
+        <div class="form-group"><label>Телефон (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 775 271 98 91" value="+7 775 271 98 91" required></div>
+        <div class="form-group"><label>Дополнительные номера</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33"></div>
+        <div class="form-group"><label>Сколько потеряли (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
+        <div class="form-group"><label>Название компании / платформы</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div>
+        <div class="form-group"><label>Когда удобно звонить</label><input type="text" name="callTime" placeholder="Пн-Пт 10:00-18:00"></div>
+        <div class="form-group"><label>Комментарий / детали</label><textarea name="comment" placeholder="Любая дополнительная информация..."></textarea></div>
+        <button type="submit" class="form-btn">Отправить заявку</button>
+      </form>
+      <div id="formSuccess" class="form-success" style="display:none">
+        <div class="form-success-icon">✅</div>
+        <h3>Заявка успешно отправлена!</h3>
+        <p>Наш специалист свяжется с вами в течение 24 часов.</p>
       </div>
     </div>
-
-    <h2>Горячие линии</h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">🏛️</div>
-        <div class="contact-label">1434</div>
-        <div class="contact-value">АРРФР — Агентство по регулированию финансового рынка</div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">👮</div>
-        <div class="contact-label">102</div>
-        <div class="contact-value">Полиция — для подачи заявления</div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">📞</div>
-        <div class="contact-label">116</div>
-        <div class="contact-value">Телефон доверия — психологическая помощь</div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">🏦</div>
-        <div class="contact-label">1431</div>
-        <div class="contact-value">Национальный Банк РК</div>
-      </div>
-    </div>
-
-    <h2>Адрес</h2>
-    <div class="story" style="margin-bottom:24px">
-      <div class="story-name">г. Алматы, Казахстан</div>
-      <div class="story-text" style="margin-top:8px">Работаем онлайн по всей Республике Казахстан. Выезд в регионы по договорённости.</div>
-    </div>
-
-    <h2>Время работы</h2>
-    <div class="story" style="margin-bottom:24px">
-      <div class="story-text">Пн-Пт: 9:00 - 18:00<br>Сб: 10:00 - 14:00<br>Вс: выходной<br><br>Экстренные обращения принимаются круглосуточно по телефону.</div>
-    </div>
-
-    <h2>Как проходит консультация</h2>
-    <div class="stats-row" style="grid-template-columns:repeat(3,1fr)">
-      <div class="stat-box">
-        <div class="stat-num">1</div>
-        <div class="stat-label">Звоните или пишите</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Анализируем ситуацию</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Называем шансы</div>
-      </div>
+    <div class="contact-card" style="margin-top:16px;text-align:center">
+      <div class="contact-icon">🏛️</div>
+      <div class="contact-label">Горячие линии</div>
+      <div class="contact-value" style="margin-top:8px">📞 1434 — АРРФР<br>📞 102 — Полиция<br>📞 116 — Телефон доверия</div>
     </div>
   </div>
-
-  <footer class="ftr">
-    <div class="ftr-inner">
-      <div><h4>Контакты</h4><p>📞 +7 (775) 419-49-17<br>💬 Telegram: @smakarov_law<br>✉️ finmanager063@gmail.com</p></div>
-      <div><h4>Горячие линии</h4><p>📞 1434 — АРРФР<br>📞 102 — Полиция<br>📞 116 — Телефон доверия</p></div>
-    </div>
-    <div class="ftr-bottom">© 2026 Статус Дела · Конфиденциальность гарантирована</div>
-  </footer>
+  <footer class="ftr"><div class="ftr-inner"><div><h4>Статус Дела</h4><p>Конфиденциальность гарантирована.</p></div></div><div class="ftr-bottom">© 2026 Статус Дела</div></footer>
+  <script src="../assets/js/form.js"></script>
 </body>
 </html>
