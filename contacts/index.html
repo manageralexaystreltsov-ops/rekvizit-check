@@ -3,9 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Контакты — Статус Дела</title>
+  <title>Обратная связь — Статус Дела</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+body{background:#0a0e1a}
+.form-page{max-width:600px;margin:0 auto;padding:40px 20px}
+.form-card{background:rgba(17,24,39,.8);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.form-card h1{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:6px;text-align:center}
+.form-card .subtitle{color:var(--muted);font-size:.88rem;text-align:center;margin-bottom:28px}
+.type-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.type-option{padding:14px 12px;background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;text-align:center;transition:.3s;position:relative}
+.type-option:hover{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.05)}
+.type-option.selected{border-color:rgba(59,130,246,.6);background:rgba(59,130,246,.1);box-shadow:0 0 20px rgba(59,130,246,.15)}
+.type-option input{position:absolute;opacity:0;pointer-events:none}
+.type-icon{font-size:1.8rem;margin-bottom:6px;display:block}
+.type-name{font-weight:700;font-size:.82rem;color:#fff;display:block}
+.type-desc{font-size:.7rem;color:var(--muted);margin-top:2px;display:block}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-size:.72rem;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px}
+.fg input,.fg textarea,.fg select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:.92rem;font-family:var(--font);color:#fff;transition:.3s}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2)}
+.fg input:focus,.fg textarea:focus{border-color:rgba(59,130,246,.5);outline:none;background:rgba(255,255,255,.07);box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+.fg textarea{height:90px;resize:vertical}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-btn{width:100%;padding:16px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:800;cursor:pointer;font-family:var(--font);transition:.3s;margin-top:8px;position:relative;overflow:hidden;letter-spacing:.3px}
+.submit-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#8b5cf6,#ec4899);opacity:0;transition:.3s}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(139,92,246,.5)}
+.submit-btn:hover::before{opacity:1}
+.submit-btn span{position:relative;z-index:1}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.form-success{text-align:center;padding:30px 0}
+.form-success-icon{font-size:4rem;margin-bottom:16px;animation:bounce 1s ease}
+@keyframes bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.form-success h3{color:#fff;margin-bottom:8px;font-size:1.2rem}
+.form-success p{color:var(--muted);font-size:.9rem}
+.form-note{text-align:center;margin-top:16px;font-size:.75rem;color:rgba(255,255,255,.25)}
+@media(max-width:500px){.type-selector{grid-template-columns:1fr}.fg-row{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
   <header class="hdr">
@@ -15,41 +50,233 @@
         <a href="../">Главная</a>
         <a href="../articles/">Статьи</a>
         <a href="../success/">Кейсы</a>
-        <a href="../contacts/" class="active">Контакты</a>
+        <a href="../contacts/" class="active">Обращение</a>
       </nav>
     </div>
   </header>
-  <section class="hero">
-    <h1>Свяжитесь с нами</h1>
-    <p>Оставьте заявку — мы свяжемся с вами в течение 24 часов</p>
+
+  <section class="hero" style="padding-bottom:30px">
+    <h1>Центр обращений</h1>
+    <p>Выберите тип обращения и заполните форму. Мы свяжемся с вами в ближайшее время.</p>
   </section>
-  <div class="page" style="max-width:550px">
-    <div class="contact-card" style="text-align:left">
-      <h2 style="margin-bottom:20px">📋 Заявка на возврат средств</h2>
-      <form id="tgForm">
-        <div class="form-group"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван Иванович" required></div>
-        <div class="form-group"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div>
-        <div class="form-group"><label>Телефон (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 775 271 98 91" value="+7 775 271 98 91" required></div>
-        <div class="form-group"><label>Дополнительные номера</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33"></div>
-        <div class="form-group"><label>Сколько потеряли (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
-        <div class="form-group"><label>Название компании / платформы</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div>
-        <div class="form-group"><label>Когда удобно звонить</label><input type="text" name="callTime" placeholder="Пн-Пт 10:00-18:00"></div>
-        <div class="form-group"><label>Комментарий / детали</label><textarea name="comment" placeholder="Любая дополнительная информация..."></textarea></div>
-        <button type="submit" class="form-btn">Отправить заявку</button>
+
+  <div class="form-page">
+    <div class="form-card">
+      <h1>📋 Форма обращения</h1>
+      <div class="subtitle">Все поля помеченные * обязательны для заполнения</div>
+
+      <form id="contactForm">
+        <!-- Тип обращения -->
+        <div class="type-selector">
+          <label class="type-option selected" data-type="return">
+            <input type="radio" name="type" value="Возврат средств" checked>
+            <span class="type-icon">💰</span>
+            <span class="type-name">Возврат средств</span>
+            <span class="type-desc">Вернуть деньги от мошенников</span>
+          </label>
+          <label class="type-option" data-type="docs">
+            <input type="radio" name="type" value="Получить документ">
+            <span class="type-icon">📄</span>
+            <span class="type-name">Получить документ</span>
+            <span class="type-desc">Заявление, жалоба, претензия</span>
+          </label>
+          <label class="type-option" data-type="feedback">
+            <input type="radio" name="type" value="Обратная связь">
+            <input type="radio" name="type" value="Обратная связь">
+            <span class="type-icon">💬</span>
+            <span class="type-name">Обратная связь</span>
+            <span class="type-desc">Вопрос, предложение, отзыв</span>
+          </label>
+          <label class="type-option" data-type="org">
+            <input type="radio" name="type" value="Связь с организациями">
+            <input type="radio" name="type" value="Связь с организациями">
+            <span class="type-icon">🏛️</span>
+            <span class="type-name">Связь с организациями</span>
+            <span class="type-desc">АРРФР, полиция, банки</span>
+          </label>
+        </div>
+
+        <!-- Дополнительные поля для "Возврат средств" -->
+        <div class="return-fields">
+          <div class="fg-row">
+            <div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван Иванович" required></div>
+            <div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div>
+          </div>
+          <div class="fg"><label>Телефон (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div>
+          <div class="fg"><label>Дополнительные номера</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33, +7 701 444 55 66"></div>
+          <div class="fg-row">
+            <div class="fg"><label>Сколько потеряли (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
+            <div class="fg"><label>Когда удобно звонить</label><input type="text" name="callTime" placeholder="Пн-Пт 10:00-18:00"></div>
+          </div>
+          <div class="fg"><label>Название компании / платформы</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div>
+          <div class="fg"><label>Комментарий / детали</label><textarea name="comment" placeholder="Обстоятельства, номер дела, что произошло..."></textarea></div>
+        </div>
+
+        <!-- Поля для "Получить документ" -->
+        <div class="docs-fields" style="display:none">
+          <div class="fg-row">
+            <div class="fg"><label>ФИО *</label><input type="text" name="docName" placeholder="Иванов Иван Иванович" required></div>
+            <div class="fg"><label>Телефон *</label><input type="tel" name="docPhone" placeholder="+7 7XX XXX XX XX" required></div>
+          </div>
+          <div class="fg"><label>Какой документ нужен *</label>
+            <select name="docType" required>
+              <option value="">Выберите...</option>
+              <option>Заявление в полицию</option>
+              <option>Жалоба в АРРФР</option>
+              <option>Претензия в банк</option>
+              <option>Исковое заявление</option>
+              <option>Договор об оказании услуг</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="fg"><label>Опишите ситуацию</label><textarea name="docComment" placeholder="Кратко опишите ситуацию для подготовки документа..."></textarea></div>
+        </div>
+
+        <!-- Поля для "Обратная связь" -->
+        <div class="feedback-fields" style="display:none">
+          <div class="fg-row">
+            <div class="fg"><label>Имя *</label><input type="text" name="fbName" placeholder="Ваше имя" required></div>
+            <div class="fg"><label>Телефон</label><input type="tel" name="fbPhone" placeholder="+7 7XX XXX XX XX"></div>
+          </div>
+          <div class="fg"><label>Тема *</label>
+            <select name="fbTopic" required>
+              <option value="">Выберите...</option>
+              <option>Вопрос по услугам</option>
+              <option>Предложение о сотрудничестве</option>
+              <option>Отзыв о работе</option>
+              <option>Жалоба</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="fg"><label>Сообщение *</label><textarea name="fbMessage" placeholder="Ваше сообщение..." required></textarea></div>
+        </div>
+
+        <!-- Поля для "Связь с организациями" -->
+        <div class="org-fields" style="display:none">
+          <div class="fg-row">
+            <div class="fg"><label>ФИО *</label><input type="text" name="orgName" placeholder="Иванов Иван Иванович" required></div>
+            <div class="fg"><label>Телефон *</label><input type="tel" name="orgPhone" placeholder="+7 7XX XXX XX XX" required></div>
+          </div>
+          <div class="fg"><label>Организация *</label>
+            <select name="orgType" required>
+              <option value="">Выберите...</option>
+              <option>АРРФР (финансовый регулятор)</option>
+              <option>Национальный Банк РК</option>
+              <option>Полиция / Киберпреступность</option>
+              <option>Прокуратура</option>
+              <option>Банк (эмитент)</option>
+              <option>Другая организация</option>
+            </select>
+          </div>
+          <div class="fg"><label>Суть обращения *</label><textarea name="orgComment" placeholder="Опишите вашу ситуацию и что нужно от организации..." required></textarea></div>
+        </div>
+
+        <button type="submit" class="submit-btn"><span>Отправить заявку</span></button>
       </form>
+
       <div id="formSuccess" class="form-success" style="display:none">
         <div class="form-success-icon">✅</div>
         <h3>Заявка успешно отправлена!</h3>
-        <p>Наш специалист свяжется с вами в течение 24 часов.</p>
+        <p>Наш специалист свяжется с вами в ближайшее время.</p>
       </div>
-    </div>
-    <div class="contact-card" style="margin-top:16px;text-align:center">
-      <div class="contact-icon">🏛️</div>
-      <div class="contact-label">Горячие линии</div>
-      <div class="contact-value" style="margin-top:8px">📞 1434 — АРРФР<br>📞 102 — Полиция<br>📞 116 — Телефон доверия</div>
+
+      <div class="form-note">Ваши данные защищены и не передаются третьим лицам</div>
     </div>
   </div>
-  <footer class="ftr"><div class="ftr-inner"><div><h4>Статус Дела</h4><p>Конфиденциальность гарантирована.</p></div></div><div class="ftr-bottom">© 2026 Статус Дела</div></footer>
-  <script src="../assets/js/form.js"></script>
+
+  <footer class="ftr">
+    <div class="ftr-inner">
+      <div><h4>Статус Дела</h4><p>Конфиденциальность гарантирована.</p></div>
+    </div>
+    <div class="ftr-bottom">© 2026 Статус Дела · Все права защищены</div>
+  </footer>
+
+  <script>
+  const TG_TOKEN='8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk';
+  const TG_CHAT='8471070560';
+
+  // Type selector
+  document.querySelectorAll('.type-option').forEach(function(opt){
+    opt.addEventListener('click',function(){
+      document.querySelectorAll('.type-option').forEach(function(o){o.classList.remove('selected')});
+      this.classList.add('selected');
+      this.querySelector('input[type="radio"]').checked=true;
+      var type=this.dataset.type;
+      document.querySelector('.return-fields').style.display=type==='return'?'block':'none';
+      document.querySelector('.docs-fields').style.display=type==='docs'?'block':'none';
+      document.querySelector('.feedback-fields').style.display=type==='feedback'?'block':'none';
+      document.querySelector('.org-fields').style.display=type==='org'?'block':'none';
+    });
+  });
+
+  // Form submit
+  document.getElementById('contactForm').addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=this.querySelector('.submit-btn');
+    btn.disabled=true;
+    btn.querySelector('span').textContent='Отправка...';
+
+    var type=document.querySelector('input[name="type"]:checked').value;
+    var text='📋 *Новое обращение*\n\n📌 Тип: '+type+'\n\n';
+
+    if(type==='Возврат средств'){
+      var n=this.querySelector('[name="name"]').value;
+      var i=this.querySelector('[name="iin"]').value;
+      var p=this.querySelector('[name="phone"]').value;
+      var ep=this.querySelector('[name="extraPhones"]').value;
+      var a=this.querySelector('[name="amount"]').value;
+      var c=this.querySelector('[name="company"]').value;
+      var ct=this.querySelector('[name="callTime"]').value;
+      var cm=this.querySelector('[name="comment"]').value;
+      text+='👤 ФИО: '+n+'\n🆔 ИИН: '+i+'\n📱 Телефон: '+p;
+      if(ep)text+='\n📞 Доп: '+ep;
+      if(a)text+='\n💰 Сумма: '+a+' ₸';
+      if(c)text+='\n🏢 Компания: '+c;
+      if(ct)text+='\n📅 Звонить: '+ct;
+      if(cm)text+='\n💬 '+cm;
+    }else if(type==='Получить документ'){
+      var n=this.querySelector('[name="docName"]').value;
+      var p=this.querySelector('[name="docPhone"]').value;
+      var dt=this.querySelector('[name="docType"]').value;
+      var dc=this.querySelector('[name="docComment"]').value;
+      text+='👤 ФИО: '+n+'\n📱 Телефон: '+p+'\n📄 Документ: '+dt;
+      if(dc)text+='\n💬 '+dc;
+    }else if(type==='Обратная связь'){
+      var n=this.querySelector('[name="fbName"]').value;
+      var p=this.querySelector('[name="fbPhone"]').value;
+      var t=this.querySelector('[name="fbTopic"]').value;
+      var m=this.querySelector('[name="fbMessage"]').value;
+      text+='👤 Имя: '+n;
+      if(p)text+='\n📱 Телефон: '+p;
+      text+='\n📋 Тема: '+t+'\n💬 '+m;
+    }else if(type==='Связь с организациями'){
+      var n=this.querySelector('[name="orgName"]').value;
+      var p=this.querySelector('[name="orgPhone"]').value;
+      var o=this.querySelector('[name="orgType"]').value;
+      var c=this.querySelector('[name="orgComment"]').value;
+      text+='👤 ФИО: '+n+'\n📱 Телефон: '+p+'\n🏛️ Организация: '+o+'\n💬 '+c;
+    }
+
+    try{
+      var resp=await fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({chat_id:TG_CHAT,text:text})
+      });
+      if(resp.ok){
+        this.style.display='none';
+        document.getElementById('formSuccess').style.display='block';
+      }else{
+        alert('Ошибка отправки. Попробуйте ещё раз.');
+        btn.disabled=false;
+        btn.querySelector('span').textContent='Отправить заявку';
+      }
+    }catch(err){
+      alert('Ошибка сети. Попробуйте ещё раз.');
+      btn.disabled=false;
+      btn.querySelector('span').textContent='Отправить заявку';
+    }
+  });
+  </script>
 </body>
 </html>
