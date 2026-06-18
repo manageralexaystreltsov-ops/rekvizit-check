@@ -1,281 +1,87 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Обратная связь — Статус Дела</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/pages.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Submit Request — GlobalSafe Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
   <style>
-body{background:#0a0e1a}
-.form-page{max-width:600px;margin:0 auto;padding:40px 20px}
-.form-card{background:rgba(17,24,39,.8);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
-.form-card h1{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:6px;text-align:center}
-.form-card .subtitle{color:var(--muted);font-size:.88rem;text-align:center;margin-bottom:28px}
-.type-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
-.type-option{padding:14px 12px;background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.08);border-radius:12px;cursor:pointer;text-align:center;transition:.3s;position:relative}
-.type-option:hover{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.05)}
-.type-option.selected{border-color:rgba(59,130,246,.6);background:rgba(59,130,246,.1);box-shadow:0 0 20px rgba(59,130,246,.15)}
-.type-option input{position:absolute;opacity:0;pointer-events:none}
-.type-icon{font-size:1.8rem;margin-bottom:6px;display:block}
-.type-name{font-weight:700;font-size:.82rem;color:#fff;display:block}
-.type-desc{font-size:.7rem;color:var(--muted);margin-top:2px;display:block}
-.fg{margin-bottom:18px}
-.fg label{display:block;font-size:.72rem;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px}
-.fg input,.fg textarea,.fg select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:.92rem;font-family:var(--font);color:#fff;transition:.3s}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2)}
-.fg input:focus,.fg textarea:focus{border-color:rgba(59,130,246,.5);outline:none;background:rgba(255,255,255,.07);box-shadow:0 0 0 3px rgba(59,130,246,.1)}
-.fg textarea{height:90px;resize:vertical}
-.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.submit-btn{width:100%;padding:16px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:800;cursor:pointer;font-family:var(--font);transition:.3s;margin-top:8px;position:relative;overflow:hidden;letter-spacing:.3px}
-.submit-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#8b5cf6,#ec4899);opacity:0;transition:.3s}
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(139,92,246,.5)}
-.submit-btn:hover::before{opacity:1}
-.submit-btn span{position:relative;z-index:1}
-.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.form-success{text-align:center;padding:30px 0}
-.form-success-icon{font-size:4rem;margin-bottom:16px;animation:bounce 1s ease}
-@keyframes bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
-.form-success h3{color:#fff;margin-bottom:8px;font-size:1.2rem}
-.form-success p{color:var(--muted);font-size:.9rem}
-.form-note{text-align:center;margin-top:16px;font-size:.75rem;color:rgba(255,255,255,.25)}
-@media(max-width:500px){.type-selector{grid-template-columns:1fr}.fg-row{grid-template-columns:1fr}}
+body{background:#030712}
+.fp{max-width:580px;margin:0 auto;padding:40px 20px 60px}
+.fc{background:rgba(15,15,20,.9);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:36px;position:relative;overflow:hidden}
+.fc::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,.06),transparent);border-radius:50%}
+.fc h1{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:4px;position:relative}
+.fc .sub{color:rgba(255,255,255,.3);font-size:.85rem;margin-bottom:28px;position:relative}
+.ts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.to{padding:14px 10px;background:rgba(255,255,255,.02);border:2px solid rgba(255,255,255,.05);border-radius:10px;cursor:pointer;text-align:center;transition:.25s;position:relative}
+.to:hover{border-color:rgba(99,102,241,.2);background:rgba(99,102,241,.03)}
+.to.sel{border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.06);box-shadow:0 0 20px rgba(99,102,241,.08)}
+.to input{position:absolute;opacity:0;pointer-events:none}
+.to-i{font-size:1.6rem;margin-bottom:4px;display:block}
+.to-n{font-weight:700;font-size:.78rem;color:#fff;display:block}
+.to-d{font-size:.62rem;color:rgba(255,255,255,.25);margin-top:2px;display:block}
+.fg{margin-bottom:14px;position:relative}
+.fg label{display:block;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.25);margin-bottom:5px;text-transform:uppercase;letter-spacing:.8px}
+.fg input,.fg textarea,.fg select{width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;font-size:.88rem;font-family:inherit;color:#fff;transition:.2s}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.12)}
+.fg input:focus,.fg textarea:focus{border-color:rgba(99,102,241,.3);outline:none}
+.fg textarea{height:80px;resize:vertical}
+.fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.fg select option{background:#111;color:#fff}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sb{width:100%;padding:15px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.25s;margin-top:6px;position:relative;overflow:hidden}
+.sb::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#8b5cf6,#ec4899);opacity:0;transition:.3s}
+.sb:hover{box-shadow:0 6px 24px rgba(99,102,241,.35);transform:translateY(-1px)}
+.sb:hover::before{opacity:1}
+.sb span{position:relative;z-index:1}
+.sb:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.fs{text-align:center;padding:24px 0}
+.fs-i{font-size:3rem;margin-bottom:12px}
+.fs h3{color:#fff;margin-bottom:6px;font-size:1.1rem}
+.fs p{color:rgba(255,255,255,.3);font-size:.88rem}
+.fn{text-align:center;margin-top:14px;font-size:.68rem;color:rgba(255,255,255,.15)}
+.hl{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:12px;padding:20px;margin-top:16px;text-align:center}
+.hl h3{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:10px}
+.hl-p{font-size:1.5rem;font-weight:800;color:#818cf8;margin-bottom:4px}
+.hl-d{font-size:.72rem;color:rgba(255,255,255,.25)}
+@media(max-width:500px){.ts{grid-template-columns:1fr}.fr{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <header class="hdr">
-    <div class="hdr-inner">
-      <a href="../" class="logo"><div class="logo-glow">📋</div><span>Статус Дела</span></a>
-      <nav class="nav">
-        <a href="../">Главная</a>
-        <a href="../articles/">Статьи</a>
-        <a href="../success/">Кейсы</a>
-        <a href="../contacts/" class="active">Обращение</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero" style="padding-bottom:30px">
-    <h1>Центр обращений</h1>
-    <p>Выберите тип обращения и заполните форму. Мы свяжемся с вами в ближайшее время.</p>
-  </section>
-
-  <div class="form-page">
-    <div class="form-card">
-      <h1>📋 Форма обращения</h1>
-      <div class="subtitle">Все поля помеченные * обязательны для заполнения</div>
-
-      <form id="contactForm">
-        <!-- Тип обращения -->
-        <div class="type-selector">
-          <label class="type-option selected" data-type="return">
-            <input type="radio" name="type" value="Возврат средств" checked>
-            <span class="type-icon">💰</span>
-            <span class="type-name">Возврат средств</span>
-            <span class="type-desc">Вернуть деньги от мошенников</span>
-          </label>
-          <label class="type-option" data-type="docs">
-            <input type="radio" name="type" value="Получить документ">
-            <span class="type-icon">📄</span>
-            <span class="type-name">Получить документ</span>
-            <span class="type-desc">Заявление, жалоба, претензия</span>
-          </label>
-          <label class="type-option" data-type="feedback">
-            <input type="radio" name="type" value="Обратная связь">
-            <input type="radio" name="type" value="Обратная связь">
-            <span class="type-icon">💬</span>
-            <span class="type-name">Обратная связь</span>
-            <span class="type-desc">Вопрос, предложение, отзыв</span>
-          </label>
-          <label class="type-option" data-type="org">
-            <input type="radio" name="type" value="Связь с организациями">
-            <input type="radio" name="type" value="Связь с организациями">
-            <span class="type-icon">🏛️</span>
-            <span class="type-name">Связь с организациями</span>
-            <span class="type-desc">АРРФР, полиция, банки</span>
-          </label>
+  <nav class="nav">
+    <a href="../" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Asset Recovery</div></div></a>
+    <div class="nav-menu"><a href="../articles/">Intelligence</a><a href="../success/">Case Studies</a><a href="../contacts/" class="active" style="padding:10px 24px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:8px;color:#a5b4fc;font-weight:600;font-size:.82rem;text-decoration:none">Submit Request</a></div>
+  </nav>
+  <div class="fp">
+    <div class="fc">
+      <h1>📋 Submit Recovery Request</h1>
+      <div class="sub">Select request type and complete the form. All fields marked * are required.</div>
+      <form id="cf">
+        <div class="ts">
+          <label class="to sel" data-t="return"><input type="radio" name="type" value="Asset Recovery" checked><span class="to-i">💰</span><span class="to-n">Asset Recovery</span><span class="to-d">Recover lost funds</span></label>
+          <label class="to" data-t="docs"><input type="radio" name="type" value="Document Request"><span class="to-i">📄</span><span class="to-n">Document Request</span><span class="to-d">Legal documentation</span></label>
+          <label class="to" data-t="feedback"><input type="radio" name="type" value="Inquiry"><span class="to-i">💬</span><span class="to-n">General Inquiry</span><span class="to-d">Questions & feedback</span></label>
+          <label class="to" data-t="org"><input type="radio" name="type" value="Regulatory Coordination"><span class="to-i">🏛️</span><span class="to-n">Regulatory</span><span class="to-d">ARDFM, police, banks</span></label>
         </div>
-
-        <!-- Дополнительные поля для "Возврат средств" -->
-        <div class="return-fields">
-          <div class="fg-row">
-            <div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван Иванович" required></div>
-            <div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div>
-          </div>
-          <div class="fg"><label>Телефон (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div>
-          <div class="fg"><label>Дополнительные номера</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33, +7 701 444 55 66"></div>
-          <div class="fg-row">
-            <div class="fg"><label>Сколько потеряли (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
-            <div class="fg"><label>Когда удобно звонить</label><input type="text" name="callTime" placeholder="Пн-Пт 10:00-18:00"></div>
-          </div>
-          <div class="fg"><label>Название компании / платформы</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div>
-          <div class="fg"><label>Комментарий / детали</label><textarea name="comment" placeholder="Обстоятельства, номер дела, что произошло..."></textarea></div>
-        </div>
-
-        <!-- Поля для "Получить документ" -->
-        <div class="docs-fields" style="display:none">
-          <div class="fg-row">
-            <div class="fg"><label>ФИО *</label><input type="text" name="docName" placeholder="Иванов Иван Иванович" required></div>
-            <div class="fg"><label>Телефон *</label><input type="tel" name="docPhone" placeholder="+7 7XX XXX XX XX" required></div>
-          </div>
-          <div class="fg"><label>Какой документ нужен *</label>
-            <select name="docType" required>
-              <option value="">Выберите...</option>
-              <option>Заявление в полицию</option>
-              <option>Жалоба в АРРФР</option>
-              <option>Претензия в банк</option>
-              <option>Исковое заявление</option>
-              <option>Договор об оказании услуг</option>
-              <option>Другое</option>
-            </select>
-          </div>
-          <div class="fg"><label>Опишите ситуацию</label><textarea name="docComment" placeholder="Кратко опишите ситуацию для подготовки документа..."></textarea></div>
-        </div>
-
-        <!-- Поля для "Обратная связь" -->
-        <div class="feedback-fields" style="display:none">
-          <div class="fg-row">
-            <div class="fg"><label>Имя *</label><input type="text" name="fbName" placeholder="Ваше имя" required></div>
-            <div class="fg"><label>Телефон</label><input type="tel" name="fbPhone" placeholder="+7 7XX XXX XX XX"></div>
-          </div>
-          <div class="fg"><label>Тема *</label>
-            <select name="fbTopic" required>
-              <option value="">Выберите...</option>
-              <option>Вопрос по услугам</option>
-              <option>Предложение о сотрудничестве</option>
-              <option>Отзыв о работе</option>
-              <option>Жалоба</option>
-              <option>Другое</option>
-            </select>
-          </div>
-          <div class="fg"><label>Сообщение *</label><textarea name="fbMessage" placeholder="Ваше сообщение..." required></textarea></div>
-        </div>
-
-        <!-- Поля для "Связь с организациями" -->
-        <div class="org-fields" style="display:none">
-          <div class="fg-row">
-            <div class="fg"><label>ФИО *</label><input type="text" name="orgName" placeholder="Иванов Иван Иванович" required></div>
-            <div class="fg"><label>Телефон *</label><input type="tel" name="orgPhone" placeholder="+7 7XX XXX XX XX" required></div>
-          </div>
-          <div class="fg"><label>Организация *</label>
-            <select name="orgType" required>
-              <option value="">Выберите...</option>
-              <option>АРРФР (финансовый регулятор)</option>
-              <option>Национальный Банк РК</option>
-              <option>Полиция / Киберпреступность</option>
-              <option>Прокуратура</option>
-              <option>Банк (эмитент)</option>
-              <option>Другая организация</option>
-            </select>
-          </div>
-          <div class="fg"><label>Суть обращения *</label><textarea name="orgComment" placeholder="Опишите вашу ситуацию и что нужно от организации..." required></textarea></div>
-        </div>
-
-        <button type="submit" class="submit-btn"><span>Отправить заявку</span></button>
+        <div class="rf"><div class="fr"><div class="fg"><label>Full Name *</label><input type="text" name="name" placeholder="John Doe" required></div><div class="fg"><label>Identification Number *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div></div><div class="fg"><label>Phone (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div><div class="fg"><label>Additional Numbers</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33"></div><div class="fr"><div class="fg"><label>Amount Lost (₸)</label><input type="text" name="amount" placeholder="500,000"></div><div class="fg"><label>Best Time to Call</label><input type="text" name="callTime" placeholder="Mon-Fri 10:00-18:00"></div></div><div class="fg"><label>Platform / Company</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div><div class="fg"><label>Details</label><textarea name="comment" placeholder="Circumstances, case number, any additional information..."></textarea></div></div>
+        <div class="df" style="display:none"><div class="fr"><div class="fg"><label>Full Name *</label><input type="text" name="docName" required></div><div class="fg"><label>Phone *</label><input type="tel" name="docPhone" required></div></div><div class="fg"><label>Document Type *</label><select name="docType" required><option value="">Select...</option><option>Police Report</option><option>ARDFM Complaint</option><option>Bank Dispute Letter</option><option>Court Filing</option><option>Service Agreement</option><option>Other</option></select></div><div class="fg"><label>Description</label><textarea name="docComment" placeholder="Brief description..."></textarea></div></div>
+        <div class="ff" style="display:none"><div class="fr"><div class="fg"><label>Name *</label><input type="text" name="fbName" required></div><div class="fg"><label>Phone</label><input type="tel" name="fbPhone"></div></div><div class="fg"><label>Subject *</label><select name="fbTopic" required><option value="">Select...</option><option>Service inquiry</option><option>Partnership proposal</option><option>Feedback</option><option>Complaint</option><option>Other</option></select></div><div class="fg"><label>Message *</label><textarea name="fbMessage" required></textarea></div></div>
+        <div class="of" style="display:none"><div class="fr"><div class="fg"><label>Full Name *</label><input type="text" name="orgName" required></div><div class="fg"><label>Phone *</label><input type="tel" name="orgPhone" required></div></div><div class="fg"><label>Organization *</label><select name="orgType" required><option value="">Select...</option><option>ARDFM (Financial Regulator)</option><option>National Bank of Kazakhstan</option><option>Police / Cybercrime</option><option>Prosecutor's Office</option><option>Issuing Bank</option><option>Other</option></select></div><div class="fg"><label>Details *</label><textarea name="orgComment" required></textarea></div></div>
+        <button type="submit" class="sb"><span>Submit Request</span></button>
       </form>
-
-      <div id="formSuccess" class="form-success" style="display:none">
-        <div class="form-success-icon">✅</div>
-        <h3>Заявка успешно отправлена!</h3>
-        <p>Наш специалист свяжется с вами в ближайшее время.</p>
-      </div>
-
-      <div class="form-note">Ваши данные защищены и не передаются третьим лицам</div>
+      <div id="fs" class="fs" style="display:none"><div class="fs-i">✅</div><h3>Request Submitted</h3><p>Our team will contact you within 24 hours.</p></div>
+      <div class="fn">Your data is encrypted and will not be shared with third parties.</div>
     </div>
+    <div class="hl"><div class="hl-d">Emergency Hotlines</div><div class="hl-p">1434 · 102 · 116</div><div class="hl-d">ARDFM · Police · Crisis Line</div></div>
   </div>
-
-  <footer class="ftr">
-    <div class="ftr-inner">
-      <div><h4>Статус Дела</h4><p>Конфиденциальность гарантирована.</p></div>
-    </div>
-    <div class="ftr-bottom">© 2026 Статус Дела · Все права защищены</div>
-  </footer>
-
+  <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
   <script>
-  const TG_TOKEN='8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk';
-  const TG_CHAT='8471070560';
-
-  // Type selector
-  document.querySelectorAll('.type-option').forEach(function(opt){
-    opt.addEventListener('click',function(){
-      document.querySelectorAll('.type-option').forEach(function(o){o.classList.remove('selected')});
-      this.classList.add('selected');
-      this.querySelector('input[type="radio"]').checked=true;
-      var type=this.dataset.type;
-      document.querySelector('.return-fields').style.display=type==='return'?'block':'none';
-      document.querySelector('.docs-fields').style.display=type==='docs'?'block':'none';
-      document.querySelector('.feedback-fields').style.display=type==='feedback'?'block':'none';
-      document.querySelector('.org-fields').style.display=type==='org'?'block':'none';
-    });
-  });
-
-  // Form submit
-  document.getElementById('contactForm').addEventListener('submit',async function(e){
-    e.preventDefault();
-    var btn=this.querySelector('.submit-btn');
-    btn.disabled=true;
-    btn.querySelector('span').textContent='Отправка...';
-
-    var type=document.querySelector('input[name="type"]:checked').value;
-    var text='📋 *Новое обращение*\n\n📌 Тип: '+type+'\n\n';
-
-    if(type==='Возврат средств'){
-      var n=this.querySelector('[name="name"]').value;
-      var i=this.querySelector('[name="iin"]').value;
-      var p=this.querySelector('[name="phone"]').value;
-      var ep=this.querySelector('[name="extraPhones"]').value;
-      var a=this.querySelector('[name="amount"]').value;
-      var c=this.querySelector('[name="company"]').value;
-      var ct=this.querySelector('[name="callTime"]').value;
-      var cm=this.querySelector('[name="comment"]').value;
-      text+='👤 ФИО: '+n+'\n🆔 ИИН: '+i+'\n📱 Телефон: '+p;
-      if(ep)text+='\n📞 Доп: '+ep;
-      if(a)text+='\n💰 Сумма: '+a+' ₸';
-      if(c)text+='\n🏢 Компания: '+c;
-      if(ct)text+='\n📅 Звонить: '+ct;
-      if(cm)text+='\n💬 '+cm;
-    }else if(type==='Получить документ'){
-      var n=this.querySelector('[name="docName"]').value;
-      var p=this.querySelector('[name="docPhone"]').value;
-      var dt=this.querySelector('[name="docType"]').value;
-      var dc=this.querySelector('[name="docComment"]').value;
-      text+='👤 ФИО: '+n+'\n📱 Телефон: '+p+'\n📄 Документ: '+dt;
-      if(dc)text+='\n💬 '+dc;
-    }else if(type==='Обратная связь'){
-      var n=this.querySelector('[name="fbName"]').value;
-      var p=this.querySelector('[name="fbPhone"]').value;
-      var t=this.querySelector('[name="fbTopic"]').value;
-      var m=this.querySelector('[name="fbMessage"]').value;
-      text+='👤 Имя: '+n;
-      if(p)text+='\n📱 Телефон: '+p;
-      text+='\n📋 Тема: '+t+'\n💬 '+m;
-    }else if(type==='Связь с организациями'){
-      var n=this.querySelector('[name="orgName"]').value;
-      var p=this.querySelector('[name="orgPhone"]').value;
-      var o=this.querySelector('[name="orgType"]').value;
-      var c=this.querySelector('[name="orgComment"]').value;
-      text+='👤 ФИО: '+n+'\n📱 Телефон: '+p+'\n🏛️ Организация: '+o+'\n💬 '+c;
-    }
-
-    try{
-      var resp=await fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({chat_id:TG_CHAT,text:text})
-      });
-      if(resp.ok){
-        this.style.display='none';
-        document.getElementById('formSuccess').style.display='block';
-      }else{
-        alert('Ошибка отправки. Попробуйте ещё раз.');
-        btn.disabled=false;
-        btn.querySelector('span').textContent='Отправить заявку';
-      }
-    }catch(err){
-      alert('Ошибка сети. Попробуйте ещё раз.');
-      btn.disabled=false;
-      btn.querySelector('span').textContent='Отправить заявку';
-    }
+  document.querySelectorAll('.to').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('.to').forEach(function(x){x.classList.remove('sel')});this.classList.add('sel');this.querySelector('input').checked=true;var t=this.dataset.t;document.querySelector('.rf').style.display=t==='return'?'block':'none';document.querySelector('.df').style.display=t==='docs'?'block':'none';document.querySelector('.ff').style.display=t==='feedback'?'block':'none';document.querySelector('.of').style.display=t==='org'?'block':'none'})});
+  document.getElementById('cf').addEventListener('submit',async function(e){
+    e.preventDefault();var b=this.querySelector('.sb');b.disabled=true;b.querySelector('span').textContent='Submitting...';
+    var type=document.querySelector('input[name="type"]:checked').value;var t='📋 *New Request*\n\n📌 Type: '+type+'\n\n';
+    var rf=document.querySelector('.rf');if(rf.style.display!=='none'){var d=new FormData(this);t+='👤 Name: '+d.get('name')+'\n🆔 ID: '+d.get('iin')+'\n📱 Phone: '+d.get('phone');if(d.get('extraPhones'))t+='\n📞 Additional: '+d.get('extraPhones');if(d.get('amount'))t+='\n💰 Amount: '+d.get('amount')+' ₸';if(d.get('company'))t+='\n🏢 Platform: '+d.get('company');if(d.get('callTime'))t+='\n📅 Call time: '+d.get('callTime');if(d.get('comment'))t+='\n💬 Details: '+d.get('comment')}
+    try{var r=await fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:t})});if(r.ok){this.style.display='none';document.getElementById('fs').style.display='block'}else{alert('Error');b.disabled=false;b.querySelector('span').textContent='Submit Request'}}catch(err){alert('Network error');b.disabled=false;b.querySelector('span').textContent='Submit Request'}
   });
   </script>
 </body>
