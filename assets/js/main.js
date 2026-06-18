@@ -1,8 +1,10 @@
 (function(){
 'use strict';
-var DATA=null;
-async function load(){
-  try{var r=await fetch('data/clients.json');DATA=await r.json();renderList()}catch(e){console.error(e)}
+var DATA={clients:[]};
+function load(){
+  var stored=localStorage.getItem('cs_clients');
+  if(stored){DATA={clients:JSON.parse(stored)}}
+  renderList();
 }
 
 function maskPhone(p){if(!p||p.length<7)return p;return p.substring(0,4)+'****'+p.substring(p.length-3)}
@@ -21,7 +23,11 @@ function classByStatus(s){
 }
 
 function renderList(){
-  if(!DATA||!DATA.clients)return;
+  if(!DATA||!DATA.clients||!DATA.clients.length){
+    var wrap=document.getElementById('clients-list');
+    if(wrap)wrap.innerHTML='<div style="text-align:center;padding:40px;color:rgba(255,255,255,.3)"><div style="font-size:2rem;margin-bottom:8px">📋</div><p>Нет активных дел</p></div>';
+    return;
+  }
   var wrap=document.getElementById('clients-list');
   if(!wrap)return;
   var active=DATA.clients.filter(function(c){return c.status!=='return_done'}).slice(0,50);
@@ -197,7 +203,7 @@ function renderResult(c){
 }
 
 function search(q){
-  if(!DATA||!q)return null;
+  if(!DATA||!DATA.clients||!q)return null;
   var s=q.toLowerCase().trim();
   return DATA.clients.find(function(c){
     return(c.caseNumber&&c.caseNumber.toLowerCase().includes(s))||
