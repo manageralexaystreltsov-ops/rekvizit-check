@@ -3,60 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Проверьте статус вашего дела. Узнайте, на каком этапе находится возврат ваших средств.">
-  <title>Статус дела — Проверка возврата средств</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="Профессиональный центр возврата средств. Отслеживайте статус вашего дела.">
+  <title>Статус Дела — Центр возврата средств</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-:root{--p:#0d47a1;--pl:#1565c0;--pd:#002171;--acc:#c62828;--ok:#1b5e20;--warn:#e65100;--info:#0277bd;--bg:#0a0e1a;--card:#111827;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b;--glow:rgba(59,130,246,.3);--radius:12px;--max-w:900px;--font:'Inter',system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
-a{color:#60a5fa;text-decoration:none}a:hover{text-decoration:underline}
-.skip{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;padding:8px 16px;border-radius:0 0 var(--radius) var(--radius);z-index:10000}.skip:focus{top:0}
-:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
-.hdr{background:rgba(10,14,26,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:0;z-index:1000}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1100px;margin:0 auto}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1rem;color:#fff;text-decoration:none}
-.logo:hover{text-decoration:none}
-.logo-glow{width:36px;height:36px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 20px rgba(59,130,246,.4);animation:pulse-glow 3s ease-in-out infinite}
-@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(59,130,246,.4)}50%{box-shadow:0 0 30px rgba(139,92,246,.6)}}
-.nav{display:flex;gap:18px;align-items:center}
-.nav a{color:rgba(255,255,255,.5);font-size:.82rem;font-weight:500;transition:.2s}.nav a:hover{color:#fff;text-decoration:none}
-.hero{position:relative;padding:60px 20px 80px;text-align:center;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(59,130,246,.15),transparent 70%)}
-.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.particle{position:absolute;width:2px;height:2px;background:rgba(59,130,246,.5);border-radius:50%;animation:float linear infinite}
-@keyframes float{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
-.hero h1{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#fff,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;position:relative}
-.hero p{color:rgba(255,255,255,.6);max-width:500px;margin:0 auto;font-size:1rem;position:relative}
-.search-wrap{max-width:var(--max-w);margin:-40px auto 40px;padding:0 16px;position:relative;z-index:10}
-.search-box{background:rgba(17,24,39,.8);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05);position:relative}
-.search-tabs{display:flex;gap:4px;margin-bottom:20px;background:rgba(255,255,255,.03);border-radius:10px;padding:4px}
-.search-tab{flex:1;padding:10px;cursor:pointer;font-weight:600;font-size:.85rem;border:none;border-radius:8px;color:var(--muted);transition:.3s;background:transparent;font-family:var(--font)}
-.search-tab.active{color:#fff;background:linear-gradient(135deg,rgba(59,130,246,.3),rgba(139,92,246,.3));box-shadow:0 2px 10px rgba(59,130,246,.2)}
+body{font-family:'Inter',system-ui,sans-serif;background:#030712;color:#f1f5f9;overflow-x:hidden;min-height:100vh}
+
+/* ===== CURSOR GLOW ===== */
+.cursor-glow{position:fixed;width:400px;height:400px;background:radial-gradient(circle,rgba(59,130,246,.08),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left .3s,top .3s}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;transition:background .4s}
+.nav.scrolled{background:rgba(3,7,18,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo:hover{text-decoration:none}
+.nav-icon{width:40px;height:40px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 0 30px rgba(59,130,246,.3)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:rgba(255,255,255,.5);font-weight:500;font-size:.85rem;transition:.3s;text-decoration:none;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,#3b82f6,#8b5cf6);transition:width .3s}
+.nav-links a:hover{color:#fff;text-decoration:none}
+.nav-links a:hover::after{width:100%}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg canvas{position:absolute;inset:0}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(3,7,18,.4) 50%,#030712 100%);z-index:1}
+.hero-content{position:relative;z-index:10;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:100px;font-size:.78rem;font-weight:600;color:#60a5fa;margin-bottom:24px;animation:fadeIn .8s ease .2s both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge::before{content:'';width:6px;height:6px;background:#3b82f6;border-radius:50%;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:20px;letter-spacing:-.03em}
+.hero h1 .gradient{background:linear-gradient(135deg,#fff 0%,#60a5fa 40%,#a78bfa 70%,#f472b6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% 200%;animation:gradientShift 4s ease infinite}
+@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto 40px;line-height:1.7;font-weight:300}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{padding:16px 32px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s;text-decoration:none;border:none;font-family:inherit;position:relative;overflow:hidden}
+.btn-primary{background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;box-shadow:0 4px 20px rgba(59,130,246,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(59,130,246,.5);color:#fff;text-decoration:none}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#8b5cf6,#ec4899);opacity:0;transition:.3s}
+.btn-primary:hover::before{opacity:1}
+.btn-primary span{position:relative;z-index:1}
+.btn-ghost{background:rgba(255,255,255,.05);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff;text-decoration:none}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:60px;animation:fadeIn .8s ease .6s both}
+.hero-stat{text-align:center}
+.hero-stat-val{font-size:2rem;font-weight:900;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-stat-lbl{font-size:.75rem;color:rgba(255,255,255,.3);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* ===== SEARCH ===== */
+.search-section{position:relative;padding:0 20px;margin-top:-40px;z-index:10}
+.search-container{max-width:700px;margin:0 auto;position:relative}
+.search-glow{position:absolute;inset:-2px;background:linear-gradient(135deg,rgba(59,130,246,.3),rgba(139,92,246,.3),rgba(236,72,153,.3));border-radius:18px;filter:blur(8px);opacity:0;transition:opacity .4s}
+.search-container:focus-within .search-glow{opacity:1}
+.search-box{position:relative;background:rgba(17,24,39,.9);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;backdrop-filter:blur(20px)}
+.search-tabs{display:flex;gap:4px;margin-bottom:16px;background:rgba(255,255,255,.03);border-radius:10px;padding:4px}
+.search-tab{flex:1;padding:10px;cursor:pointer;font-weight:600;font-size:.82rem;border:none;border-radius:8px;color:rgba(255,255,255,.3);background:transparent;font-family:inherit;transition:.3s}
+.search-tab.active{color:#fff;background:rgba(59,130,246,.2)}
+.search-tab:hover{color:rgba(255,255,255,.6)}
 .search-row{display:flex;gap:10px}
-.search-input{flex:1;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:1rem;font-family:var(--font);color:#fff;transition:.3s}
-.search-input::placeholder{color:rgba(255,255,255,.3)}
-.search-input:focus{border-color:rgba(59,130,246,.5);box-shadow:0 0 0 3px rgba(59,130,246,.1);outline:none}
-.search-btn{padding:14px 28px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--font);transition:.3s;position:relative;overflow:hidden}
-.search-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#8b5cf6,#ec4899);opacity:0;transition:.3s}
-.search-btn:hover::before{opacity:1}
-.search-btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(139,92,246,.4)}
-.search-btn span{position:relative;z-index:1}
-.search-hint{margin-top:12px;font-size:.78rem;color:rgba(255,255,255,.3);text-align:center}
-.search-loading{display:none;position:absolute;inset:0;background:rgba(17,24,39,.95);border-radius:16px;z-index:20;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.search-input{flex:1;padding:16px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:1rem;font-family:inherit;color:#fff;transition:.3s}
+.search-input::placeholder{color:rgba(255,255,255,.2)}
+.search-input:focus{border-color:rgba(59,130,246,.4);outline:none;background:rgba(255,255,255,.06)}
+.search-btn{padding:16px 32px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;transition:.3s}
+.search-btn:hover{box-shadow:0 4px 20px rgba(139,92,246,.4);transform:translateY(-1px)}
+.search-hint{text-align:center;margin-top:12px;font-size:.78rem;color:rgba(255,255,255,.2)}
+.search-loading{display:none;position:absolute;inset:0;background:rgba(3,7,18,.95);border-radius:16px;z-index:20;flex-direction:column;align-items:center;justify-content:center;gap:16px}
 .search-loading.on{display:flex}
-.loader{width:48px;height:48px;border:3px solid rgba(255,255,255,.1);border-top-color:#3b82f6;border-radius:50%;animation:spin .8s linear infinite}
+.loader{width:40px;height:40px;border:2px solid rgba(255,255,255,.1);border-top-color:#3b82f6;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loader-text{color:rgba(255,255,255,.6);font-size:.9rem;animation:pulse 1.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
-.result-wrap{max-width:var(--max-w);margin:0 auto 40px;padding:0 16px;animation:fadeUp .6s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.case-card{background:rgba(17,24,39,.8);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
-.case-header{padding:28px;color:#fff;position:relative;overflow:hidden}
-.case-header::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.3),transparent)}
-.case-header::after{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.08),transparent);border-radius:50%}
+.loader-text{color:rgba(255,255,255,.4);font-size:.85rem;animation:pulse 1.5s ease infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ===== RESULT ===== */
+.result-wrap{max-width:700px;margin:40px auto;padding:0 20px;animation:slideUp .5s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.case-card{background:rgba(17,24,39,.8);border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px)}
+.case-header{padding:32px;color:#fff;position:relative;overflow:hidden}
+.case-header::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.4),transparent)}
+.case-header::after{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent);border-radius:50%}
 .case-header.s-new{background:linear-gradient(135deg,#1e293b,#334155)}
 .case-header.s-docs{background:linear-gradient(135deg,#92400e,#d97706)}
 .case-header.s-bank{background:linear-gradient(135deg,#0369a1,#0ea5e9)}
@@ -66,140 +95,157 @@ a{color:#60a5fa;text-decoration:none}a:hover{text-decoration:underline}
 .case-header.s-partial{background:linear-gradient(135deg,#b45309,#f59e0b)}
 .case-header.s-blocked{background:linear-gradient(135deg,#991b1b,#ef4444)}
 .case-header.s-done{background:linear-gradient(135deg,#047857,#22c55e)}
-.case-id{font-size:.8rem;opacity:.7;margin-bottom:4px;font-family:monospace;letter-spacing:1px}
-.case-title{font-size:1.6rem;font-weight:900;position:relative;z-index:1}
-.case-subtitle{opacity:.8;font-size:.9rem;margin-top:4px;position:relative;z-index:1}
+.case-id{font-size:.75rem;opacity:.6;font-family:monospace;letter-spacing:2px;margin-bottom:8px}
+.case-title{font-size:1.5rem;font-weight:900;position:relative;z-index:1}
+.case-subtitle{opacity:.7;font-size:.9rem;margin-top:4px;position:relative;z-index:1}
 .case-body{padding:28px}
-.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px}
-.case-field{padding:12px;background:rgba(255,255,255,.03);border-radius:10px;border:1px solid rgba(255,255,255,.05)}
-.case-field label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);display:block;margin-bottom:4px}
-.case-field span{font-weight:600;font-size:.9rem;color:#fff}
-.case-alert{padding:14px 18px;border-radius:12px;margin-bottom:24px;font-size:.88rem;border:1px solid;animation:fadeUp .4s ease .2s both}
-.case-alert.info{background:rgba(59,130,246,.1);color:#93c5fd;border-color:rgba(59,130,246,.2)}
-.case-alert.success{background:rgba(34,197,94,.1);color:#86efac;border-color:rgba(34,197,94,.2)}
-.case-alert.warning{background:rgba(245,158,11,.1);color:#fcd34d;border-color:rgba(245,158,11,.2)}
-.section-title{font-size:1rem;font-weight:700;margin:28px 0 16px;display:flex;align-items:center;gap:8px;color:#fff}
-.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.1),transparent)}
-.history{margin:0 0 8px;padding:0}
-.h-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.03);align-items:flex-start;animation:fadeUp .3s ease both}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px}
+.case-field{padding:14px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid rgba(255,255,255,.04)}
+.case-field label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);display:block;margin-bottom:4px}
+.case-field span{font-weight:600;font-size:.88rem;color:#fff}
+.case-alert{padding:16px 20px;border-radius:12px;margin-bottom:24px;font-size:.88rem;border:1px solid}
+.case-alert.info{background:rgba(59,130,246,.08);color:#93c5fd;border-color:rgba(59,130,246,.15)}
+.case-alert.success{background:rgba(34,197,94,.08);color:#86efac;border-color:rgba(34,197,94,.15)}
+.case-alert.warning{background:rgba(245,158,11,.08);color:#fcd34d;border-color:rgba(245,158,11,.15)}
+.section-title{font-size:.9rem;font-weight:700;margin:28px 0 14px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.8)}
+.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent)}
+.history{margin:0 0 8px}
+.h-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.03);align-items:flex-start;animation:fadeIn .3s ease both}
 .h-item:nth-child(1){animation-delay:.05s}.h-item:nth-child(2){animation-delay:.1s}.h-item:nth-child(3){animation-delay:.15s}.h-item:nth-child(4){animation-delay:.2s}.h-item:nth-child(5){animation-delay:.25s}.h-item:nth-child(6){animation-delay:.3s}.h-item:nth-child(7){animation-delay:.35s}.h-item:nth-child(8){animation-delay:.4s}.h-item:nth-child(9){animation-delay:.45s}.h-item:nth-child(10){animation-delay:.5s}
 .h-item:last-child{border-bottom:none}
-.h-icon{font-size:1.1rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;flex-shrink:0}
-.h-system .h-icon{background:rgba(148,163,184,.1)}
-.h-action .h-icon{background:rgba(59,130,246,.15)}
-.h-info .h-icon{background:rgba(139,92,246,.15)}
-.h-success .h-icon{background:rgba(34,197,94,.15)}
-.h-warning .h-icon{background:rgba(245,158,11,.15)}
+.h-icon{font-size:1rem;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;flex-shrink:0}
+.h-system .h-icon{background:rgba(148,163,184,.08)}
+.h-action .h-icon{background:rgba(59,130,246,.1)}
+.h-info .h-icon{background:rgba(139,92,246,.1)}
+.h-success .h-icon{background:rgba(34,197,94,.1)}
+.h-warning .h-icon{background:rgba(245,158,11,.1)}
 .h-content{flex:1}
-.h-text{font-size:.88rem;line-height:1.4;color:rgba(255,255,255,.7)}
-.h-date{font-size:.7rem;color:rgba(255,255,255,.25);margin-top:2px;font-family:monospace}
+.h-text{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.4}
+.h-date{font-size:.65rem;color:rgba(255,255,255,.2);margin-top:2px;font-family:monospace}
 .h-success .h-text{color:#86efac}
 .h-warning .h-text{color:#fcd34d}
-.next-steps{margin:0;padding:16px;background:linear-gradient(135deg,rgba(59,130,246,.05),rgba(139,92,246,.05));border:1px solid rgba(59,130,246,.15);border-radius:12px}
-.ns-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.03);animation:fadeUp .4s ease both}
+.next-steps{margin:0;padding:16px;background:linear-gradient(135deg,rgba(59,130,246,.04),rgba(139,92,246,.04));border:1px solid rgba(59,130,246,.1);border-radius:12px}
+.ns-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.03);animation:fadeIn .4s ease both}
 .ns-item:nth-child(1){animation-delay:.1s}.ns-item:nth-child(2){animation-delay:.2s}.ns-item:nth-child(3){animation-delay:.3s}
 .ns-item:last-child{border-bottom:none}
-.ns-icon{font-size:1.2rem;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.1);border-radius:10px;flex-shrink:0;border:1px solid rgba(59,130,246,.15)}
-.ns-text{flex:1;font-size:.88rem;color:rgba(255,255,255,.7)}
-.ns-time{font-size:.7rem;color:rgba(255,255,255,.35);background:rgba(255,255,255,.05);padding:4px 10px;border-radius:20px;white-space:nowrap;border:1px solid rgba(255,255,255,.05)}
-.clients-list-wrap{max-width:var(--max-w);margin:0 auto 40px;padding:0 16px}
-.list-header{margin-bottom:16px}
-.list-header h2{font-size:1.2rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
-.list-header h2::before{content:'';display:inline-block;width:3px;height:18px;background:linear-gradient(180deg,#3b82f6,#8b5cf6);border-radius:2px}
-.list-sub{color:var(--muted);font-size:.82rem;margin-top:4px}
+.ns-icon{font-size:1.1rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.08);border-radius:8px;flex-shrink:0}
+.ns-text{flex:1;font-size:.85rem;color:rgba(255,255,255,.6)}
+.ns-time{font-size:.65rem;color:rgba(255,255,255,.25);background:rgba(255,255,255,.04);padding:4px 10px;border-radius:20px;white-space:nowrap}
+
+/* ===== CLIENTS LIST ===== */
+.clients-section{max-width:700px;margin:60px auto;padding:0 20px}
+.clients-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.clients-header h2{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.clients-header h2::before{content:'';width:3px;height:16px;background:linear-gradient(180deg,#3b82f6,#8b5cf6);border-radius:2px}
 .clients-list{display:grid;gap:8px}
-.cl-item{background:rgba(17,24,39,.6);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
-.cl-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,transparent,rgba(59,130,246,.3),transparent);opacity:0;transition:.3s}
-.cl-item:hover{border-color:rgba(59,130,246,.3);transform:translateX(4px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.cl-item{background:rgba(17,24,39,.5);border:1px solid rgba(255,255,255,.04);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
+.cl-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,rgba(59,130,246,.4),transparent);opacity:0;transition:.3s}
+.cl-item:hover{border-color:rgba(59,130,246,.2);transform:translateX(4px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .cl-item:hover::before{opacity:1}
 .cl-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .cl-row+.cl-row{margin-top:6px}
-.cl-num{font-weight:700;font-size:.85rem;font-family:monospace;color:rgba(255,255,255,.8)}
+.cl-num{font-weight:700;font-size:.82rem;font-family:monospace;color:rgba(255,255,255,.7)}
 .cl-name{font-weight:600;font-size:.85rem;color:#fff}
-.cl-city{font-size:.75rem;color:var(--muted)}
-.cl-platform{font-size:.75rem;color:var(--muted)}
-.cl-amount{font-weight:600;font-size:.82rem;color:#f87171}
-.cl-phone{font-size:.72rem;color:var(--muted);font-family:monospace}
-.cl-date{font-size:.68rem;color:rgba(255,255,255,.2)}
-.cl-badge{padding:3px 8px;border-radius:8px;font-size:.68rem;font-weight:600;white-space:nowrap}
-.cl-badge-new{background:rgba(148,163,184,.15);color:#94a3b8}
-.cl-badge-docs_collect,.cl-badge-docs_ready{background:rgba(245,158,11,.15);color:#fbbf24}
-.cl-badge-bank_check,.cl-badge-bank_review{background:rgba(59,130,246,.15);color:#60a5fa}
-.cl-badge-regulator,.cl-badge-regulator_review{background:rgba(139,92,246,.15);color:#a78bfa}
-.cl-badge-court_prep,.cl-badge-court,.cl-badge-court_win{background:rgba(168,85,247,.15);color:#c084fc}
-.cl-badge-return_process,.cl-badge-return_done{background:rgba(34,197,94,.15);color:#4ade80}
-.cl-badge-partial_return{background:rgba(245,158,11,.15);color:#fbbf24}
-.cl-badge-blocked{background:rgba(239,68,68,.15);color:#f87171}
-.not-found{text-align:center;padding:60px 20px}
-.not-found-icon{font-size:4rem;margin-bottom:16px;animation:float-icon 2s ease-in-out infinite}
-@keyframes float-icon{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.not-found h3{margin-bottom:8px;color:#fff}
-.not-found p{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:var(--max-w);margin:0 auto 40px;padding:0 16px}
-.stat{background:rgba(17,24,39,.6);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:18px;text-align:center;transition:.3s}
-.stat:hover{border-color:rgba(59,130,246,.2);transform:translateY(-2px)}
-.stat-val{font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat-lbl{font-size:.75rem;color:var(--muted);margin-top:4px}
-.cta-section{max-width:var(--max-w);margin:0 auto 40px;padding:0 16px}
-.cta-card{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(139,92,246,.1));border:1px solid rgba(59,130,246,.2);border-radius:16px;padding:32px;text-align:center;position:relative;overflow:hidden}
-.cta-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(59,130,246,.05),transparent 50%);animation:cta-glow 4s ease-in-out infinite}
-@keyframes cta-glow{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,20px)}}
+.cl-city{font-size:.72rem;color:rgba(255,255,255,.3)}
+.cl-platform{font-size:.72rem;color:rgba(255,255,255,.3)}
+.cl-amount{font-weight:600;font-size:.8rem;color:#f87171}
+.cl-phone{font-size:.68rem;color:rgba(255,255,255,.2);font-family:monospace}
+.cl-date{font-size:.65rem;color:rgba(255,255,255,.15)}
+.cl-badge{padding:3px 8px;border-radius:6px;font-size:.65rem;font-weight:600;white-space:nowrap}
+.cl-badge-new{background:rgba(148,163,184,.1);color:#94a3b8}
+.cl-badge-docs_collect,.cl-badge-docs_ready{background:rgba(245,158,11,.1);color:#fbbf24}
+.cl-badge-bank_check,.cl-badge-bank_review{background:rgba(59,130,246,.1);color:#60a5fa}
+.cl-badge-regulator,.cl-badge-regulator_review{background:rgba(139,92,246,.1);color:#a78bfa}
+.cl-badge-court_prep,.cl-badge-court,.cl-badge-court_win{background:rgba(168,85,247,.1);color:#c084fc}
+.cl-badge-return_process,.cl-badge-return_done{background:rgba(34,197,94,.1);color:#4ade80}
+.cl-badge-partial_return{background:rgba(245,158,11,.1);color:#fbbf24}
+.cl-badge-blocked{background:rgba(239,68,68,.1);color:#f87171}
+.empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,.2)}
+.empty-icon{font-size:3rem;margin-bottom:12px}
+
+/* ===== CTA ===== */
+.cta-section{max-width:700px;margin:60px auto;padding:0 20px}
+.cta-card{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.08));border:1px solid rgba(59,130,246,.15);border-radius:20px;padding:40px;text-align:center;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(59,130,246,.05),transparent 50%);animation:ctaRotate 10s linear infinite}
+@keyframes ctaRotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .cta-title{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:8px;position:relative}
-.cta-desc{color:rgba(255,255,255,.6);margin-bottom:20px;font-size:.95rem;position:relative}
-.cta-btn{display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--font);transition:.3s;position:relative;text-decoration:none}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(139,92,246,.4);color:#fff;text-decoration:none}
-.ftr{background:rgba(13,71,161,.1);border-top:1px solid rgba(255,255,255,.05);padding:30px 20px 16px;margin-top:auto}
-.ftr-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:24px;text-align:center}
-.ftr h4{color:#fff;margin-bottom:8px;font-size:.9rem}
-.ftr p{font-size:.82rem;color:var(--muted);line-height:1.7}
-.ftr-bottom{border-top:1px solid rgba(255,255,255,.05);margin-top:24px;padding-top:14px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.2);max-width:1100px;margin-left:auto;margin-right:auto}
-.back-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 16px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:var(--font);color:rgba(255,255,255,.7);transition:.2s}
-.back-btn:hover{background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3);color:#fff}
+.cta-desc{color:rgba(255,255,255,.4);margin-bottom:24px;font-size:.9rem;position:relative}
+.cta-btn{position:relative}
+
+/* ===== FOOTER ===== */
+.footer{border-top:1px solid rgba(255,255,255,.05);padding:40px 20px;margin-top:80px}
+.footer-inner{max-width:700px;margin:0 auto;text-align:center}
+.footer p{font-size:.78rem;color:rgba(255,255,255,.2);line-height:1.8}
+
+/* ===== MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:2000;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.on{display:flex}
-.modal{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:16px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;padding:32px;position:relative;animation:modalIn .3s ease}
-@keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
-.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;transition:.2s}
+.modal{background:#111827;border:1px solid rgba(255,255,255,.08);border-radius:20px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;padding:32px;position:relative;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(255,255,255,.3);font-size:1.2rem;cursor:pointer;transition:.2s}
 .modal-close:hover{color:#fff}
-.modal h2{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:20px}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:.9rem;font-family:var(--font);color:#fff;transition:.2s}
-.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.2)}
-.form-group input:focus,.form-group textarea:focus{border-color:rgba(59,130,246,.5);outline:none;background:rgba(255,255,255,.08)}
-.form-group textarea{height:80px;resize:vertical}
-.form-btn{width:100%;padding:14px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--font);transition:.3s;margin-top:8px}
-.form-btn:hover{box-shadow:0 4px 20px rgba(139,92,246,.4)}
-.form-btn:disabled{opacity:.6;cursor:not-allowed}
-.form-success{text-align:center;padding:20px}
-.form-success-icon{font-size:3rem;margin-bottom:12px}
+.modal h2{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:20px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:.68rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px}
+.fg input,.fg textarea{width:100%;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;font-size:.88rem;font-family:inherit;color:#fff;transition:.2s}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.15)}
+.fg input:focus,.fg textarea:focus{border-color:rgba(59,130,246,.4);outline:none}
+.fg textarea{height:80px;resize:vertical}
+.form-btn{width:100%;padding:14px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.3s;margin-top:8px}
+.form-btn:hover{box-shadow:0 4px 20px rgba(139,92,246,.3)}
+.form-btn:disabled{opacity:.5;cursor:not-allowed}
+.form-success{text-align:center;padding:20px 0}
 .form-success h3{color:#fff;margin-bottom:8px}
-.form-success p{color:var(--muted);font-size:.9rem}
-@media(max-width:768px){.hero h1{font-size:1.5rem}.search-row{flex-direction:column}.case-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.nav{gap:10px}.nav a{font-size:.75rem}}
-@media(max-width:480px){.logo span{display:none}.stats{grid-template-columns:1fr}}
+.form-success p{color:rgba(255,255,255,.4);font-size:.88rem}
+
+/* ===== BACK BTN ===== */
+.back-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 16px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;color:rgba(255,255,255,.5);transition:.2s;margin-bottom:16px}
+.back-btn:hover{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.2);color:#fff}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){.nav{padding:16px 20px}.nav-links{display:none}.hero h1{font-size:2rem}.hero-stats{gap:24px}.hero-stat-val{font-size:1.5rem}.case-grid{grid-template-columns:1fr}.search-row{flex-direction:column}}
   </style>
 </head>
 <body>
-  <a href="#main" class="skip">Перейти к содержимому</a>
-  <header class="hdr">
-    <div class="hdr-inner">
-      <a href="" class="logo"><div class="logo-glow">📋</div><span>Статус Дела</span></a>
-      <nav class="nav">
-        <a href="articles/">Статьи</a>
-        <a href="success/">Кейсы</a>
-        <a href="contacts/">Контакты</a>
-      </nav>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <a href="" class="nav-logo"><div class="nav-icon">⚖️</div>Статус Дела</a>
+    <div class="nav-links">
+      <a href="articles/">Статьи</a>
+      <a href="success/">Кейсы</a>
+      <a href="contacts/">Обращение</a>
     </div>
-  </header>
-  <main id="main">
-    <section class="hero">
-      <div class="hero-particles" id="particles"></div>
-      <h1>Проверьте статус вашего дела</h1>
-      <p>Отслеживайте каждый этап возврата ваших средств в реальном времени</p>
-    </section>
-    <section class="search-wrap">
-      <div class="search-box" id="search-box">
-        <div class="search-loading" id="search-loading">
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⚡ Профессиональный центр возврата средств</div>
+      <h1><span class="gradient">Вернём ваши деньги</span></h1>
+      <p class="hero-sub">Отслеживайте каждый этап возврата. Бесплатная консультация. Гонорар успеха — платите только после результата.</p>
+      <div class="hero-actions">
+        <a href="contacts/" class="btn btn-primary"><span>Оставить заявку</span></a>
+        <a href="success/" class="btn btn-ghost">Наши кейсы</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-val">87%</div><div class="hero-stat-lbl">Без суда</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">24ч</div><div class="hero-stat-lbl">Реакция</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">12,8 млрд</div><div class="hero-stat-lbl">Возвращено ₸</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search -->
+  <section class="search-section">
+    <div class="search-container">
+      <div class="search-glow"></div>
+      <div class="search-box">
+        <div class="search-loading" id="searchLoading">
           <div class="loader"></div>
           <div class="loader-text">Анализируем данные...</div>
         </div>
@@ -208,112 +254,235 @@ a{color:#60a5fa;text-decoration:none}a:hover{text-decoration:underline}
           <button class="search-tab" data-tab="name">ФИО</button>
           <button class="search-tab" data-tab="phone">Телефон</button>
         </div>
-        <form id="search-form">
+        <form id="searchForm">
           <div class="search-row">
-            <input type="text" id="search-input" class="search-input" placeholder="MK-2601-00001" autocomplete="off" autofocus>
-            <button type="submit" class="search-btn"><span>Проверить</span></button>
+            <input type="text" id="searchInput" class="search-input" placeholder="Введите номер дела, ФИО или телефон" autocomplete="off" autofocus>
+            <button type="submit" class="search-btn">Проверить</button>
           </div>
         </form>
-        <p class="search-hint">Введите номер дела, ФИО или телефон для проверки статуса</p>
+        <p class="search-hint">Введите данные для проверки статуса вашего дела</p>
       </div>
-    </section>
-    <div style="max-width:var(--max-w);margin:0 auto 10px;padding:0 16px">
-      <button id="back-btn" class="back-btn" onclick="backToList()" style="display:none">← Назад к списку</button>
     </div>
-    <section id="result-wrap" class="result-wrap" aria-live="polite"></section>
-    <section id="clients-list-wrap" class="clients-list-wrap">
-      <div class="list-header"><h2>Активные дела</h2><p class="list-sub">Нажмите для просмотра подробной информации</p></div>
-      <div id="clients-list" class="clients-list"></div>
-    </section>
-    <section class="cta-section">
-      <div class="cta-card">
-        <div class="cta-title">Потеряли деньги из-за мошенников?</div>
-        <div class="cta-desc">Оставьте заявку — мы вернём ваши средства. Бесплатная консультация, гонорар успеха.</div>
-        <button class="cta-btn" onclick="openForm()">Оставить заявку</button>
-      </div>
-    </section>
-    <section class="stats">
-      <div class="stat"><div class="stat-val">24/7</div><div class="stat-lbl">Мониторинг</div></div>
-      <div class="stat"><div class="stat-val">87%</div><div class="stat-lbl">Без суда</div></div>
-      <div class="stat"><div class="stat-val">24ч</div><div class="stat-lbl">Реакция</div></div>
-      <div class="stat"><div class="stat-val">12,8 млрд</div><div class="stat-lbl">Возвращено ₸</div></div>
-    </section>
-  </main>
+  </section>
 
-  <!-- Modal Form -->
+  <!-- Back Button -->
+  <div style="max-width:700px;margin:0 auto;padding:0 20px">
+    <button id="backBtn" class="back-btn" onclick="backToList()" style="display:none">← Назад к списку</button>
+  </div>
+
+  <!-- Result -->
+  <section id="resultWrap" class="result-wrap"></section>
+
+  <!-- Clients List -->
+  <section class="clients-section" id="clientsSection">
+    <div class="clients-header"><h2>Активные дела</h2></div>
+    <div id="clientsList" class="clients-list">
+      <div class="empty-state"><div class="empty-icon">📋</div><p>Нет активных дел</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-card">
+      <div class="cta-title">Потеряли деньги из-за мошенников?</div>
+      <div class="cta-desc">Оставьте заявку — мы свяжемся с вами в течение 24 часов</div>
+      <a href="contacts/" class="btn btn-primary cta-btn"><span>Оставить заявку</span></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© 2026 Статус Дела · Профессиональный центр возврата средств<br>Конфиденциальность гарантирована</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
   <div class="modal-overlay" id="modal">
     <div class="modal">
-      <button class="modal-close" onclick="closeForm()">✕</button>
+      <button class="modal-close" onclick="closeModal()">✕</button>
       <h2>📋 Заявка на возврат средств</h2>
       <form id="tgForm">
-        <div class="form-group">
-          <label>ФИО *</label>
-          <input type="text" name="name" placeholder="Иванов Иван Иванович" required>
-        </div>
-        <div class="form-group">
-          <label>ИИН *</label>
-          <input type="text" name="iin" placeholder="123456789012" maxlength="12" required>
-        </div>
-        <div class="form-group">
-          <label>Телефон (WhatsApp / Telegram) *</label>
-          <input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required>
-        </div>
-        <div class="form-group">
-          <label>Дополнительные номера</label>
-          <input type="text" name="extraPhones" placeholder="+7 700 111 22 33, +7 701 444 55 66">
-        </div>
-        <div class="form-group">
-          <label>Сколько потеряли (₸)</label>
-          <input type="text" name="amount" placeholder="500 000">
-        </div>
-        <div class="form-group">
-          <label>Название компании / платформы</label>
-          <input type="text" name="company" placeholder="InvestPro, GlobalTrade FX...">
-        </div>
-        <div class="form-group">
-          <label>Когда удобно звонить</label>
-          <input type="text" name="callTime" placeholder="Пн-Пт 10:00-18:00, после 19:00">
-        </div>
-        <div class="form-group">
-          <label>Комментарий / детали</label>
-          <textarea name="comment" placeholder="Любая дополнительная информация: номер дела, обстоятельства, часы работы..."></textarea>
-        </div>
+        <div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван Иванович" required></div>
+        <div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div>
+        <div class="fg"><label>Телефон (WhatsApp / Telegram) *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div>
+        <div class="fg"><label>Дополнительные номера</label><input type="text" name="extraPhones" placeholder="+7 700 111 22 33"></div>
+        <div class="fg"><label>Сколько потеряли (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
+        <div class="fg"><label>Компания / платформа</label><input type="text" name="company" placeholder="InvestPro, GlobalTrade FX..."></div>
+        <div class="fg"><label>Когда удобно звонить</label><input type="text" name="callTime" placeholder="Пн-Пт 10:00-18:00"></div>
+        <div class="fg"><label>Комментарий</label><textarea name="comment" placeholder="Обстоятельства, номер дела..."></textarea></div>
         <button type="submit" class="form-btn">Отправить заявку</button>
       </form>
       <div id="formSuccess" class="form-success" style="display:none">
-        <div class="form-success-icon">✅</div>
-        <h3>Заявка успешно отправлена!</h3>
-        <p>Наш специалист свяжется с вами в течение 24 часов.</p>
+        <h3>✅ Заявка отправлена!</h3>
+        <p>Мы свяжемся с вами в ближайшее время.</p>
       </div>
     </div>
   </div>
 
-  <footer class="ftr">
-    <div class="ftr-inner">
-      <div><h4>Статус Дела</h4><p>Система контроля возврата средств. Конфиденциальность гарантирована.</p></div>
-    </div>
-    <div class="ftr-bottom">© 2026 Статус Дела · Все права защищены</div>
-  </footer>
-
   <script>
-  // Particles
-  (function(){var c=document.getElementById('particles');if(!c)return;for(var i=0;i<30;i++){var p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(3+Math.random()*4)+'s';p.style.animationDelay=Math.random()*5+'s';c.appendChild(p)}})();
+  // Cursor glow
+  document.addEventListener('mousemove',function(e){
+    var g=document.getElementById('cursorGlow');
+    g.style.left=e.clientX+'px';
+    g.style.top=e.clientY+'px';
+  });
+
+  // Nav scroll
+  window.addEventListener('scroll',function(){
+    document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+  });
+
+  // Hero particles
+  (function(){
+    var c=document.getElementById('heroCanvas');
+    if(!c)return;
+    var ctx=c.getContext('2d');
+    var w,h,particles=[];
+    function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
+    resize();
+    window.addEventListener('resize',resize);
+    function Particle(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.size=Math.random()*2;this.alpha=Math.random()*.5}
+    Particle.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w)this.vx*=-1;if(this.y<0||this.y>h)this.vy*=-1};
+    Particle.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle='rgba(59,130,246,'+this.alpha+')';ctx.fill()};
+    for(var i=0;i<80;i++)particles.push(new Particle());
+    function animate(){ctx.clearRect(0,0,w,h);particles.forEach(function(p){p.update();p.draw()});
+    for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){
+      var dx=particles[i].x-particles[j].x;var dy=particles[i].y-particles[j].y;
+      var dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='rgba(59,130,246,'+(1-dist/120)*.15+')';ctx.stroke()}}
+    }requestAnimationFrame(animate)}
+    animate();
+  })();
+
   // Tabs
   document.querySelectorAll('.search-tab').forEach(function(tab){
     tab.addEventListener('click',function(){
       document.querySelectorAll('.search-tab').forEach(function(t){t.classList.remove('active')});
       this.classList.add('active');
-      var ph={case:'MK-2601-00001',name:'Имя Фамилия',phone:'+7700****67'};
-      document.getElementById('search-input').placeholder=ph[this.dataset.tab]||'';
-      document.getElementById('search-input').focus();
+      var ph={case:'Введите номер дела',name:'Введите ФИО',phone:'Введите телефон'};
+      document.getElementById('searchInput').placeholder=ph[this.dataset.tab]||'';
+      document.getElementById('searchInput').focus();
     });
   });
+
+  // Search
+  var clients=JSON.parse(localStorage.getItem('cs_clients')||'[]');
+  renderList();
+
+  function renderList(){
+    var wrap=document.getElementById('clientsList');
+    var active=clients.filter(function(c){return c.status!=='return_done'}).slice(0,50);
+    if(!active.length){wrap.innerHTML='<div class="empty-state"><div class="empty-icon">📋</div><p>Нет активных дел</p></div>';return}
+    wrap.innerHTML=active.map(function(c){
+      var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
+      return'<div class="cl-item" onclick="showCase(\''+c.caseNumber+'\')"><div class="cl-row"><div class="cl-num">'+c.caseNumber+'</div><div class="cl-badge cl-badge-'+c.status+'">'+c.statusName+'</div></div><div class="cl-row"><div class="cl-name">'+c.firstName+' '+c.lastName+'</div><div class="cl-city">'+c.city+'</div></div><div class="cl-row"><div class="cl-platform">'+c.platform+'</div><div class="cl-amount">'+amt+'</div></div><div class="cl-row"><div class="cl-phone">'+maskPhone(c.phone)+'</div><div class="cl-date">'+c.lastUpdate+'</div></div></div>';
+    }).join('');
+  }
+
+  function maskPhone(p){if(!p||p.length<7)return p;return p.substring(0,4)+'****'+p.substring(p.length-3)}
+  function formatDate(d){if(!d)return'—';var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
+
+  function classByStatus(s){
+    if(['new'].includes(s))return's-new';
+    if(['docs_collect','docs_ready'].includes(s))return's-docs';
+    if(['bank_check','bank_review'].includes(s))return's-bank';
+    if(['regulator','regulator_review'].includes(s))return's-reg';
+    if(['court_prep','court','court_win'].includes(s))return's-court';
+    if(['return_done'].includes(s))return's-done';
+    if(['partial_return'].includes(s))return's-partial';
+    if(['blocked'].includes(s))return's-blocked';
+    if(['return_process'].includes(s))return's-return';
+    return's-new';
+  }
+
+  function buildHistory(h){
+    if(!h||!h.length)return'';
+    return'<div class="history">'+h.map(function(e){
+      var tc='h-system';if(e.type==='success')tc='h-success';else if(e.type==='warning')tc='h-warning';else if(e.type==='action')tc='h-action';else if(e.type==='info')tc='h-info';
+      return'<div class="h-item '+tc+'"><div class="h-icon">'+e.icon+'</div><div class="h-content"><div class="h-text">'+e.text+'</div><div class="h-date">'+e.date+' '+e.time+'</div></div></div>';
+    }).join('')+'</div>';
+  }
+
+  function buildNextSteps(status){
+    var map={new:[{icon:'📞',text:'Специалист свяжется в течение 24 часов',time:'Ближайшее время'},{icon:'📋',text:'Первичный анализ ситуации',time:'1-2 дня'},{icon:'📊',text:'Оценка шансов и план действий',time:'2-3 дня'}],docs_collect:[{icon:'📄',text:'Сбор документов',time:'3-7 дней'},{icon:'🔍',text:'Проверка подлинности',time:'1-2 дня'},{icon:'⚖️',text:'Передача юристу',time:'После сбора'}],docs_ready:[{icon:'⚖️',text:'Правовая позиция',time:'2-3 дня'},{icon:'🏦',text:'Обращение в банк',time:'3-5 дней'}],bank_check:[{icon:'🏦',text:'Ожидание ответа банка',time:'5-30 дней'}],bank_review:[{icon:'🔍',text:'Проверка банка',time:'15-45 дней'}],regulator:[{icon:'🏛️',text:'Регистрация в АРРФР',time:'5-10 дней'}],regulator_review:[{icon:'🏛️',text:'Проверка регулятором',time:'30-90 дней'}],court_prep:[{icon:'📝',text:'Подготовка иска',time:'3-5 дней'}],court:[{icon:'🏛️',text:'Судебное заседание',time:'1-6 месяцев'}],court_win:[{icon:'📄',text:'Исполнительный лист',time:'5-10 дней'}],return_process:[{icon:'💰',text:'Зачисление средств',time:'3-10 дней'}],return_done:[{icon:'🎉',text:'Средства возвращены!',time:'Завершено'}],partial_return:[{icon:'💰',text:'Часть средств на счёте',time:'Проверьте баланс'}],blocked:[{icon:'📞',text:'Связаться с куратором',time:'Как можно скорее'}]};
+    var list=map[status]||map.new;
+    return'<div class="next-steps">'+list.map(function(s,i){return'<div class="ns-item" style="animation-delay:'+(i*.1+.1)+'s"><div class="ns-icon">'+s.icon+'</div><div class="ns-text">'+s.text+'</div><div class="ns-time">'+s.time+'</div></div>'}).join('')+'</div>';
+  }
+
+  function renderResult(c){
+    var cls=classByStatus(c.status);
+    var alertMap={new:{cls:'info',text:'Заявление принято. Специалист свяжется в течение 24 часов.'},docs_collect:{cls:'warning',text:'Необходимо предоставить документы.'},docs_ready:{cls:'info',text:'Документы получены. Передано в юридический отдел.'},bank_check:{cls:'info',text:'Запрос отправлен в банк. Срок: 5-30 дней.'},bank_review:{cls:'info',text:'Банк рассматривает оспаривание.'},regulator:{cls:'info',text:'Дело передано в АРРФР/НБ РК.'},regulator_review:{cls:'info',text:'Регулятор рассматривает обращение.'},court_prep:{cls:'warning',text:'Готовится исковое заявление.'},court:{cls:'info',text:'Дело в судебном производстве.'},court_win:{cls:'success',text:'Суд вынес решение!'},return_process:{cls:'success',text:'Возврат средств запущен.'},return_done:{cls:'success',text:'Средства возвращены!'},partial_return:{cls:'warning',text:'Часть средств возвращена.'},blocked:{cls:'warning',text:'Дело приостановлено.'}};
+    var a=alertMap[c.status]||alertMap.new;
+    var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
+    var html='<div class="case-card"><div class="case-header '+cls+'"><div class="case-id">ДЕЛО № '+c.caseNumber+'</div><div class="case-title">'+c.statusName+'</div><div class="case-subtitle">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="case-body"><div class="case-alert '+a.cls+'">'+a.text+'</div><div class="case-grid"><div class="case-field"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="case-field"><label>Телефон</label><span>'+maskPhone(c.phone)+'</span></div><div class="case-field"><label>Город</label><span>'+c.city+'</span></div><div class="case-field"><label>Платформа</label><span>'+c.platform+'</span></div><div class="case-field"><label>Сумма</label><span>'+amt+'</span></div><div class="case-field"><label>Обновлено</label><span>'+formatDate(c.lastUpdate)+'</span></div></div>';
+    if(c.history&&c.history.length){html+='<div class="section-title">Подробная история</div>'+buildHistory(c.history)}
+    html+='<div class="section-title">📋 Что будет дальше</div>'+buildNextSteps(c.status)+'</div></div>';
+    return html;
+  }
+
+  function search(q){
+    if(!clients||!q)return null;
+    var s=q.toLowerCase().trim();
+    return clients.find(function(c){
+      return(c.caseNumber&&c.caseNumber.toLowerCase().includes(s))||(c.firstName&&c.firstName.toLowerCase().includes(s))||(c.lastName&&c.lastName.toLowerCase().includes(s))||(c.phone&&c.phone.includes(s));
+    });
+  }
+
+  window.showCase=function(caseNum){
+    var c=clients.find(function(x){return x.caseNumber===caseNum});
+    if(!c)return;
+    document.getElementById('clientsSection').style.display='none';
+    document.getElementById('resultWrap').innerHTML=renderResult(c);
+    document.getElementById('resultWrap').scrollIntoView({behavior:'smooth'});
+    document.getElementById('backBtn').style.display='inline-block';
+  };
+
+  window.backToList=function(){
+    document.getElementById('resultWrap').innerHTML='';
+    document.getElementById('clientsSection').style.display='block';
+    document.getElementById('backBtn').style.display='none';
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  document.getElementById('searchForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var q=document.getElementById('searchInput').value.trim();
+    if(!q||q.length<2)return;
+    document.getElementById('searchLoading').classList.add('on');
+    document.getElementById('clientsSection').style.display='none';
+    document.getElementById('backBtn').style.display='inline-block';
+    setTimeout(function(){
+      var c=search(q);
+      document.getElementById('searchLoading').classList.remove('on');
+      if(c){document.getElementById('resultWrap').innerHTML=renderResult(c);document.getElementById('resultWrap').scrollIntoView({behavior:'smooth'})}
+      else{document.getElementById('resultWrap').innerHTML='<div class="empty-state" style="padding:60px"><div class="empty-icon">🔍</div><p>Дело не найдено</p></div>'}
+    },1000);
+  });
+
   // Modal
-  function openForm(){document.getElementById('modal').classList.add('on')}
-  function closeForm(){document.getElementById('modal').classList.remove('on')}
-  document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeForm()});
+  function openModal(){document.getElementById('modal').classList.add('on')}
+  function closeModal(){document.getElementById('modal').classList.remove('on')}
+  document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
+  // Telegram form
+  document.getElementById('tgForm').addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=this.querySelector('.form-btn');
+    btn.disabled=true;btn.textContent='Отправка...';
+    var d=new FormData(this);
+    var text='📋 *Новая заявка*\n\n👤 ФИО: '+d.get('name')+'\n🆔 ИИН: '+d.get('iin')+'\n📱 Телефон: '+d.get('phone');
+    if(d.get('extraPhones'))text+='\n📞 Доп: '+d.get('extraPhones');
+    if(d.get('amount'))text+='\n💰 Сумма: '+d.get('amount')+' ₸';
+    if(d.get('company'))text+='\n🏢 Компания: '+d.get('company');
+    if(d.get('callTime'))text+='\n📅 Звонить: '+d.get('callTime');
+    if(d.get('comment'))text+='\n💬 '+d.get('comment');
+    try{
+      var r=await fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:text})});
+      if(r.ok){this.style.display='none';document.getElementById('formSuccess').style.display='block'}
+      else{alert('Ошибка');btn.disabled=false;btn.textContent='Отправить заявку'}
+    }catch(err){alert('Ошибка сети');btn.disabled=false;btn.textContent='Отправить заявку'}
+  });
   </script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/form.js"></script>
 </body>
 </html>
