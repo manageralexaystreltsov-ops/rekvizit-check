@@ -188,8 +188,6 @@ function renderResult(c){
   html+='<div class="case-field"><label>Обновлено</label><span>'+formatDate(c.lastUpdate)+'</span></div>';
   html+='<div class="case-field"><label>Куратор</label><span>'+c.assignedTo+'</span></div>';
   html+='</div>';
-  html+='<div class="section-title">Хронология дела</div>';
-  html+='<ul class="timeline">'+buildTimeline(c)+'</ul>';
   html+='<div class="section-title">Подробная история</div>';
   html+=buildHistory(c.history);
   html+='<div class="section-title">📋 Что будет дальше</div>';
