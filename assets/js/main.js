@@ -85,6 +85,84 @@ function buildHistory(history){
   return'<div class="history">'+items+'</div>';
 }
 
+function buildNextSteps(status){
+  var steps={
+    new:[
+      {icon:'📞',text:'Наш специалист свяжется с вами в течение 24 часов',time:'Ближайшее время'},
+      {icon:'📋',text:'Проведём первичный анализ вашей ситуации',time:'1-2 дня'},
+      {icon:'📊',text:'Оценим шансы на возврат и составим план действий',time:'2-3 дня'},
+    ],
+    docs_collect:[
+      {icon:'📄',text:'Собираем полный пакет документов',time:'3-7 дней'},
+      {icon:'🔍',text:'Проверяем подлинность и полноту документов',time:'1-2 дня'},
+      {icon:'⚖️',text:'Передаём в юридический отдел для анализа',time:'После сбора'},
+    ],
+    docs_ready:[
+      {icon:'⚖️',text:'Юрист изучает документы и формирует правовую позицию',time:'2-3 дня'},
+      {icon:'🏦',text:'Подготавливаем обращение в банк-эмитент',time:'3-5 дней'},
+      {icon:'📤',text:'Отправляем запрос на оспаривание транзакций',time:'5-7 дней'},
+    ],
+    bank_check:[
+      {icon:'🏦',text:'Ожидаем ответа от банка-эмитента',time:'5-30 рабочих дней'},
+      {icon:'📞',text:'Контролируем процесс, следим за статусом',time:'Еженедельно'},
+      {icon:'📊',text:'При необходимости подаём повторные обращения',time:'По графику'},
+    ],
+    bank_review:[
+      {icon:'🔍',text:'Банк проводит внутреннюю проверку',time:'15-45 дней'},
+      {icon:'📋',text:'Мы предоставляем дополнительные доказательства',time:'По запросу банка'},
+      {icon:'💰',text:'Ожидаем решения о возврате средств',time:'До 30 дней'},
+    ],
+    regulator:[
+      {icon:'🏛️',text:'АРРФР/НБ РК регистрирует обращение',time:'5-10 дней'},
+      {icon:'🔍',text:'Регулятор запраšивает документацию у платформы',time:'30-60 дней'},
+      {icon:'⚠️',text:'Платформа вносится в список предупреждений',time:'По решению'},
+    ],
+    regulator_review:[
+      {icon:'🏛️',text:'Регулятор проводит проверку деятельности платформы',time:'30-90 дней'},
+      {icon:'🔒',text:'Возможна блокировка операций платформы',time:'По решению'},
+      {icon:'📋',text:'Получаем официальный ответ от регулятора',time:'До 90 дней'},
+    ],
+    court_prep:[
+      {icon:'📝',text:'Составляем исковое заявление',time:'3-5 дней'},
+      {icon:'📋',text:'Формируем доказательную базу',time:'2-3 дня'},
+      {icon:'📤',text:'Подаём иск в суд',time:'После подготовки'},
+    ],
+    court:[
+      {icon:'🏛️',text:'Суд принимает дело к производству',time:'5-10 дней'},
+      {icon:'📅',text:'Назначается предварительное заседание',time:'1-2 месяца'},
+      {icon:'⚖️',text:'Рассмотрение дела по существу',time:'1-6 месяцев'},
+    ],
+    court_win:[
+      {icon:'📄',text:'Получаем исполнительный лист',time:'5-10 дней'},
+      {icon:'🏦',text:'Направляем исполнительный лист в банк',time:'3-5 дней'},
+      {icon:'💰',text:'Банк выполняет решение суда',time:'30-60 дней'},
+    ],
+    return_process:[
+      {icon:'💰',text:'Банк зачисляет средства на наш счёт',time:'3-10 дней'},
+      {icon:'📋',text:'Мы проверяем поступление средств',time:'1-2 дня'},
+      {icon:'💳',text:'Переводим деньги на вашу карту',time:'1-3 дня'},
+    ],
+    return_done:[
+      {icon:'🎉',text:'Дело закрыто. Средства возвращены!',time:'Завершено'},
+      {icon:'📋',text:'Храните документы на случай вопросов',time:'Бессрочно'},
+    ],
+    partial_return:[
+      {icon:'💰',text:'Часть средств уже на вашем счёте',time:'Проверьте баланс'},
+      {icon:'⚖️',text:'Работаем по возврату оставшейся суммы',time:'1-3 месяца'},
+      {icon:'📤',text:'Подано заявление в суд на остаток',time:'В процессе'},
+    ],
+    blocked:[
+      {icon:'📞',text:'Свяжитесь с куратором для уточнения',time:'Как можно скорее'},
+      {icon:'📄',text:'Предоставьте недостающие документы',time:'В ближайшее время'},
+      {icon:'⏳',text:'После получения документов дело продолжится',time:'После предоставления'},
+    ]
+  };
+  var list=steps[status]||steps.new;
+  return'<div class="next-steps">'+list.map(function(s){
+    return'<div class="ns-item"><div class="ns-icon">'+s.icon+'</div><div class="ns-text">'+s.text+'</div><div class="ns-time">'+s.time+'</div></div>';
+  }).join('')+'</div>';
+}
+
 function formatDate(d){if(!d)return'—';var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
 
 function renderResult(c){
@@ -107,7 +185,7 @@ function renderResult(c){
   };
   var a=alertMap[c.status]||alertMap.new;
   var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
-  return'<div class="case-card"><div class="case-header '+cls+'"><div class="case-id">Дело № '+c.caseNumber+'</div><div class="case-title">'+c.statusName+'</div><div class="case-subtitle">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="case-body"><div class="case-alert '+a.cls+'">ℹ️ '+a.text+'</div><div class="case-grid"><div class="case-field"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="case-field"><label>Телефон</label><span>'+maskPhone(c.phone)+'</span></div><div class="case-field"><label>Город</label><span>'+c.city+'</span></div><div class="case-field"><label>Платформа</label><span>'+c.platform+'</span></div><div class="case-field"><label>Сумма убытка</label><span>'+amt+'</span></div><div class="case-field"><label>Дата обращения</label><span>'+formatDate(c.caseDate)+'</span></div><div class="case-field"><label>Последнее обновление</label><span>'+formatDate(c.lastUpdate)+'</span></div><div class="case-field"><label>Куратор</label><span>'+c.assignedTo+'</span></div></div><h3 style="margin:20px 0 12px;font-size:1rem">Хронология дела</h3><ul class="timeline">'+buildTimeline(c)+'</ul><h3 style="margin:24px 0 12px;font-size:1rem">Подробная история</h3>'+buildHistory(c.history)+'</div></div>';
+  return'<div class="case-card"><div class="case-header '+cls+'"><div class="case-id">Дело № '+c.caseNumber+'</div><div class="case-title">'+c.statusName+'</div><div class="case-subtitle">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="case-body"><div class="case-alert '+a.cls+'">ℹ️ '+a.text+'</div><div class="case-grid"><div class="case-field"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="case-field"><label>Телефон</label><span>'+maskPhone(c.phone)+'</span></div><div class="case-field"><label>Город</label><span>'+c.city+'</span></div><div class="case-field"><label>Платформа</label><span>'+c.platform+'</span></div><div class="case-field"><label>Сумма убытка</label><span>'+amt+'</span></div><div class="case-field"><label>Дата обращения</label><span>'+formatDate(c.caseDate)+'</span></div><div class="case-field"><label>Последнее обновление</label><span>'+formatDate(c.lastUpdate)+'</span></div><div class="case-field"><label>Куратор</label><span>'+c.assignedTo+'</span></div></div><h3 style="margin:20px 0 12px;font-size:1rem">Хронология дела</h3><ul class="timeline">'+buildTimeline(c)+'</ul><h3 style="margin:24px 0 12px;font-size:1rem">Подробная история</h3>'+buildHistory(c.history)+'<h3 style="margin:24px 0 12px;font-size:1rem">📋 Что будет дальше</h3>'+buildNextSteps(c.status)+'</div></div>';
 }
 
 function search(q){
