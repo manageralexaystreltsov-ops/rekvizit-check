@@ -1,7 +1,18 @@
 (function(){
 'use strict';
 var DATA=null;
-async function load(){try{var r=await fetch('data/clients.json');DATA=await r.json()}catch(e){console.error(e)}}
+async function load(){
+  try{
+    var r=await fetch('data/clients.json');
+    DATA=await r.json();
+    renderList();
+  }catch(e){console.error(e)}
+}
+
+function maskPhone(p){
+  if(!p||p.length<7)return p;
+  return p.substring(0,4)+'****'+p.substring(p.length-3);
+}
 
 function classByStatus(s){
   if(['new'].includes(s))return's-new';
@@ -14,6 +25,23 @@ function classByStatus(s){
   if(['blocked'].includes(s))return's-blocked';
   if(['return_process'].includes(s))return's-return';
   return's-new';
+}
+
+function renderList(){
+  if(!DATA||!DATA.clients)return;
+  var wrap=document.getElementById('clients-list');
+  if(!wrap)return;
+  // Показываем последние 50 активных дел (не закрытые)
+  var active=DATA.clients.filter(function(c){
+    return['return_done'].indexOf(c.status)===-1;
+  }).slice(0,50);
+
+  var html=active.map(function(c){
+    var cls=classByStatus(c.status);
+    var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
+    return'<div class="cl-item" data-id="'+c.id+'" onclick="showCase(\''+c.caseNumber+'\')"><div class="cl-row"><div class="cl-num">'+c.caseNumber+'</div><div class="cl-badge cl-badge-'+c.status+'">'+c.statusName+'</div></div><div class="cl-row"><div class="cl-name">'+c.firstName+' '+c.lastName+'</div><div class="cl-city">'+c.city+'</div></div><div class="cl-row"><div class="cl-platform">'+c.platform+'</div><div class="cl-amount">'+amt+'</div></div><div class="cl-row"><div class="cl-phone">'+maskPhone(c.phone)+'</div><div class="cl-date">'+c.lastUpdate+'</div></div></div>';
+  }).join('');
+  wrap.innerHTML=html;
 }
 
 function buildTimeline(client){
@@ -79,7 +107,7 @@ function renderResult(c){
   };
   var a=alertMap[c.status]||alertMap.new;
   var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
-  return'<div class="case-card"><div class="case-header '+cls+'"><div class="case-id">Дело № '+c.caseNumber+'</div><div class="case-title">'+c.statusName+'</div><div class="case-subtitle">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="case-body"><div class="case-alert '+a.cls+'">ℹ️ '+a.text+'</div><div class="case-grid"><div class="case-field"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="case-field"><label>Телефон</label><span>'+c.phone+'</span></div><div class="case-field"><label>Город</label><span>'+c.city+'</span></div><div class="case-field"><label>Платформа</label><span>'+c.platform+'</span></div><div class="case-field"><label>Сумма убытка</label><span>'+amt+'</span></div><div class="case-field"><label>Дата обращения</label><span>'+formatDate(c.caseDate)+'</span></div><div class="case-field"><label>Последнее обновление</label><span>'+formatDate(c.lastUpdate)+'</span></div><div class="case-field"><label>Куратор</label><span>'+c.assignedTo+'</span></div></div><h3 style="margin:20px 0 12px;font-size:1rem">Хронология дела</h3><ul class="timeline">'+buildTimeline(c)+'</ul><h3 style="margin:24px 0 12px;font-size:1rem">Подробная история</h3>'+buildHistory(c.history)+'</div></div>';
+  return'<div class="case-card"><div class="case-header '+cls+'"><div class="case-id">Дело № '+c.caseNumber+'</div><div class="case-title">'+c.statusName+'</div><div class="case-subtitle">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="case-body"><div class="case-alert '+a.cls+'">ℹ️ '+a.text+'</div><div class="case-grid"><div class="case-field"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="case-field"><label>Телефон</label><span>'+maskPhone(c.phone)+'</span></div><div class="case-field"><label>Город</label><span>'+c.city+'</span></div><div class="case-field"><label>Платформа</label><span>'+c.platform+'</span></div><div class="case-field"><label>Сумма убытка</label><span>'+amt+'</span></div><div class="case-field"><label>Дата обращения</label><span>'+formatDate(c.caseDate)+'</span></div><div class="case-field"><label>Последнее обновление</label><span>'+formatDate(c.lastUpdate)+'</span></div><div class="case-field"><label>Куратор</label><span>'+c.assignedTo+'</span></div></div><h3 style="margin:20px 0 12px;font-size:1rem">Хронология дела</h3><ul class="timeline">'+buildTimeline(c)+'</ul><h3 style="margin:24px 0 12px;font-size:1rem">Подробная история</h3>'+buildHistory(c.history)+'</div></div>';
 }
 
 function search(q){
@@ -95,6 +123,26 @@ function search(q){
   });
 }
 
+// Global function for onclick
+window.showCase=function(caseNum){
+  if(!DATA)return;
+  var c=DATA.clients.find(function(x){return x.caseNumber===caseNum});
+  if(!c)return;
+  var wrap=document.getElementById('result-wrap');
+  var listWrap=document.getElementById('clients-list-wrap');
+  listWrap.style.display='none';
+  wrap.innerHTML=renderResult(c);
+  wrap.scrollIntoView({behavior:'smooth'});
+  document.getElementById('back-btn').style.display='inline-block';
+};
+
+window.backToList=function(){
+  document.getElementById('result-wrap').innerHTML='';
+  document.getElementById('clients-list-wrap').style.display='block';
+  document.getElementById('back-btn').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
 document.addEventListener('DOMContentLoaded',function(){
   load();
   var form=document.getElementById('search-form');
@@ -105,6 +153,8 @@ document.addEventListener('DOMContentLoaded',function(){
     var q=input.value.trim();
     if(!q||q.length<2)return;
     wrap.innerHTML='<div class="loading on"><div class="spinner"></div>Проверка...</div>';
+    document.getElementById('clients-list-wrap').style.display='none';
+    document.getElementById('back-btn').style.display='inline-block';
     setTimeout(function(){
       var c=search(q);
       if(c){wrap.innerHTML=renderResult(c)}

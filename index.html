@@ -108,6 +108,34 @@ a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
 .h-info .h-text{color:#283593}
 .h-success .h-text{color:#1b5e20;font-weight:600}
 .h-warning .h-text{color:#e65100;font-weight:600}
+.back-btn{background:#fff;border:2px solid var(--border);border-radius:var(--radius);padding:8px 16px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:var(--font);transition:.15s}
+.back-btn:hover{border-color:var(--primary);color:var(--primary)}
+.clients-list-wrap{max-width:var(--max-w);margin:0 auto 40px;padding:0 16px}
+.list-header{margin-bottom:16px}
+.list-header h2{font-size:1.3rem;margin-bottom:4px}
+.list-sub{color:var(--muted);font-size:.85rem}
+.clients-list{display:grid;gap:10px}
+.cl-item{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 18px;cursor:pointer;transition:.15s;border-left:4px solid var(--border)}
+.cl-item:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-1px)}
+.cl-item[data-id]:hover{border-left-color:var(--primary)}
+.cl-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cl-row+.cl-row{margin-top:6px}
+.cl-num{font-weight:700;font-size:.9rem;font-family:monospace}
+.cl-name{font-weight:600;font-size:.9rem}
+.cl-city{font-size:.8rem;color:var(--muted)}
+.cl-platform{font-size:.8rem;color:var(--muted)}
+.cl-amount{font-weight:600;font-size:.85rem;color:var(--accent)}
+.cl-phone{font-size:.8rem;color:var(--muted);font-family:monospace}
+.cl-date{font-size:.75rem;color:var(--muted)}
+.cl-badge{padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:600;white-space:nowrap}
+.cl-badge-new{background:#eceff1;color:#37474f}
+.cl-badge-docs_collect,.cl-badge-docs_ready{background:#fff3e0;color:#e65100}
+.cl-badge-bank_check,.cl-badge-bank_review{background:#e3f2fd;color:#0277bd}
+.cl-badge-regulator,.cl-badge-regulator_review{background:#e8eaf6;color:#283593}
+.cl-badge-court_prep,.cl-badge-court,.cl-badge-court_win{background:#f3e5f5;color:#6a1b9a}
+.cl-badge-return_process{background:#e8f5e9;color:#1b5e20}
+.cl-badge-partial_return{background:#fff8e1;color:#f57f10}
+.cl-badge-blocked{background:#ffebee;color:#b71c1c}
 @media(max-width:768px){.hdr-top{display:none}.hero h1{font-size:1.5rem}.search-row{flex-direction:column}.case-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.logo span{display:none}.stats{grid-template-columns:1fr}}
   </style>
@@ -151,7 +179,17 @@ a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
         <p class="search-hint">Например: MK-2601-00001, Айдаров Нурлан, +77001234567</p>
       </div>
     </section>
+    <div style="max-width:900px;margin:0 auto 10px;padding:0 16px">
+      <button id="back-btn" class="back-btn" onclick="backToList()" style="display:none">← Вернуться к списку</button>
+    </div>
     <section id="result-wrap" class="result-wrap" aria-live="polite"></section>
+    <section id="clients-list-wrap" class="clients-list-wrap">
+      <div class="list-header">
+        <h2>Активные дела</h2>
+        <p class="list-sub">Нажмите на дело для подробной информации</p>
+      </div>
+      <div id="clients-list" class="clients-list"></div>
+    </section>
     <section class="stats" aria-label="Статистика">
       <div class="stat"><div class="stat-val">24/7</div><div class="stat-lbl">Мониторинг дел</div></div>
       <div class="stat"><div class="stat-val">87%</div><div class="stat-lbl">Без суда</div></div>
