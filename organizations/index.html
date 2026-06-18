@@ -34,10 +34,7 @@ body{background:#030712}
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <a href="../" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>
-    <div class="nav-menu"><a href="../articles/">Аналитика</a><a href="../success/">Кейсы</a><a href="../organizations/" class="active">Организации</a><a href="../contacts/" class="nav-cta">Оставить заявку</a></div>
-  </nav>
+  <div id="nav-container" data-page="organizations"></div>
   <div class="og">
     <h1>Реестр организаций</h1>
     <p>Регуляторы, правоохранительные органы, банки и международные организации. Подайте обращение через нашу платформу.</p>
@@ -45,6 +42,7 @@ body{background:#030712}
     <div id="orgList"></div>
   </div>
   <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
+  <script src="../assets/js/nav.js"></script>
   <script>
   var orgs=[];var cats=[];
   fetch('../data/organizations.json').then(function(r){return r.json()}).then(function(d){

@@ -181,10 +181,7 @@ a{color:#818cf8;text-decoration:none}a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
-  <nav class="nav" id="nav">
-    <a href="" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>
-    <div class="nav-menu"><a href="articles/">Аналитика</a><a href="success/">Кейсы</a><a href="organizations/">Организации</a><a href="contacts/" class="nav-cta">Оставить заявку</a></div>
-  </nav>
+  <div id="nav-container" data-page="home"></div>
   <section class="hero">
     <div class="hero-grid"></div><div class="hero-glow"></div>
     <div class="hero-content">
@@ -253,6 +250,7 @@ a{color:#818cf8;text-decoration:none}a:hover{text-decoration:underline}
       <div id="fs" class="fs" style="display:none"><h3>✅ Заявка отправлена!</h3><p>Мы свяжемся с вами в ближайшее время.</p></div>
     </div>
   </div>
+  <script src="assets/js/nav.js"></script>
   <script>
   window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
   document.querySelectorAll('.st').forEach(function(t){t.addEventListener('click',function(){document.querySelectorAll('.st').forEach(function(x){x.classList.remove('on')});this.classList.add('on');document.getElementById('si').placeholder={case:'Введите номер дела',name:'Введите ФИО',phone:'Введите телефон'}[this.dataset.t]||'';document.getElementById('si').focus()})});
