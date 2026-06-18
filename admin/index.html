@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Админ-панель — Статус дела</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root{--primary:#0d47a1;--primary-light:#1565c0;--primary-dark:#002171;--accent:#c62828;--success:#1b5e20;--warning:#e65100;--bg:#f0f2f5;--card:#fff;--text:#212121;--muted:#757575;--border:#ddd;--radius:8px;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+.login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+.login-box{background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.1);padding:40px;width:100%;max-width:400px;text-align:center}
+.login-box h1{font-size:1.4rem;margin-bottom:8px}
+.login-box p{color:#757575;font-size:.9rem;margin-bottom:24px}
+.login-input{width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:1rem;font-family:var(--font);margin-bottom:16px}
+.login-input:focus{border-color:var(--primary);outline:none}
+.login-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--font)}
+.login-btn:hover{background:var(--primary-light)}
+.admin-panel{display:none;padding:20px;max-width:1200px;margin:0 auto}
+.admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.admin-header h1{font-size:1.3rem}
+.admin-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.admin-toolbar input,.admin-toolbar select{padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-size:.9rem;font-family:var(--font)}
+.admin-toolbar input{flex:1;min-width:200px}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:var(--font);transition:.15s}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-light)}
+.btn-success{background:#2e7d32;color:#fff}.btn-success:hover{background:#388e3c}
+.btn-outline{background:#fff;color:var(--primary);border:1px solid var(--primary)}.btn-outline:hover{background:#e3f2fd}
+.btn-sm{padding:4px 8px;font-size:.8rem;border-radius:4px;background:#f5f5f5;border:1px solid #ddd;cursor:pointer}
+.btn-sm:hover{background:#e0e0e0}
+.btn-danger{color:var(--accent)!important;border-color:var(--accent)!important}
+.btn-danger:hover{background:#ffebee!important}
+.table-wrap{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:#f5f5f5;padding:10px 12px;text-align:left;font-weight:600;white-space:nowrap;border-bottom:2px solid #ddd}
+td{padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap}
+tr:hover{background:#f9f9f9}
+.badge{padding:3px 8px;border-radius:12px;font-size:.75rem;font-weight:600;white-space:nowrap}
+.badge-new{background:#eceff1;color:#37474f}
+.badge-docs_collect,.badge-docs_ready{background:#fff3e0;color:#e65100}
+.badge-bank_check,.badge-bank_review{background:#e3f2fd;color:#0277bd}
+.badge-regulator,.badge-regulator_review{background:#e8eaf6;color:#283593}
+.badge-court_prep,.badge-court,.badge-court_win{background:#f3e5f5;color:#6a1b9a}
+.badge-return_process,.badge-return_done{background:#e8f5e9;color:#1b5e20}
+.badge-partial_return{background:#fff8e1;color:#f57f10}
+.badge-blocked{background:#ffebee;color:#b71c1c}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:2000;align-items:center;justify-content:center;padding:20px}
+.modal{background:#fff;border-radius:12px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;padding:28px}
+.modal h2{font-size:1.2rem;margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-grid .full{grid-column:1/-1}
+.form-group label{display:block;font-size:.8rem;font-weight:600;margin-bottom:4px;color:#555}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:6px;font-size:.9rem;font-family:var(--font)}
+.form-group textarea{height:60px;resize:vertical}
+.form-group input:focus,.form-group select:focus{border-color:var(--primary);outline:none}
+.form-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
+.stats-row{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.stats-card{background:#fff;border-radius:8px;padding:14px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06);flex:1;min-width:140px;text-align:center}
+.stats-card .val{font-size:1.5rem;font-weight:800;color:var(--primary)}
+.stats-card .lbl{font-size:.75rem;color:#757575}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr}.admin-header{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="login-screen" id="login-screen">
+    <div class="login-box">
+      <div style="font-size:2.5rem;margin-bottom:12px">🔐</div>
+      <h1>Админ-панель</h1>
+      <p>Введите пароль для доступа</p>
+      <input type="password" id="login-pass" class="login-input" placeholder="Пароль" autofocus>
+      <button id="login-btn" class="login-btn">Войти</button>
+      <p style="margin-top:16px;font-size:.75rem;color:#aaa">Пароль по умолчанию: admin123</p>
+    </div>
+  </div>
+  <div class="admin-panel" id="admin-panel">
+    <div class="admin-header">
+      <h1>📋 Управление клиентами</h1>
+      <div style="display:flex;gap:10px">
+        <button id="export-btn" class="btn btn-outline">📥 Экспорт</button>
+        <button id="add-client-btn" class="btn btn-primary">+ Новое дело</button>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stats-card"><div class="val" id="cnt-total">0</div><div class="lbl">Всего дел</div></div>
+      <div class="stats-card"><div class="val" id="cnt-active">0</div><div class="lbl">В работе</div></div>
+      <div class="stats-card"><div class="val" id="cnt-returned">0</div><div class="lbl">Возвраты</div></div>
+      <div class="stats-card"><div class="val" id="cnt-blocked">0</div><div class="lbl">Приостановлены</div></div>
+    </div>
+    <div class="admin-toolbar">
+      <input type="text" id="search-admin" placeholder="Поиск по номеру, ФИО, телефону...">
+      <select id="filter-status">
+        <option value="">Все статусы</option>
+        <option value="new">Новое обращение</option>
+        <option value="docs_collect">Сбор документов</option>
+        <option value="docs_ready">Документы готовы</option>
+        <option value="bank_check">Проверка банка</option>
+        <option value="bank_review">Рассмотрение банком</option>
+        <option value="regulator">Обращение в регулятор</option>
+        <option value="regulator_review">Рассмотрение регулятором</option>
+        <option value="court_prep">Подготовка иска</option>
+        <option value="court">В суде</option>
+        <option value="court_win">Решение суда</option>
+        <option value="return_process">Возврат средств</option>
+        <option value="return_done">Средства возвращены</option>
+        <option value="partial_return">Частичный возврат</option>
+        <option value="blocked">Приостановлено</option>
+      </select>
+      <span style="color:#757575;font-size:.85rem;align-self:center">Найдено: <strong id="clients-count">0</strong></span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>№ дела</th><th>ФИО</th><th>Телефон</th><th>Город</th><th>Платформа</th><th>Сумма</th><th>Статус</th><th>Обновлено</th><th>Действия</th></tr></thead>
+        <tbody id="clients-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-overlay" id="client-form-modal">
+    <div class="modal">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h2 id="form-title">Новое дело</h2>
+        <button id="close-modal" class="btn-sm" style="font-size:1.2rem;border:none;background:none;cursor:pointer">✕</button>
+      </div>
+      <form id="client-form">
+        <div class="form-grid">
+          <div class="form-group"><label>Номер дела</label><input id="f-caseNumber" required></div>
+          <div class="form-group"><label>Статус</label>
+            <select id="f-status">
+              <option value="new">Новое обращение</option>
+              <option value="docs_collect">Сбор документов</option>
+              <option value="docs_ready">Документы готовы</option>
+              <option value="bank_check">Проверка банка</option>
+              <option value="bank_review">Рассмотрение банком</option>
+              <option value="regulator">Обращение в регулятор</option>
+              <option value="regulator_review">Рассмотрение регулятором</option>
+              <option value="court_prep">Подготовка иска</option>
+              <option value="court">В суде</option>
+              <option value="court_win">Решение суда</option>
+              <option value="return_process">Возврат средств</option>
+              <option value="return_done">Средства возвращены</option>
+              <option value="partial_return">Частичный возврат</option>
+              <option value="blocked">Приостановлено</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Имя</label><input id="f-firstName" required></div>
+          <div class="form-group"><label>Фамилия</label><input id="f-lastName" required></div>
+          <div class="form-group"><label>Телефон</label><input id="f-phone" required></div>
+          <div class="form-group"><label>Email</label><input id="f-email" type="email"></div>
+          <div class="form-group"><label>Город</label>
+            <select id="f-city">
+              <option>Алматы</option><option>Астана</option><option>Шымкент</option>
+              <option>Актобе</option><option>Караганда</option><option>Атырау</option>
+              <option>Павлодар</option><option>Семей</option><option>Тараз</option>
+              <option>Костанай</option><option>Орал</option><option>Кызылорда</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Платформа-мошенник</label><input id="f-platform"></div>
+          <div class="form-group"><label>Сумма убытка (₸)</label><input id="f-amount" type="number"></div>
+          <div class="form-group"><label>Приоритет</label>
+            <select id="f-priority">
+              <option value="high">Высокий</option>
+              <option value="medium" selected>Средний</option>
+              <option value="low">Низкий</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Куратор</label>
+            <select id="f-assignedTo">
+              <option>Макаров С.</option><option>Козлов А.</option><option>Назарова Д.</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Заметки</label><textarea id="f-notes"></textarea></div>
+        </div>
+        <div class="form-actions">
+          <button type="button" id="cancel-form" class="btn btn-outline">Отмена</button>
+          <button type="submit" class="btn btn-success">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+  function updateStats(){
+    var raw=localStorage.getItem('cs_clients');
+    if(!raw)return;
+    var list=JSON.parse(raw);
+    var set=function(id,v){var e=document.getElementById(id);if(e)e.textContent=v};
+    set('cnt-total',list.length.toLocaleString('ru-RU'));
+    set('cnt-active',list.filter(function(c){return['return_done','blocked'].indexOf(c.status)===-1}).length.toLocaleString('ru-RU'));
+    set('cnt-returned',list.filter(function(c){return c.status==='return_done'}).length.toLocaleString('ru-RU'));
+    set('cnt-blocked',list.filter(function(c){return c.status==='blocked'}).length.toLocaleString('ru-RU'));
+  }
+  setTimeout(updateStats,1500);
+  </script>
+</body>
+</html>

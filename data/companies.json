@@ -1,0 +1,264 @@
+{
+  "lastUpdated": "2026-06-18",
+  "totalCompanies": 156,
+  "categories": [
+    {
+      "id": "licensed",
+      "name": "Лицензированные организации",
+      "icon": "✅",
+      "description": "Организации, имеющие действующую лицензию регулятора"
+    },
+    {
+      "id": "suspicious",
+      "name": "Подозрительные организации",
+      "icon": "⚠️",
+      "description": "Организации с признаками нарушений"
+    },
+    {
+      "id": "blacklist",
+      "name": "Чёрный список",
+      "icon": "🚫",
+      "description": "Организации, включённые в предупреждения регуляторов"
+    }
+  ],
+  "companies": [
+    {
+      "name": "ТОО «CapitalInvest Kazakhstan»",
+      "bin": "220940012345",
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР",
+      "reason": "Деятельность без лицензии. Мошенническая инвестиционная платформа.",
+      "dateAdded": "2026-03-15",
+      "website": "capitalinvest-kz.com",
+      "phones": ["+77001234567"],
+      "emails": ["info@capitalinvest-kz.com"]
+    },
+    {
+      "name": "GlobalTrade FX",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР, MAS",
+      "reason": "Нелицензированный Forex-брокер. Жалобы клиентов на невывод средств.",
+      "dateAdded": "2026-02-20",
+      "website": "globaltradefx.com",
+      "phones": ["+77009876543"],
+      "emails": ["support@globaltradefx.com"]
+    },
+    {
+      "name": "АО «Халык Банк Казахстана»",
+      "bin": "970740008132",
+      "iin": null,
+      "category": "licensed",
+      "status": "ЛИЦЕНЗИРОВАН",
+      "regulator": "АРРФР, НБ РК",
+      "reason": null,
+      "dateAdded": null,
+      "website": "halykbank.kz",
+      "phones": ["+77272590505"],
+      "emails": ["info@halykbank.kz"]
+    },
+    {
+      "name": "АО «Kaspi Bank»",
+      "bin": "970740013210",
+      "iin": null,
+      "category": "licensed",
+      "status": "ЛИЦЕНЗИРОВАН",
+      "regulator": "АРРФР, НБ РК",
+      "reason": null,
+      "dateAdded": null,
+      "website": "kaspi.kz",
+      "phones": ["+77272585200"],
+      "emails": ["info@kaspi.kz"]
+    },
+    {
+      "name": "CryptoGain KZ",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР",
+      "reason": "Фейковая криптобиржа. Мошенническая схема.",
+      "dateAdded": "2026-01-10",
+      "website": "cryptogain.kz",
+      "phones": ["+77005551234"],
+      "emails": ["info@cryptogain.kz"]
+    },
+    {
+      "name": "FinHub Invest",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР",
+      "reason": "Инвестиционное мошенничество. Невывод средств.",
+      "dateAdded": "2025-12-01",
+      "website": "finhubinvest.com",
+      "phones": ["+77003334567"],
+      "emails": ["support@finhubinvest.com"]
+    },
+    {
+      "name": "ТОО «ForteBank»",
+      "bin": "970740004567",
+      "iin": null,
+      "category": "licensed",
+      "status": "ЛИЦЕНЗИРОВАН",
+      "regulator": "АРРФР, НБ РК",
+      "reason": null,
+      "dateAdded": null,
+      "website": "fortebank.kz",
+      "phones": ["+77272318300"],
+      "emails": ["info@fortebank.kz"]
+    },
+    {
+      "name": "IQ Option (клон)",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР",
+      "reason": "Клон легитимной платформы. Мошенничество с бинарными опционами.",
+      "dateAdded": "2026-02-15",
+      "website": "iqoption-kz.com",
+      "phones": ["+77007778899"],
+      "emails": ["info@iqoption-kz.com"]
+    },
+    {
+      "name": "АО «Банк ЦентрКредит»",
+      "bin": "950740010392",
+      "iin": null,
+      "category": "licensed",
+      "status": "ЛИЦЕНЗИРОВАН",
+      "regulator": "АРРФР, НБ РК",
+      "reason": null,
+      "dateAdded": null,
+      "website": "ccbank.kz",
+      "phones": ["+77272506900"],
+      "emails": ["info@ccbank.kz"]
+    },
+    {
+      "name": "InvestPro Capital",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР, SEC",
+      "reason": "Финансовая пирамида под видом инвестиционного фонда.",
+      "dateAdded": "2026-03-01",
+      "website": "investpro-capital.com",
+      "phones": ["+77002223344"],
+      "emails": ["info@investpro-capital.com"]
+    },
+    {
+      "name": "Atlas Broker",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР",
+      "reason": "Нелицензированный брокер. Мошенничество.",
+      "dateAdded": "2025-11-20",
+      "website": "atlasbroker.com",
+      "phones": ["+77004445566"],
+      "emails": ["support@atlasbroker.com"]
+    },
+    {
+      "name": "AO «Банк Центробанк»",
+      "bin": "970740011234",
+      "iin": null,
+      "category": "licensed",
+      "status": "ЛИЦЕНЗИРОВАН",
+      "regulator": "АРРФР, НБ РК",
+      "reason": null,
+      "dateAdded": null,
+      "website": "centrobank.kz",
+      "phones": ["+77272585555"],
+      "emails": ["info@centrobank.kz"]
+    },
+    {
+      "name": "PrimeFX Markets",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР, FCA",
+      "reason": "Нелицензированный Forex-брокер. Международное мошенничество.",
+      "dateAdded": "2025-10-15",
+      "website": "primefxmarkets.com",
+      "phones": ["+442012345678"],
+      "emails": ["info@primefxmarkets.com"]
+    },
+    {
+      "name": "БинарТрейд КЗ",
+      "bin": null,
+      "iin": null,
+      "category": "blacklist",
+      "status": "ПРЕДУПРЕЖДЕНИЕ",
+      "regulator": "АРРФР",
+      "reason": "Бинарные опционы — запрещены в РК. Мошенничество.",
+      "dateAdded": "2026-01-25",
+      "website": "binarytrade.kz",
+      "phones": ["+77008889900"],
+      "emails": ["info@binarytrade.kz"]
+    },
+    {
+      "name": "АО «Sberbank Kazakhstan»",
+      "bin": "970740009876",
+      "iin": null,
+      "category": "licensed",
+      "status": "ЛИЦЕНЗИРОВАН",
+      "regulator": "АРРФР, НБ РК",
+      "reason": null,
+      "dateAdded": null,
+      "website": "sberbank.kz",
+      "phones": ["+77272585500"],
+      "emails": ["info@sberbank.kz"]
+    }
+  ],
+  "regulators": [
+    {
+      "name": "АРРФР",
+      "fullName": "Агентство Республики Казахстан по регулированию и развитию финансового рынка",
+      "website": "gov.kz/memleket/entities/ardfm",
+      "phone": "1434",
+      "description": "Государственный регулятор финансового рынка РК"
+    },
+    {
+      "name": "НБ РК",
+      "fullName": "Национальный Банк Республики Казахстан",
+      "website": "nationalbank.kz",
+      "phone": "1431",
+      "description": "Центральный банк Республики Казахстан"
+    },
+    {
+      "name": "MAS",
+      "fullName": "Monetary Authority of Singapore",
+      "website": "mas.gov.sg",
+      "phone": null,
+      "description": "Центральный банк и регулятор Сингапура"
+    },
+    {
+      "name": "SEC",
+      "fullName": "Securities and Exchange Commission",
+      "website": "sec.gov",
+      "phone": null,
+      "description": "Регулятор ценных бумаг США"
+    },
+    {
+      "name": "FCA",
+      "fullName": "Financial Conduct Authority",
+      "website": "fca.org.uk",
+      "phone": null,
+      "description": "Финансовый регулятор Великобритании"
+    }
+  ],
+  "statistics": {
+    "totalChecks": 45230,
+    "blacklistedFound": 1247,
+    "suspiciousFound": 892,
+    "lastUpdate": "2026-06-18"
+  }
+}
