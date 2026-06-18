@@ -23,6 +23,8 @@ a{color:#60a5fa;text-decoration:none}a:hover{text-decoration:underline}
 .logo-glow{width:36px;height:36px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 20px rgba(59,130,246,.4);animation:pulse-glow 3s ease-in-out infinite}
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(59,130,246,.4)}50%{box-shadow:0 0 30px rgba(139,92,246,.6)}}
 .hdr a{color:rgba(255,255,255,.7);font-weight:500;font-size:.85rem;transition:.2s}.hdr a:hover{color:#fff;text-decoration:none}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:rgba(255,255,255,.5);font-size:.82rem}.nav a:hover{color:#fff}
 
 /* ===== HERO ===== */
 .hero{position:relative;padding:60px 20px 80px;text-align:center;overflow:hidden}
@@ -209,7 +211,12 @@ a{color:#60a5fa;text-decoration:none}a:hover{text-decoration:underline}
   <a href="#main" class="skip">Перейти к содержимому</a>
   <header class="hdr">
     <div class="hdr-inner">
-      <div class="logo"><div class="logo-glow">📋</div><span>Статус Дела</span></div>
+      <a href="" class="logo"><div class="logo-glow">📋</div><span>Статус Дела</span></a>
+      <nav class="nav">
+        <a href="articles/">Статьи</a>
+        <a href="success/">Кейсы</a>
+        <a href="contacts/">Контакты</a>
+      </nav>
     </div>
   </header>
   <main id="main">
