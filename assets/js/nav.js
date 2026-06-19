@@ -1,42 +1,42 @@
 function renderNav(activePage){
   var pages=[
-    {id:'home',href:'../',label:'Главная'},
-    {id:'articles',href:'../articles/',label:'Аналитика'},
-    {id:'success',href:'../success/',label:'Кейсы'},
-    {id:'organizations',href:'../organizations/',label:'Организации'},
-    {id:'contacts',href:'../contacts/',label:'Оставить заявку',cta:true}
+    {id:'home',href:'../',label:'Главная',icon:'🏠'},
+    {id:'articles',href:'../articles/',label:'Аналитика',icon:'📊'},
+    {id:'organizations',href:'../organizations/',label:'Организации',icon:'🏛️'},
+    {id:'success',href:'../success/',label:'Кейсы',icon:'📋'},
+    {id:'contacts',href:'../contacts/',label:'Заявка',icon:'✉️',cta:true}
   ];
   var isHome=activePage==='home';
-  var prefix=isHome?'':'../';
-  
-  var html='<nav class="nav" id="nav">';
-  html+='<a href="'+prefix+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
-  html+='<div class="nav-menu">';
+
+  // Top nav (desktop)
+  var topNav='<nav class="nav-top" id="nav-top">';
+  topNav+='<a href="'+(isHome?'':'../')+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
+  topNav+='<div class="nav-desktop">';
   pages.forEach(function(p){
-    if(p.id==='home'&&isHome){
-      // skip home link on home page
-    }else{
-      var href=isHome?p.href:p.href;
-      var cls=p.id===activePage?'active':'';
-      if(p.cta)cls+=' nav-cta';
-      html+='<a href="'+href+'" class="'+cls+'">'+p.label+'</a>';
-    }
+    if(p.id==='home'&&isHome)return;
+    var cls=p.id===activePage?'active':'';
+    if(p.cta)cls+=' cta';
+    topNav+='<a href="'+p.href+'" class="'+cls+'">'+p.label+'</a>';
   });
-  html+='</div></nav>';
-  return html;
+  topNav+='</div></nav>';
+
+  // Bottom nav (mobile)
+  var botNav='<nav class="nav-mobile">';
+  pages.forEach(function(p){
+    var cls=p.id===activePage?'active':'';
+    if(p.cta)cls+=' cta';
+    botNav+='<a href="'+p.href+'" class="'+cls+'"><span class="nm-icon">'+p.icon+'</span><span class="nm-label">'+p.label+'</span></a>';
+  });
+  botNav+='</nav>';
+
+  return topNav+botNav;
 }
 
-// Auto-inject nav
 document.addEventListener('DOMContentLoaded',function(){
-  var navContainer=document.getElementById('nav-container');
-  if(navContainer){
-    var page=navContainer.dataset.page||'home';
-    navContainer.outerHTML=renderNav(page);
-  }
-  
-  // Scroll effect
+  var c=document.getElementById('nav-container');
+  if(c){c.outerHTML=renderNav(c.dataset.page||'home')}
   window.addEventListener('scroll',function(){
-    var nav=document.getElementById('nav');
-    if(nav)nav.classList.toggle('scrolled',window.scrollY>50);
+    var n=document.getElementById('nav-top');
+    if(n)n.classList.toggle('scrolled',window.scrollY>50);
   });
 });
