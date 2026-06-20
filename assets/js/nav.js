@@ -1,6 +1,17 @@
 function renderNav(activePage){
-  var isRoot=location.pathname.endsWith('/rekvizit-check/')||location.pathname.endsWith('/rekvizit-check/index.html')||location.pathname==='/'||location.pathname.endsWith('/rekvizit-check');
-  var pre=isRoot?'':'../';
+  var path=location.pathname;
+  var base='/rekvizit-check/';
+  var idx=path.indexOf(base);
+  var after=idx>=0?path.substring(idx+base.length):'';
+  var depth=0;
+  if(after){
+    var parts=after.replace(/\/$/,'').split('/');
+    if(parts.length===1&&parts[0]!=='index.html'&&parts[0]!=='')depth=1;
+    if(parts.length>=2)depth=2;
+  }
+  var pre='';
+  if(depth===1)pre='../';
+  if(depth===2)pre='../../';
   var pages=[
     {id:'home',href:pre||'./',label:'Главная',icon:'🏠'},
     {id:'articles',href:pre+'articles/',label:'Аналитика',icon:'📊'},
@@ -10,7 +21,7 @@ function renderNav(activePage){
   ];
   var isHome=activePage==='home';
   var topNav='<nav class="nav-top" id="nav-top">';
-  topNav+='<a href="'+(isHome?(isRoot?'#':pre):(pre||'./'))+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
+  topNav+='<a href="'+(pre||'./')+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
   topNav+='<div class="nav-desktop">';
   pages.forEach(function(p){
     if(p.id==='home'&&isHome)return;
