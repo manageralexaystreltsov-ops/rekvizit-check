@@ -2,16 +2,28 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Механизмы chargeback: полное руководство — GlobalSafe Finance</title>
+  <title>Механизмы chargeback в банковской системе — GlobalSafe Finance</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/global.css">
-  <style>body{background:var(--bg);padding-bottom:70px}.ap{max-width:720px;margin:0 auto;padding:clamp(24px,5vw,60px) clamp(16px,4vw,20px)}.ap h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin:16px 0 8px;letter-spacing:-.03em;line-height:1.1}.ap .meta{display:flex;gap:20px;font-size:.78rem;color:var(--text3);margin-bottom:36px;flex-wrap:wrap}.ap h2{font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:800;margin:36px 0 14px;color:#fff}.ap h3{font-size:1rem;font-weight:700;margin:28px 0 10px;color:#fff}.ap p{color:var(--text2);line-height:1.85;margin-bottom:16px;font-size:.92rem}.ap ul,.ap ol{margin:14px 0;padding-left:24px;color:var(--text2)}.ap li{margin-bottom:10px;line-height:1.7}.ap li strong{color:#fff}.ap blockquote{border-left:3px solid rgba(99,102,241,.4);padding:16px 20px;margin:24px 0;background:rgba(99,102,241,.04);border-radius:0 var(--radius) var(--radius) 0;color:var(--text2);font-style:italic}</style>
+  <style>
+body{background:#000;padding-bottom:70px}
+.ap{max-width:720px;margin:0 auto;padding:clamp(24px,5vw,60px) clamp(16px,4vw,20px)}
+.ap h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin:16px 0 8px;letter-spacing:-.03em;line-height:1.1}
+.ap .meta{display:flex;gap:20px;font-size:.78rem;color:var(--text3);margin-bottom:36px;flex-wrap:wrap}
+.ap h2{font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:800;margin:36px 0 14px;color:#fff}
+.ap h3{font-size:1rem;font-weight:700;margin:28px 0 10px;color:#fff}
+.ap p{color:var(--text2);line-height:1.85;margin-bottom:16px;font-size:.92rem}
+.ap ul,.ap ol{margin:14px 0;padding-left:22px;color:var(--text2)}
+.ap li{margin-bottom:10px;line-height:1.7}
+.ap li strong{color:#fff}
+.ap blockquote{border-left:3px solid rgba(99,102,241,.35);padding:16px 20px;margin:24px 0;background:rgba(99,102,241,.035);border-radius:0 var(--radius) var(--radius) 0;color:var(--text2);font-style:italic}
+  </style>
 </head>
 <body>
   <div id="nav-container" data-page="articles"></div>
   <div class="ap">
     <a href="../articles/" style="font-size:.82rem;color:var(--text3)">← Все статьи</a>
-    <h1>Механизмы chargeback: полное руководство</h1>
+    <h1>Механизмы chargeback в банковской системе</h1>
     <div class="meta"><span>01.06.2026</span><span>15 мин чтения</span><span>GlobalSafe Research</span></div>
 
     <p>Chargeback (возврат средств по банковской транзакции) является одним из наиболее эффективных механизмов защиты потребителей в случае мошенничества. Однако большинство людей не знают, как правильно воспользоваться этой процедурой. В этом руководстве мы подробно разбираем все аспекты chargeback: от основ до сложных кейсов с криптовалютными транзакциями.</p>
@@ -19,12 +31,12 @@
     <h2>1. Что такое chargeback и как он работает</h2>
     <p>Chargeback — это процесс оспаривания транзакции через банк-эмитент (банк держателя карты). Когда вы оплачиваете товар или услугу банковской картой, а получаете мошенничество или некачественный товар, вы имеете право инициировать chargeback. Банк возвращает вам средства, а затем разбирается с банком-эквайрером (банком продавца).</p>
     <p>Процесс регулируется правилами платёжных систем Visa (Visa Dispute Resolution System) и Mastercard (Mastercard Chargeback Guide). В Казахстане дополнительно действуют правила Национального банка, регулирующие порядок оспаривания транзакций.</p>
-    <blockquote>Chargeback — это не "возврат денег", а formalized process оспаривания транзакции. Банк проводит расследование и принимает решение на основе доказательств обеих сторон.</blockquote>
+    <blockquote>Chargeback — это не «возврат денег», а формализованный процесс оспаривания транзакции. Банк проводит расследование и принимает решение на основе доказательств обеих сторон.</blockquote>
 
     <h2>2. Виды оснований для chargeback</h2>
     <p>Существует несколько категорий оснований для инициирования chargeback:</p>
     <ul>
-      <li><strong>Товар или услуга не получены:</strong> вы оплатили, но не получили товар/услугу. Классический случай для онлайн-мошенничества.</li>
+      <li><strong>Товар или услуга не получены:</strong> вы оплатили, но не получили товар или услугу. Классический случай для онлайн-мошенничества.</li>
       <li><strong>Товар существенно отличается от описания:</strong> вы получили не то, что было обещано. В контексте мошенничества это применяется, когда платформа не соответствует заявленным характеристикам.</li>
       <li><strong>Неавторизованная транзакция:</strong> транзакция, которую вы не совершали. Применяется при краже карты или данных.</li>
       <li><strong>Повторное списание:</strong> списание было произведено дважды за одну транзакцию.</li>
@@ -47,7 +59,7 @@
       <li><strong>Заполните заявление:</strong> банк предоставит форму. Укажите причину оспаривания, сумму, дату транзакции.</li>
       <li><strong>Приложите доказательства:</strong> скриншоты переписки, чеки, выписки, переписку с продавцом, фото товара (если получен).</li>
       <li><strong>Получите номер обращения:</strong> обязательно запишите номер вашего заявления для отслеживания.</li>
-      <li><strong>Дождитесь решения:</strong> банк проводит расследование в течение 30-45 дней. В сложных случаях — до 90 дней.</li>
+      <li><strong>Дождитесь решения:</strong> банк проводит расследование в течение 30–45 дней. В сложных случаях — до 90 дней.</li>
     </ol>
 
     <h2>5. Доказательная база</h2>
@@ -65,10 +77,10 @@
     <p>Chargeback для криптовалютных транзакций имеет свои особенности:</p>
     <ul>
       <li><strong>Банковская карта → криптобиржа:</strong> если вы купили криптовалюту через банковскую карту, вы можете оспорить банковскую транзакцию. Банк может провести chargeback, если докажете, что криптобиржа была мошеннической.</li>
-      <li><strong>Прямая криптотранзакция:</strong> если средства отправлены напрямую на кошелёк мошенника — chargeback невозможен. Блокчейн-транзации необратимы.</li>
-      <li><strong>Стейкинг/инвестирование:</strong> если вы перевели средства на "платформу для инвестирования" — это оспаривается через банковский chargeback, если операция была через карту.</li>
+      <li><strong>Прямая криптотранзакция:</strong> если средства отправлены напрямую на кошелёк мошенника — chargeback невозможен. Блокчейн-транзакции необратимы.</li>
+      <li><strong>Стейкинг и инвестирование:</strong> если вы перевели средства на «платформу для инвестирования» — это оспаривается через банковский chargeback, если операция была через карту.</li>
     </ul>
-    <blockquote>Ключевое правило: chargeback работает только для транзакций через банковскую систему. Криптотранзакции напрямую на кошельки не подлежат chargeback.</blockquote>
+    <blockquote>Ключевое правило: chargeback работает только для транзакций через банковскую систему. Криптотранзакции напрямую на кошельки не подлежат возврату через банк.</blockquote>
 
     <h2>7. Что делать если банк отказал</h2>
     <p>Если банк отказал в chargeback, у вас есть несколько вариантов:</p>
@@ -88,7 +100,7 @@
       <li><strong>Обратитесь к юристу:</strong> в сложных случаях профессиональная помощь значительно повышает шансы.</li>
     </ul>
 
-    <div class="cta-box" style="margin-top:48px"><h3>Нужна консультация?</h3><p>Свяжитесь с нами для получения профессиональной помощи.</p><a href="../contacts/" class="btn btn-fill">Оставить заявку →</a></div>
+    <div class="cta-box" style="margin-top:48px"><div class="cta-box-inner"><h3>Нужна консультация?</h3><p>Свяжитесь с нами для получения профессиональной помощи.</p><a href="../contacts/" class="btn btn-fill">Оставить заявку →</a></div></div>
   </div>
   <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
   <script src="../assets/js/nav.js"></script>
