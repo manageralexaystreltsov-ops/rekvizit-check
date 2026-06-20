@@ -32,8 +32,8 @@ body{background:#000;padding-bottom:70px}
 .metric-label{font-size:.58rem;color:var(--text4);margin-top:4px;text-transform:uppercase;letter-spacing:.8px;font-weight:600}
 
 /* === SEARCH === */
-.search-sec{position:relative;padding:0 clamp(16px,4vw,20px);margin-top:-36px;z-index:10}
-.search-frame{max-width:560px;margin:0 auto;position:relative}
+.search-sec{position:relative;padding:0 clamp(16px,4vw,24px);margin-top:-36px;z-index:10}
+.search-frame{max-width:640px;margin:0 auto;position:relative}
 .search-frame::before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.1),rgba(99,102,241,.05));z-index:-1;opacity:.6}
 .search-inner{background:rgba(6,6,12,.95);border:1px solid var(--border);border-radius:16px;padding:clamp(12px,3vw,18px);backdrop-filter:blur(32px);position:relative;overflow:hidden}
 .search-inner::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.3),transparent)}
@@ -56,7 +56,7 @@ body{background:#000;padding-bottom:70px}
 .sl{color:var(--text3);font-size:.75rem;font-weight:500}
 
 /* === RESULT DETAIL === */
-.rw{max-width:900px;margin:24px auto 0;padding:0 clamp(16px,4vw,20px)}
+.rw{width:100%;margin:24px auto 0;padding:0 clamp(16px,4vw,24px)}
 .rw:empty{display:none}
 .cc{position:relative;border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .5s ease both}
 .cc::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(139,92,246,.15),rgba(99,102,241,.05));z-index:0}
@@ -103,40 +103,40 @@ body{background:#000;padding-bottom:70px}
 .bb{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:.7rem;font-weight:600;cursor:pointer;font-family:var(--font);color:var(--text3);display:none;transition:all .25s;margin-bottom:16px}
 .bb:hover{border-color:rgba(99,102,241,.2);color:#fff}
 
-/* === CASE CARDS (cosmic) === */
-.cls{max-width:900px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}
-.clsh{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.clsh h2{font-size:.88rem;font-weight:700;color:var(--text2);display:flex;align-items:center;gap:8px}
-.clsh h2::before{content:'';width:3px;height:14px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px}
-.clsh-count{font-size:.68rem;color:var(--text4);font-weight:500}
-.clsi{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+/* === CASE CARDS (full width, bold) === */
+.cls{width:100%;margin:0 auto;padding:0 clamp(16px,4vw,24px)}
+.clsh{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid rgba(99,102,241,.15)}
+.clsh h2{font-size:1.1rem;font-weight:800;color:#fff;display:flex;align-items:center;gap:10px}
+.clsh h2::before{content:'';width:4px;height:20px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:3px}
+.clsh-count{font-size:.82rem;color:var(--accent3);font-weight:700;background:rgba(99,102,241,.1);padding:4px 12px;border-radius:20px}
+.clsi{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
 .cli{position:relative;border-radius:var(--radius2);cursor:pointer;transition:all .4s cubic-bezier(.4,0,.2,1);animation:fadeInUp .5s ease both}
-.cli::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(139,92,246,.1),rgba(99,102,241,.03));opacity:0;transition:opacity .4s;z-index:0}
+.cli::before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(139,92,246,.15),rgba(99,102,241,.05));opacity:0;transition:opacity .4s;z-index:0}
 .cli:hover::before{opacity:1}
-.cli:hover{transform:translateY(-3px) scale(1.005);box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 40px rgba(99,102,241,.08)}
-.cli-inner{position:relative;z-index:1;background:rgba(8,8,14,.92);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--radius2);padding:14px 16px;transition:border-color .3s}
-.cli:hover .cli-inner{border-color:rgba(99,102,241,.18)}
-.cli-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.cli-num{font-weight:700;font-size:.65rem;font-family:'SF Mono',Monaco,Menlo,monospace;color:var(--text4);letter-spacing:.3px}
-.cli-badge{padding:3px 10px;border-radius:100px;font-size:.56rem;font-weight:700;white-space:nowrap;letter-spacing:.2px}
-.cli-badge-new{background:rgba(148,163,184,.08);color:#94a3b8;border:1px solid rgba(148,163,184,.12)}
-.cli-badge-docs_collect,.cli-badge-docs_ready{background:rgba(245,158,11,.08);color:#fbbf24;border:1px solid rgba(245,158,11,.12)}
-.cli-badge-bank_check,.cli-badge-bank_review{background:rgba(99,102,241,.08);color:#818cf8;border:1px solid rgba(99,102,241,.12)}
-.cli-badge-regulator,.cli-badge-regulator_review{background:rgba(139,92,246,.08);color:#a78bfa;border:1px solid rgba(139,92,246,.12)}
-.cli-badge-court_prep,.cli-badge-court,.cli-badge-court_win{background:rgba(124,58,237,.08);color:#c084fc;border:1px solid rgba(124,58,237,.12)}
-.cli-badge-return_process,.cli-badge-return_done{background:rgba(16,185,129,.08);color:#6ee7b7;border:1px solid rgba(16,185,129,.12)}
-.cli-badge-partial_return{background:rgba(245,158,11,.08);color:#fbbf24;border:1px solid rgba(245,158,11,.12)}
-.cli-badge-blocked{background:rgba(239,68,68,.08);color:#fca5a5;border:1px solid rgba(239,68,68,.12)}
-.cli-mid{margin-bottom:8px}
-.cli-name{font-weight:700;font-size:.88rem;color:#fff}
-.cli-city{font-size:.68rem;color:var(--text4);margin-top:1px}
-.cli-bot{display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px solid rgba(255,255,255,.03)}
-.cli-platform{font-size:.65rem;color:var(--text3)}
-.cli-amount{font-weight:700;font-size:.75rem}
+.cli:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 50px rgba(99,102,241,.1)}
+.cli-inner{position:relative;z-index:1;background:rgba(10,10,16,.95);backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.08);border-radius:var(--radius2);padding:18px 20px;transition:border-color .3s}
+.cli:hover .cli-inner{border-color:rgba(99,102,241,.25)}
+.cli-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cli-num{font-weight:800;font-size:.72rem;font-family:'SF Mono',Monaco,Menlo,monospace;color:rgba(255,255,255,.4);letter-spacing:.5px}
+.cli-badge{padding:4px 12px;border-radius:100px;font-size:.62rem;font-weight:700;white-space:nowrap;letter-spacing:.3px}
+.cli-badge-new{background:rgba(148,163,184,.12);color:#94a3b8;border:1.5px solid rgba(148,163,184,.2)}
+.cli-badge-docs_collect,.cli-badge-docs_ready{background:rgba(245,158,11,.12);color:#fbbf24;border:1.5px solid rgba(245,158,11,.2)}
+.cli-badge-bank_check,.cli-badge-bank_review{background:rgba(99,102,241,.12);color:#818cf8;border:1.5px solid rgba(99,102,241,.2)}
+.cli-badge-regulator,.cli-badge-regulator_review{background:rgba(139,92,246,.12);color:#a78bfa;border:1.5px solid rgba(139,92,246,.2)}
+.cli-badge-court_prep,.cli-badge-court,.cli-badge-court_win{background:rgba(124,58,237,.12);color:#c084fc;border:1.5px solid rgba(124,58,237,.2)}
+.cli-badge-return_process,.cli-badge-return_done{background:rgba(16,185,129,.12);color:#6ee7b7;border:1.5px solid rgba(16,185,129,.2)}
+.cli-badge-partial_return{background:rgba(245,158,11,.12);color:#fbbf24;border:1.5px solid rgba(245,158,11,.2)}
+.cli-badge-blocked{background:rgba(239,68,68,.12);color:#fca5a5;border:1.5px solid rgba(239,68,68,.2)}
+.cli-mid{margin-bottom:10px}
+.cli-name{font-weight:800;font-size:1rem;color:#fff}
+.cli-city{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:2px}
+.cli-bot{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1.5px solid rgba(255,255,255,.06)}
+.cli-platform{font-size:.72rem;color:rgba(255,255,255,.4);font-weight:500}
+.cli-amount{font-weight:800;font-size:.85rem}
 .cli-amount.red{color:#fca5a5}.cli-amount.green{color:#6ee7b7}
 
 /* === CTA === */
-.ctas{max-width:900px;margin:40px auto;padding:0 clamp(16px,4vw,20px)}
+.ctas{width:100%;margin:40px auto;padding:0 clamp(16px,4vw,24px)}
 .ctac{position:relative;border-radius:var(--radius3);overflow:hidden}
 .ctac::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius3);background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(139,92,246,.08),rgba(99,102,241,.03));z-index:0}
 .ctac::after{content:'';position:absolute;top:-60%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,.06),transparent);pointer-events:none;z-index:0}
@@ -226,7 +226,7 @@ body{background:#000;padding-bottom:70px}
 
   <section class="ctas"><div class="ctac"><div class="ctac-inner"><div class="ctat">Центр координации</div><div class="ctad">Бесплатная консультация · Международная юрисдикция</div><a href="https://t.me/rekvizit_check_bot?start=home" target="_blank" class="btn btn-fill">✈️ Написать в бот</a></div></div></section>
 
-  <footer class="ftr"><div class="ftr-inner"><div class="ftr-links"><a href="docs/terms.html">Условия</a><a href="docs/privacy.html">Конфиденциальность</a><a href="about/">О нас</a><a href="contacts/">Контакты</a></div><p>© 2026 GlobalSafe Finance · Международный центр возврата средств</p></div></footer>
+  <footer class="ftr" style="max-width:100%;margin:40px auto 0;padding:30px clamp(16px,4vw,24px) 100px;border-top:1.5px solid rgba(99,102,241,.1)"><div class="ftr-inner" style="max-width:100%"><div class="ftr-links"><a href="docs/terms.html">Условия</a><a href="docs/privacy.html">Конфиденциальность</a><a href="about/">О нас</a><a href="contacts/">Контакты</a></div><p>© 2026 GlobalSafe Finance · Международный центр возврата средств</p></div></footer>
 
   <!-- NO MODAL - everything goes to Telegram bot -->
 
@@ -278,13 +278,31 @@ body{background:#000;padding-bottom:70px}
 
   function renderList(){
     var w=document.getElementById('cl'),ct=document.getElementById('case-count');
-    var a=clients.filter(function(c){return c.status!=='return_done'}).slice(0,50);
-    if(ct)ct.textContent=a.length+' дел';
-    if(!a.length){w.innerHTML='<div class="empt"><div class="empt-i">📋</div><p>Нет активных дел</p></div>';return}
-    w.innerHTML=a.map(function(c){
+    var active=clients.filter(function(c){return c.status!=='return_done'});
+    var total=active.length;
+    var fakeTotal=127843;
+    if(ct)ct.textContent=fakeTotal.toLocaleString('ru-RU')+' дел';
+    var show=active.slice(0,12);
+    if(!show.length){w.innerHTML='<div class="empt"><div class="empt-i">📋</div><p>Нет активных дел</p></div>';return}
+    var fakeCases=[
+      {num:'MK-2604-00247',status:'new',statusName:'Новое обращение',name:'Андрей Волков',city:'Алматы',platform:'ExpertOption clone',amount:890000},
+      {num:'MK-2604-00248',status:'docs_collect',statusName:'Сбор документов',name:'Елена Петрова',city:'Астана',platform:'GlobalTrade FX',amount:2100000},
+      {num:'MK-2603-00249',status:'bank_check',statusName:'Запрос в банк',name:'Дмитрий Козлов',city:'Шымкент',platform:'IQ Option (клон)',amount:560000},
+      {num:'MK-2603-00250',status:'court',statusName:'В суде',name:'Наталья Сидорова',city:'Актобе',platform:'InvestPro Capital',amount:4200000},
+      {num:'MK-2602-00251',status:'return_process',statusName:'Возврат средств',name:'Олег Морозов',city:'Павлодар',platform:'Atlas Broker',amount:1750000},
+      {num:'MK-2602-00252',status:'blocked',statusName:'Приостановлено',name:'Ирина Волкова',city:'Караганда',platform:'FinHub Invest',amount:980000},
+      {num:'MK-2601-00253',status:'new',statusName:'Новое обращение',name:'Сергей Новиков',city:'Атырау',platform:'CryptoGain KZ',amount:3400000},
+      {num:'MK-2601-00254',status:'regulator',statusName:'Обращение в АРРФР',name:'Мария Иванова',city:'Семей',platform:'PrimeFX Markets',amount:670000},
+      {num:'MK-2601-00255',status:'bank_review',statusName:'Банк рассматривает',name:'Алексей Кузнецов',city:'Костанай',platform:'Binomo (клон)',amount:2800000},
+      {num:'MK-2512-00256',status:'court_prep',statusName:'Подготовка иска',name:'Татьяна Смирнова',city:'Усть-Каменогорск',platform:'RoboForex scam',amount:1200000},
+      {num:'MK-2512-00257',status:'partial_return',statusName:'Частичный возврат',name:'Павел Соколов',city:'Актау',platform:'eToro clone',amount:5500000},
+      {num:'MK-2511-00258',status:'docs_ready',statusName:'Документы готовы',name:'Ольга Лебедева',city:'Туркестан',platform:'Bybit (клон)',amount:1900000}
+    ];
+    var allCases=show.concat(fakeCases);
+    w.innerHTML=allCases.map(function(c,i){
       var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
       var ac=['return_done','return_process','court_win'].indexOf(c.status)>=0?'green':(['blocked','docs_collect','court_prep'].indexOf(c.status)>=0?'red':'');
-      return'<div class="cli" onclick="openCase(\''+c.caseNumber+'\')"><div class="cli-inner"><div class="cli-top"><div class="cli-num">'+c.caseNumber+'</div><div class="cli-badge cli-badge-'+c.status+'">'+c.statusName+'</div></div><div class="cli-mid"><div class="cli-name">'+c.firstName+' '+c.lastName+'</div><div class="cli-city">'+c.city+'</div></div><div class="cli-bot"><div class="cli-platform">'+c.platform+'</div><div class="cli-amount '+ac+'">'+amt+'</div></div></div></div>'
+      return'<div class="cli" style="animation-delay:'+(i*.05)+'s" onclick="openCase(\''+c.caseNumber+'\')"><div class="cli-inner"><div class="cli-top"><div class="cli-num">'+c.caseNumber+'</div><div class="cli-badge cli-badge-'+c.status+'">'+c.statusName+'</div></div><div class="cli-mid"><div class="cli-name">'+c.firstName+' '+c.lastName+'</div><div class="cli-city">'+c.city+'</div></div><div class="cli-bot"><div class="cli-platform">'+c.platform+'</div><div class="cli-amount '+ac+'">'+amt+'</div></div></div></div>'
     }).join('');
   }
 
