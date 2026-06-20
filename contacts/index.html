@@ -2,94 +2,158 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <title>Обращение — </title>
+  <title>Обращение — Антифрод Центр Казахстан</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/global.css">
   <style>
 body{background:#000;padding-bottom:70px}
-.fp{max-width:520px;margin:0 auto;padding:clamp(20px,4vw,32px) clamp(16px,4vw,16px) 60px}
-.fc{position:relative;border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .6s ease both}
-.fc::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.1));z-index:0}
-.fc-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(20px,4vw,28px) clamp(16px,4vw,20px) clamp(24px,5vw,36px)}
-.fc h1{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:4px}
-.fc .sub{color:var(--text3);font-size:.82rem;margin-bottom:24px}
+.ct{max-width:600px;margin:0 auto;padding:clamp(24px,5vw,48px) clamp(16px,4vw,20px) 60px}
+
+/* Header */
+.ct-header{text-align:center;margin-bottom:36px;animation:fadeInUp .6s ease both}
+.ct-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.1);border-radius:100px;font-size:.65rem;font-weight:600;color:var(--accent3);margin-bottom:16px}
+.ct-badge .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s ease infinite}
+.ct-header h1{font-size:clamp(1.5rem,4vw,2rem);font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#fff 0%,#818cf8 50%,#c084fc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ct-header p{color:var(--text3);font-size:.92rem;line-height:1.6}
 
 /* Type selector */
-.ts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
-.to{padding:14px 10px;background:rgba(255,255,255,.02);border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;text-align:center;transition:all .3s;position:relative;-webkit-tap-highlight-color:transparent}
-.to:active{transform:scale(.97)}
-.to.sel{border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.05);box-shadow:0 0 24px rgba(99,102,241,.08)}
-.to input{position:absolute;opacity:0;pointer-events:none}
-.to-i{font-size:1.5rem;margin-bottom:4px;display:block}
-.to-n{font-weight:700;font-size:.75rem;color:#fff;display:block}
-.to-d{font-size:.56rem;color:var(--text3);margin-top:2px;display:block}
+.ct-types{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:28px;animation:fadeInUp .6s ease .1s both}
+.ct-type{padding:16px 12px;background:rgba(255,255,255,.02);border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;text-align:center;transition:all .35s;position:relative;-webkit-tap-highlight-color:transparent;overflow:hidden}
+.ct-type::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.06),transparent);opacity:0;transition:opacity .3s}
+.ct-type:active{transform:scale(.97)}
+.ct-type.sel{border-color:rgba(99,102,241,.4);box-shadow:0 0 30px rgba(99,102,241,.1)}
+.ct-type.sel::before{opacity:1}
+.ct-type input{position:absolute;opacity:0;pointer-events:none}
+.ct-type-i{font-size:1.8rem;margin-bottom:6px;display:block}
+.ct-type-n{font-weight:700;font-size:.82rem;color:#fff;display:block}
+.ct-type-d{font-size:.6rem;color:var(--text3);margin-top:2px;display:block}
 
 /* Form */
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sb{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:8px;transition:all .3s;box-shadow:0 4px 20px rgba(99,102,241,.25)}
-.sb:hover{box-shadow:0 6px 30px rgba(99,102,241,.35)}
-.sb:active{transform:scale(.98)}
-.sb:disabled{opacity:.4;cursor:not-allowed}
-.fs{text-align:center;padding:24px 0;display:none}
-.fs-i{font-size:2.5rem;margin-bottom:8px}
-.fs h3{color:#fff;margin-bottom:4px;font-size:1rem}
-.fs p{color:var(--text3);font-size:.82rem}
-.fn{text-align:center;margin-top:12px;font-size:.6rem;color:var(--text4)}
+.ct-form{position:relative;border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .6s ease .2s both}
+.ct-form::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.06));z-index:0}
+.ct-form-inner{position:relative;z-index:1;background:rgba(8,8,12,.95);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(24px,5vw,32px) clamp(20px,4vw,28px)}
+.ct-form-inner::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.25),transparent)}
+.ct-form h2{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:20px}
+
+/* Form rows */
+.ct-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ct-fg{margin-bottom:12px}
+.ct-fg label{display:block;font-size:.65rem;font-weight:600;color:var(--text3);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.ct-fg input,.ct-fg textarea,.ct-fg select{width:100%;padding:13px 16px;background:rgba(255,255,255,.03);border:1.5px solid var(--border);border-radius:10px;font-size:.88rem;font-family:var(--font);color:#fff;-webkit-appearance:none;transition:all .3s}
+.ct-fg input::placeholder,.ct-fg textarea::placeholder{color:var(--text4)}
+.ct-fg input:focus,.ct-fg textarea:focus{border-color:rgba(99,102,241,.4);outline:none;background:rgba(255,255,255,.05);box-shadow:0 0 24px rgba(99,102,241,.06)}
+.ct-fg textarea{height:80px;resize:vertical}
+.ct-fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.ct-fg select option{background:#0a0e1a;color:#fff}
+
+/* Submit button */
+.ct-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:8px;transition:all .3s;box-shadow:0 6px 24px rgba(99,102,241,.25);position:relative;overflow:hidden}
+.ct-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);opacity:0;transition:opacity .3s}
+.ct-submit:hover::before{opacity:1}
+.ct-submit:hover{box-shadow:0 8px 32px rgba(99,102,241,.35);transform:translateY(-2px)}
+.ct-submit:active{transform:translateY(0)}
+.ct-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* Success */
+.ct-success{display:none;text-align:center;padding:40px 0;animation:fadeInUp .5s ease both}
+.ct-success.show{display:block}
+.ct-success-icon{font-size:4rem;margin-bottom:16px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.ct-success h3{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:8px}
+.ct-success p{color:var(--text3);font-size:.88rem;line-height:1.6;max-width:360px;margin:0 auto}
+
+/* Trust badges */
+.ct-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:24px;animation:fadeInUp .6s ease .3s both}
+.ct-trust-item{text-align:center;padding:14px 8px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px}
+.ct-trust-icon{font-size:1.2rem;margin-bottom:4px}
+.ct-trust-text{font-size:.68rem;color:var(--text3);font-weight:500}
 
 /* Emergency */
-.hl{position:relative;border-radius:var(--radius);overflow:hidden;margin-top:14px;text-align:center;animation:fadeInUp .6s ease .3s both}
-.hl::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(239,68,68,.05));z-index:0}
-.hl-inner{position:relative;z-index:1;background:rgba(6,6,12,.9);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
-.hl h3{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:6px}
-.hl-d{font-size:.65rem;color:var(--text3)}
+.ct-emergency{margin-top:20px;position:relative;border-radius:var(--radius);overflow:hidden;animation:fadeInUp .6s ease .4s both}
+.ct-emergency::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(239,68,68,.05));z-index:0}
+.ct-emergency-inner{position:relative;z-index:1;background:rgba(8,8,12,.9);border:1px solid rgba(239,68,68,.1);border-radius:var(--radius);padding:16px;text-align:center}
+.ct-emergency h3{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:4px}
+.ct-emergency p{font-size:.75rem;color:var(--text3)}
 
-@media(max-width:380px){.ts{grid-template-columns:1fr}.fr{grid-template-columns:1fr}}
+@media(max-width:380px){.ct-types{grid-template-columns:1fr}.ct-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div id="nav-container" data-page="contacts"></div>
-  <div class="fp">
-    <div class="fc"><div class="fc-inner">
-      <h1>📋 Центр обращений</h1>
-      <div class="sub">Выберите тип и заполните форму</div>
-      <form id="cf">
-        <div class="ts">
-          <label class="to sel" data-t="return"><input type="radio" name="type" value="Возврат средств" checked><span class="to-i">💰</span><span class="to-n">Возврат</span><span class="to-d">Деньги от мошенников</span></label>
-          <label class="to" data-t="docs"><input type="radio" name="type" value="Документ"><span class="to-i">📄</span><span class="to-n">Документ</span><span class="to-d">Заявление, жалоба</span></label>
-          <label class="to" data-t="feedback"><input type="radio" name="type" value="Обратная связь"><span class="to-i">💬</span><span class="to-n">Связь</span><span class="to-d">Вопрос, отзыв</span></label>
-          <label class="to" data-t="org"><input type="radio" name="type" value="Организациям"><span class="to-i">🏛️</span><span class="to-n">Организациям</span><span class="to-d">АРРФР, полиция</span></label>
+  <div class="ct">
+    <div class="ct-header">
+      <div class="ct-badge"><span class="dot"></span>Бесплатная консультация</div>
+      <h1>Оставьте заявку</h1>
+      <p>Наш юрист свяжется с вами в течение 24 часов. Без обязательств.</p>
+    </div>
+
+    <div class="ct-types">
+      <label class="ct-type sel" data-t="return"><input type="radio" name="type" value="Возврат средств" checked><span class="ct-type-i">💰</span><span class="ct-type-n">Возврат средств</span><span class="ct-type-d">Деньги от мошенников</span></label>
+      <label class="ct-type" data-t="docs"><input type="radio" name="type" value="Документ"><span class="ct-type-i">📄</span><span class="ct-type-n">Документы</span><span class="ct-type-d">Заявления, жалобы</span></label>
+      <label class="ct-type" data-t="consult"><input type="radio" name="type" value="Консультация"><span class="ct-type-i">💬</span><span class="ct-type-n">Консультация</span><span class="ct-type-d">Вопросы, оценка</span></label>
+      <label class="ct-type" data-t="other"><input type="radio" name="type" value="Другое"><span class="ct-type-i">📋</span><span class="ct-type-n">Другое</span><span class="ct-type-d">Иное обращение</span></label>
+    </div>
+
+    <div class="ct-form"><div class="ct-form-inner">
+      <h2>📝 Заполните форму</h2>
+      <form id="ct-form">
+        <div class="ct-row">
+          <div class="ct-fg"><label>Ваше имя *</label><input type="text" name="name" placeholder="Иван Иванов" required></div>
+          <div class="ct-fg"><label>Телефон *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div>
         </div>
-        <div class="rf"><div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван" required></div><div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div></div>
-        <div class="fg"><label>Телефон *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div>
-        <div class="fg"><label>Платформа</label><input type="text" name="company" placeholder="Название компании"></div>
-        <div class="fg"><label>Сумма (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
-        <div class="fg"><label>Детали</label><textarea name="comment" placeholder="Что произошло..."></textarea></div>
-        <button type="submit" class="sb">Отправить заявку</button>
+        <div class="ct-fg"><label>Email</label><input type="email" name="email" placeholder="ivanov@mail.kz"></div>
+        <div class="ct-fg"><label>Название платформы / организации</label><input type="text" name="platform" placeholder="Название компании-мошенника"></div>
+        <div class="ct-row">
+          <div class="ct-fg"><label>Сумма убытка (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
+          <div class="ct-fg"><label>Когда обращаться</label><input type="text" name="callTime" placeholder="Пн-Пт 10-18"></div>
+        </div>
+        <div class="ct-fg"><label>Опишите ситуацию *</label><textarea name="comment" placeholder="Что произошло, какие действия уже предприняты, есть ли доказательства..." required></textarea></div>
+        <button type="submit" class="ct-submit">Отправить заявку</button>
       </form>
-      <div id="fs" class="fs"><div class="fs-i">✅</div><h3>Отправлено!</h3><p>Свяжемся в ближайшее время.</p></div>
-      <div class="fn">Все обращения обрабатываются конфиденциально</div>
+      <div class="ct-success" id="ct-success">
+        <div class="ct-success-icon">✅</div>
+        <h3>Заявка отправлена!</h3>
+        <p>Наш юрист свяжется с вами в ближайшее время. Проверьте телефон.</p>
+      </div>
     </div></div>
-    <div class="hl"><div class="hl-inner"><div class="hl-d">Экстренные случаи</div><h3>Если угрожает опасность</h3><p style="font-size:.75rem;color:var(--text3)">Позвоните в ближайшее отделение полиции</p></div></div>
+
+    <div class="ct-trust">
+      <div class="ct-trust-item"><div class="ct-trust-icon">🔒</div><div class="ct-trust-text">Конфиденциально</div></div>
+      <div class="ct-trust-item"><div class="ct-trust-icon">⚡</div><div class="ct-trust-text">Ответ за 24ч</div></div>
+      <div class="ct-trust-item"><div class="ct-trust-icon">💰</div><div class="ct-trust-text">Без предоплаты</div></div>
+    </div>
+
+    <div class="ct-emergency"><div class="ct-emergency-inner">
+      <h3>🚨 Экстренный случай?</h3>
+      <p>Если угрожает опасность — обратитесь в ближайшее отделение полиции</p>
+    </div></div>
   </div>
-  <footer class="ftr"><p>© 2026 </p></footer>
+  <footer class="ftr"><p>© 2026 Антифрод Центр Казахстан</p></footer>
   <script src="../assets/js/nav.js"></script>
   <script>
   var TG_TOKEN='8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk';
   var TG_CHAT='8471070560';
 
-  document.querySelectorAll('.to').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('.to').forEach(function(x){x.classList.remove('sel')});this.classList.add('sel');this.querySelector('input').checked=true})});
+  document.querySelectorAll('.ct-type').forEach(function(o){
+    o.addEventListener('click',function(){
+      document.querySelectorAll('.ct-type').forEach(function(x){x.classList.remove('sel')});
+      this.classList.add('sel');this.querySelector('input').checked=true;
+    });
+  });
 
-  document.getElementById('cf').addEventListener('submit',function(e){
-    e.preventDefault();var self=this,btn=self.querySelector('.sb');btn.disabled=true;btn.textContent='Отправка...';
+  document.getElementById('ct-form').addEventListener('submit',function(e){
+    e.preventDefault();var self=this,btn=self.querySelector('.ct-submit');btn.disabled=true;btn.textContent='Отправка...';
     var type=document.querySelector('input[name="type"]:checked').value;
     var d=new FormData(self);
-    var text='📋 *Обращение*\n\n📌 Тип: '+type+'\n\n👤 ФИО: '+(d.get('name')||'')+'\n🆔 ИИН: '+(d.get('iin')||'')+'\n📱 Телефон: '+(d.get('phone')||'');
-    if(d.get('company'))text+='\n🏢 Платформа: '+d.get('company');
+    var text='📋 *Новая заявка*\n\n📌 Тип: '+type+'\n\n👤 ФИО: '+(d.get('name')||'')+'\n📱 Телефон: '+(d.get('phone')||'');
+    if(d.get('email'))text+='\n📧 Email: '+d.get('email');
+    if(d.get('platform'))text+='\n🏢 Платформа: '+d.get('platform');
     if(d.get('amount'))text+='\n💰 Сумма: '+d.get('amount')+' ₸';
+    if(d.get('callTime'))text+='\n📅 Звонить: '+d.get('callTime');
     if(d.get('comment'))text+='\n💬 '+d.get('comment');
     fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text:text})}).then(function(r){return r.json()}).then(function(d){
-      if(d.ok){self.style.display='none';document.getElementById('fs').style.display='block'}
-      else{alert('Ошибка');btn.disabled=false;btn.textContent='Отправить заявку'}
+      if(d.ok){self.style.display='none';document.getElementById('ct-success').classList.add('show')}
+      else{alert('Ошибка отправки');btn.disabled=false;btn.textContent='Отправить заявку'}
     }).catch(function(){alert('Ошибка сети');btn.disabled=false;btn.textContent='Отправить заявку'});
   });
   </script>
