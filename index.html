@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="assets/css/global.css">
   <style>
 body{background:var(--bg);padding-bottom:70px}
+
+/* ===== HERO ===== */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:80px clamp(16px,4vw,20px) 60px;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,black 20%,transparent 70%)}
 .hero-glow{position:absolute;top:15%;left:50%;transform:translateX(-50%);width:min(700px,90vw);height:min(700px,90vw);background:radial-gradient(circle,rgba(99,102,241,.08),rgba(139,92,246,.04) 40%,transparent 70%);pointer-events:none}
@@ -25,7 +27,7 @@ body{background:var(--bg);padding-bottom:70px}
 .metric-val{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#fff}
 .metric-label{font-size:.62rem;color:var(--text4);margin-top:4px;text-transform:uppercase;letter-spacing:.8px;font-weight:600}
 
-/* Search */
+/* ===== SEARCH ===== */
 .search-sec{position:relative;padding:0 clamp(16px,4vw,20px);margin-top:-32px;z-index:10}
 .search-frame{max-width:580px;margin:0 auto}
 .search-inner{background:rgba(10,10,15,.95);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(12px,3vw,18px);backdrop-filter:blur(24px);position:relative;box-shadow:0 20px 50px rgba(0,0,0,.4)}
@@ -47,11 +49,16 @@ body{background:var(--bg);padding-bottom:70px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .sl{color:var(--text3);font-size:.78rem;font-weight:500}
 
-/* Results */
-.rw{max-width:580px;margin:28px auto;padding:0 clamp(16px,4vw,20px)}
-.cc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .5s ease both}
-.ch{padding:clamp(20px,4vw,28px);position:relative;overflow:hidden}
-.ch::before{content:'';position:absolute;inset:0;opacity:.06}
+/* ===== BACK BUTTON ===== */
+.bb{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:var(--font);color:var(--text3);display:none;transition:all .25s;margin-bottom:16px}
+.bb:hover{border-color:rgba(99,102,241,.2);color:#fff}
+
+/* ===== RESULT DETAIL (cosmic) ===== */
+.rw{max-width:620px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}
+.cc{border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .5s ease both;position:relative}
+.cc::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(139,92,246,.15),rgba(99,102,241,.05));z-index:-1}
+.ch{padding:clamp(20px,4vw,28px);position:relative;overflow:hidden;background:rgba(10,10,15,.95);backdrop-filter:blur(20px)}
+.ch::before{content:'';position:absolute;inset:0;opacity:.08}
 .ch.s-new::before{background:linear-gradient(135deg,var(--accent),var(--accent2))}
 .ch.s-docs::before{background:linear-gradient(135deg,var(--yellow),#d97706)}
 .ch.s-bank::before{background:linear-gradient(135deg,var(--accent),#3b82f6)}
@@ -61,82 +68,88 @@ body{background:var(--bg);padding-bottom:70px}
 .ch.s-partial::before{background:linear-gradient(135deg,var(--yellow),#d97706)}
 .ch.s-blocked::before{background:linear-gradient(135deg,var(--red),#dc2626)}
 .ch.s-return::before{background:linear-gradient(135deg,var(--green),var(--accent))}
-.cid{font-size:.65rem;font-weight:700;color:var(--text3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
-.ct{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:4px}
-.cs{font-size:.82rem;color:var(--text2)}
-.cb{padding:clamp(16px,3vw,24px)}
+.cid{font-size:.6rem;font-weight:700;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px}
+.ct{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:4px}
+.cs{font-size:.85rem;color:var(--text2)}
+.cb{padding:clamp(16px,3vw,24px);background:rgba(10,10,15,.95)}
 .ca{padding:12px 16px;border-radius:10px;font-size:.82rem;font-weight:600;margin-bottom:16px}
 .ca.info{background:rgba(99,102,241,.08);color:var(--accent3);border:1px solid rgba(99,102,241,.12)}
 .ca.warn{background:rgba(245,158,11,.08);color:var(--yellow2);border:1px solid rgba(245,158,11,.12)}
 .ca.ok{background:rgba(16,185,129,.08);color:var(--green2);border:1px solid rgba(16,185,129,.12)}
 .cg{display:grid;gap:1px;margin-bottom:16px}
-.cf{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.cf{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border)}
 .cf:last-child{border-bottom:none}
 .cf label{font-size:.72rem;color:var(--text3);font-weight:500}
 .cf span{font-size:.85rem;color:#fff;font-weight:600}
 .stl{font-size:.78rem;font-weight:700;color:var(--text2);margin:20px 0 10px;display:flex;align-items:center;gap:8px}
 .stl::before{content:'';width:3px;height:14px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px}
-
-/* History items */
-.hi{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.hi{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
 .hi:last-child{border-bottom:none}
-.hic{font-size:1rem;flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:8px}
+.hic{font-size:1rem;flex-shrink:0;width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:8px}
 .hicont{flex:1}
-.hit{font-size:.8rem;color:var(--text2)}
+.hit{font-size:.82rem;color:var(--text2)}
 .hid{font-size:.62rem;color:var(--text4);margin-top:2px}
 .hi-s .hic{background:rgba(99,102,241,.08)}
 .hi-ok .hic{background:rgba(16,185,129,.08)}
 .hi-w .hic{background:rgba(245,158,11,.08)}
 .hi-a .hic{background:rgba(139,92,246,.08)}
 .hi-i .hic{background:rgba(99,102,241,.06)}
-
-/* Next steps */
 .ns{display:flex;flex-direction:column;gap:8px}
 .ni{display:flex;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;animation:fadeInUp .4s ease both}
 .nic{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(99,102,241,.08);border-radius:8px}
 .nit{font-size:.8rem;color:var(--text2);flex:1}
 .nitme{font-size:.62rem;color:var(--text4);font-weight:600;white-space:nowrap}
 
-/* Cases list */
-.cls{max-width:580px;margin:36px auto;padding:0 clamp(16px,4vw,20px)}
-.clsh h2{font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--text2);margin-bottom:12px}
+/* ===== COSMIC CASE CARDS ===== */
+.cls{max-width:620px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}
+.clsh{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.clsh h2{font-size:.92rem;font-weight:700;color:var(--text2);display:flex;align-items:center;gap:8px}
 .clsh h2::before{content:'';width:3px;height:14px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px}
-.clsi{display:grid;gap:6px}
-.cli{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;cursor:pointer;transition:all .3s}
-.cli:hover,.cli:active{border-color:rgba(99,102,241,.15);background:var(--surface2)}
-.clr{display:flex;justify-content:space-between;align-items:center;gap:4px}
-.clr+.clr{margin-top:3px}
-.cln{font-weight:700;font-size:.72rem;font-family:monospace;color:var(--text3)}
-.clf{font-weight:600;font-size:.82rem;color:#fff}
-.clci{font-size:.62rem;color:var(--text4)}
-.clp{font-size:.62rem;color:var(--text4)}
-.clam{font-weight:600;font-size:.72rem;color:var(--red2)}
-.clph{font-size:.55rem;color:var(--text4);font-family:monospace}
-.cld{font-size:.5rem;color:var(--text4)}
-.clb{padding:3px 8px;border-radius:6px;font-size:.58rem;font-weight:700;white-space:nowrap}
-.clb-new{background:rgba(148,163,184,.08);color:#94a3b8}
-.clb-docs_collect,.clb-docs_ready{background:rgba(245,158,11,.08);color:#fbbf24}
-.clb-bank_check,.clb-bank_review{background:rgba(99,102,241,.08);color:#818cf8}
-.clb-regulator,.clb-regulator_review{background:rgba(139,92,246,.08);color:#a78bfa}
-.clb-court_prep,.clb-court,.clb-court_win{background:rgba(124,58,237,.08);color:#c084fc}
-.clb-return_process,.clb-return_done{background:rgba(16,185,129,.08);color:#6ee7b7}
-.clb-partial_return{background:rgba(245,158,11,.08);color:#fbbf24}
-.clb-blocked{background:rgba(239,68,68,.08);color:#fca5a5}
-.empt{text-align:center;padding:40px 20px;color:var(--text4)}
-.empt-i{font-size:2rem;margin-bottom:8px}
+.clsh-count{font-size:.72rem;color:var(--text4);font-weight:500}
+.clsi{display:grid;gap:10px}
 
-/* CTA section */
-.ctas{max-width:580px;margin:36px auto;padding:0 clamp(16px,4vw,20px)}
-.ctac{background:linear-gradient(135deg,rgba(99,102,241,.05),rgba(139,92,246,.03));border:1px solid rgba(99,102,241,.08);border-radius:var(--radius2);padding:clamp(24px,5vw,36px);text-align:center;position:relative;overflow:hidden}
+/* Cosmic card */
+.cli{position:relative;border-radius:var(--radius2);cursor:pointer;transition:all .4s cubic-bezier(.4,0,.2,1);overflow:hidden}
+.cli::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.1),rgba(99,102,241,.05));opacity:0;transition:opacity .4s;z-index:0}
+.cli:hover::before{opacity:1}
+.cli:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 30px rgba(99,102,241,.1)}
+.cli-inner{position:relative;z-index:1;background:rgba(10,10,15,.9);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--radius2);padding:16px 18px;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto auto;gap:6px 12px;transition:border-color .3s}
+.cli:hover .cli-inner{border-color:rgba(99,102,241,.2)}
+.cli-num{font-weight:700;font-size:.68rem;font-family:'SF Mono',Monaco,Menlo,monospace;color:var(--text4);letter-spacing:.3px}
+.cli-badge{justify-self:end;padding:3px 10px;border-radius:100px;font-size:.58rem;font-weight:700;white-space:nowrap;letter-spacing:.2px}
+.cli-name{grid-column:1;grid-row:2;font-weight:700;font-size:.88rem;color:#fff}
+.cli-city{grid-column:2;grid-row:2;justify-self:end;font-size:.68rem;color:var(--text4);font-weight:500}
+.cli-bottom{grid-column:1/-1;grid-row:3;display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px solid rgba(255,255,255,.03)}
+.cli-platform{font-size:.68rem;color:var(--text3)}
+.cli-amount{font-weight:700;font-size:.78rem}
+
+/* Status colors for cosmic cards */
+.cli-badge-new{background:rgba(148,163,184,.1);color:#94a3b8;border:1px solid rgba(148,163,184,.15)}
+.cli-badge-docs_collect,.cli-badge-docs_ready{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.15)}
+.cli-badge-bank_check,.cli-badge-bank_review{background:rgba(99,102,241,.1);color:#818cf8;border:1px solid rgba(99,102,241,.15)}
+.cli-badge-regulator,.cli-badge-regulator_review{background:rgba(139,92,246,.1);color:#a78bfa;border:1px solid rgba(139,92,246,.15)}
+.cli-badge-court_prep,.cli-badge-court,.cli-badge-court_win{background:rgba(124,58,237,.1);color:#c084fc;border:1px solid rgba(124,58,237,.15)}
+.cli-badge-return_process,.cli-badge-return_done{background:rgba(16,185,129,.1);color:#6ee7b7;border:1px solid rgba(16,185,129,.15)}
+.cli-badge-partial_return{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.15)}
+.cli-badge-blocked{background:rgba(239,68,68,.1);color:#fca5a5;border:1px solid rgba(239,68,68,.15)}
+
+.cli-amount.red{color:#fca5a5}
+.cli-amount.green{color:#6ee7b7}
+
+/* ===== CTA ===== */
+.ctas{max-width:620px;margin:40px auto;padding:0 clamp(16px,4vw,20px)}
+.ctac{background:linear-gradient(135deg,rgba(99,102,241,.05),rgba(139,92,246,.03));border:1px solid rgba(99,102,241,.08);border-radius:var(--radius2);padding:clamp(28px,5vw,40px);text-align:center;position:relative;overflow:hidden}
 .ctac::before{content:'';position:absolute;top:-50%;right:-30%;width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,.06),transparent);pointer-events:none}
-.ctat{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:4px;position:relative}
+.ctat{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:4px;position:relative}
 .ctad{color:var(--text3);margin-bottom:18px;font-size:.85rem;position:relative}
 
-/* Back button */
-.bb{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:var(--font);color:var(--text3);display:none;transition:all .25s}
-.bb:hover{border-color:rgba(99,102,241,.2);color:#fff}
+/* ===== NOT FOUND ===== */
+.nf{text-align:center;padding:48px 20px}
+.nf-i{font-size:2.5rem;margin-bottom:10px}
+.nf h3{color:#fff;font-size:1rem;margin-bottom:6px}
+.nf p{color:var(--text3);font-size:.85rem}
 
-/* Modal */
+/* ===== MODAL ===== */
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:2000;align-items:flex-end;justify-content:center;padding:0}
 .mo.on{display:flex}
 .ml{background:#0a0a0f;border-radius:var(--radius2) var(--radius2) 0 0;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;padding:clamp(20px,4vw,28px) clamp(16px,4vw,20px) clamp(24px,5vw,36px);animation:mu .35s cubic-bezier(.4,0,.2,1);border-top:1px solid var(--border);position:relative}
@@ -158,21 +171,23 @@ body{background:var(--bg);padding-bottom:70px}
 .fs h3{color:#fff;margin-bottom:4px;font-size:1rem}
 .fs p{color:var(--text3);font-size:.85rem}
 
-/* Not found */
-.nf{text-align:center;padding:48px 20px}
-.nf-i{font-size:2.5rem;margin-bottom:10px}
-.nf h3{color:#fff;font-size:1rem;margin-bottom:6px}
-.nf p{color:var(--text3);font-size:.85rem}
+/* ===== EMPTY STATE ===== */
+.empt{text-align:center;padding:48px 20px;color:var(--text4)}
+.empt-i{font-size:2.5rem;margin-bottom:10px}
 
 @media(max-width:480px){
   .hero-metrics{gap:20px}
   .hero h1{font-size:1.8rem}
-  .sld{border-radius:var(--radius)}
+  .cli-inner{grid-template-columns:1fr;gap:4px}
+  .cli-city{justify-self:start}
+  .cli-badge{justify-self:start;margin-top:2px}
 }
   </style>
 </head>
 <body>
   <div id="nav-container" data-page="home"></div>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid"></div><div class="hero-glow"></div><div class="hero-glow2"></div>
     <div class="hero-content">
@@ -190,6 +205,8 @@ body{background:var(--bg);padding-bottom:70px}
       </div>
     </div>
   </section>
+
+  <!-- SEARCH -->
   <section class="search-sec">
     <div class="search-frame">
       <div class="search-inner">
@@ -204,13 +221,32 @@ body{background:var(--bg);padding-bottom:70px}
       </div>
     </div>
   </section>
-  <div style="max-width:580px;margin:0 auto;padding:0 clamp(16px,4vw,20px)"><button id="bb" class="bb" onclick="backToList()">← Назад</button></div>
-  <section id="rw" class="rw"></section>
-  <section class="cls" id="cs">
-    <div class="clsh"><h2>Активные дела</h2></div>
-    <div id="cl" class="clsi"><div class="empt"><div class="empt-i">📋</div><p>Нет активных дел</p></div></div>
+
+  <!-- BACK + RESULT -->
+  <section class="rw">
+    <button id="bb" class="bb" onclick="backToList()">← Назад к списку</button>
+    <div id="rw-inner"></div>
   </section>
-  <section class="ctas"><div class="ctac"><div class="ctat">Центр координации</div><div class="ctad">Всё в одном месте</div><button class="btn btn-fill" onclick="document.getElementById('mo').classList.add('on')">Оставить заявку</button></div></section>
+
+  <!-- COSMIC CASE CARDS -->
+  <section class="cls" id="cs">
+    <div class="clsh">
+      <h2>Активные дела</h2>
+      <span class="clsh-count" id="case-count"></span>
+    </div>
+    <div id="cl" class="clsi"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="ctas">
+    <div class="ctac">
+      <div class="ctat">Центр координации</div>
+      <div class="ctad">Бесплатная консультация · Международная юрисдикция</div>
+      <button class="btn btn-fill" onclick="document.getElementById('mo').classList.add('on')">Оставить заявку</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="ftr">
     <div class="ftr-inner">
       <div class="ftr-links"><a href="docs/terms.html">Условия</a><a href="docs/privacy.html">Конфиденциальность</a><a href="about/">О нас</a><a href="contacts/">Контакты</a></div>
@@ -218,7 +254,7 @@ body{background:var(--bg);padding-bottom:70px}
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- MODAL -->
   <div class="mo" id="mo">
     <div class="ml">
       <button class="mx" onclick="document.getElementById('mo').classList.remove('on')">✕</button>
@@ -244,24 +280,104 @@ body{background:var(--bg);padding-bottom:70px}
   if(!clients.length){fetch('data/clients.json').then(function(r){return r.json()}).then(function(d){clients=d.clients||[];localStorage.setItem('cs_clients',JSON.stringify(clients));renderList()})}
   else{renderList()}
 
-  function renderList(){var w=document.getElementById('cl');var a=clients.filter(function(c){return c.status!=='return_done'}).slice(0,50);if(!a.length){w.innerHTML='<div class="empt"><div class="empt-i">📋</div><p>Нет активных дел</p></div>';return}w.innerHTML=a.map(function(c){var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';return'<div class="cli" onclick="sc(\''+c.caseNumber+'\')"><div class="clr"><div class="cln">'+c.caseNumber+'</div><div class="clb clb-'+c.status+'">'+c.statusName+'</div></div><div class="clr"><div class="clf">'+c.firstName+' '+c.lastName+'</div><div class="clci">'+c.city+'</div></div><div class="clr"><div class="clp">'+c.platform+'</div><div class="clam">'+amt+'</div></div><div class="clr"><div class="clph">'+mp(c.phone)+'</div><div class="cld">'+c.lastUpdate+'</div></div></div>'}).join('')}
-
   function mp(p){if(!p||p.length<7)return p;return p.substring(0,4)+'****'+p.substring(p.length-3)}
   function fd(d){if(!d)return'—';var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
-  function cs(s){if(['new'].includes(s))return's-new';if(['docs_collect','docs_ready'].includes(s))return's-docs';if(['bank_check','bank_review'].includes(s))return's-bank';if(['regulator','regulator_review'].includes(s))return's-reg';if(['court_prep','court','court_win'].includes(s))return's-court';if(['return_done'].includes(s))return's-done';if(['partial_return'].includes(s))return's-partial';if(['blocked'].includes(s))return's-blocked';if(['return_process'].includes(s))return's-return';return's-new'}
-  function bh(h){if(!h||!h.length)return'';return'<div style="margin:0 0 12px">'+h.map(function(e){var tc='hi-s';if(e.type==='success')tc='hi-ok';else if(e.type==='warning')tc='hi-w';else if(e.type==='action')tc='hi-a';else if(e.type==='info')tc='hi-i';return'<div class="hi '+tc+'"><div class="hic">'+e.icon+'</div><div class="hicont"><div class="hit">'+e.text+'</div><div class="hid">'+e.date+' '+e.time+'</div></div></div>'}).join('')+'</div>'}
-  function bn(s){var m={new:[{icon:'📞',text:'Свяжемся в течение 24 часов',time:'Скоро'},{icon:'📋',text:'Анализ ситуации',time:'1-2 дня'}],docs_collect:[{icon:'📄',text:'Сбор документов',time:'3-7 дней'}],docs_ready:[{icon:'⚖️',text:'Правовая позиция',time:'2-3 дня'}],bank_check:[{icon:'🏦',text:'Ожидание ответа банка',time:'5-30 дней'}],bank_review:[{icon:'🔍',text:'Проверка банка',time:'15-45 дней'}],regulator:[{icon:'🏛️',text:'Регистрация в АРРФР',time:'5-10 дней'}],regulator_review:[{icon:'🏛️',text:'Проверка регулятором',time:'30-90 дней'}],court_prep:[{icon:'📝',text:'Подготовка иска',time:'3-5 дней'}],court:[{icon:'🏛️',text:'Суд',time:'1-6 месяцев'}],court_win:[{icon:'📄',text:'Исполнительный лист',time:'5-10 дней'}],return_process:[{icon:'💰',text:'Зачисление',time:'3-10 дней'}],return_done:[{icon:'✅',text:'Завершено',time:'Готово'}],partial_return:[{icon:'💰',text:'Часть средств',time:'Проверьте'}],blocked:[{icon:'📞',text:'Связаться с куратором',time:'Срочно'}]};var l=m[s]||m.new;return'<div class="ns">'+l.map(function(s,i){return'<div class="ni" style="animation-delay:'+(i*.1+.1)+'s"><div class="nic">'+s.icon+'</div><div class="nit">'+s.text+'</div><div class="nitme">'+s.time+'</div></div>'}).join('')+'</div>'}
-  function rr(c){var cls=cs(c.status);var am={new:{cls:'info',text:'Принято. Свяжемся в течение 24 часов.'},docs_collect:{cls:'warn',text:'Нужны документы.'},docs_ready:{cls:'info',text:'Документы получены.'},bank_check:{cls:'info',text:'Запрос в банке.'},bank_review:{cls:'info',text:'Банк проверяет.'},regulator:{cls:'info',text:'В АРРФР.'},regulator_review:{cls:'info',text:'Регулятор проверяет.'},court_prep:{cls:'warn',text:'Готовится иск.'},court:{cls:'info',text:'В суде.'},court_win:{cls:'ok',text:'Суд вынес решение!'},return_process:{cls:'ok',text:'Возврат запущен.'},return_done:{cls:'ok',text:'Завершено!'},partial_return:{cls:'warn',text:'Часть возвращена.'},blocked:{cls:'warn',text:'Приостановлено.'}};var a=am[c.status]||am.new;var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';var h='<div class="cc"><div class="ch '+cls+'"><div class="cid">ДЕЛО № '+c.caseNumber+'</div><div class="ct">'+c.statusName+'</div><div class="cs">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="cb"><div class="ca '+a.cls+'">'+a.text+'</div><div class="cg"><div class="cf"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="cf"><label>Телефон</label><span>'+mp(c.phone)+'</span></div><div class="cf"><label>Город</label><span>'+c.city+'</span></div><div class="cf"><label>Платформа</label><span>'+c.platform+'</span></div><div class="cf"><label>Сумма</label><span>'+amt+'</span></div><div class="cf"><label>Обновлено</label><span>'+fd(c.lastUpdate)+'</span></div></div>';if(c.history&&c.history.length)h+='<div class="stl">История</div>'+bh(c.history);h+='<div class="stl">📋 Далее</div>'+bn(c.status)+'</div></div>';return h}
+  function badgeClass(s){return'cli-badge-'+s}
+  function amtClass(s){if(['return_done','return_process','court_win'].includes(s))return'green';if(['blocked','docs_collect','court_prep'].includes(s))return'red';return''}
 
-  function search(q){if(!clients||!q)return null;var s=q.toLowerCase().trim();return clients.find(function(c){return(c.caseNumber&&c.caseNumber.toLowerCase().includes(s))||(c.firstName&&c.firstName.toLowerCase().includes(s))||(c.lastName&&c.lastName.toLowerCase().includes(s))||(c.phone&&c.phone.includes(s))})}
-  window.sc=function(cn){var c=clients.find(function(x){return x.caseNumber===cn});if(!c)return;document.getElementById('cs').style.display='none';document.getElementById('rw').innerHTML=rr(c);document.getElementById('bb').style.display='inline-block'};
-  window.backToList=function(){document.getElementById('rw').innerHTML='';document.getElementById('cs').style.display='block';document.getElementById('bb').style.display='none';window.scrollTo({top:0})};
-  document.getElementById('sf').addEventListener('submit',function(e){e.preventDefault();var q=document.getElementById('si').value.trim();if(!q||q.length<2)return;document.getElementById('sld').classList.add('on');document.getElementById('cs').style.display='none';document.getElementById('bb').style.display='inline-block';setTimeout(function(){var c=search(q);document.getElementById('sld').classList.remove('on');if(c){document.getElementById('rw').innerHTML=rr(c)}else{document.getElementById('rw').innerHTML='<div class="nf"><div class="nf-i">🔍</div><h3>Не найдено</h3><p>Проверьте правильность ввода</p></div>'}},800)});
+  function renderList(){
+    var w=document.getElementById('cl');
+    var ct=document.getElementById('case-count');
+    var a=clients.filter(function(c){return c.status!=='return_done'}).slice(0,50);
+    if(ct)ct.textContent=a.length+' дел';
+    if(!a.length){w.innerHTML='<div class="empt"><div class="empt-i">📋</div><p>Нет активных дел</p></div>';return}
+    w.innerHTML=a.map(function(c){
+      var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
+      var ac=amtClass(c.status);
+      return'<div class="cli" onclick="sc(\''+c.caseNumber+'\')"><div class="cli-inner"><div class="cli-num">'+c.caseNumber+'</div><div class="cli-badge '+badgeClass(c.status)+'">'+c.statusName+'</div><div class="cli-name">'+c.firstName+' '+c.lastName+'</div><div class="cli-city">'+c.city+'</div><div class="cli-bottom"><div class="cli-platform">'+c.platform+'</div><div class="cli-amount '+ac+'">'+amt+'</div></div></div></div>'
+    }).join('');
+  }
+
+  function statusClass(s){if(['new'].includes(s))return's-new';if(['docs_collect','docs_ready'].includes(s))return's-docs';if(['bank_check','bank_review'].includes(s))return's-bank';if(['regulator','regulator_review'].includes(s))return's-reg';if(['court_prep','court','court_win'].includes(s))return's-court';if(['return_done'].includes(s))return's-done';if(['partial_return'].includes(s))return's-partial';if(['blocked'].includes(s))return's-blocked';if(['return_process'].includes(s))return's-return';return's-new'}
+
+  function buildHistory(h){
+    if(!h||!h.length)return'';
+    return'<div style="margin:0 0 12px">'+h.map(function(e){
+      var tc='hi-s';if(e.type==='success')tc='hi-ok';else if(e.type==='warning')tc='hi-w';else if(e.type==='action')tc='hi-a';else if(e.type==='info')tc='hi-i';
+      return'<div class="hi '+tc+'"><div class="hic">'+e.icon+'</div><div class="hicont"><div class="hit">'+e.text+'</div><div class="hid">'+e.date+' '+e.time+'</div></div></div>'
+    }).join('')+'</div>';
+  }
+
+  function buildNextSteps(status){
+    var map={new:[{icon:'📞',text:'Свяжемся в течение 24 часов',time:'Скоро'},{icon:'📋',text:'Анализ ситуации',time:'1-2 дня'}],docs_collect:[{icon:'📄',text:'Сбор документов',time:'3-7 дней'}],docs_ready:[{icon:'⚖️',text:'Правовая позиция',time:'2-3 дня'}],bank_check:[{icon:'🏦',text:'Ожидание ответа банка',time:'5-30 дней'}],bank_review:[{icon:'🔍',text:'Проверка банка',time:'15-45 дней'}],regulator:[{icon:'🏛️',text:'Регистрация в АРРФР',time:'5-10 дней'}],regulator_review:[{icon:'🏛️',text:'Проверка регулятором',time:'30-90 дней'}],court_prep:[{icon:'📝',text:'Подготовка иска',time:'3-5 дней'}],court:[{icon:'🏛️',text:'Суд',time:'1-6 месяцев'}],court_win:[{icon:'📄',text:'Исполнительный лист',time:'5-10 дней'}],return_process:[{icon:'💰',text:'Зачисление',time:'3-10 дней'}],return_done:[{icon:'✅',text:'Завершено',time:'Готово'}],partial_return:[{icon:'💰',text:'Часть средств',time:'Проверьте'}],blocked:[{icon:'📞',text:'Связаться с куратором',time:'Срочно'}]};
+    var list=map[status]||map.new;
+    return'<div class="ns">'+list.map(function(s,i){return'<div class="ni" style="animation-delay:'+(i*.1+.1)+'s"><div class="nic">'+s.icon+'</div><div class="nit">'+s.text+'</div><div class="nitme">'+s.time+'</div></div>'}).join('')+'</div>';
+  }
+
+  function renderResult(c){
+    var cls=statusClass(c.status);
+    var am={new:{cls:'info',text:'Принято. Свяжемся в течение 24 часов.'},docs_collect:{cls:'warn',text:'Нужны документы.'},docs_ready:{cls:'info',text:'Документы получены.'},bank_check:{cls:'info',text:'Запрос в банке.'},bank_review:{cls:'info',text:'Банк проверяет.'},regulator:{cls:'info',text:'В АРРФР.'},regulator_review:{cls:'info',text:'Регулятор проверяет.'},court_prep:{cls:'warn',text:'Готовится иск.'},court:{cls:'info',text:'В суде.'},court_win:{cls:'ok',text:'Суд вынес решение!'},return_process:{cls:'ok',text:'Возврат запущен.'},return_done:{cls:'ok',text:'Завершено!'},partial_return:{cls:'warn',text:'Часть возвращена.'},blocked:{cls:'warn',text:'Приостановлено.'}};
+    var a=am[c.status]||am.new;
+    var amt=c.amount?c.amount.toLocaleString('ru-RU')+' ₸':'—';
+    var h='<div class="cc"><div class="ch '+cls+'"><div class="cid">ДЕЛО № '+c.caseNumber+'</div><div class="ct">'+c.statusName+'</div><div class="cs">'+c.firstName+' '+c.lastName+' · '+c.city+'</div></div><div class="cb"><div class="ca '+a.cls+'">'+a.text+'</div><div class="cg"><div class="cf"><label>ФИО</label><span>'+c.firstName+' '+c.lastName+'</span></div><div class="cf"><label>Телефон</label><span>'+mp(c.phone)+'</span></div><div class="cf"><label>Город</label><span>'+c.city+'</span></div><div class="cf"><label>Платформа</label><span>'+c.platform+'</span></div><div class="cf"><label>Сумма</label><span>'+amt+'</span></div><div class="cf"><label>Обновлено</label><span>'+fd(c.lastUpdate)+'</span></div></div>';
+    if(c.history&&c.history.length)h+='<div class="stl">История</div>'+buildHistory(c.history);
+    h+='<div class="stl">📋 Далее</div>'+buildNextSteps(c.status)+'</div></div>';
+    return h;
+  }
+
+  function search(q){
+    if(!clients||!q)return null;
+    var s=q.toLowerCase().trim();
+    return clients.find(function(c){
+      return(c.caseNumber&&c.caseNumber.toLowerCase().includes(s))||(c.firstName&&c.firstName.toLowerCase().includes(s))||(c.lastName&&c.lastName.toLowerCase().includes(s))||(c.phone&&c.phone.includes(s))||((c.firstName+' '+c.lastName).toLowerCase().includes(s));
+    });
+  }
+
+  window.sc=function(cn){
+    var c=clients.find(function(x){return x.caseNumber===cn});
+    if(!c)return;
+    document.getElementById('cs').style.display='none';
+    document.getElementById('rw-inner').innerHTML=renderResult(c);
+    document.getElementById('bb').style.display='inline-block';
+    document.getElementById('rw').scrollIntoView({behavior:'smooth',block:'start'});
+  };
+
+  window.backToList=function(){
+    document.getElementById('rw-inner').innerHTML='';
+    document.getElementById('cs').style.display='block';
+    document.getElementById('bb').style.display='none';
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  // Search form
+  document.getElementById('sf').addEventListener('submit',function(e){
+    e.preventDefault();
+    var q=document.getElementById('si').value.trim();
+    if(!q||q.length<2)return;
+    document.getElementById('sld').classList.add('on');
+    document.getElementById('cs').style.display='none';
+    document.getElementById('bb').style.display='inline-block';
+    setTimeout(function(){
+      var c=search(q);
+      document.getElementById('sld').classList.remove('on');
+      if(c){document.getElementById('rw-inner').innerHTML=renderResult(c)}
+      else{document.getElementById('rw-inner').innerHTML='<div class="nf"><div class="nf-i">🔍</div><h3>Не найдено</h3><p>Проверьте правильность ввода</p></div>'}
+    },800);
+  });
 
   // Search tabs
-  document.querySelectorAll('.st').forEach(function(t){t.addEventListener('click',function(){document.querySelectorAll('.st').forEach(function(x){x.classList.remove('on')});this.classList.add('on');var p=this.dataset.t;var inp=document.getElementById('si');if(p==='case')inp.placeholder='Введите данные';else if(p==='name')inp.placeholder='Фамилия или имя';else inp.placeholder='+7 7XX XXX XX XX'})});
+  document.querySelectorAll('.st').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.st').forEach(function(x){x.classList.remove('on')});
+      this.classList.add('on');
+      var p=this.dataset.t;var inp=document.getElementById('si');
+      if(p==='case')inp.placeholder='Введите данные';
+      else if(p==='name')inp.placeholder='Фамилия или имя';
+      else inp.placeholder='+7 7XX XXX XX XX';
+    });
+  });
 
-  // FORM SUBMIT
+  // Modal form submit
   document.getElementById('tf').addEventListener('submit',function(e){
     e.preventDefault();var self=this;var btn=self.querySelector('.fb');btn.disabled=true;btn.textContent='Отправка...';
     var fd=new FormData(self);
@@ -271,7 +387,7 @@ body{background:var(--bg);padding-bottom:70px}
     if(fd.get('company'))text+='\n🏢 Платформа: '+fd.get('company');
     if(fd.get('callTime'))text+='\n📅 Звонить: '+fd.get('callTime');
     if(fd.get('comment'))text+='\n💬 '+fd.get('comment');
-    fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:text})}).then(function(r){return r.json()}).then(function(d){if(d.ok){self.style.display='none';document.getElementById('fs').style.display='block'}else{alert('Ошибка отправки. Попробуйте ещё раз.');btn.disabled=false;btn.textContent='Отправить заявку'}}).catch(function(){alert('Ошибка сети. Проверьте интернет.');btn.disabled=false;btn.textContent='Отправить заявку'});
+    fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:text})}).then(function(r){return r.json()}).then(function(d){if(d.ok){self.style.display='none';document.getElementById('fs').style.display='block'}else{alert('Ошибка отправки');btn.disabled=false;btn.textContent='Отправить заявку'}}).catch(function(){alert('Ошибка сети');btn.disabled=false;btn.textContent='Отправить заявку'});
   });
   </script>
 </body>
