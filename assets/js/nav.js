@@ -11,7 +11,7 @@ function renderNav(activePage){
   ];
   var isHome=activePage==='home';
   var topNav='<nav class="nav-top" id="nav-top">';
-  topNav+='<a href="'+b+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
+  topNav+='<a href="'+b+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name"></div><div class="nav-tag">Центр возврата средств</div></div></a>';
   topNav+='<div class="nav-desktop">';
   pages.forEach(function(p){
     if(p.id==='home'&&isHome)return;

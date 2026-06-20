@@ -63,7 +63,7 @@ function showForm(client){
   $('#f-amount').value=client?client.amount:'';
   $('#f-status').value=client?client.status:'new';
   $('#f-priority').value=client?client.priority:'medium';
-  $('#f-assignedTo').value=client?client.assignedTo:'Макаров С.';
+  $('#f-assignedTo').value=client?client.assignedTo:'Руслан Амиров С.';
   $('#f-notes').value=client?client.notes:'';
   $('#client-form-modal').style.display='flex';
 }
