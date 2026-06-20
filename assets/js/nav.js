@@ -1,14 +1,16 @@
 function renderNav(activePage){
+  var isRoot=location.pathname.endsWith('/rekvizit-check/')||location.pathname.endsWith('/rekvizit-check/index.html')||location.pathname==='/'||location.pathname.endsWith('/rekvizit-check');
+  var pre=isRoot?'':'../';
   var pages=[
-    {id:'home',href:'../',label:'Главная',icon:'🏠'},
-    {id:'articles',href:'../articles/',label:'Аналитика',icon:'📊'},
-    {id:'organizations',href:'../organizations/',label:'Реестр',icon:'🏛️'},
-    {id:'success',href:'../success/',label:'Кейсы',icon:'✨'},
-    {id:'contacts',href:'../contacts/',label:'Заявка',icon:'✉️',cta:true}
+    {id:'home',href:pre||'./',label:'Главная',icon:'🏠'},
+    {id:'articles',href:pre+'articles/',label:'Аналитика',icon:'📊'},
+    {id:'organizations',href:pre+'organizations/',label:'Реестр',icon:'🏛️'},
+    {id:'success',href:pre+'success/',label:'Кейсы',icon:'✨'},
+    {id:'contacts',href:pre+'contacts/',label:'Заявка',icon:'✉️',cta:true}
   ];
   var isHome=activePage==='home';
   var topNav='<nav class="nav-top" id="nav-top">';
-  topNav+='<a href="'+(isHome?'#':'../')+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
+  topNav+='<a href="'+(isHome?(isRoot?'#':pre):(pre||'./'))+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
   topNav+='<div class="nav-desktop">';
   pages.forEach(function(p){
     if(p.id==='home'&&isHome)return;
