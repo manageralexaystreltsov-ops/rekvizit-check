@@ -224,9 +224,25 @@ body{background:#000;padding-bottom:70px}
     <div id="cl" class="clsi"></div>
   </section>
 
-  <section class="ctas"><div class="ctac"><div class="ctac-inner"><div class="ctat">Центр координации</div><div class="ctad">Бесплатная консультация · Международная юрисдикция</div><button class="btn btn-fill" onclick="openModal()">📝 Оставить заявку</button></div></div></section>
+    <!-- How we work -->
+  <section style="width:100%;padding:0 clamp(16px,4vw,24px);margin:40px auto">
+    <div style="max-width:900px;margin:0 auto">
+      <h2 style="font-size:1.2rem;font-weight:800;color:#fff;text-align:center;margin-bottom:24px">Как мы работаем</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+        <div style="text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;animation:fadeInUp .5s ease .1s both"><div style="width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;margin:0 auto 10px">1</div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">Консультация</div><div style="font-size:.75rem;color:var(--text3)">Бесплатно оценим ситуацию</div></div>
+        <div style="text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;animation:fadeInUp .5s ease .2s both"><div style="width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;margin:0 auto 10px">2</div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">Анализ</div><div style="font-size:.75rem;color:var(--text3)">Изучим документы и доказательства</div></div>
+        <div style="text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;animation:fadeInUp .5s ease .3s both"><div style="width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;margin:0 auto 10px">3</div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">Заявления</div><div style="font-size:.75rem;color:var(--text3)">Подадим во все инстанции</div></div>
+        <div style="text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;animation:fadeInUp .5s ease .4s both"><div style="width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;margin:0 auto 10px">4</div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px">Возврат</div><div style="font-size:.75rem;color:var(--text3)">Контролируем до поступления средств</div></div>
+      </div>
+    </div>
+  </section>
 
-  <footer class="ftr" style="max-width:100%;margin:40px auto 0;padding:30px clamp(16px,4vw,24px) 100px;border-top:1.5px solid rgba(99,102,241,.1)"><div class="ftr-inner" style="max-width:100%"><div class="ftr-links"><a href="docs/terms.html">Условия</a><a href="docs/privacy.html">Конфиденциальность</a><a href="about/">О нас</a><a href="contacts/">Контакты</a></div><p>© 2026  · Международный центр возврата средств</p></div></footer>
+  <section class="ctas"><div class="ctac"><div class="ctac-inner"><div class="ctat">Начните сейчас</div><div class="ctad">Бесплатная консультация · Без предоплаты</div><button class="btn btn-fill" onclick="openModal()">📝 Оставить заявку</button></div></div></section>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/77001234567" target="_blank" style="position:fixed;bottom:80px;right:20px;z-index:999;width:56px;height:56px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,211,102,.3);transition:all .3s;text-decoration:none" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</a>
+
+  <footer class="ftr" style="max-width:100%;margin:40px auto 0;padding:30px clamp(16px,4vw,24px) 100px;border-top:1.5px solid rgba(99,102,241,.1)"><div class="ftr-inner" style="max-width:100%"><div class="ftr-links"><a href="check/">Проверка</a><a href="quiz/">Стадия</a><a href="services/">Услуги</a><a href="team/">Команда</a><a href="success/">Кейсы</a><a href="contacts/">Заявка</a><a href="docs/terms.html">Условия</a><a href="docs/privacy.html">Конфиденциальность</a></div><p>© 2026 Антифрод Центр Казахстан · Лицензированные юристы</p></div></footer>
 
     <div class="mo" id="mo"><div class="ml"><div class="ml-inner">
     <button class="mx" onclick="document.getElementById('mo').classList.remove('on')">✕</button>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Определи свою стадию — Антифрод Центр Казахстан</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+body{background:#000;padding-bottom:70px}
+.qz{max-width:640px;margin:0 auto;padding:clamp(24px,5vw,48px) clamp(16px,4vw,20px)}
+.qz h1{font-size:clamp(1.5rem,4vw,2rem);font-weight:900;margin-bottom:8px;text-align:center;animation:fadeInUp .6s ease both}
+.qz>p{color:var(--text3);text-align:center;margin-bottom:32px;font-size:.92rem;animation:fadeInUp .6s ease .1s both}
+
+/* Progress */
+.qz-progress{margin-bottom:32px;animation:fadeInUp .6s ease .1s both}
+.qz-bar{height:4px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.qz-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.qz-bar-text{font-size:.72rem;color:var(--text3);text-align:center}
+
+/* Question */
+.qz-card{position:relative;border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .5s ease both}
+.qz-card::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.08));z-index:0}
+.qz-card-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(20px,4vw,32px)}
+.qz-q{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:24px;line-height:1.4}
+.qz-options{display:grid;gap:10px}
+.qz-opt{padding:14px 18px;background:rgba(255,255,255,.02);border:1.5px solid var(--border);border-radius:12px;cursor:pointer;transition:all .3s;font-size:.88rem;color:var(--text2);text-align:left;font-family:var(--font);width:100%}
+.qz-opt:hover{border-color:rgba(99,102,241,.25);background:rgba(99,102,241,.04);color:#fff}
+.qz-opt.selected{border-color:var(--accent);background:rgba(99,102,241,.08);color:#fff}
+
+/* Result */
+.qz-result{display:none;animation:fadeInUp .6s ease both}
+.qz-result.show{display:block}
+.qz-result-card{position:relative;border-radius:var(--radius2);overflow:hidden}
+.qz-result-card::before{content:'';position:absolute;inset:-2px;border-radius:18px;z-index:0}
+.qz-stage-a .qz-result-card::before{background:linear-gradient(135deg,rgba(239,68,68,.3),rgba(239,68,68,.1))}
+.qz-stage-b .qz-result-card::before{background:linear-gradient(135deg,rgba(245,158,11,.3),rgba(245,158,11,.1))}
+.qz-stage-c .qz-result-card::before{background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(99,102,241,.1))}
+.qz-stage-d .qz-result-card::before{background:linear-gradient(135deg,rgba(16,185,129,.3),rgba(16,185,129,.1))}
+.qz-result-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(24px,5vw,36px);text-align:center}
+.qz-stage-icon{font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.qz-stage-badge{display:inline-block;padding:6px 16px;border-radius:100px;font-size:.82rem;font-weight:700;margin-bottom:16px}
+.stage-a .qz-stage-badge{background:rgba(239,68,68,.1);color:#fca5a5;border:1px solid rgba(239,68,68,.2)}
+.stage-b .qz-stage-badge{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.2)}
+.stage-c .qz-stage-badge{background:rgba(99,102,241,.1);color:var(--accent3);border:1px solid rgba(99,102,241,.2)}
+.stage-d .qz-stage-badge{background:rgba(16,185,129,.1);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+.qz-stage-title{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:8px}
+.qz-stage-desc{color:var(--text2);font-size:.92rem;line-height:1.7;margin-bottom:20px;max-width:500px;margin-left:auto;margin-right:auto}
+.qz-steps{display:grid;gap:10px;text-align:left;margin-bottom:24px}
+.qz-step{display:flex;gap:12px;padding:12px 14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px}
+.qz-step-num{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;color:#fff;flex-shrink:0}
+.qz-step-text{font-size:.85rem;color:var(--text2);flex:1}
+.qz-step-text strong{color:#fff}
+.qz-result-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:12px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 20px rgba(99,102,241,.25)}
+.qz-result-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,.35);color:#fff;text-decoration:none}
+.qz-restart{margin-top:12px;font-size:.82rem;color:var(--text3);cursor:pointer;transition:color .2s}
+.qz-restart:hover{color:#fff}
+  </style>
+</head>
+<body>
+  <div id="nav-container" data-page="quiz"></div>
+  <div class="qz">
+    <h1>🎯 Определи свою стадию</h1>
+    <p>Ответьте на 5 вопросов — мы определим, на какой стадии мошенничества вы находитесь</p>
+
+    <div class="qz-progress">
+      <div class="qz-bar"><div class="qz-bar-fill" id="qz-bar" style="width:0%"></div></div>
+      <div class="qz-bar-text" id="qz-bar-text">Вопрос 1 из 5</div>
+    </div>
+
+    <div class="qz-card" id="qz-card"><div class="qz-card-inner">
+      <div class="qz-q" id="qz-q"></div>
+      <div class="qz-options" id="qz-options"></div>
+    </div></div>
+
+    <div class="qz-result" id="qz-result"></div>
+  </div>
+  <footer class="ftr"><p>© 2026 Антифрод Центр Казахстан</p></footer>
+  <script src="../assets/js/nav.js"></script>
+  <script>
+  var questions=[
+    {q:'Что говорят вам мошенники прямо сейчас?',opts:[
+      {text:'«Заплатите налог/комиссию и выведем ваши деньги»',score:4},
+      {text:'«Ваши средства на счету, нужно только подтвердить личность»',score:3},
+      {text:'«Мы работаем над возвратом, подождите ещё немного»',score:2},
+      {text:'Они перестали отвечать на сообщения',score:1}
+    ]},
+    {q:'Как давно вы перевели последнюю сумму?',opts:[
+      {text:'Менее 72 часов назад',score:4},
+      {text:'От 3 дней до 2 недель',score:3},
+      {text:'От 2 недель до месяца',score:2},
+      {text:'Более месяца назад',score:1}
+    ]},
+    {q:'Удалось ли заблокировать карту или остановить переводы?',opts:[
+      {text:'Нет, карту не заблокировал(а)',score:4},
+      {text:'Да, заблокировал(а) карту, но деньги уже ушли',score:3},
+      {text:'Частично — часть средств ещё на счету',score:2},
+      {text:'Да, все операции приостановлены',score:1}
+    ]},
+    {q:'Обращались ли вы уже в банк или правоохранительные органы?',opts:[
+      {text:'Нет, ещё не обращался',score:4},
+      {text:'Позвонил(а) в банк, но они сказали «ждать»',score:3},
+      {text:'Подал(а) заявление в полицию',score:2},
+      {text:'Да, и получил(а) ответ',score:1}
+    ]},
+    {q:'Есть ли у вас доказательства (переписки, чеки, скриншоты)?',opts:[
+      {text:'Нет, всё удалил(а) или потерял(а)',score:4},
+      {text:'Частично есть',score:3},
+      {text:'Да, сохранил(а) все переписки и чеки',score:2},
+      {text:'Да, и готов(а) предоставить',score:1}
+    ]}
+  ];
+
+  var currentQ=0,totalScore=0;
+
+  function renderQuestion(){
+    var q=questions[currentQ];
+    document.getElementById('qz-q').textContent=q.q;
+    document.getElementById('qz-options').innerHTML=q.opts.map(function(o,i){
+      return'<button class="qz-opt" onclick="selectOpt('+i+','+o.score+')">'+o.text+'</button>';
+    }).join('');
+    var pct=((currentQ)/questions.length)*100;
+    document.getElementById('qz-bar').style.width=pct+'%';
+    document.getElementById('qz-bar-text').textContent='Вопрос '+(currentQ+1)+' из '+questions.length;
+  }
+
+  function selectOpt(i,score){
+    var opts=document.querySelectorAll('.qz-opt');
+    opts[i].classList.add('selected');
+    totalScore+=score;
+    setTimeout(function(){
+      currentQ++;
+      if(currentQ<questions.length){renderQuestion()}
+      else{showResult()}
+    },400);
+  }
+
+  function showResult(){
+    document.getElementById('qz-card').style.display='none';
+    document.querySelector('.qz-progress').style.display='none';
+    var avg=totalScore/questions.length;
+    var stage,icon,title,desc,steps;
+    if(avg>=3.5){
+      stage='a';icon='🚨';title='Стадия А: Критическая';
+      desc='Вы находитесь в критической ситуации. Мошенники активно вымогают деньги. Каждый час промедления снижает шансы на возврат.';
+      steps=[
+        {n:'1',t:'<strong>НЕ ПЕРЕВОДИТЕ больше денег</strong> — любые требования об оплате «налога» или «комиссии» это повторное мошенничество'},
+        {n:'2',t:'<strong>Заблокируйте карту</strong> немедленно через мобильное приложение или звонок в банк'},
+        {n:'3',t:'<strong>Подайте заявку</strong> через нашу форму — мы направим документы в банк и правоохранительные органы'},
+        {n:'4',t:'<strong>Соберите доказательства</strong> — скриншоты переписки, чеки, выписки по счёту'}
+      ];
+    }else if(avg>=2.5){
+      stage='b';icon='⚠️';title='Стадия Б: Активная';
+      desc='Мошенники продолжают удерживать ваши средства. Важно действовать быстро, но у вас ещё есть время для правовых действий.';
+      steps=[
+        {n:'1',t:'<strong>Зафиксируйте все доказательства</strong> — переписки, скриншоты интерфейса, выписки'},
+        {n:'2',t:'<strong>Обратитесь в банк</strong> с заявлением о чарджбэке (оспаривание транзакции)'},
+        {n:'3',t:'<strong>Подайте заявление</strong> в АРРФР (1434) и полицию (102)'},
+        {n:'4',t:'<strong>Проконсультируйтесь с юристом</strong> — оценим шансы и составим план действий'}
+      ];
+    }else if(avg>=1.5){
+      stage='c';icon='📋';title='Стадия В: Процедурная';
+      desc='Вы уже начали процесс — это правильно. Теперь важно правильно оформить документы и контролировать сроки.';
+      steps=[
+        {n:'1',t:'<strong>Проверьте статус заявлений</strong> — получили ли вы талон-уведомление из полиции'},
+        {n:'2',t:'<strong>Контролируйте банк</strong> — если не получен ответ за 30 дней, подайте жалобу в НБ РК'},
+        {n:'3',t:'<strong>Подготовьте документы</strong> для суда — если другие методы не помогли'},
+        {n:'4',t:'<strong>Обратитесь к юристу</strong> для сопровождения судебного процесса'}
+      ];
+    }else{
+      stage='d';icon='✅';title='Стадия Г: Завершающая';
+      desc='Вы уже прошли основные этапы. Проверьте статус вашего дела и при необходимости обратитесь за помощью.';
+      steps=[
+        {n:'1',t:'<strong>Проверьте статус дела</strong> — на сайте АРРФР или в банке'},
+        {n:'2',t:'<strong>Оцените результат</strong> — если часть средств возвращена, оцените возможность взыскания остатка'},
+        {n:'3',t:'<strong>Проконсультируйтесь</strong> — возможно есть дополнительные инструменты'},
+        {n:'4',t:'<strong>Поделитесь опытом</strong> — помогите другим жертвам мошенничества'}
+      ];
+    }
+    var h='<div class="qz-stage-'+stage+'"><div class="qz-result-card"><div class="qz-result-inner">';
+    h+='<div class="qz-stage-icon">'+icon+'</div>';
+    h+='<div class="qz-stage-badge">'+title+'</div>';
+    h+='<div class="qz-stage-title">'+title+'</div>';
+    h+='<div class="qz-stage-desc">'+desc+'</div>';
+    h+='<div class="qz-steps">';
+    steps.forEach(function(s){h+='<div class="qz-step"><div class="qz-step-num">'+s.n+'</div><div class="qz-step-text">'+s.t+'</div></div>'});
+    h+='</div>';
+    h+='<a href="/rekvizit-check/contacts/" class="qz-result-btn">📝 Оставить заявку</a>';
+    h+='<div class="qz-restart" onclick="restart()">Пройти тест заново</div>';
+    h+='</div></div></div>';
+    document.getElementById('qz-result').innerHTML=h;
+    document.getElementById('qz-result').classList.add('show');
+    document.getElementById('qz-result').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function restart(){
+    currentQ=0;totalScore=0;
+    document.getElementById('qz-card').style.display='block';
+    document.querySelector('.qz-progress').style.display='block';
+    document.getElementById('qz-result').classList.remove('show');
+    renderQuestion();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  renderQuestion();
+  </script>
+</body>
+</html>

@@ -1,17 +1,17 @@
 function renderNav(activePage){
   var b='/rekvizit-check/';
-  var p=location.pathname;
-  if(p.indexOf(b)<0)b='/';
   var pages=[
     {id:'home',href:b,label:'Главная',icon:'🏠'},
-    {id:'articles',href:b+'articles/',label:'Аналитика',icon:'📊'},
-    {id:'organizations',href:b+'organizations/',label:'Реестр',icon:'🏛️'},
+    {id:'check',href:b+'check/',label:'Проверка',icon:'🔍'},
+    {id:'quiz',href:b+'quiz/',label:'Стадия',icon:'🎯'},
+    {id:'services',href:b+'services/',label:'Услуги',icon:'📋'},
+    {id:'team',href:b+'team/',label:'Команда',icon:'👨‍⚖️'},
     {id:'success',href:b+'success/',label:'Кейсы',icon:'✨'},
     {id:'contacts',href:b+'contacts/',label:'Заявка',icon:'✉️',cta:true}
   ];
   var isHome=activePage==='home';
   var topNav='<nav class="nav-top" id="nav-top">';
-  topNav+='<a href="'+b+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name"></div><div class="nav-tag">Центр возврата средств</div></div></a>';
+  topNav+='<a href="'+b+'" class="nav-brand"><div class="nav-mark">🛡️</div><div><div class="nav-name">Антифрод Центр</div><div class="nav-tag">Казахстан</div></div></a>';
   topNav+='<div class="nav-desktop">';
   pages.forEach(function(p){
     if(p.id==='home'&&isHome)return;

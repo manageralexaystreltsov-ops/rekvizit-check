@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Услуги и цены — Антифрод Центр Казахстан</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+body{background:#000;padding-bottom:70px}
+.sv{max-width:900px;margin:0 auto;padding:clamp(24px,5vw,48px) clamp(16px,4vw,20px)}
+.sv h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;margin-bottom:8px;text-align:center;animation:fadeInUp .6s ease both}
+.sv>p{color:var(--text3);text-align:center;margin-bottom:40px;font-size:.92rem;animation:fadeInUp .6s ease .1s both}
+
+/* Services grid */
+.sv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:40px}
+.sv-card{position:relative;border-radius:var(--radius2);overflow:hidden;transition:all .4s;animation:fadeInUp .5s ease both}
+.sv-card:nth-child(1){animation-delay:.05s}.sv-card:nth-child(2){animation-delay:.1s}.sv-card:nth-child(3){animation-delay:.15s}.sv-card:nth-child(4){animation-delay:.2s}.sv-card:nth-child(5){animation-delay:.25s}.sv-card:nth-child(6){animation-delay:.3s}
+.sv-card::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.08));opacity:0;transition:opacity .4s;z-index:0}
+.sv-card:hover::before{opacity:1}
+.sv-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.sv-card-inner{position:relative;z-index:1;background:rgba(6,6,12,.9);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--radius2);padding:24px 20px;transition:border-color .3s;height:100%;display:flex;flex-direction:column}
+.sv-card:hover .sv-card-inner{border-color:rgba(99,102,241,.18)}
+.sv-icon{font-size:2rem;margin-bottom:12px}
+.sv-name{font-size:1rem;font-weight:800;color:#fff;margin-bottom:6px}
+.sv-desc{font-size:.82rem;color:var(--text3);line-height:1.6;margin-bottom:14px;flex:1}
+.sv-price{font-size:1.1rem;font-weight:900;color:var(--accent3);margin-bottom:4px}
+.sv-price-note{font-size:.7rem;color:var(--text4);margin-bottom:12px}
+.sv-features{margin-bottom:14px}
+.sv-feat{font-size:.78rem;color:var(--text2);padding:4px 0;display:flex;align-items:center;gap:6px}
+.sv-feat::before{content:'✓';color:var(--green2);font-weight:700;font-size:.7rem}
+.sv-btn{display:block;text-align:center;padding:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s}
+.sv-btn:hover{box-shadow:0 4px 16px rgba(99,102,241,.3);color:#fff;text-decoration:none;transform:translateY(-1px)}
+
+/* Free consultation highlight */
+.sv-free{position:relative;border-radius:var(--radius2);overflow:hidden;margin-bottom:40px;animation:fadeInUp .5s ease both}
+.sv-free::before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,rgba(16,185,129,.3),rgba(16,185,129,.08));z-index:0}
+.sv-free-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border:1px solid rgba(16,185,129,.15);border-radius:var(--radius2);padding:32px 24px;text-align:center}
+.sv-free-icon{font-size:3rem;margin-bottom:12px}
+.sv-free-title{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:6px}
+.sv-free-desc{color:var(--text2);font-size:.88rem;margin-bottom:16px;max-width:400px;margin-left:auto;margin-right:auto}
+.sv-free-price{font-size:1.8rem;font-weight:900;color:var(--green2);margin-bottom:4px}
+.sv-free-note{font-size:.78rem;color:var(--text3);margin-bottom:16px}
+.sv-free-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--green),#059669);color:#fff;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 16px rgba(16,185,129,.25)}
+.sv-free-btn:hover{box-shadow:0 6px 24px rgba(16,185,129,.35);color:#fff;text-decoration:none;transform:translateY(-2px)}
+
+/* FAQ */
+.sv-faq{animation:fadeInUp .6s ease .3s both}
+.sv-faq h2{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:20px;text-align:center}
+.sv-faq-item{margin-bottom:10px}
+.sv-faq-q{padding:14px 18px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .3s;font-size:.88rem;color:var(--text2);text-align:left;font-family:var(--font);width:100%;display:flex;justify-content:space-between;align-items:center}
+.sv-faq-q:hover{border-color:rgba(99,102,241,.15);background:rgba(99,102,241,.03)}
+.sv-faq-q .arrow{transition:transform .3s;font-size:.7rem}
+.sv-faq-q.open .arrow{transform:rotate(180deg)}
+.sv-faq-a{display:none;padding:14px 18px;font-size:.85rem;color:var(--text2);line-height:1.7;border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;background:rgba(255,255,255,.01)}
+.sv-faq-a.show{display:block}
+  </style>
+</head>
+<body>
+  <div id="nav-container" data-page="services"></div>
+  <div class="sv">
+    <h1>📋 Услуги и цены</h1>
+    <p>Прозрачные цены за конкретные действия. Никаких скрытых платежей.</p>
+
+    <!-- Free consultation -->
+    <div class="sv-free"><div class="sv-free-inner">
+      <div class="sv-free-icon">💬</div>
+      <div class="sv-free-title">Бесплатная консультация</div>
+      <div class="sv-free-desc">30 минут с юристом. Оценим ситуацию, расскажем о вариантах, ответим на вопросы.</div>
+      <div class="sv-free-price">0 ₸</div>
+      <div class="sv-free-note">Без обязательств</div>
+      <a href="/rekvizit-check/contacts/" class="sv-free-btn">📝 Записаться бесплатно</a>
+    </div></div>
+
+    <!-- Services -->
+    <div class="sv-grid">
+      <div class="sv-card"><div class="sv-card-inner">
+        <div class="sv-icon">📄</div>
+        <div class="sv-name">Подготовка заявления</div>
+        <div class="sv-desc">Составление заявления в полицию, АРРФР или банк с учётом всех юридических требований.</div>
+        <div class="sv-price">25 000 ₸</div>
+        <div class="sv-price-note">За одно заявление</div>
+        <div class="sv-features">
+          <div class="sv-feat">Анализ документов</div>
+          <div class="sv-feat">Составление заявления</div>
+          <div class="sv-feat">Приложение доказательств</div>
+        </div>
+        <a href="/rekvizit-check/contacts/" class="sv-btn">Заказать</a>
+      </div></div>
+
+      <div class="sv-card"><div class="sv-card-inner">
+        <div class="sv-icon">🏦</div>
+        <div class="sv-name">Чарджбэк сопровождение</div>
+        <div class="sv-desc">Полное сопровождение процедуры оспаривания транзакции через банк.</div>
+        <div class="sv-price">50 000 ₸</div>
+        <div class="sv-price-note">За одну транзакцию</div>
+        <div class="sv-features">
+          <div class="sv-feat">Подготовка документов</div>
+          <div class="sv-feat">Подача в банк</div>
+          <div class="sv-feat">Контроль сроков</div>
+          <div class="sv-feat">Обжалование отказа</div>
+        </div>
+        <a href="/rekvizit-check/contacts/" class="sv-btn">Заказать</a>
+      </div></div>
+
+      <div class="sv-card"><div class="sv-card-inner">
+        <div class="sv-icon">🏛️</div>
+        <div class="sv-name">Жалоба в АРРФР</div>
+        <div class="sv-desc">Подготовка и подача жалобы в Агентство по регулированию финансового рынка.</div>
+        <div class="sv-price">35 000 ₸</div>
+        <div class="sv-price-note">За одно обращение</div>
+        <div class="sv-features">
+          <div class="sv-feat">Анализ ситуации</div>
+          <div class="sv-feat">Составление жалобы</div>
+          <div class="sv-feat">Подача в АРРФР</div>
+          <div class="sv-feat">Контроль рассмотрения</div>
+        </div>
+        <a href="/rekvizit-check/contacts/" class="sv-btn">Заказать</a>
+      </div></div>
+
+      <div class="sv-card"><div class="sv-card-inner">
+        <div class="sv-icon">⚖️</div>
+        <div class="sv-name">Подготовка иска</div>
+        <div class="sv-desc">Составление и подача искового заявления в суд для возврата средств.</div>
+        <div class="sv-price">75 000 ₸</div>
+        <div class="sv-price-note">За одно дело</div>
+        <div class="sv-features">
+          <div class="sv-feat">Правовой анализ</div>
+          <div class="sv-feat">Составление иска</div>
+          <div class="sv-feat">Формирование доказательств</div>
+          <div class="sv-feat">Подача в суд</div>
+        </div>
+        <a href="/rekvizit-check/contacts/" class="sv-btn">Заказать</a>
+      </div></div>
+
+      <div class="sv-card"><div class="sv-card-inner">
+        <div class="sv-icon">₿</div>
+        <div class="sv-name">Трекинг крипто-транзакций</div>
+        <div class="sv-desc">Отслеживание средств в блокчейне: Ethereum, BSC, TRON. Определение конечных получателей.</div>
+        <div class="sv-price">40 000 ₸</div>
+        <div class="sv-price-note">За одно расследование</div>
+        <div class="sv-features">
+          <div class="sv-feat">Ализ кошельков</div>
+          <div class="sv-feat">Трекинг транзакций</div>
+          <div class="sv-feat">Отчёт для суда/полиции</div>
+        </div>
+        <a href="/rekvizit-check/contacts/" class="sv-btn">Заказать</a>
+      </div></div>
+
+      <div class="sv-card"><div class="sv-card-inner">
+        <div class="sv-icon">🔄</div>
+        <div class="sv-name">Полное ведение дела</div>
+        <div class="sv-desc">Комплексное сопровождение от подачи заявления до возврата средств.</div>
+        <div class="sv-price">от 150 000 ₸</div>
+        <div class="sv-price-note">В зависимости от сложности</div>
+        <div class="sv-features">
+          <div class="sv-feat">Все этапы включены</div>
+          <div class="sv-feat">Персональный куратор</div>
+          <div class="sv-feat">Еженедельные отчёты</div>
+          <div class="sv-feat">Суд при необходимости</div>
+        </div>
+        <a href="/rekvizit-check/contacts/" class="sv-btn">Заказать</a>
+      </div></div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="sv-faq">
+      <h2>Частые вопросы</h2>
+      <div class="sv-faq-item">
+        <button class="sv-faq-q" onclick="toggleFaq(this)">Можно ли вернуть деньги? <span class="arrow">▼</span></button>
+        <div class="sv-faq-a">Да, в большинстве случаев вернуть средства можно. Успех зависит от стадии мошенничества и скорости обращения. Ранние обращения (в первые 72 часа) имеют шанс до 70% на полный возврат. Даже через месяц шансы остаются — через чарджбэк, жалобу в АРРФР или суд.</div>
+      </div>
+      <div class="sv-faq-item">
+        <button class="sv-faq-q" onclick="toggleFaq(this)">Сколько стоит консультация? <span class="arrow">▼</span></button>
+        <div class="sv-faq-a">Первая консультация — бесплатно. Мы оценим вашу ситуацию и предложим план действий. Оплата только за конкретные услуги: подготовка документов, чарджбэк, сопровождение.</div>
+      </div>
+      <div class="sv-faq-item">
+        <button class="sv-faq-q" onclick="toggleFaq(this)">Работаете с криптой? <span class="arrow">▼</span></button>
+        <div class="sv-faq-a">Да. У нас есть специалист по крипто-мошенничеству. Мы отслеживаем транзакции в блокчейне (Ethereum, BSC, TRON), работаем с криптобиржами и можем инициировать заморозку средств через правоохранительные органы.</div>
+      </div>
+      <div class="sv-faq-item">
+        <button class="sv-faq-q" onclick="toggleFaq(this)">Что если мошенники за рубежом? <span class="arrow">▼</span></button>
+        <div class="sv-faq-a">Мы работаем с международными регуляторами: SEC (США), FCA (Великобритания), MAS (Сингапур). Также координируемся с Интерполом при необходимости. География мошенников не является преградой.</div>
+      </div>
+      <div class="sv-faq-item">
+        <button class="sv-faq-q" onclick="toggleFaq(this)">Как быстро получу результат? <span class="arrow">▼</span></button>
+        <div class="sv-faq-a">Сроки зависят от стадии и инструмента. Чарджбэк — 30-45 дней. Жалоба в АРРФР — 30-90 дней. Суд — 1-6 месяцев. Мы информируем о прогрессе на каждом этапе.</div>
+      </div>
+      <div class="sv-faq-item">
+        <button class="sv-faq-q" onclick="toggleFaq(this)">Предоплата? <span class="arrow">▼</span></button>
+        <div class="sv-faq-a">Нет предоплаты за обещание возврата. Вы платите только за конкретные действия: подготовка документа, подача жалобы, сопровождение. Каждый платёж — за оказанную услугу.</div>
+      </div>
+    </div>
+  </div>
+  <footer class="ftr"><p>© 2026 Антифрод Центр Казахстан</p></footer>
+  <script src="../assets/js/nav.js"></script>
+  <script>
+  function toggleFaq(btn){
+    var a=btn.nextElementSibling;
+    var isOpen=btn.classList.contains('open');
+    document.querySelectorAll('.sv-faq-q').forEach(function(q){q.classList.remove('open')});
+    document.querySelectorAll('.sv-faq-a').forEach(function(a){a.classList.remove('show')});
+    if(!isOpen){btn.classList.add('open');a.classList.add('show')}
+  }
+  </script>
+</body>
+</html>

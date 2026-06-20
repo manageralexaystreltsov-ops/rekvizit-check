@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Проверка реквизитов — Антифрод Центр Казахстан</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>
+body{background:#000;padding-bottom:70px}
+.ck{max-width:700px;margin:0 auto;padding:clamp(24px,5vw,48px) clamp(16px,4vw,20px)}
+.ck h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;margin-bottom:8px;text-align:center;animation:fadeInUp .6s ease both}
+.ck>p{color:var(--text3);text-align:center;margin-bottom:32px;font-size:.92rem;animation:fadeInUp .6s ease .1s both}
+
+/* Search box */
+.ck-search{position:relative;border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .6s ease .2s both}
+.ck-search::before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(139,92,246,.15),rgba(99,102,241,.05));z-index:-1}
+.ck-search-inner{background:rgba(6,6,12,.95);backdrop-filter:blur(32px);border:1px solid var(--border);border-radius:16px;padding:24px;position:relative}
+.ck-search-inner::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.3),transparent)}
+.ck-input-wrap{display:flex;gap:10px;margin-bottom:12px}
+.ck-input{flex:1;padding:14px 18px;background:rgba(255,255,255,.03);border:1.5px solid var(--border);border-radius:12px;font-size:1rem;font-family:var(--font);color:#fff;transition:all .3s}
+.ck-input::placeholder{color:var(--text4)}
+.ck-input:focus{border-color:rgba(99,102,241,.4);outline:none;box-shadow:0 0 24px rgba(99,102,241,.1)}
+.ck-btn{padding:14px 28px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:var(--font);transition:all .3s;box-shadow:0 4px 20px rgba(99,102,241,.25)}
+.ck-btn:hover{box-shadow:0 6px 30px rgba(99,102,241,.35);transform:translateY(-1px)}
+.ck-btn:disabled{opacity:.4;cursor:not-allowed}
+.ck-hint{font-size:.72rem;color:var(--text4);text-align:center}
+
+/* Results */
+.ck-result{display:none;margin-top:20px;animation:fadeInUp .5s ease both}
+.ck-result.show{display:block}
+.ck-result-card{position:relative;border-radius:var(--radius2);overflow:hidden}
+.ck-result-card::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);z-index:0}
+.ck-result-card.safe::before{background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(16,185,129,.08))}
+.ck-result-card.danger::before{background:linear-gradient(135deg,rgba(239,68,68,.25),rgba(239,68,68,.08))}
+.ck-result-card.warn::before{background:linear-gradient(135deg,rgba(245,158,11,.25),rgba(245,158,11,.08))}
+.ck-result-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius2);padding:28px 24px}
+.ck-result-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.ck-result-icon{font-size:2.5rem;flex-shrink:0}
+.ck-result-title{font-size:1.2rem;font-weight:800;color:#fff}
+.ck-result-subtitle{font-size:.82rem;color:var(--text3);margin-top:2px}
+.ck-result-badge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:.72rem;font-weight:700;margin-top:6px}
+.badge-safe{background:rgba(16,185,129,.1);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+.badge-danger{background:rgba(239,68,68,.1);color:#fca5a5;border:1px solid rgba(239,68,68,.2)}
+.badge-warn{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.2)}
+.ck-result-details{display:grid;gap:1px;margin-bottom:16px}
+.ck-detail{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.ck-detail:last-child{border-bottom:none}
+.ck-detail-label{font-size:.78rem;color:var(--text3)}
+.ck-detail-value{font-size:.85rem;color:#fff;font-weight:600}
+.ck-detail-value.safe{color:#6ee7b7}
+.ck-detail-value.danger{color:#fca5a5}
+.ck-detail-value.warn{color:#fbbf24}
+.ck-result-advice{padding:14px;background:rgba(255,255,255,.02);border-radius:10px;border-left:3px solid rgba(99,102,241,.3);font-size:.85rem;color:var(--text2);line-height:1.7}
+.ck-result-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.ck-action-btn{padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:6px}
+.ck-action-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 16px rgba(99,102,241,.2)}
+.ck-action-btn.primary:hover{box-shadow:0 6px 24px rgba(99,102,241,.3);color:#fff;text-decoration:none;transform:translateY(-1px)}
+.ck-action-btn.secondary{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text2)}
+.ck-action-btn.secondary:hover{background:rgba(255,255,255,.08);color:#fff;text-decoration:none}
+
+/* Loader */
+.ck-loader{display:none;text-align:center;padding:40px}
+.ck-loader.show{display:block}
+.ck-spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,.05);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ck-loader-text{color:var(--text3);font-size:.85rem}
+
+/* How it works */
+.ck-how{margin-top:48px;animation:fadeInUp .6s ease .3s both}
+.ck-how h2{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:20px;text-align:center}
+.ck-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ck-step{text-align:center;padding:20px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:all .3s}
+.ck-step:hover{border-color:rgba(99,102,241,.15);transform:translateY(-2px)}
+.ck-step-num{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:#fff;margin:0 auto 10px}
+.ck-step-title{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:4px}
+.ck-step-desc{font-size:.75rem;color:var(--text3);line-height:1.5}
+
+@media(max-width:480px){.ck-input-wrap{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div id="nav-container" data-page="check"></div>
+  <div class="ck">
+    <h1>🔍 Проверка реквизитов</h1>
+    <p>Введите название платформы или организации — мы проверим, есть ли она в реестре АРРФР</p>
+
+    <div class="ck-search"><div class="ck-search-inner">
+      <div class="ck-input-wrap">
+        <input type="text" class="ck-input" id="ck-input" placeholder="Название платформы или организации">
+        <button class="ck-btn" id="ck-btn" onclick="doCheck()">Проверить</button>
+      </div>
+      <div class="ck-hint">Например: InvestPro Capital, GlobalTrade FX, CryptoGain KZ</div>
+    </div></div>
+
+    <div class="ck-loader" id="ck-loader">
+      <div class="ck-spinner"></div>
+      <div class="ck-loader-text">Проверяем по базам данных АРРФР, НБ РК и международных реестров...</div>
+    </div>
+
+    <div class="ck-result" id="ck-result"></div>
+
+    <div class="ck-how">
+      <h2>Как работает проверка</h2>
+      <div class="ck-steps">
+        <div class="ck-step"><div class="ck-step-num">1</div><div class="ck-step-title">Поиск по реестрам</div><div class="ck-step-desc">Проверяем наличие лицензии в базе АРРФР и НБ РК</div></div>
+        <div class="ck-step"><div class="ck-step-num">2</div><div class="ck-step-title">Анализ домена</div><div class="ck-step-desc">Проверяем возраст сайта и регистрационные данные</div></div>
+        <div class="ck-step"><div class="ck-step-num">3</div><div class="ck-step-title">Жалобы клиентов</div><div class="ck-step-desc">Сравниваем с базой жалоб и чёрных списков</div></div>
+        <div class="ck-step"><div class="ck-step-num">4</div><div class="ck-step-title">Заключение</div><div class="ck-step-desc">Выдаём результат и рекомендации по дальнейшим действиям</div></div>
+      </div>
+    </div>
+  </div>
+  <footer class="ftr"><p>© 2026 Антифрод Центр Казахстан</p></footer>
+  <script src="../assets/js/nav.js"></script>
+  <script>
+  var BLACKLIST=[
+    {name:'InvestPro Capital',category:'blacklist',reason:'Финансовая пирамида под видом инвестиционного фонда. Невывод средств.',site:'investpro-capital.com',regulator:'АРРФР, SEC'},
+    {name:'GlobalTrade FX',category:'blacklist',reason:'Нелицензированный Forex-брокер. Мошенничество.',site:'globaltradefx.com',regulator:'АРРФР, MAS'},
+    {name:'CryptoGain KZ',category:'blacklist',reason:'Фейковая криптобиржа. Мошенническая схема.',site:'cryptogain.kz',regulator:'АРРФР'},
+    {name:'FinHub Invest',category:'blacklist',reason:'Инвестиционное мошенничество. Невывод средств.',site:'finhubinvest.com',regulator:'АРРФР'},
+    {name:'IQ Option (клон)',category:'blacklist',reason:'Клон легитимной платформы. Мошенничество с бинарными опционами.',site:'iqoption-kz.com',regulator:'АРРФР'},
+    {name:'Atlas Broker',category:'blacklist',reason:'Нелицензированный брокер. Мошенничество.',site:'atlasbroker.com',regulator:'АРРФР'},
+    {name:'PrimeFX Markets',category:'blacklist',reason:'Нелицензированный Forex-брокер. Международное мошенничество.',site:'primefxmarkets.com',regulator:'АРРФР, FCA'},
+    {name:'Binomo (клон)',category:'blacklist',reason:'Клон бинарных опционов. Запрещено в РК.',site:'binomo-kz.com',regulator:'АРРФР'},
+    {name:'Bybit (клон)',category:'blacklist',reason:'Клон криптобиржи. Мошенничество.',site:'bybit-kz.com',regulator:'АРРФР'},
+    {name:'eToro (клон)',category:'blacklist',reason:'Клон социальной торговой платформы.',site:'etoro-kz.com',regulator:'АРРФР'},
+    {name:'RoboForex scam',category:'blacklist',reason:'Нелицензированный брокер. Невывод средств.',site:'robforex-scam.com',regulator:'АРРФР'},
+    {name:'AvaTrade scam',category:'blacklist',reason:'Клон брокера. Мошенничество.',site:'avatrade-scam.com',regulator:'АРРФР'},
+    {name:'IQcent scam',category:'blacklist',reason:'Нелицензированная платформа. Мошенничество.',site:'iqcent-scam.com',regulator:'АРРФР'},
+    {name:'TradePro KZ',category:'blacklist',reason:'Нелицензированный брокер. Невывод средств.',site:'tradepro-kz.com',regulator:'АРРФР'},
+    {name:'CryptoPro Trade',category:'blacklist',reason:'Фейковая криптоплатформа.',site:'cryptopro-trade.com',regulator:'АРРФР'},
+    {name:'FinTech Pro',category:'blacklist',reason:'Нелицензированная платформа. Мошенничество.',site:'fintech-pro.com',regulator:'АРРФР'},
+    {name:'GlobalMarkets',category:'blacklist',reason:'Нелицензированный брокер.',site:'globalmarkets-scam.com',regulator:'АРРФР'},
+    {name:'CapitalInvest Kazakhstan',category:'blacklist',reason:'Деятельность без лицензии. Мошенничество.',site:'capitalinvest-kz.com',regulator:'АРРФР'}
+  ];
+  var WHITELIST=[
+    {name:'Halyk Bank',category:'licensed',site:'halykbank.kz',regulator:'АРРФР, НБ РК'},
+    {name:'Kaspi Bank',category:'licensed',site:'kaspi.kz',regulator:'АРРФР, НБ РК'},
+    {name:'ForteBank',category:'licensed',site:'fortebank.kz',regulator:'АРРФР, НБ РК'},
+    {name:'Банк ЦентрКредит',category:'licensed',site:'ccbank.kz',regulator:'АРРФР, НБ РК'},
+    {name:'Евразийский банк',category:'licensed',site:'eubank.kz',regulator:'АРРФР, НБ РК'},
+    {name:'Сбербанк Казахстан',category:'licensed',site:'sberbank.kz',regulator:'АРРФР, НБ РК'}
+  ];
+
+  function doCheck(){
+    var q=document.getElementById('ck-input').value.trim().toLowerCase();
+    if(!q||q.length<2)return;
+    document.getElementById('ck-btn').disabled=true;
+    document.getElementById('ck-loader').classList.add('show');
+    document.getElementById('ck-result').classList.remove('show');
+    setTimeout(function(){
+      var found=BLACKLIST.find(function(c){return c.name.toLowerCase().indexOf(q)>=0});
+      if(!found)found=BLACKLIST.find(function(c){return q.indexOf(c.name.toLowerCase().split(' ')[0])>=0});
+      var safe=WHITELIST.find(function(c){return c.name.toLowerCase().indexOf(q)>=0});
+      document.getElementById('ck-loader').classList.remove('show');
+      document.getElementById('ck-btn').disabled=false;
+      if(found){showResult(found,'danger')}
+      else if(safe){showResult(safe,'safe')}
+      else{showResult({name:document.getElementById('ck-input').value.trim(),category:'unknown'},'warn')}
+    },1500);
+  }
+
+  function showResult(org,type){
+    var h='<div class="ck-result-card '+type+'"><div class="ck-result-inner">';
+    h+='<div class="ck-result-header">';
+    if(type==='danger'){h+='<div class="ck-result-icon">🚫</div><div><div class="ck-result-title">'+org.name+'</div><div class="ck-result-subtitle">'+org.regulator+'</div><div class="ck-result-badge badge-danger">В ЧЁРНОМ СПИСКЕ</div></div>'}
+    else if(type==='safe'){h+='<div class="ck-result-icon">✅</div><div><div class="ck-result-title">'+org.name+'</div><div class="ck-result-subtitle">'+org.regulator+'</div><div class="ck-result-badge badge-safe">ЛИЦЕНЗИРОВАНА</div></div>'}
+    else{h+='<div class="ck-result-icon">⚠️</div><div><div class="ck-result-title">'+org.name+'</div><div class="ck-result-subtitle">Не найдена в реестрах</div><div class="ck-result-badge badge-warn">НЕ НАЙДЕНА</div></div>'}
+    h+='</div>';
+    h+='<div class="ck-result-details">';
+    if(org.site)h+='<div class="ck-detail"><span class="ck-detail-label">Сайт</span><span class="ck-detail-value">'+org.site+'</span></div>';
+    h+='<div class="ck-detail"><span class="ck-detail-label">Реестр АРРФР</span><span class="ck-detail-value '+(type==='safe'?'safe':type==='danger'?'danger':'warn')+'">'+(type==='safe'?'✓ Лицензия найдена':type==='danger'?'✗ Нет лицензии':'? Не найдено')+'</span></div>';
+    if(org.reason)h+='<div class="ck-detail"><span class="ck-detail-label">Причина</span><span class="ck-detail-value danger">'+org.reason+'</span></div>';
+    h+='</div>';
+    if(type==='danger'){h+='<div class="ck-result-advice"><strong>⚠️ ВНИМАНИЕ:</strong> Эта организация находится в чёрном списке АРРФР. Если вы перевели им средства — немедленно подайте заявку через нашу форму. Чем раньше — тем выше шанс на возврат.</div>'}
+    else if(type==='safe'){h+='<div class="ck-result-advice"><strong>✅ ОРГАНИЗАЦИЯ ЛЕГИТИМНА:</strong> Имеет действующую лицензию. Если у вас возникли проблемы — обратитесь напрямую в банк или к нам за консультацией.</div>'}
+    else{h+='<div class="ck-result-advice"><strong>⚠️ ОСТОРОЖНО:</strong> Организация не найдена в реестре АРРФР. Это может означать работу без лицензии. Рекомендуем воздержаться от сотрудничества и проконсультироваться с юристом.</div>'}
+    h+='<div class="ck-result-actions">';
+    h+='<a href="/rekvizit-check/contacts/" class="ck-action-btn primary">📝 Оставить заявку</a>';
+    if(org.site)h+='<a href="https://'+org.site+'" target="_blank" class="ck-action-btn secondary">🌐 Сайт</a>';
+    h+='</div></div></div>';
+    document.getElementById('ck-result').innerHTML=h;
+    document.getElementById('ck-result').classList.add('show');
+    document.getElementById('ck-result').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  document.getElementById('ck-input').addEventListener('keydown',function(e){if(e.key==='Enter')doCheck()});
+  </script>
+</body>
+</html>
