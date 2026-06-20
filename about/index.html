@@ -3,24 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>О нас — Статус Дела</title>
+  <title>О нас — GlobalSafe Finance</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <style>body{background:var(--bg);padding-bottom:70px}</style>
 </head>
 <body>
-  <header class="hdr">
-    <div class="hdr-inner">
-      <a href="../" class="logo"><div class="logo-glow">📋</div><span>Статус Дела</span></a>
-      <nav class="nav"><a href="../">Главная</a><a href="../articles/">Статьи</a><a href="../success/">Кейсы</a><a href="../contacts/">Контакты</a></nav>
-    </div>
-  </header>
-  <section class="hero"><h1>О нашей команде</h1><p>Более 10 лет опыта возврата средств от мошенников</p></section>
+  <div id="nav-container" data-page="home"></div>
   <div class="page">
-    <div class="stats-row">
-      <div class="stat-box"><div class="stat-num">2 543</div><div class="stat-label">клиента</div></div>
-      <div class="stat-box"><div class="stat-num">12,8 млрд ₸</div><div class="stat-label">возвращено</div></div>
-      <div class="stat-box"><div class="stat-num">87%</div><div class="stat-label">без суда</div></div>
-      <div class="stat-box"><div class="stat-num">10+</div><div class="stat-label">лет опыта</div></div>
+    <h1>О нашей команде</h1>
+    <p>Более 10 лет опыта возврата средств от мошенников</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-v">2 543</div><div class="stat-l">клиента</div></div>
+      <div class="stat"><div class="stat-v">12,8 млрд</div><div class="stat-l">₸ возвращено</div></div>
+      <div class="stat"><div class="stat-v">87%</div><div class="stat-l">без суда</div></div>
+      <div class="stat"><div class="stat-v">10+</div><div class="stat-l">лет опыта</div></div>
     </div>
     <h2>Сергей Макаров</h2>
     <p>Юрист по возврату средств от мошенников. Специализируюсь на финансовых преступлениях: инвестиционные мошенничества, брокерские схемы, финансовые пирамиды.</p>
@@ -28,18 +25,15 @@
     <h3>Образование</h3>
     <p>Магистр права, КазНУ им. аль-Фараби. Сертификат по финансовым расследованиям. Повышение квалификации в области AML.</p>
     <h3>Специализация</h3>
-    <ul style="color:rgba(255,255,255,.7);padding-left:20px;margin:12px 0">
+    <ul>
       <li>Возврат денег от мошеннических брокеров</li>
       <li>Финансовые пирамиды и инвестиционное мошенничество</li>
       <li>Крипто-мошенничество и фейковые биржи</li>
       <li>Международные дела (MAS, SEC, FCA)</li>
     </ul>
-    <div class="cta-card" style="margin-top:32px">
-      <div class="cta-title">Нужна помощь?</div>
-      <div class="cta-desc">Оставьте заявку — мы свяжемся с вами</div>
-      <a href="../contacts/" class="cta-btn">Оставить заявку</a>
-    </div>
+    <div class="cta-box"><h3>Нужна помощь?</h3><p>Оставьте заявку — мы свяжемся с вами</p><a href="../contacts/" class="btn btn-fill">Оставить заявку →</a></div>
   </div>
-  <footer class="ftr"><div class="ftr-inner"><div><h4>Статус Дела</h4><p>Конфиденциальность гарантирована.</p></div></div><div class="ftr-bottom">© 2026 Статус Дела</div></footer>
+  <footer class="ftr"><p>© 2026 GlobalSafe Finance · Международный центр возврата средств</p></footer>
+  <script src="../assets/js/nav.js"></script>
 </body>
 </html>

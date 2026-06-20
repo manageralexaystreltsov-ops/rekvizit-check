@@ -2,37 +2,37 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Организации — GlobalSafe Finance</title>
+  <title>Реестр организаций — GlobalSafe Finance</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/global.css">
   <style>
-body{background:#030712;padding-bottom:70px}
-.og{max-width:1000px;margin:0 auto;padding:24px 16px}
-.og h1{font-size:1.5rem;font-weight:900;margin-bottom:6px}
-.og>p{color:rgba(255,255,255,.35);margin-bottom:20px;font-size:.88rem}
-.cat-section{margin-bottom:28px}
-.cat-title{font-size:.95rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:#fff}
-.cat-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent)}
-.org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
-.org-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:10px;padding:16px;transition:.2s}
-.org-card:hover{border-color:rgba(99,102,241,.15)}
-.org-name{font-weight:700;font-size:.9rem;color:#fff;margin-bottom:3px}
-.org-full{font-size:.75rem;color:rgba(255,255,255,.3);margin-bottom:6px;line-height:1.3}
-.org-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.org-site{font-size:.7rem;color:#818cf8}
-.org-phone{font-size:.7rem;color:rgba(255,255,255,.35)}
-.org-funcs{margin-top:6px}
-.org-func{font-size:.7rem;color:rgba(255,255,255,.25);padding:1px 0}
-.org-btns{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-.org-btn{padding:6px 12px;border-radius:6px;font-size:.68rem;font-weight:600;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:4px}
-.btn-contact{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);color:#a5b4fc}
+body{background:var(--bg);padding-bottom:70px}
+.og{max-width:1000px;margin:0 auto;padding:clamp(20px,4vw,32px) clamp(16px,4vw,16px)}
+.og h1{font-size:clamp(1.4rem,4vw,1.8rem);font-weight:900;margin-bottom:6px;letter-spacing:-.02em}
+.og>p{color:var(--text3);margin-bottom:24px;font-size:.9rem;line-height:1.6}
+.cat-section{margin-bottom:32px}
+.cat-title{font-size:1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px;color:#fff}
+.cat-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.org-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:all .3s}
+.org-card:hover{border-color:rgba(99,102,241,.15);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.org-name{font-weight:700;font-size:.92rem;color:#fff;margin-bottom:4px}
+.org-full{font-size:.75rem;color:var(--text3);margin-bottom:8px;line-height:1.4}
+.org-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.org-site{font-size:.72rem;color:var(--accent3)}
+.org-phone{font-size:.72rem;color:var(--text2)}
+.org-funcs{margin-top:8px}
+.org-func{font-size:.7rem;color:var(--text3);padding:2px 0}
+.org-btns{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.org-btn{padding:7px 14px;border-radius:8px;font-size:.7rem;font-weight:600;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:5px}
+.btn-contact{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);color:var(--accent3)}
 .btn-contact:hover{background:rgba(99,102,241,.2);color:#fff;text-decoration:none}
-.btn-site{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
-.btn-site:hover{background:rgba(255,255,255,.08);color:#fff;text-decoration:none}
-.search-org{margin-bottom:16px}
-.search-org input{width:100%;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;font-size:.88rem;font-family:inherit;color:#fff}
-.search-org input::placeholder{color:rgba(255,255,255,.12)}
-.search-org input:focus{border-color:rgba(99,102,241,.3);outline:none}
+.btn-site{background:var(--surface);border:1px solid var(--border);color:var(--text2)}
+.btn-site:hover{background:var(--surface2);color:#fff;text-decoration:none}
+.search-org{margin-bottom:20px}
+.search-org input{width:100%;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;font-size:.9rem;font-family:var(--font);color:#fff;transition:border-color .25s}
+.search-org input::placeholder{color:var(--text4)}
+.search-org input:focus{border-color:rgba(99,102,241,.4);outline:none}
 @media(max-width:500px){.org-grid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -50,55 +50,10 @@ body{background:#030712;padding-bottom:70px}
   var orgs=[];var cats=[];
   var TG_TOKEN='8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk';
   var TG_CHAT='8471070560';
-
-  fetch('../data/organizations.json').then(function(r){return r.json()}).then(function(d){
-    cats=d.categories||[];orgs=d.organizations||[];renderOrgs(orgs);
-  });
-
-  function renderOrgs(list){
-    var grouped={};
-    list.forEach(function(o){if(!grouped[o.cat])grouped[o.cat]=[];grouped[o.cat].push(o)});
-    var html='';
-    cats.forEach(function(c){
-      var items=grouped[c.id];
-      if(!items||!items.length)return;
-      html+='<div class="cat-section"><div class="cat-title">'+c.icon+' '+c.name+'</div><div class="org-grid">';
-      items.forEach(function(o){
-        html+='<div class="org-card">';
-        html+='<div class="org-name">'+o.name+'</div>';
-        html+='<div class="org-full">'+o.full+'</div>';
-        html+='<div class="org-meta">';
-        if(o.site)html+='<a href="https://'+o.site+'" target="_blank" class="org-site">'+o.site+'</a>';
-        if(o.phone)html+='<span class="org-phone">📞 '+o.phone+'</span>';
-        html+='</div>';
-        if(o.functions){html+='<div class="org-funcs">';o.functions.forEach(function(f){html+='<div class="org-func">• '+f+'</div>'});html+='</div>'}
-        html+='<div class="org-btns">';
-        html+='<button class="org-btn btn-contact" onclick="sendOrg(\''+o.name+'\',\''+o.full+'\')">✉️ Подать обращение</button>';
-        if(o.site)html+='<a href="https://'+o.site+'" target="_blank" class="org-btn btn-site">🌐 Сайт</a>';
-        if(o.phone)html+='<a href="tel:'+o.phone.replace(/\s/g,'')+'" class="org-btn btn-site">📞 Позвонить</a>';
-        html+='</div></div>';
-      });
-      html+='</div></div>';
-    });
-    document.getElementById('orgList').innerHTML=html||'<p style="color:rgba(255,255,255,.3)">Не найдено</p>';
-  }
-
-  function sendOrg(name,full){
-    var text='🏛️ *Обращение через платформу*\n\n📌 Организация: '+name+'\n📋 Полное название: '+full+'\n📅 Дата: '+new Date().toLocaleDateString('ru-RU')+'\n\n👤 Клиент желает подать обращение через платформу GlobalSafe Finance.';
-    fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:TG_CHAT,text:text})
-    }).then(function(r){return r.json()}).then(function(d){
-      if(d.ok){alert('Заявка отправлена! Мы свяжемся с вами для оформления обращения в '+name)}
-      else{alert('Ошибка отправки')}
-    }).catch(function(){alert('Ошибка сети')});
-  }
-
-  document.getElementById('orgSearch').addEventListener('input',function(){
-    var q=this.value.toLowerCase();
-    renderOrgs(orgs.filter(function(o){return o.name.toLowerCase().includes(q)||o.full.toLowerCase().includes(q)||(o.site&&o.site.toLowerCase().includes(q))}));
-  });
+  fetch('../data/organizations.json').then(function(r){return r.json()}).then(function(d){cats=d.categories||[];orgs=d.organizations||[];renderOrgs(orgs)});
+  function renderOrgs(list){var grouped={};list.forEach(function(o){if(!grouped[o.cat])grouped[o.cat]=[];grouped[o.cat].push(o)});var html='';cats.forEach(function(c){var items=grouped[c.id];if(!items||!items.length)return;html+='<div class="cat-section"><div class="cat-title">'+c.icon+' '+c.name+'</div><div class="org-grid">';items.forEach(function(o){html+='<div class="org-card"><div class="org-name">'+o.name+'</div><div class="org-full">'+o.full+'</div><div class="org-meta">';if(o.site)html+='<a href="https://'+o.site+'" target="_blank" class="org-site">'+o.site+'</a>';if(o.phone)html+='<span class="org-phone">📞 '+o.phone+'</span>';html+='</div>';if(o.functions){html+='<div class="org-funcs">';o.functions.forEach(function(f){html+='<div class="org-func">• '+f+'</div>'});html+='</div>'}html+='<div class="org-btns"><button class="org-btn btn-contact" onclick="sendOrg(\''+o.name+'\',\''+o.full+'\')">✉️ Подать обращение</button>';if(o.site)html+='<a href="https://'+o.site+'" target="_blank" class="org-btn btn-site">🌐 Сайт</a>';if(o.phone)html+='<a href="tel:'+o.phone.replace(/\s/g,'')+'" class="org-btn btn-site">📞 Позвонить</a>';html+='</div></div>'});html+='</div></div>'});document.getElementById('orgList').innerHTML=html||'<div class="empt"><div class="empt-i">🔍</div><p>Не найдено</p></div>'}
+  function sendOrg(name,full){var text='🏛️ *Обращение через платформу*\n\n📌 Организация: '+name+'\n📋 Полное название: '+full+'\n📅 Дата: '+new Date().toLocaleDateString('ru-RU')+'\n\n👤 Клиент желает подать обращение через платформу GlobalSafe Finance.';fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text:text})}).then(function(r){return r.json()}).then(function(d){if(d.ok){alert('Заявка отправлена! Мы свяжемся с вами для оформления обращения в '+name)}else{alert('Ошибка отправки')}}).catch(function(){alert('Ошибка сети')})}
+  document.getElementById('orgSearch').addEventListener('input',function(){var q=this.value.toLowerCase();renderOrgs(orgs.filter(function(o){return o.name.toLowerCase().includes(q)||o.full.toLowerCase().includes(q)||(o.site&&o.site.toLowerCase().includes(q))}))});
   </script>
 </body>
 </html>

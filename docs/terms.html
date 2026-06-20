@@ -4,33 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <title>Условия использования — Проверка Реквизитов</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <title>Условия использования — GlobalSafe Finance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
   <style>
-    .legal { max-width: 800px; margin: 40px auto; padding: 40px 20px; }
-    .legal h1 { margin-bottom: 24px; }
-    .legal h2 { margin: 24px 0 12px; font-size: 1.2rem; }
-    .legal p { margin-bottom: 12px; line-height: 1.7; }
-    .legal ul { margin: 12px 0; padding-left: 24px; }
-    .legal li { margin-bottom: 8px; line-height: 1.6; }
+body{background:var(--bg);padding-bottom:70px}
+.legal{max-width:720px;margin:0 auto;padding:clamp(24px,5vw,60px) clamp(16px,4vw,20px)}
+.legal h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:24px;letter-spacing:-.03em}
+.legal h2{font-size:1.1rem;font-weight:800;margin:32px 0 12px;color:#fff}
+.legal p{color:var(--text2);line-height:1.8;margin-bottom:14px;font-size:.92rem}
+.legal ul{margin:14px 0;padding-left:24px;color:var(--text2)}
+.legal li{margin-bottom:8px;line-height:1.7}
+.legal strong{color:#fff}
+.legal a{color:var(--accent3)}
+.back-link{font-size:.85rem;color:var(--text3);display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;transition:color .2s}
+.back-link:hover{color:#fff}
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-main">
-      <div class="logo">
-        <div class="logo-icon">🔍</div>
-        <a href="../" style="color:#fff;text-decoration:none">Проверка Реквизитов</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="legal">
+  <div id="nav-container" data-page="home"></div>
+  <div class="legal">
+    <a href="../" class="back-link">← Вернуться на главную</a>
     <h1>Условия использования</h1>
     <p><strong>Дата вступления в силу:</strong> 18 июня 2026 г.</p>
 
     <h2>1. Принятие условий</h2>
-    <p>Используя Сервис «Проверка Реквизитов», вы соглашаетесь с данными условиями. Если вы не согласны с условиями, пожалуйста, не используйте Сервис.</p>
+    <p>Используя Сервис «GlobalSafe Finance», вы соглашаетесь с данными условиями. Если вы не согласны с условиями, пожалуйста, не используйте Сервис.</p>
 
     <h2>2. Описание Сервиса</h2>
     <p>Сервис предоставляет справочную информацию о финансовых организациях, включая:</p>
@@ -51,12 +50,7 @@
     </ul>
 
     <h2>4. Использование информации</h2>
-    <p>Информация Сервиса может использоваться для:</p>
-    <ul>
-      <li>Предварительной проверки контрагентов</li>
-      <li>Получения общей информации о компании</li>
-      <li>Ознакомления с предупреждениями</li>
-    </ul>
+    <p>Информация Сервиса может использоваться для предварительной проверки контрагентов, получения общей информации о компании и ознакомления с предупреждениями.</p>
     <p>Информация не может использоваться как единственное основание для принятия юридически значимых решений.</p>
 
     <h2>5. Интеллектуальная собственность</h2>
@@ -71,13 +65,9 @@
     <h2>8. Контакты</h2>
     <p>По вопросам использования: finmanager063@gmail.com</p>
 
-    <p><a href="../">← Вернуться на главную</a></p>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-bottom">
-      <p>© 2026 Проверка Реквизитов</p>
-    </div>
-  </footer>
+    <p style="margin-top:32px"><a href="../" class="btn btn-fill">← Вернуться на главную</a></p>
+  </div>
+  <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
+  <script src="../assets/js/nav.js"></script>
 </body>
 </html>

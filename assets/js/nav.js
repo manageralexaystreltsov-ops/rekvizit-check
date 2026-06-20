@@ -2,15 +2,14 @@ function renderNav(activePage){
   var pages=[
     {id:'home',href:'../',label:'Главная',icon:'🏠'},
     {id:'articles',href:'../articles/',label:'Аналитика',icon:'📊'},
-    {id:'organizations',href:'../organizations/',label:'Организации',icon:'🏛️'},
+    {id:'organizations',href:'../organizations/',label:'Реестр',icon:'🏛️'},
     {id:'success',href:'../success/',label:'Кейсы',icon:'📋'},
     {id:'contacts',href:'../contacts/',label:'Заявка',icon:'✉️',cta:true}
   ];
   var isHome=activePage==='home';
 
-  // Top nav (desktop)
   var topNav='<nav class="nav-top" id="nav-top">';
-  topNav+='<a href="'+(isHome?'':'../')+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
+  topNav+='<a href="'+(isHome?'#':'../')+'" class="nav-brand"><div class="nav-mark">🌐</div><div><div class="nav-name">GlobalSafe Finance</div><div class="nav-tag">Центр возврата средств</div></div></a>';
   topNav+='<div class="nav-desktop">';
   pages.forEach(function(p){
     if(p.id==='home'&&isHome)return;
@@ -20,7 +19,6 @@ function renderNav(activePage){
   });
   topNav+='</div></nav>';
 
-  // Bottom nav (mobile)
   var botNav='<nav class="nav-mobile">';
   pages.forEach(function(p){
     var cls=p.id===activePage?'active':'';
@@ -35,8 +33,11 @@ function renderNav(activePage){
 document.addEventListener('DOMContentLoaded',function(){
   var c=document.getElementById('nav-container');
   if(c){c.outerHTML=renderNav(c.dataset.page||'home')}
+  var scrolled=false;
   window.addEventListener('scroll',function(){
     var n=document.getElementById('nav-top');
-    if(n)n.classList.toggle('scrolled',window.scrollY>50);
-  });
+    if(!n)return;
+    var s=window.scrollY>20;
+    if(s!==scrolled){n.classList.toggle('scrolled',s);scrolled=s}
+  },{passive:true});
 });
