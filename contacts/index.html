@@ -4,41 +4,54 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <title>Обращение — GlobalSafe Finance</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/rekvizit-check/assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/global.css">
   <style>
 body{background:#000;padding-bottom:70px}
-.fp{max-width:480px;margin:0 auto;padding:clamp(20px,4vw,32px) clamp(16px,4vw,16px) 60px}
-.fc{position:relative;border-radius:var(--radius2);overflow:hidden}
-.fc::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.08));z-index:0}
+.fp{max-width:520px;margin:0 auto;padding:clamp(20px,4vw,32px) clamp(16px,4vw,16px) 60px}
+.fc{position:relative;border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .6s ease both}
+.fc::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(0,136,204,.2),rgba(99,102,241,.1));z-index:0}
 .fc-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:var(--radius2);padding:clamp(20px,4vw,28px) clamp(16px,4vw,20px) clamp(24px,5vw,36px)}
-.fc-inner::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.25),transparent)}
 .fc h1{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:4px}
 .fc .sub{color:var(--text3);font-size:.82rem;margin-bottom:24px}
+
+/* Type selector */
 .ts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
 .to{padding:14px 10px;background:rgba(255,255,255,.02);border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;text-align:center;transition:all .3s;position:relative;-webkit-tap-highlight-color:transparent}
 .to:active{transform:scale(.97)}
-.to.sel{border-color:rgba(99,102,241,.35);background:rgba(99,102,241,.05);box-shadow:0 0 24px rgba(99,102,241,.08)}
+.to.sel{border-color:rgba(0,136,204,.4);background:rgba(0,136,204,.05);box-shadow:0 0 24px rgba(0,136,204,.08)}
 .to input{position:absolute;opacity:0;pointer-events:none}
 .to-i{font-size:1.5rem;margin-bottom:4px;display:block}
 .to-n{font-weight:700;font-size:.75rem;color:#fff;display:block}
 .to-d{font-size:.56rem;color:var(--text3);margin-top:2px;display:block}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sb{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:8px;transition:all .3s;box-shadow:0 4px 20px rgba(99,102,241,.25)}
-.sb:hover{box-shadow:0 6px 30px rgba(99,102,241,.35)}
-.sb:active{transform:scale(.98)}
-.sb:disabled{opacity:.4;cursor:not-allowed}
-.fs{text-align:center;padding:24px 0}
-.fs-i{font-size:2.5rem;margin-bottom:8px}
-.fs h3{color:#fff;margin-bottom:4px;font-size:1rem}
-.fs p{color:var(--text3);font-size:.82rem}
-.fn{text-align:center;margin-top:12px;font-size:.6rem;color:var(--text4)}
-.hl{position:relative;border-radius:var(--radius);overflow:hidden;margin-top:14px;text-align:center}
-.hl::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.06));z-index:0}
-.hl-inner{position:relative;z-index:1;background:rgba(6,6,12,.9);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
-.hl h3{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:8px}
-.hl-p{font-size:1.3rem;font-weight:800;color:var(--accent3);margin-bottom:2px;letter-spacing:2px}
+
+/* Telegram CTA */
+.tg-section{margin-top:20px;text-align:center;animation:fadeInUp .6s ease .2s both}
+.tg-card{position:relative;border-radius:var(--radius2);overflow:hidden}
+.tg-card::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(0,136,204,.25),rgba(99,102,241,.1));z-index:0}
+.tg-card-inner{position:relative;z-index:1;background:rgba(6,6,12,.9);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--radius2);padding:32px 24px}
+.tg-icon{font-size:3rem;margin-bottom:12px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.tg-title{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:6px}
+.tg-desc{font-size:.85rem;color:var(--text3);margin-bottom:20px;line-height:1.6}
+.tg-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:linear-gradient(135deg,#0088cc,#006ba6);color:#fff;border-radius:12px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .3s;box-shadow:0 6px 24px rgba(0,136,204,.3)}
+.tg-btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,136,204,.4);color:#fff;text-decoration:none}
+.tg-features{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px;text-align:left}
+.tg-feat{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text2);padding:8px 10px;background:rgba(255,255,255,.02);border-radius:8px}
+.tg-feat-icon{font-size:1rem}
+
+/* Hot line */
+.hl{position:relative;border-radius:var(--radius);overflow:hidden;margin-top:14px;text-align:center;animation:fadeInUp .6s ease .3s both}
+.hl::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(239,68,68,.15),rgba(239,68,68,.05));z-index:0}
+.hl-inner{position:relative;z-index:1;background:rgba(6,6,12,.9);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.hl h3{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:6px}
 .hl-d{font-size:.65rem;color:var(--text3)}
-@media(max-width:380px){.ts{grid-template-columns:1fr}.fr{grid-template-columns:1fr}}
+.hl-btns{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.hl-btn{padding:8px 16px;border-radius:8px;font-size:.75rem;font-weight:600;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:5px}
+.hl-btn-red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#fca5a5}
+.hl-btn-red:hover{background:rgba(239,68,68,.2);color:#fff;text-decoration:none}
+
+.fn{text-align:center;margin-top:12px;font-size:.6rem;color:var(--text4)}
+@media(max-width:380px){.ts{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -46,38 +59,57 @@ body{background:#000;padding-bottom:70px}
   <div class="fp">
     <div class="fc"><div class="fc-inner">
       <h1>📋 Центр обращений</h1>
-      <div class="sub">Выберите тип и заполните форму.</div>
-      <form id="cf">
-        <div class="ts">
-          <label class="to sel" data-t="return"><input type="radio" name="type" value="Возврат средств" checked><span class="to-i">💰</span><span class="to-n">Возврат</span><span class="to-d">Деньги от мошенников</span></label>
-          <label class="to" data-t="docs"><input type="radio" name="type" value="Документ"><span class="to-i">📄</span><span class="to-n">Документ</span><span class="to-d">Заявление, жалоба</span></label>
-          <label class="to" data-t="feedback"><input type="radio" name="type" value="Обратная связь"><span class="to-i">💬</span><span class="to-n">Связь</span><span class="to-d">Вопрос, отзыв</span></label>
-          <label class="to" data-t="org"><input type="radio" name="type" value="Организациям"><span class="to-i">🏛️</span><span class="to-n">Организациям</span><span class="to-d">АРРФР, полиция</span></label>
-        </div>
-        <div class="rf"><div class="fr"><div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван" required></div><div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div></div><div class="fg"><label>Телефон *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div><div class="fg"><label>Доп. номера</label><input type="text" name="extraPhones"></div><div class="fr"><div class="fg"><label>Сумма (₸)</label><input type="text" name="amount"></div><div class="fg"><label>Когда звонить</label><input type="text" name="callTime"></div></div><div class="fg"><label>Платформа</label><input type="text" name="company"></div><div class="fg"><label>Детали</label><textarea name="comment"></textarea></div></div>
-        <div class="df" style="display:none"><div class="fr"><div class="fg"><label>ФИО *</label><input type="text" name="docName" required></div><div class="fg"><label>Телефон *</label><input type="tel" name="docPhone" required></div></div><div class="fg"><label>Тип документа *</label><select name="docType" required><option value="">Выберите...</option><option>Заявление в полицию</option><option>Жалоба в АРРФР</option><option>Претензия в банк</option><option>Исковое заявление</option><option>Другое</option></select></div><div class="fg"><label>Описание</label><textarea name="docComment"></textarea></div></div>
-        <div class="ff" style="display:none"><div class="fr"><div class="fg"><label>Имя *</label><input type="text" name="fbName" required></div><div class="fg"><label>Телефон</label><input type="tel" name="fbPhone"></div></div><div class="fg"><label>Тема *</label><select name="fbTopic" required><option value="">Выберите...</option><option>Вопрос</option><option>Предложение</option><option>Отзыв</option><option>Другое</option></select></div><div class="fg"><label>Сообщение *</label><textarea name="fbMessage" required></textarea></div></div>
-        <div class="of" style="display:none"><div class="fr"><div class="fg"><label>ФИО *</label><input type="text" name="orgName" required></div><div class="fg"><label>Телефон *</label><input type="tel" name="orgPhone" required></div></div><div class="fg"><label>Организация *</label><select name="orgType" required><option value="">Выберите...</option><option>АРРФР</option><option>НБ РК</option><option>Полиция</option><option>Прокуратура</option><option>Банк</option><option>Другая</option></select></div><div class="fg"><label>Суть *</label><textarea name="orgComment" required></textarea></div></div>
-        <button type="submit" class="sb">Отправить заявку</button>
-      </form>
-      <div id="fs" class="fs" style="display:none"><div class="fs-i">✅</div><h3>Отправлено!</h3><p>Свяжемся в ближайшее время.</p></div>
-      <div class="fn">Данные защищены</div>
+      <div class="sub">Все обращения обрабатываются через Telegram-бота</div>
+
+      <div class="ts">
+        <label class="to sel" data-t="return"><input type="radio" name="type" value="return" checked><span class="to-i">💰</span><span class="to-n">Возврат</span><span class="to-d">Деньги от мошенников</span></label>
+        <label class="to" data-t="docs"><input type="radio" name="type" value="docs"><span class="to-i">📄</span><span class="to-n">Документ</span><span class="to-d">Заявление, жалоба</span></label>
+        <label class="to" data-t="feedback"><input type="radio" name="type" value="feedback"><span class="to-i">💬</span><span class="to-n">Связь</span><span class="to-d">Вопрос, отзыв</span></label>
+        <label class="to" data-t="org"><input type="radio" name="type" value="org"><span class="to-i">🏛️</span><span class="to-n">Организациям</span><span class="to-d">АРРФР, полиция</span></label>
+      </div>
+
+      <div class="tg-section">
+        <div class="tg-card"><div class="tg-card-inner">
+          <div class="tg-icon">✈️</div>
+          <div class="tg-title" id="tg-title">Напишите в бот</div>
+          <div class="tg-desc" id="tg-desc">Бот поможет заполнить заявку и направит в нужную организацию</div>
+          <a id="tg-link" href="https://t.me/rekvizit_check_bot?start=return" target="_blank" class="tg-btn">✈️ Открыть бот</a>
+          <div class="tg-features">
+            <div class="tg-feat"><span class="tg-feat-icon">⚡</span><span>Быстрый ответ</span></div>
+            <div class="tg-feat"><span class="tg-feat-icon">🔒</span><span>Конфиденциально</span></div>
+            <div class="tg-feat"><span class="tg-feat-icon">📋</span><span>Помощь с документами</span></div>
+            <div class="tg-feat"><span class="tg-feat-icon">🏛️</span><span>Направление в организации</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="fn">Все обращения обрабатываются через Telegram-бота</div>
     </div></div>
-    <div class="hl"><div class="hl-inner"><div class="hl-d">Горячие линии</div><div class="hl-p">1434 · 102 · 116</div></div></div>
+
+    <div class="hl"><div class="hl-inner">
+      <div class="hl-d">Экстренные случаи</div>
+      <h3>Если угрожает опасность</h3>
+      <div class="hl-btns">
+        <a href="https://t.me/rekvizit_check_bot?start=emergency" target="_blank" class="hl-btn hl-btn-red">🚨 Написать в бот</a>
+      </div>
+    </div></div>
   </div>
   <footer class="ftr"><p>© 2026 GlobalSafe Finance</p></footer>
   <script src="../assets/js/nav.js"></script>
   <script>
-  document.querySelectorAll('.to').forEach(function(o){o.addEventListener('click',function(){document.querySelectorAll('.to').forEach(function(x){x.classList.remove('sel')});this.classList.add('sel');this.querySelector('input').checked=true;var t=this.dataset.t;document.querySelector('.rf').style.display=t==='return'?'block':'none';document.querySelector('.df').style.display=t==='docs'?'block':'none';document.querySelector('.ff').style.display=t==='feedback'?'block':'none';document.querySelector('.of').style.display=t==='org'?'block':'none'})});
-  document.getElementById('cf').addEventListener('submit',function(e){
-    e.preventDefault();var self=this,btn=self.querySelector('.sb');btn.disabled=true;btn.textContent='Отправка...';
-    var type=document.querySelector('input[name="type"]:checked').value;
-    var text='📋 *Обращение*\n\n📌 Тип: '+type+'\n\n';var d=new FormData(self);
-    if(type==='Возврат средств'){text+='👤 ФИО: '+(d.get('name')||'')+'\n🆔 ИИН: '+(d.get('iin')||'')+'\n📱 Телефон: '+(d.get('phone')||'');if(d.get('extraPhones'))text+='\n📞 Доп: '+d.get('extraPhones');if(d.get('amount'))text+='\n💰 Сумма: '+d.get('amount')+' ₸';if(d.get('company'))text+='\n🏢 Платформа: '+d.get('company');if(d.get('callTime'))text+='\n📅 Звонить: '+d.get('callTime');if(d.get('comment'))text+='\n💬 '+d.get('comment')}
-    else if(type==='Документ'){text+='👤 ФИО: '+(d.get('docName')||'')+'\n📱 Телефон: '+(d.get('docPhone')||'')+'\n📄 Документ: '+(d.get('docType')||'');if(d.get('docComment'))text+='\n💬 '+d.get('docComment')}
-    else if(type==='Обратная связь'){text+='👤 Имя: '+(d.get('fbName')||'')+'\n📋 Тема: '+(d.get('fbTopic')||'');if(d.get('fbPhone'))text+='\n📱 Телефон: '+d.get('fbPhone');if(d.get('fbMessage'))text+='\n💬 '+d.get('fbMessage')}
-    else{text+='👤 ФИО: '+(d.get('orgName')||'')+'\n🏛️ Организация: '+(d.get('orgType')||'');if(d.get('orgPhone'))text+='\n📱 Телефон: '+d.get('orgPhone');if(d.get('orgComment'))text+='\n💬 '+d.get('orgComment')}
-    fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:text})}).then(function(r){return r.json()}).then(function(d){if(d.ok){self.style.display='none';document.getElementById('fs').style.display='block'}else{alert('Ошибка');btn.disabled=false;btn.textContent='Отправить заявку'}}).catch(function(){alert('Ошибка сети');btn.disabled=false;btn.textContent='Отправить заявку'});
+  var TG_BOT='https://t.me/rekvizit_check_bot';
+  var titles={return:'Возврат средств',docs:'Документы',feedback:'Обратная связь',org:'Обращение в организации'};
+  var descs={return:'Опишите ситуацию — бот направит заявку в нужную организацию',docs:'Бот поможет подготовить документы',feedback:'Задайте вопрос или оставьте отзыв',org:'Бот направит обращение в АРРФР, полицию или другой орган'};
+
+  document.querySelectorAll('.to').forEach(function(o){
+    o.addEventListener('click',function(){
+      document.querySelectorAll('.to').forEach(function(x){x.classList.remove('sel')});
+      this.classList.add('sel');this.querySelector('input').checked=true;
+      var t=this.dataset.t;
+      document.getElementById('tg-title').textContent=titles[t]||'Напишите в бот';
+      document.getElementById('tg-desc').textContent=descs[t]||'Бот поможет';
+      document.getElementById('tg-link').href=TG_BOT+'?start='+t;
+    });
   });
   </script>
 </body>
