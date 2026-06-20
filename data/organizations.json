@@ -9,35 +9,275 @@
     {"id":"crypto","name":"Крипто-инструменты","icon":"₿"}
   ],
   "organizations": [
-    {"id":"arrfr","cat":"kz_regulators","name":"АРРФР","full":"Агентство РК по регулированию финансового рынка","site":"ardfm.gov.kz","phone":"1434","functions":["Лицензирование банков, брокеров","Чёрный список организаций","Жалобы на финансовые организации","Проверка лицензий"]},
-    {"id":"nbk","cat":"kz_regulators","name":"НБ РК","full":"Национальный банк Республики Казахстан","site":"nationalbank.kz","phone":"8 800 080 45 36","functions":["Надзор за банками","Монетарная политика"]},
-    {"id":"kgd","cat":"kz_regulators","name":"КГД МФ РК","full":"Комитет государственных доходов","site":"kgd.gov.kz","phone":"1414","functions":["Налоги, таможня","Проверка БИН"]},
-    {"id":"afm","cat":"kz_regulators","name":"АФМ РК","full":"Агентство по финансовому мониторингу","site":"afm.gov.kz","phone":null,"functions":["AML/CFT","Противодействие отмыванию денег"]},
-    {"id":"police","cat":"kz_law","name":"МВД РК / Полиция","full":"Министерство внутренних дел","site":"mvd.gov.kz","phone":"102","functions":["Уголовные дела","Заявления о мошенничестве","Киберпреступность"]},
-    {"id":"prosecutor","cat":"kz_law","name":"Генпрокуратура","full":"Генеральная прокуратура РК","site":"prosecutor.kz","phone":null,"functions":["Надзор","Жалобы на бездействие"]},
-    {"id":"antikorr","cat":"kz_law","name":"Антикоррупционная служба","full":"Агентство по противодействию коррупции","site":"gov4.kz","phone":"1424","functions":["Коррупция"]},
-    {"id":"sud","cat":"kz_law","name":"Суды РК","full":"Судебная система","site":"sud.kz","phone":null,"functions":["Проверка дел онлайн","Судебные акты"]},
-    {"id":"halyk","cat":"kz_banks","name":"Halyk Bank","full":"АО «Народный банк Казахстана»","site":"halykbank.kz","phone":"595","functions":["Чарджбэк","Оспаривание транзакций"]},
-    {"id":"kaspi","cat":"kz_banks","name":"Kaspi Bank","full":"АО «Kaspi Bank»","site":"kaspi.kz","phone":"5050","functions":["Чарджбэк","Оспаривание транзакций"]},
-    {"id":"forte","cat":"kz_banks","name":"Forte Bank","full":"АО «ForteBank»","site":"fortebank.kz","phone":"*6800","functions":["Чарджбэк","Оспаривание транзакций"]},
-    {"id":"bcc","cat":"kz_banks","name":"Банк ЦентрКредит","full":"АО «Банк ЦентрКредит»","site":"ccbank.kz","phone":"727 244 10 44","functions":["Чарджбэк","Оспаривание транзакций"]},
-    {"id":"eurasian","cat":"kz_banks","name":"Евразийский банк","full":"АО «Евразийский банк»","site":"eubank.kz","phone":"505","functions":["Чарджбэк","Оспаривание транзакций"]},
-    {"id":"sec","cat":"international_reg","name":"SEC","full":"Комиссия по ценным бумагам (США)","site":"sec.gov","phone":null,"functions":["Рынок ценных бумаг США"]},
-    {"id":"cftc","cat":"international_reg","name":"CFTC","full":"Комиссия по торговле фьючерсами (США)","site":"cftc.gov","phone":null,"functions":["Деривативы, фьючерсы"]},
-    {"id":"fca","cat":"international_reg","name":"FCA","full":"Управление финансового поведения (Великобритания)","site":"fca.org.uk","phone":null,"functions":["Финансовый надзор UK"]},
-    {"id":"mas","cat":"international_reg","name":"MAS","full":"Денежно-валютное управление Сингапура","site":"mas.gov.sg","phone":null,"functions":["Центральный банк Сингапура"]},
-    {"id":"esma","cat":"international_reg","name":"ESMA","full":"Европейское агентство по ценным бумагам","site":"esma.europa.eu","phone":null,"functions":["Рынки ценных бумаг ЕС"]},
-    {"id":"bafin","cat":"international_reg","name":"BaFin","full":"Финансовый надзор Германии","site":"bafin.de","phone":null,"functions":["Финансовый надзор Германии"]},
-    {"id":"finma","cat":"international_reg","name":"FINMA","full":"Финансовый надзор Швейцарии","site":"finma.ch","phone":null,"functions":["Финансовый надзор Швейцарии"]},
-    {"id":"imf","cat":"international_org","name":"МВФ","full":"Международный валютный фонд","site":"imf.org","phone":null,"functions":["Финансовая поддержка стран"]},
-    {"id":"worldbank","cat":"international_org","name":"Всемирный банк","full":"World Bank","site":"worldbank.org","phone":null,"functions":["Финансирование проектов"]},
-    {"id":"ebrd","cat":"international_org","name":"ЕБРР","full":"Европейский банк реконструкции и развития","site":"ebrd.com","phone":null,"functions":["Инвестиции в развитые экономики"]},
-    {"id":"interpol","cat":"international_org","name":"Интерпол","full":"Международная организация уголовной полиции","site":"interpol.int","phone":null,"functions":["Координация полиций 195 стран"]},
-    {"id":"cbr","cat":"cis","name":"ЦБ РФ","full":"Банк России","site":"cbr.ru","phone":null,"functions":["Финансовый надзор России"]},
-    {"id":"nbrb","cat":"cis","name":"Нацбанк РБ","full":"Национальный банк Беларуси","site":"nbrb.by","phone":null,"functions":["Финансовый надзор Беларуси"]},
-    {"id":"eabr","cat":"cis","name":"ЕАБР","full":"Евразийский банк развития","site":"eabr.org","phone":null,"functions":["Инвестиции в ЕАЭС"]},
-    {"id":"etherscan","cat":"crypto","name":"Etherscan","full":"Обозреватель блокчейна Ethereum","site":"etherscan.io","phone":null,"functions":["История транзакций Ethereum"]},
-    {"id":"bscscan","cat":"crypto","name":"BSCScan","full":"Обозреватель блокчейна BSC","site":"bscscan.com","phone":null,"functions":["История транзакций BSC"]},
-    {"id":"tronscan","cat":"crypto","name":"TRON Scan","full":"Обозреватель блокчейна TRON","site":"tronscan.org","phone":null,"functions":["История транзакций TRON/USDT"]}
+    {
+      "id":"arrfr","cat":"kz_regulators","name":"АРРФР","full":"Агентство РК по регулированию финансового рынка",
+      "site":"ardfm.gov.kz","phone":"1434","email":"info@ardfm.kz","address":"г. Астана, пр. Мәңгілік Ел, 57",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если вы стали жертвой мошеннического брокера, инвестиционной пирамиды или нелегальной финансовой организации",
+      "whatSay":"Здравствуйте, я хочу подать жалобу на организацию [название], которая работает без лицензии/мошенничеством. Мой номер дела [если есть].",
+      "functions":["Лицензирование банков, брокеров","Чёрный список организаций","Жалобы на финансовые организации","Проверка лицензий"],
+      "docs":["Скриншоты переписки","Выписки по счёту","Договор с платформой","Чеки о переводах"]
+    },
+    {
+      "id":"nbk","cat":"kz_regulators","name":"НБ РК","full":"Национальный банк Республики Казахстан",
+      "site":"nationalbank.kz","phone":"8 800 080 45 36","email":"info@nationalbank.kz","address":"г. Астана, пр. Туран, 39",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если проблема связана с коммерческим банком — невывод средств, блокировка счёта, несанкционированное списание",
+      "whatSay":"Здравствуйте, у меня возникла проблема с банком [название]. [Описание проблемы]. Я хочу подать жалобу на действия банка.",
+      "functions":["Надзор за банками","Рассмотрение жалоб на банки","Защита прав потребителей финансовых услуг"],
+      "docs":["Выписки по счёту","Переписка с банком","Договор банковского обслуживания","Чеки и квитанции"]
+    },
+    {
+      "id":"kgd","cat":"kz_regulators","name":"КГД МФ РК","full":"Комитет государственных доходов",
+      "site":"kgd.gov.kz","phone":"1414","email":"info@kgd.gov.kz","address":"г. Астана",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если нужна проверка ИИН/БИН организации, проверка налоговой регистрации",
+      "whatSay":"Здравствуйте, я хочу проверить организацию [название] по ИИН/БИН [номер].",
+      "functions":["Налоги, таможня","Проверка БИН","Регистрация юридических лиц"],
+      "docs":["ИИН/БИН организации","Данные о деятельности"]
+    },
+    {
+      "id":"afm","cat":"kz_regulators","name":"АФМ РК","full":"Агентство по финансовому мониторингу",
+      "site":"afm.gov.kz","phone":"1414","email":"info@afm.gov.kz","address":"г. Астана",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если вы подозреваете отмывание денег или финансирование терроризма",
+      "whatSay":"Здравствуйте, у меня есть информация о подозрительных финансовых операциях [описание].",
+      "functions":["AML/CFT","Противодействие отмыванию денег","Мониторинг подозрительных операций"],
+      "docs":["Доказательства подозрительных операций","Данные о транзакциях"]
+    },
+    {
+      "id":"police","cat":"kz_law","name":"МВД РК / Полиция","full":"Министерство внутренних дел",
+      "site":"mvd.gov.kz","phone":"102","email":"info@mvd.gov.kz","address":"Ближайшее отделение полиции",
+      "hours":"Круглосуточно",
+      "when":"Если вы стали жертвой мошенничества — кибермошенничество, телефонное мошенничество, кража денег",
+      "whatSay":"Здравствуйте, я хочу подать заявление о мошенничестве. [Краткое описание: что произошло, когда, сумма, кто мошенник].",
+      "functions":["Уголовные дела","Заявления о мошенничестве","Киберпреступность"],
+      "docs":["Скриншоты переписки","Выписки по счёту","Номера телефонов мошенников","Данные платформы"]
+    },
+    {
+      "id":"prosecutor","cat":"kz_law","name":"Генпрокуратура","full":"Генеральная прокуратура РК",
+      "site":"prosecutor.kz","phone":"115","email":"info@prosecutor.kz","address":"г. Астана",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если полиция отказывается возбуждать дело или бездействует",
+      "whatSay":"Здравствуйте, я хочу подать жалобу на бездействие полиции по моему заявлению о мошенничестве. Номер дела [если есть].",
+      "functions":["Надзор за соблюдением законов","Жалобы на бездействие полиции","Возбуждение уголовных дел"],
+      "docs":["Копия заявления в полицию","Талон-уведомление","Ответ полиции (если есть)"]
+    },
+    {
+      "id":"antikorr","cat":"kz_law","name":"Антикоррупционная служба","full":"Агентство по противодействию коррупции",
+      "site":"gov4.kz","phone":"1424","email":"info@gov4.kz","address":"г. Астана",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если в ситуации замешаны чиновники или коррупционные схемы",
+      "whatSay":"Здравствуйте, я хочу сообщить о факте коррупции [описание ситуации].",
+      "functions":["Противодействие коррупции","Проверка деклараций чиновников"],
+      "docs":["Доказательства коррупции","Аудио/видео записи","Документы"]
+    },
+    {
+      "id":"sud","cat":"kz_law","name":"Суды РК","full":"Судебная система",
+      "site":"sud.kz","phone":null,"email":null,"address":"Ближайший суд по месту жительства",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если нужна подача иска к мошеннику или организации для возврата средств",
+      "whatSay":"Здравствуйте, я хочу подать исковое заявление о возврате денежных средств [описание].",
+      "functions":["Проверка дел онлайн","Судебные акты","Подача исков"],
+      "docs":["Исковое заявление","Доказательства мошенничества","Расчёт убытков","Документы"]
+    },
+    {
+      "id":"halyk","cat":"kz_banks","name":"Halyk Bank","full":"АО «Народный банк Казахстана»",
+      "site":"halykbank.kz","phone":"595","email":"info@halykbank.kz","address":"г. Алматы, пр. Достык, 56",
+      "hours":"Круглосуточно",
+      "when":"Если вы клиент Halyk Bank и у вас проблема с транзакцией, списанием или выводом средств",
+      "whatSay":"Здравствуйте, у меня проблема с картой/счётом [номер]. [Описание проблемы: несанкционированное списание, невывод средств, чарджбэк].",
+      "functions":["Чарджбэк","Оспаривание транзакций","Блокировка карт","Возврат средств"],
+      "docs":["Номер карты/счёта","Даты транзакций","Суммы","Описание проблемы"]
+    },
+    {
+      "id":"kaspi","cat":"kz_banks","name":"Kaspi Bank","full":"АО «Kaspi Bank»",
+      "site":"kaspi.kz","phone":"5050","email":"info@kaspi.kz","address":"г. Алматы, ул. Абая, 52",
+      "hours":"Круглосуточно",
+      "when":"Если вы клиент Kaspi Bank и у вас проблема с транзакцией, списанием или выводом средств",
+      "whatSay":"Здравствуйте, у меня проблема с Kaspi Gold/Platinum [номер]. [Описание проблемы].",
+      "functions":["Чарджбэк","Оспаривание транзакций","Блокировка карт","Возврат средств"],
+      "docs":["Номер карты/счёта","Даты транзакций","Суммы","Описание проблемы"]
+    },
+    {
+      "id":"forte","cat":"kz_banks","name":"Forte Bank","full":"АО «ForteBank»",
+      "site":"fortebank.kz","phone":"*6800","email":"info@fortebank.kz","address":"г. Астана",
+      "hours":"Круглосуточно",
+      "when":"Если вы клиент Forte Bank и у вас проблема с транзакцией",
+      "whatSay":"Здравствуйте, у меня проблема с картой Forte [номер]. [Описание проблемы].",
+      "functions":["Чарджбэк","Оспаривание транзакций","Блокировка карт"],
+      "docs":["Номер карты/счёта","Даты транзакций","Суммы"]
+    },
+    {
+      "id":"bcc","cat":"kz_banks","name":"Банк ЦентрКредит","full":"АО «Банк ЦентрКредит»",
+      "site":"ccbank.kz","phone":"727 244 10 44","email":"info@ccbank.kz","address":"г. Алматы",
+      "hours":"Пн-Пт 9:00-18:00",
+      "when":"Если вы клиент Банка ЦентрКредит и у вас проблема с транзакцией",
+      "whatSay":"Здравствуйте, у меня проблема с картой БЦК [номер]. [Описание проблемы].",
+      "functions":["Чарджбэк","Оспаривание транзакций"],
+      "docs":["Номер карты/счёта","Даты транзакций","Суммы"]
+    },
+    {
+      "id":"eurasian","cat":"kz_banks","name":"Евразийский банк","full":"АО «Евразийский банк»",
+      "site":"eubank.kz","phone":"505","email":"info@eubank.kz","address":"г. Алматы",
+      "hours":"Круглосуточно",
+      "when":"Если вы клиент Евразийского банка и у вас проблема с транзакцией",
+      "whatSay":"Здравствуйте, у меня проблема с картой [номер]. [Описание проблемы].",
+      "functions":["Чарджбэк","Оспаривание транзакций"],
+      "docs":["Номер карты/счёта","Даты транзакций","Суммы"]
+    },
+    {
+      "id":"sec","cat":"international_reg","name":"SEC","full":"Комиссия по ценным бумагам (США)",
+      "site":"sec.gov","phone":null,"email":"complaints@sec.gov","address":"США",
+      "hours":"Пн-Пт 9:00-17:00 EST",
+      "when":"Если мошенническая платформа зарегистрирована в США или использует американские финтех-сервисы",
+      "whatSay":"Hello, I would like to file a complaint about [platform name]. They operated without proper registration and defrauded investors.",
+      "functions":["Рынок ценных бумаг США","Жалобы на мошенничество","Расследования"],
+      "docs":["Platform name and URL","Transaction records","Communication screenshots"]
+    },
+    {
+      "id":"cftc","cat":"international_reg","name":"CFTC","full":"Комиссия по торговле фьючерсами (США)",
+      "site":"cftc.gov","phone":null,"email":"complaint@cftc.gov","address":"США",
+      "hours":"Пн-Пт 9:00-17:00 EST",
+      "when":"Если мошенничество связано с фьючерсами, деривативами или commodities",
+      "whatSay":"Hello, I would like to file a complaint about fraudulent trading platform [name].",
+      "functions":["Деривативы, фьючерсы","Жалобы на мошенничество"],
+      "docs":["Platform details","Transaction records"]
+    },
+    {
+      "id":"fca","cat":"international_reg","name":"FCA","full":"Управление финансового поведения (Великобритания)",
+      "site":"fca.org.uk","phone":null,"email":"consumer.queries@fca.org.uk","address":"Великобритания",
+      "hours":"Пн-Пт 8:00-18:00 GMT",
+      "when":"Если мошенническая платформа зарегистрирована в Великобритании или использует британские банки",
+      "whatSay":"Hello, I would like to report a fraudulent financial platform [name] operating without FCA authorization.",
+      "functions":["Финансовый надзор UK","Реестр лицензированных компаний","Жалобы"],
+      "docs":["Company details","Transaction records","Communication evidence"]
+    },
+    {
+      "id":"mas","cat":"international_reg","name":"MAS","full":"Денежно-валютное управление Сингапура",
+      "site":"mas.gov.sg","phone":null,"email":"consumers@mas.gov.sg","address":"Сингапур",
+      "hours":"Пн-Пт 8:30-17:30 SGT",
+      "when":"Если мошенническая платформа зарегистрирована в Сингапуре",
+      "whatSay":"Hello, I would like to file a complaint about [platform name] which appears to be operating without MAS license.",
+      "functions":["Центральный банк Сингапура","Лицензирование","Расследования"],
+      "docs":["Platform details","Transaction records"]
+    },
+    {
+      "id":"esma","cat":"international_reg","name":"ESMA","full":"Европейское агентство по ценным бумагам",
+      "site":"esma.europa.eu","phone":null,"email":null,"address":"ЕС",
+      "hours":"Пн-Пт 9:00-18:00 CET",
+      "when":"Если мошенничество связано с ценными бумагами в ЕС",
+      "whatSay":"I would like to report a fraudulent investment platform operating in the EU.",
+      "functions":["Рынки ценных бумаг ЕС","Координация регуляторов"],
+      "docs":["Platform details","Evidence of fraud"]
+    },
+    {
+      "id":"bafin","cat":"international_reg","name":"BaFin","full":"Финансовый надзор Германии",
+      "site":"bafin.de","phone":null,"email":"info@bafin.de","address":"Германия",
+      "hours":"Пн-Пт 8:00-17:00 CET",
+      "when":"Если мошенническая платформа зарегистрирована в Германии",
+      "whatSay":"Ich möchte eine Beschwerde über [Name der Plattform] einreichen.",
+      "functions":["Финансовый надзор Германии"],
+      "docs":["Plattform-Details","Transaktionsnachweise"]
+    },
+    {
+      "id":"finma","cat":"international_reg","name":"FINMA","full":"Финансовый надзор Швейцарии",
+      "site":"finma.ch","phone":null,"email":"info@finma.ch","address":"Швейцария",
+      "hours":"Пн-Пт 8:00-17:00 CET",
+      "when":"Если мошенническая платформа зарегистрирована в Швейцарии",
+      "whatSay":"Je voudrais déposer une plainte contre [nom de la plateforme].",
+      "functions":["Финансовый надзор Швейцарии"],
+      "docs":["Détails de la plateforme","Preuves de transaction"]
+    },
+    {
+      "id":"imf","cat":"international_org","name":"МВФ","full":"Международный валютный фонд",
+      "site":"imf.org","phone":null,"email":null,"address":"Вашингтон, США",
+      "hours":"—",
+      "when":"Международная финансовая помощь странам (не для индивидуальных жалоб)",
+      "whatSay":"—",
+      "functions":["Финансовая поддержка стран","Экономические консультации"],
+      "docs":["—"]
+    },
+    {
+      "id":"worldbank","cat":"international_org","name":"Всемирный банк","full":"World Bank",
+      "site":"worldbank.org","phone":null,"email":null,"address":"Вашингтон, США",
+      "hours":"—",
+      "when":"Международное финансирование проектов (не для индивидуальных жалоб)",
+      "whatSay":"—",
+      "functions":["Финансирование проектов","Развитие экономик"],
+      "docs":["—"]
+    },
+    {
+      "id":"ebrd","cat":"international_org","name":"ЕБРР","full":"Европейский банк реконструкции и развития",
+      "site":"ebrd.com","phone":null,"email":null,"address":"Лондон, Великобритания",
+      "hours":"—",
+      "when":"Инвестиции в развитие (не для индивидуальных жалоб)",
+      "whatSay":"—",
+      "functions":["Инвестиции в развитые экономики"],
+      "docs":["—"]
+    },
+    {
+      "id":"interpol","cat":"international_org","name":"Интерпол","full":"Международная организация уголовной полиции",
+      "site":"interpol.int","phone":null,"email":null,"address":"Лион, Франция",
+      "hours":"—",
+      "when":"Международный розыск (через национальные полицейские органы)",
+      "whatSay":"—",
+      "functions":["Координация полиций 195 стран","Международный розыск"],
+      "docs":["—"]
+    },
+    {
+      "id":"cbr","cat":"cis","name":"ЦБ РФ","full":"Банк России",
+      "site":"cbr.ru","phone":null,"email":null,"address":"Россия",
+      "hours":"Пн-Пт 9:00-18:00 MSK",
+      "when":"Если мошенническая платформа связана с российскими банками",
+      "whatSay":"Здравствуйте, я хочу подать жалобу на [название платформы].",
+      "functions":["Финансовый надзор России"],
+      "docs":["Данные о платформе","Транзакции"]
+    },
+    {
+      "id":"nbrb","cat":"cis","name":"Нацбанк РБ","full":"Национальный банк Беларуси",
+      "site":"nbrb.by","phone":null,"email":null,"address":"Беларусь",
+      "hours":"Пн-Пт 8:30-17:30",
+      "when":"Если мошенническая платформа связана с белорусскими банками",
+      "whatSay":"Здравствуйте, я хочу подать жалобу на [название платформы].",
+      "functions":["Финансовый надзор Беларуси"],
+      "docs":["Данные о платформе","Транзакции"]
+    },
+    {
+      "id":"eabr","cat":"cis","name":"ЕАБР","full":"Евразийский банк развития",
+      "site":"eabr.org","phone":null,"email":null,"address":"Алматы, Казахстан",
+      "hours":"—",
+      "when":"Инвестиции в ЕАЭС (не для индивидуальных жалоб)",
+      "whatSay":"—",
+      "functions":["Инвестиции в ЕАЭС"],
+      "docs":["—"]
+    },
+    {
+      "id":"etherscan","cat":"crypto","name":"Etherscan","full":"Обозреватель блокчейна Ethereum",
+      "site":"etherscan.io","phone":null,"email":null,"address":"Онлайн",
+      "hours":"24/7",
+      "when":"Если нужно отследить транзакции в блокчейне Ethereum (кошелёк мошенника)",
+      "whatSay":"Вставьте адрес кошелька мошенника в поиск на etherscan.io для просмотра всех транзакций.",
+      "functions":["История транзакций Ethereum","Отслеживание кошельков","Проверка токенов"],
+      "docs":["Адрес кошелька мошенника"]
+    },
+    {
+      "id":"bscscan","cat":"crypto","name":"BSCScan","full":"Обозреватель блокчейна BSC",
+      "site":"bscscan.com","phone":null,"email":null,"address":"Онлайн",
+      "hours":"24/7",
+      "when":"Если нужно отследить транзакции в блокчейне BSC (Binance Smart Chain)",
+      "whatSay":"Вставьте адрес кошелька мошенника в поиск на bscscan.com.",
+      "functions":["История транзакций BSC","Отслеживание кошельков"],
+      "docs":["Адрес кошелька мошенника"]
+    },
+    {
+      "id":"tronscan","cat":"crypto","name":"TRON Scan","full":"Обозреватель блокчейна TRON",
+      "site":"tronscan.org","phone":null,"email":null,"address":"Онлайн",
+      "hours":"24/7",
+      "when":"Если нужно отследить транзакции USDT в сети TRON",
+      "whatSay":"Вставьте адрес кошелька мошенника в поиск на tronscan.org.",
+      "functions":["История транзакций TRON/USDT","Отслеживание кошельков"],
+      "docs":["Адрес кошелька мошенника"]
+    }
   ]
 }
