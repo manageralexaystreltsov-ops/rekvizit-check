@@ -10,6 +10,9 @@ function renderNav(activePage){
     {id:'contacts',href:b+'contacts/',label:'Заявка',icon:'✉️',cta:true}
   ];
   var isHome=activePage==='home';
+  var isMobile=window.innerWidth<=768;
+
+  // Desktop nav
   var topNav='<nav class="nav-top" id="nav-top">';
   topNav+='<a href="'+b+'" class="nav-brand"><div class="nav-mark">🛡️</div><div><div class="nav-name">Антифрод Центр</div><div class="nav-tag">Казахстан</div></div></a>';
   topNav+='<div class="nav-desktop">';
@@ -20,6 +23,8 @@ function renderNav(activePage){
     topNav+='<a href="'+p.href+'" class="'+cls+'">'+p.label+'</a>';
   });
   topNav+='</div></nav>';
+
+  // Mobile bottom nav
   var botNav='<nav class="nav-mobile">';
   pages.forEach(function(p){
     var cls=p.id===activePage?'active':'';
@@ -27,11 +32,15 @@ function renderNav(activePage){
     botNav+='<a href="'+p.href+'" class="'+cls+'"><span class="nm-icon">'+p.icon+'</span><span class="nm-label">'+p.label+'</span></a>';
   });
   botNav+='</nav>';
+
   return topNav+botNav;
 }
+
 document.addEventListener('DOMContentLoaded',function(){
   var c=document.getElementById('nav-container');
   if(c){c.outerHTML=renderNav(c.dataset.page||'home')}
+
+  // Scroll effect for top nav
   var s=false;
   window.addEventListener('scroll',function(){
     var n=document.getElementById('nav-top');
@@ -39,4 +48,17 @@ document.addEventListener('DOMContentLoaded',function(){
     var v=window.scrollY>16;
     if(v!==s){n.classList.toggle('scrolled',v);s=v}
   },{passive:true});
+
+  // Handle resize
+  window.addEventListener('resize',function(){
+    var nm=document.querySelector('.nav-mobile');
+    var nd=document.querySelector('.nav-desktop');
+    if(window.innerWidth<=768){
+      if(nm)nm.style.display='flex';
+      if(nd)nd.style.display='none';
+    }else{
+      if(nm)nm.style.display='none';
+      if(nd)nd.style.display='flex';
+    }
+  });
 });
