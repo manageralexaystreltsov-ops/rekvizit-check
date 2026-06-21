@@ -13,11 +13,11 @@ body{background:#000;padding-bottom:70px}
 
 /* Services grid */
 .sv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:40px}
-.sv-card{position:relative;border-radius:var(--radius2);overflow:hidden;transition:all .4s;animation:fadeInUp .5s ease both}
-.sv-card:nth-child(1){animation-delay:.05s}.sv-card:nth-child(2){animation-delay:.1s}.sv-card:nth-child(3){animation-delay:.15s}.sv-card:nth-child(4){animation-delay:.2s}.sv-card:nth-child(5){animation-delay:.25s}.sv-card:nth-child(6){animation-delay:.3s}
+.sv-card{position:relative;border-radius:var(--radius2);overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);opacity:0;transform:translateY(40px) scale(.95)}
+.sv-card.visible{opacity:1;transform:translateY(0) scale(1)}
 .sv-card::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius2);background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.08));opacity:0;transition:opacity .4s;z-index:0}
 .sv-card:hover::before{opacity:1}
-.sv-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.sv-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 40px rgba(99,102,241,.08)}
 .sv-card-inner{position:relative;z-index:1;background:rgba(6,6,12,.9);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--radius2);padding:24px 20px;transition:border-color .3s;height:100%;display:flex;flex-direction:column}
 .sv-card:hover .sv-card-inner{border-color:rgba(99,102,241,.18)}
 .sv-icon{font-size:2rem;margin-bottom:12px}
@@ -201,6 +201,39 @@ body{background:#000;padding-bottom:70px}
     document.querySelectorAll('.sv-faq-a').forEach(function(a){a.classList.remove('show')});
     if(!isOpen){btn.classList.add('open');a.classList.add('show')}
   }
+
+  // Scroll animations for service cards
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+
+  document.querySelectorAll('.sv-card').forEach(function(card,i){
+    card.style.transitionDelay=(i*0.1)+'s';
+    observer.observe(card);
+  });
+
+  // Also animate FAQ items and free consultation
+  var fadeObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.style.opacity='1';
+        entry.target.style.transform='translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1});
+
+  document.querySelectorAll('.sv-faq-item, .sv-free').forEach(function(el){
+    el.style.opacity='0';
+    el.style.transform='translateY(20px)';
+    el.style.transition='all 0.5s ease';
+    fadeObserver.observe(el);
+  });
   </script>
 </body>
 </html>
